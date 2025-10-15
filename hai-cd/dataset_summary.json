@@ -1,0 +1,12 @@
+{
+  "total_samples": 93,
+  "train_samples": 79,
+  "val_samples": 9,
+  "test_samples": 5,
+  "sources": {
+    "hai_cd_base": 10,
+    "hai_knowledge": 83
+  },
+  "enhanced_date": "2025-10-15T05:23:30.706389",
+  "format": "chat"
+}

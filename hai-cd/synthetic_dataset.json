@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "SYN_0000",
+    "question": "What are the best practices for water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0001",
+    "question": "How should humanitarian workers handle water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0002",
+    "question": "What are the key considerations when dealing with water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0003",
+    "question": "What standards apply to water and sanitation in displacement camps in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0004",
+    "question": "How do you assess and respond to water and sanitation in displacement camps in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0005",
+    "question": "What are common challenges with water and sanitation in displacement camps and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0006",
+    "question": "What coordination is needed for effective water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0007",
+    "question": "How can we ensure quality and accountability in water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0008",
+    "question": "What protection principles apply to water and sanitation in displacement camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0009",
+    "question": "How do cultural factors affect water and sanitation in displacement camps in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0010",
+    "question": "What are the best practices for food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0011",
+    "question": "How should humanitarian workers handle food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0012",
+    "question": "What are the key considerations when dealing with food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0013",
+    "question": "What standards apply to food distribution in conflict zones in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0014",
+    "question": "How do you assess and respond to food distribution in conflict zones in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0015",
+    "question": "What are common challenges with food distribution in conflict zones and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0016",
+    "question": "What coordination is needed for effective food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0017",
+    "question": "How can we ensure quality and accountability in food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0018",
+    "question": "What protection principles apply to food distribution in conflict zones?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0019",
+    "question": "How do cultural factors affect food distribution in conflict zones in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0020",
+    "question": "What are the best practices for emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0021",
+    "question": "How should humanitarian workers handle emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0022",
+    "question": "What are the key considerations when dealing with emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0023",
+    "question": "What standards apply to emergency shelter after earthquakes in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0024",
+    "question": "How do you assess and respond to emergency shelter after earthquakes in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0025",
+    "question": "What are common challenges with emergency shelter after earthquakes and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0026",
+    "question": "What coordination is needed for effective emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0027",
+    "question": "How can we ensure quality and accountability in emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0028",
+    "question": "What protection principles apply to emergency shelter after earthquakes?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0029",
+    "question": "How do cultural factors affect emergency shelter after earthquakes in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0030",
+    "question": "What are the best practices for healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0031",
+    "question": "How should humanitarian workers handle healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0032",
+    "question": "What are the key considerations when dealing with healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0033",
+    "question": "What standards apply to healthcare delivery in refugee settings in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0034",
+    "question": "How do you assess and respond to healthcare delivery in refugee settings in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0035",
+    "question": "What are common challenges with healthcare delivery in refugee settings and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0036",
+    "question": "What coordination is needed for effective healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0037",
+    "question": "How can we ensure quality and accountability in healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0038",
+    "question": "What protection principles apply to healthcare delivery in refugee settings?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0039",
+    "question": "How do cultural factors affect healthcare delivery in refugee settings in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0040",
+    "question": "What are the best practices for child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0041",
+    "question": "How should humanitarian workers handle child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0042",
+    "question": "What are the key considerations when dealing with child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0043",
+    "question": "What standards apply to child protection in emergencies in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0044",
+    "question": "How do you assess and respond to child protection in emergencies in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0045",
+    "question": "What are common challenges with child protection in emergencies and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0046",
+    "question": "What coordination is needed for effective child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0047",
+    "question": "How can we ensure quality and accountability in child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0048",
+    "question": "What protection principles apply to child protection in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0049",
+    "question": "How do cultural factors affect child protection in emergencies in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0050",
+    "question": "What are the best practices for gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0051",
+    "question": "How should humanitarian workers handle gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0052",
+    "question": "What are the key considerations when dealing with gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0053",
+    "question": "What standards apply to gender-based violence prevention in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0054",
+    "question": "How do you assess and respond to gender-based violence prevention in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0055",
+    "question": "What are common challenges with gender-based violence prevention and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0056",
+    "question": "What coordination is needed for effective gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0057",
+    "question": "How can we ensure quality and accountability in gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0058",
+    "question": "What protection principles apply to gender-based violence prevention?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0059",
+    "question": "How do cultural factors affect gender-based violence prevention in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0060",
+    "question": "What are the best practices for cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0061",
+    "question": "How should humanitarian workers handle cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0062",
+    "question": "What are the key considerations when dealing with cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0063",
+    "question": "What standards apply to cash transfer programming in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0064",
+    "question": "How do you assess and respond to cash transfer programming in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0065",
+    "question": "What are common challenges with cash transfer programming and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0066",
+    "question": "What coordination is needed for effective cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0067",
+    "question": "How can we ensure quality and accountability in cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0068",
+    "question": "What protection principles apply to cash transfer programming?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0069",
+    "question": "How do cultural factors affect cash transfer programming in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0070",
+    "question": "What are the best practices for community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0071",
+    "question": "How should humanitarian workers handle community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0072",
+    "question": "What are the key considerations when dealing with community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0073",
+    "question": "What standards apply to community engagement and accountability in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0074",
+    "question": "How do you assess and respond to community engagement and accountability in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0075",
+    "question": "What are common challenges with community engagement and accountability and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0076",
+    "question": "What coordination is needed for effective community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0077",
+    "question": "How can we ensure quality and accountability in community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0078",
+    "question": "What protection principles apply to community engagement and accountability?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0079",
+    "question": "How do cultural factors affect community engagement and accountability in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0080",
+    "question": "What are the best practices for coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0081",
+    "question": "How should humanitarian workers handle coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0082",
+    "question": "What are the key considerations when dealing with coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0083",
+    "question": "What standards apply to coordination with local authorities in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0084",
+    "question": "How do you assess and respond to coordination with local authorities in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0085",
+    "question": "What are common challenges with coordination with local authorities and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0086",
+    "question": "What coordination is needed for effective coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0087",
+    "question": "How can we ensure quality and accountability in coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0088",
+    "question": "What protection principles apply to coordination with local authorities?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0089",
+    "question": "How do cultural factors affect coordination with local authorities in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0090",
+    "question": "What are the best practices for supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0091",
+    "question": "How should humanitarian workers handle supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0092",
+    "question": "What are the key considerations when dealing with supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0093",
+    "question": "What standards apply to supply chain and logistics in remote areas in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0094",
+    "question": "How do you assess and respond to supply chain and logistics in remote areas in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0095",
+    "question": "What are common challenges with supply chain and logistics in remote areas and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0096",
+    "question": "What coordination is needed for effective supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0097",
+    "question": "How can we ensure quality and accountability in supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0098",
+    "question": "What protection principles apply to supply chain and logistics in remote areas?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0099",
+    "question": "How do cultural factors affect supply chain and logistics in remote areas in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0100",
+    "question": "What are the best practices for nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0101",
+    "question": "How should humanitarian workers handle nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0102",
+    "question": "What are the key considerations when dealing with nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0103",
+    "question": "What standards apply to nutrition programming for acute malnutrition in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0104",
+    "question": "How do you assess and respond to nutrition programming for acute malnutrition in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0105",
+    "question": "What are common challenges with nutrition programming for acute malnutrition and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0106",
+    "question": "What coordination is needed for effective nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0107",
+    "question": "How can we ensure quality and accountability in nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0108",
+    "question": "What protection principles apply to nutrition programming for acute malnutrition?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0109",
+    "question": "How do cultural factors affect nutrition programming for acute malnutrition in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0110",
+    "question": "What are the best practices for psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0111",
+    "question": "How should humanitarian workers handle psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0112",
+    "question": "What are the key considerations when dealing with psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0113",
+    "question": "What standards apply to psychosocial support for trauma survivors in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0114",
+    "question": "How do you assess and respond to psychosocial support for trauma survivors in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0115",
+    "question": "What are common challenges with psychosocial support for trauma survivors and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0116",
+    "question": "What coordination is needed for effective psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0117",
+    "question": "How can we ensure quality and accountability in psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0118",
+    "question": "What protection principles apply to psychosocial support for trauma survivors?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0119",
+    "question": "How do cultural factors affect psychosocial support for trauma survivors in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0120",
+    "question": "What are the best practices for disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0121",
+    "question": "How should humanitarian workers handle disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0122",
+    "question": "What are the key considerations when dealing with disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0123",
+    "question": "What standards apply to disability inclusion in humanitarian response in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0124",
+    "question": "How do you assess and respond to disability inclusion in humanitarian response in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0125",
+    "question": "What are common challenges with disability inclusion in humanitarian response and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0126",
+    "question": "What coordination is needed for effective disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0127",
+    "question": "How can we ensure quality and accountability in disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0128",
+    "question": "What protection principles apply to disability inclusion in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0129",
+    "question": "How do cultural factors affect disability inclusion in humanitarian response in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0130",
+    "question": "What are the best practices for emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0131",
+    "question": "How should humanitarian workers handle emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0132",
+    "question": "What are the key considerations when dealing with emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0133",
+    "question": "What standards apply to emergency education services in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0134",
+    "question": "How do you assess and respond to emergency education services in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0135",
+    "question": "What are common challenges with emergency education services and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0136",
+    "question": "What coordination is needed for effective emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0137",
+    "question": "How can we ensure quality and accountability in emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0138",
+    "question": "What protection principles apply to emergency education services?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0139",
+    "question": "How do cultural factors affect emergency education services in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0140",
+    "question": "What are the best practices for environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0141",
+    "question": "How should humanitarian workers handle environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0142",
+    "question": "What are the key considerations when dealing with environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0143",
+    "question": "What standards apply to environmental health in camps in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0144",
+    "question": "How do you assess and respond to environmental health in camps in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0145",
+    "question": "What are common challenges with environmental health in camps and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0146",
+    "question": "What coordination is needed for effective environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0147",
+    "question": "How can we ensure quality and accountability in environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0148",
+    "question": "What protection principles apply to environmental health in camps?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0149",
+    "question": "How do cultural factors affect environmental health in camps in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0150",
+    "question": "What are the best practices for disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0151",
+    "question": "How should humanitarian workers handle disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0152",
+    "question": "What are the key considerations when dealing with disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0153",
+    "question": "What standards apply to disease outbreak preparedness in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0154",
+    "question": "How do you assess and respond to disease outbreak preparedness in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0155",
+    "question": "What are common challenges with disease outbreak preparedness and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0156",
+    "question": "What coordination is needed for effective disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0157",
+    "question": "How can we ensure quality and accountability in disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0158",
+    "question": "What protection principles apply to disease outbreak preparedness?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0159",
+    "question": "How do cultural factors affect disease outbreak preparedness in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0160",
+    "question": "What are the best practices for protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0161",
+    "question": "How should humanitarian workers handle protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0162",
+    "question": "What are the key considerations when dealing with protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0163",
+    "question": "What standards apply to protection of civilians in conflict in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0164",
+    "question": "How do you assess and respond to protection of civilians in conflict in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0165",
+    "question": "What are common challenges with protection of civilians in conflict and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0166",
+    "question": "What coordination is needed for effective protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0167",
+    "question": "How can we ensure quality and accountability in protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0168",
+    "question": "What protection principles apply to protection of civilians in conflict?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0169",
+    "question": "How do cultural factors affect protection of civilians in conflict in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0170",
+    "question": "What are the best practices for humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0171",
+    "question": "How should humanitarian workers handle humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0172",
+    "question": "What are the key considerations when dealing with humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0173",
+    "question": "What standards apply to humanitarian access negotiation in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0174",
+    "question": "How do you assess and respond to humanitarian access negotiation in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0175",
+    "question": "What are common challenges with humanitarian access negotiation and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0176",
+    "question": "What coordination is needed for effective humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0177",
+    "question": "How can we ensure quality and accountability in humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0178",
+    "question": "What protection principles apply to humanitarian access negotiation?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0179",
+    "question": "How do cultural factors affect humanitarian access negotiation in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0180",
+    "question": "What are the best practices for needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0181",
+    "question": "How should humanitarian workers handle needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0182",
+    "question": "What are the key considerations when dealing with needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0183",
+    "question": "What standards apply to needs assessment methodologies in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0184",
+    "question": "How do you assess and respond to needs assessment methodologies in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0185",
+    "question": "What are common challenges with needs assessment methodologies and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0186",
+    "question": "What coordination is needed for effective needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0187",
+    "question": "How can we ensure quality and accountability in needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0188",
+    "question": "What protection principles apply to needs assessment methodologies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0189",
+    "question": "How do cultural factors affect needs assessment methodologies in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0190",
+    "question": "What are the best practices for monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0191",
+    "question": "How should humanitarian workers handle monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0192",
+    "question": "What are the key considerations when dealing with monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0193",
+    "question": "What standards apply to monitoring and evaluation in emergencies in emergency response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0194",
+    "question": "How do you assess and respond to monitoring and evaluation in emergencies in crisis situations?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0195",
+    "question": "What are common challenges with monitoring and evaluation in emergencies and how to address them?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0196",
+    "question": "What coordination is needed for effective monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0197",
+    "question": "How can we ensure quality and accountability in monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0198",
+    "question": "What protection principles apply to monitoring and evaluation in emergencies?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  },
+  {
+    "id": "SYN_0199",
+    "question": "How do cultural factors affect monitoring and evaluation in emergencies in humanitarian response?",
+    "answer": null,
+    "method": "template_generation",
+    "needs_enhancement": true
+  }
+]

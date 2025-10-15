@@ -1,0 +1,131 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address natural disaster situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "- expand to 3 different crisis types (conflict, displacement, natural disaster)"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "How do you assess shelter needs after a natural disaster?"
+      },
+      {
+        "role": "assistant",
+        "content": "Shelter assessment should cover: 1) Number and demographics of affected households, 2) Extent of damage (destroyed, severely damaged, moderately damaged), 3) Climate and environmental conditions, 4) Cultural preferences and local building practices, 5) Available local materials and skills, 6) Land availability and tenure issues, 7) Security and protection concerns, 8) Access to services (water, sanitation, health), and 9) Planned return or relocation intentions."
+      }
+    ],
+    "category": "shelter"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is GDPR compliance in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Right to be forgotten, data portability\n- **HIPAA compliance**: Healthcare data protection\n- **SOC 2**: Security, availability, confidentiality\n- **ISO 27001**: Information security management\n\nThis security architecture ensures that the AI survey system meets the highest standards for protecting sensitive humanitarian data while enabling secure collaboration between organizations."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Duplicates in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "confirmedDuplicates."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on users?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 1.5 M+ users."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cache in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Map<string, AIModel>;\n  private questionTemplateCache: QuestionTemplate[];\n  private contextEmbeddings: EmbeddingCache;\n\n  async generateQuestionsParallel(\n    outcomes: NrcOutcome[],\n    context: CrisisContext,\n    customization: SurveyCustomization\n  ): Promise<Question[]> {\n\n    // Pre-compute context embeddings\n    const contextEmbedding = await this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on users?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 17 M+ users."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on beneficiaries?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 50 M+ beneficiaries."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on people needed humanitarian assistance in?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 339 million people needed humanitarian assistance in."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  }
+]

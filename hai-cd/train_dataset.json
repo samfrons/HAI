@@ -1,0 +1,1132 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Targets in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Urgent referral    \u2502 \u2502\n\u2502 \u2502 [Edit] [Translate]              \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 Languages: [EN] [\u09ac\u09be\u0982] [AR] [FR]    \u2502\n\u2502                                     \u2502\n\u2502 [Deploy to Teams \u2192]                 \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### 3."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on in early warning systems in developing countries could prevent annual losses of between US?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 800 million in early warning systems in developing countries could prevent annual losses of between US."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Accessed in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "new Date(),\n      lastAccessIP: accessContext."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "What is the minimum water requirement per person per day in emergency situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "According to Sphere Standards, the minimum water requirement is 15 liters per person per day for survival needs. This covers drinking, cooking, and basic hygiene. In the first phase of an emergency, 7.5-15 liters may be acceptable, but this should be increased to 15-20 liters as soon as possible."
+      }
+    ],
+    "category": "water_sanitation"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Context in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "historicalCrises,\n      riskFactors: this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Questions in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "5,\n          maxDuration: 180\n        }\n      });\n\n      setGeneratedSurvey(survey);\n      onSurveyCreated(survey);\n    } catch (error) {\n      console."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on data submissions?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 400 M+ data submissions."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on conflict events mapped?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 10 M+ conflict events mapped."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Tag in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "encryptedReferral."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 30 B+ ."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Level in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "'ReadCommitted',\n      timeout: 10000\n    });\n  }\n}\n\nclass ConnectionRouter {\n  private readPools: PrismaClient[];\n  private healthChecks: Map<number, HealthStatus>;\n\n  constructor(readPools: PrismaClient[]) {\n    this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Until in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "new Date(Date."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Filter in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "BloomFilter;\n  private localityHash: LSH;\n  private mlModel: SimilarityModel;\n\n  async detectDuplicates(\n    newRecords: BeneficiaryRecord[],\n    existingDataSources: DataSource[],\n    options: DetectionOptions\n  ): Promise<DuplicateDetectionResult> {\n\n    // Stage 1: Bloom filter for impossible matches (ultra-fast)\n    const possibleDuplicates = this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on total beneficiaries served?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 80 million total beneficiaries served."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Household in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "B-247                    \u2502\n\u2502 Question 1 of 4                     \u2502\n\u2502                                     \u2502\n\u2502 Child's MUAC measurement?           \u2502\n\u2502                                     \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502      \ud83d\udfe2 Green (>125mm)          \u2502 \u2502\n\u2502 \u2502      [     \u2713     ]              \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502      \ud83d\udfe1 Yellow (115-125mm)      \u2502 \u2502\n\u2502 \u2502      [           ]              \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502      \ud83d\udd34 Red (<115mm)            \u2502 \u2502\n\u2502 \u2502      [           ]              \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 \ud83d\udcf8 [Add Photo Evidence]             \u2502\n\u2502                                     \u2502\n\u2502 \u2139\ufe0f Measure at mid-upper arm         \u2502\n\u2502                                     \u2502\n\u2502 [\u2190 Back]            [Next \u2192]        \u2502\n\u2502                                     \u2502\n\u2502 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591  25%          \u2502\n\u2502 \ud83d\udcf6 Will sync when connected         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### 4."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is OR describe your objective in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "\u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 \"Assess nutritional status of  \u2502 \u2502\n\u2502 \u2502  children under 5 in Camp B\"   \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 Location: Camp B, Cox's Bazar \ud83d\udccd    \u2502\n\u2502                                     \u2502\n\u2502 [Check Existing Data \u2192]             \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n#### Step 2: Data Availability Check\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u2190 Checking Data Sources."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Found existing data in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "\u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 \u2705 Nutrition baseline (7 days)  \u2502 \u2502\n\u2502 \u2502    Source: UNICEF               \u2502 \u2502\n\u2502 \u2502    Coverage: 78%                \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502 \u26a0\ufe0f Growth monitoring (21 days)  \u2502 \u2502\n\u2502 \u2502    Source: Save Children        \u2502 \u2502\n\u2502 \u2502    Coverage: 45%                \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502 \u274c Feeding practices (No data)  \u2502 \u2502\n\u2502 \u2502 \u274c Malnutrition signs (No data) \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 Recommendation:                     \u2502\n\u2502 \ud83d\udcca Reuse 2 indicators              \u2502\n\u2502 \ud83c\udd95 Collect 2 new data points       \u2502\n\u2502                                     \u2502\n\u2502 Estimated time: 2-3 minutes        \u2502\n\u2502                                     \u2502\n\u2502 [Generate Minimal Survey \u2192]         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n#### Step 3: AI-Generated Survey Review\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u2190 Review Survey                \u26ab\u26ab\u26ab \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 \ud83e\udd16 AI Generated 4 Questions         \u2502\n\u2502                                     \u2502\n\u2502 Linked to: NRC_NUTRITION_01         \u2502\n\u2502 Est."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Embedding in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "number[],\n    customization: SurveyCustomization\n  ): Promise<Question[]> {\n\n    // Use smaller, faster model for initial generation\n    const draftQuestions = await this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is ResponseTime in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "windowMetrics."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Key rotation in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Automatic rotation every 90 days\n- **Key escrow**: Secure backup for recovery scenarios\n- **Hardware security modules**: For high-value keys\n- **Key derivation**: PBKDF2 with high iteration counts\n\n### 2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Symmetric encryption in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "AES-256-GCM\n- **Asymmetric encryption**: RSA-4096 or ECC P-384\n- **Hashing**: SHA-256 with salt\n- **Digital signatures**: RSA-PSS or ECDSA\n\n### 3."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address conflict situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "| poor offline sync causing data loss | low | high | robust conflict resolution, auto-backup |"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Record in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "candidate,\n          ourRecord: record,\n          similarities: similarity."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Target in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": ">90%               \u2502   30% use \u2192 89% use        \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                                                \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 Active Surveys                                             \u2502 \u2502\n\u2502 \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524 \u2502\n\u2502 \u2502 Survey         | Status | Responses | Completion | Quality \u2502 \u2502\n\u2502 \u2502 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2502 \u2502\n\u2502 \u2502 Nutrition Camp B| Active | 147/200  | 74%        | 94%     \u2502 \u2502\n\u2502 \u2502 WASH Assessment | Active | 89/150   | 59%        | 91%     \u2502 \u2502\n\u2502 \u2502 Shelter Damage  | Paused | 234/250  | 94%        | 88%     \u2502 \u2502\n\u2502 \u2502 Food Security   | Draft  | 0/100    | 0%         | --      \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                                                \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 Data Source Coverage         \u2502 Partner Referrals (7 days) \u2502 \u2502\n\u2502 \u2502                              \u2502                             \u2502 \u2502\n\u2502 \u2502 HDX          \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 78%   \u2502 Sent:      42               \u2502 \u2502\n\u2502 \u2502 UNHCR        \u2588\u2588\u2588\u2588\u2588\u2588   61%   \u2502 Accepted:  38 (90%)         \u2502 \u2502\n\u2502 \u2502 ReliefWeb    \u2588\u2588\u2588\u2588\u2588    52%   \u2502 Completed: 31 (82%)         \u2502 \u2502\n\u2502 \u2502 World Bank   \u2588\u2588\u2588\u2588     41%   \u2502 Avg Time:  4."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on total?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 33.89 billion total."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "What are the core protection principles in humanitarian action?"
+      },
+      {
+        "role": "assistant",
+        "content": "Core protection principles are: 1) Safety and dignity - do no harm through our actions, 2) Meaningful access - ensure people can access assistance without barriers or discrimination, 3) Accountability - establish mechanisms for feedback and complaints, 4) Participation - involve affected communities in decisions, 5) Non-discrimination - assist based on need without discrimination, and 6) Confidentiality - protect sensitive information about individuals."
+      }
+    ],
+    "category": "protection"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Data minimization in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Collect only necessary data\n- **Purpose limitation**: Use data only for stated purposes\n- **Consent management**: Clear, granular consent mechanisms\n- **Right to be forgotten**: Data deletion capabilities\n\n## Encryption Architecture\n\n### 1."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Processed in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "newRecords."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on people needed assistance in?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 339 million people needed assistance in."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Required in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "true,\n    optionsEn: ['Yes, completely', 'Partially', 'No, not at all', 'Don\\'t know'],\n    optionsFr: ['Oui, compl\u00e8tement', 'Partiellement', 'Non, pas du tout', 'Je ne sais pas'],\n    optionsAr: ['\u0646\u0639\u0645\u060c \u062a\u0645\u0627\u0645\u0627\u064b', '\u062c\u0632\u0626\u064a\u0627\u064b', '\u0644\u0627\u060c \u0645\u0637\u0644\u0642\u0627\u064b', '\u0644\u0627 \u0623\u0639\u0631\u0641'],\n    optionsEs: ['S\u00ed, completamente', 'Parcialmente', 'No, para nada', 'No s\u00e9'],\n    helpTextEn: 'This includes knowing about available services, locations, and how to register',\n    helpTextFr: 'Cela inclut la connaissance des services disponibles, des emplacements et de la fa\u00e7on de s\\'inscrire'\n  }\n];\n\nexport async function seedSurveyTemplates() {\n  console."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Sources in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "- https://public-old."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Case in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Child severe malnutrition     \u2502\n\u2502 ID: B-247-C1 (anonymized)           \u2502\n\u2502                                     \u2502\n\u2502 Select Partner Organization:        \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 \ud83c\udfe5 MSF Nutrition Center         \u2502 \u2502\n\u2502 \u2502    Distance: 2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Fingerprint in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "recipientPublicKey."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address famine situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "**claim:** \"created in 1985 after massive famines in africa\""
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Suspicious input detected in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "${pattern}`);\n      }\n    }\n\n    // Validate content type for POST/PUT requests\n    if (['POST', 'PUT', 'PATCH']."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Stream in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "EventEmitter;\n  private metricsBuffer: Map<string, MetricBuffer>;\n  private alertThresholds: Map<string, AlertThreshold>;\n\n  constructor() {\n    this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on unique users?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 1.4 million unique users."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Network security in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "TLS/SSL, VPN, firewall rules\n- **Application security**: Input validation, OWASP compliance\n- **Data security**: Encryption, tokenization, masking\n- **Identity security**: MFA, RBAC, identity federation\n\n### 3."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on refugees registered through BIMS into PRIMES by?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 37 million refugees registered through BIMS into PRIMES by."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Attempts in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "encryptedReferral."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Data in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "encryptedData,\n        serviceRequested,\n        referralReason: referralData."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on identities registered?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 20 million identities registered."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is SurveyGeneration in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n    responseTime: '< 3 seconds for simple surveys';\n    throughput: '100 concurrent generations';\n    availability: '99."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Data Used in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "89% \ud83c\udfaf               \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 \ud83d\udcbe Last Sync: 5 min ago            \u2502\n\u2502 \ud83d\udcf6 Offline Mode Ready               \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### 2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Active Crisis in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Cox's Bazar Floods   \u2502\n\u2502 Teams Active: 12 | Surveys: 3      \u2502\n\u2502                                     \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 \ud83c\udfaf Quick Actions                \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502 [+ Generate New Survey]         \u2502 \u2502\n\u2502 \u2502 [\ud83d\udccb Active Surveys (3)]         \u2502 \u2502\n\u2502 \u2502 [\ud83d\udcca View Analytics]             \u2502 \u2502\n\u2502 \u2502 [\ud83e\udd1d Partner Referrals]          \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 \ud83d\udcc8 Today's Progress                 \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 Responses: 147/200              \u2502 \u2502\n\u2502 \u2502 \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591  74%          \u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502 Avg Time: 2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "What is the cluster system in humanitarian response?"
+      },
+      {
+        "role": "assistant",
+        "content": "The cluster system is a coordination mechanism that organizes humanitarian response into sectors: Health, Nutrition, WASH (Water/Sanitation/Hygiene), Shelter, Protection, Education, Food Security, Emergency Telecommunications, Logistics, and Camp Coordination. Each cluster has a designated lead agency (often a UN agency) responsible for coordination, setting standards, identifying gaps, and ensuring accountability. This system improves coordination and reduces duplication."
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on humanitarian funding tracked annually?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 30 B+ humanitarian funding tracked annually."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Pairs in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "candidatePairs."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Applied in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "true,\n      timestamp: new Date()\n    };\n  }\n\n  private maskField(value: string, fieldType: string): string {\n    switch (fieldType) {\n      case 'phone':\n        return value."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "How should humanitarian organizations approach working with vulnerable populations?"
+      },
+      {
+        "role": "assistant",
+        "content": "Organizations should: 1) Ensure meaningful participation of affected populations in decisions, 2) Apply a 'Do No Harm' approach to avoid creating additional risks, 3) Provide special protection and assistance to the most vulnerable (children, elderly, disabled, women), 4) Consider cultural contexts and local capacities, 5) Maintain confidentiality and informed consent, and 6) Establish accessible feedback and complaint mechanisms."
+      }
+    ],
+    "category": "protection_principles"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on children from famine during its tenure?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 10 million children from famine during its tenure."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Organization in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "true,\n        toOrganization: true\n      }\n    });\n\n    // Verify organization has access\n    if (referral."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is DelayOnFailover in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "100,\n      maxRetriesPerRequest: 3\n    });\n  }\n\n  async getCachedSurvey(\n    outcomeId: string,\n    contextHash: string,\n    customizationHash: string\n  ): Promise<CachedSurvey | null> {\n\n    const cacheKey = `survey:${outcomeId}:${contextHash}:${customizationHash}`;\n\n    // L1: Memory cache (fastest)\n    let cached = this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on people registered in PRIMES in?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 28.2 million people registered in PRIMES in."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Detection in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n    processingTime: '< 10 seconds for 10,000 records';\n    accuracy: '95% precision, 92% recall';\n    falsePositiveRate: '< 3%';\n    throughput: '50 concurrent checks';\n  };\n\n  referralEncryption: {\n    encryptionTime: '< 200ms per referral';\n    decryptionTime: '< 150ms per referral';\n    keyExchangeTime: '< 500ms';\n    auditLogDelay: '< 100ms';\n  };\n\n  analytics: {\n    dashboardLoad: '< 2 seconds';\n    realTimeUpdates: '< 15 seconds lag';\n    reportGeneration: '< 30 seconds for complex reports';\n    concurrentUsers: '500+ simultaneous';\n  };\n}\n```\n\n### Optimization Strategies\n\n1."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on registered individuals?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 28 M+ registered individuals."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "What are the immediate priorities in the first 72 hours of a humanitarian emergency?"
+      },
+      {
+        "role": "assistant",
+        "content": "Immediate priorities include: 1) Life-saving medical care and trauma treatment, 2) Safe water provision (at minimum 7.5L/person/day initially), 3) Emergency shelter for displaced populations, 4) Food distribution to prevent acute hunger, 5) Sanitation facilities to prevent disease outbreak, 6) Security assessment and protection of civilians, 7) Rapid needs assessment to inform response, and 8) Coordination with local authorities and other responders."
+      }
+    ],
+    "category": "emergency_response"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "How should humanitarian workers handle security risks in conflict zones?"
+      },
+      {
+        "role": "assistant",
+        "content": "Security management should include: 1) Regular security assessments and updates, 2) Acceptance-based approach building relationships with all parties, 3) Maintaining strict neutrality and humanitarian principles, 4) Clear communication of humanitarian mandate to all actors, 5) Staff security training and briefings, 6) Contingency plans and evacuation procedures, 7) Secure communications systems, 8) Collaboration with UN security and local partners, and 9) Never taking unnecessary risks - suspending operations when too dangerous."
+      }
+    ],
+    "category": "security"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on registered individuals?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 100 M+ registered individuals."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Type in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "MeasurementType."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address emergency situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "// enable emergency access mode"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "How should humanitarian organizations prevent sexual exploitation and abuse?"
+      },
+      {
+        "role": "assistant",
+        "content": "Organizations must: 1) Have clear policies prohibiting sexual exploitation and abuse (SEA), 2) Conduct mandatory training for all staff and partners, 3) Establish safe, confidential reporting mechanisms accessible to affected populations, 4) Conduct thorough background checks during recruitment, 5) Include SEA prevention in community awareness, 6) Investigate all allegations promptly and fairly, 7) Take appropriate disciplinary action, 8) Support survivors with services, and 9) Report to appropriate authorities and inter-agency mechanisms."
+      }
+    ],
+    "category": "safeguarding"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address flood situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "\u2502 active crisis: cox's bazar floods   \u2502"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Referral in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "EncryptedReferral,\n    organizationId: string,\n    accessContext: AccessContext\n  ): Promise<BeneficiaryData> {\n\n    // 1."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address humanitarian crisis situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "create a comprehensive **3-tier service design blueprint** for humanitarian crisis response with collapsible swimlane groups, variable heights based on authority levels, and swiss mo"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on beneficiaries globally?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 80 M+ beneficiaries globally."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+      },
+      {
+        "role": "user",
+        "content": "What are the core principles of humanitarian response?"
+      },
+      {
+        "role": "assistant",
+        "content": "The core humanitarian principles are: 1) Humanity - human suffering must be addressed wherever it is found, 2) Impartiality - assistance based solely on need without discrimination, 3) Neutrality - humanitarian actors must not take sides in conflicts, and 4) Independence - humanitarian action must be autonomous from political, economic, military or other objectives."
+      }
+    ],
+    "category": "humanitarian_principles"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address displacement situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "**information chaos**: field teams navigate dozens of uncoordinated platforms (iom displacement tracking, icpac flooding forecasts, local news, social media, field reports) without systematic pri"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Quick Templates in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "\u2502 \u2502\n\u2502 \u2502                                 \u2502 \u2502\n\u2502 \u2502 \u26a1 Rapid Needs Assessment       \u2502 \u2502\n\u2502 \u2502 \ud83c\udfe0 Shelter Conditions           \u2502 \u2502\n\u2502 \u2502 \ud83d\udca7 WASH Status                  \u2502 \u2502\n\u2502 \u2502 \ud83c\udf7d\ufe0f Food Security               \u2502 \u2502\n\u2502 \u2502 \ud83c\udfe5 Health Screening             \u2502 \u2502\n\u2502 \u2502 \u270f\ufe0f Custom Objective."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How should humanitarian responders address disaster situations?"
+      },
+      {
+        "role": "assistant",
+        "content": "clear -->|retrieves disaster history| em"
+      }
+    ],
+    "category": "crisis_response",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Behavioral analysis in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "User and entity behavior analytics\n- **Threat intelligence**: Integration with external feeds\n- **Automated response**: Immediate containment actions\n\n### 4."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Pool in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "PrismaClient;\n  private readPools: PrismaClient[];\n  private connectionRouter: ConnectionRouter;\n\n  constructor() {\n    this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on refugees registered through biometric systems?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 37 M+ refugees registered through biometric systems."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Count in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "1\n        }\n      });\n    }\n  }\n}\n```\n\n### 2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Use compressed data structures for large datasets\n  private compressedRecords in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "CompressedRecordStore;\n  private invertedIndex: InvertedIndex;\n  private spatialIndex: RTree;\n\n  createCompressedFingerprint(record: BeneficiaryRecord): CompressedFingerprint {\n    // Use bit vectors for categorical data\n    const features = new BitVector(128);\n\n    // Hash textual features to reduce memory\n    const nameHash = murmurhash3(record."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Capacity in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Limited            \u2502 \u2502\n\u2502 \u2502    [Select]                     \u2502 \u2502\n\u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2502\n\u2502                                     \u2502\n\u2502 Data to Share:                      \u2502\n\u2502 \u2611\ufe0f MUAC measurement                 \u2502\n\u2502 \u2611\ufe0f Age and gender                   \u2502\n\u2502 \u2611\ufe0f Location (zone only)             \u2502\n\u2502 \u2610 Full assessment data              \u2502\n\u2502                                     \u2502\n\u2502 Consent Status: \u2705 Obtained         \u2502\n\u2502 Witness: Field Officer Ahmed        \u2502\n\u2502                                     \u2502\n\u2502 [Generate Secure Token \u2192]            \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n## Desktop Analytics Dashboard\n\n### Survey Performance Analytics\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 CLEAR Survey Analytics Dashboard                         Admin \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                \u2502\n\u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502\n\u2502 \u2502 Data Utilization Rate        \u2502 Survey Efficiency           \u2502 \u2502\n\u2502 \u2502                              \u2502                             \u2502 \u2502\n\u2502 \u2502      Current: 89%            \u2502   Before    After           \u2502 \u2502\n\u2502 \u2502   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591          \u2502   20 Qs  \u2192  4 Qs          \u2502 \u2502\n\u2502 \u2502                              \u2502   15 min \u2192  2."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 347 million ."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What are the statistics on conflict events mapped?"
+      },
+      {
+        "role": "assistant",
+        "content": "Approximately 1.5 M+ conflict events mapped."
+      }
+    ],
+    "category": "statistics",
+    "source": "CLEAR_docs"
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is UpdateTimestamp in humanitarian context?"
+      },
+      {
+        "role": "assistant",
+        "content": "Date,\n    filters: DashboardFilters\n  ): Promise<IncrementalUpdate> {\n\n    const updates = await this."
+      }
+    ],
+    "category": "terminology",
+    "source": "CLEAR_docs"
+  }
+]

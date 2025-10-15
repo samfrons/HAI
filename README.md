@@ -1,0 +1,2 @@
+# HAI
+Humanitarian AI bot

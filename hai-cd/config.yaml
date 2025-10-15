@@ -1,0 +1,83 @@
+# Humanitarian LLM PoC Configuration
+
+project:
+  name: "humanitarian-expert-llm"
+  version: "0.1.0-poc"
+  description: "Humanitarian crisis response expert LLM using PETRI auditing"
+
+# Model configuration
+model:
+  base_model: "meta-llama/Llama-3.2-3B-Instruct"  # Start small for budget
+  # Alternative: "mistralai/Mistral-7B-Instruct-v0.3"
+  quantization: "4bit"  # Reduce memory/compute costs
+  use_flash_attention: true
+  
+# Training configuration
+training:
+  method: "lora"  # Low-Rank Adaptation for efficiency
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: ["q_proj", "v_proj", "k_proj", "o_proj"]
+  
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  learning_rate: 2.0e-4
+  num_epochs: 3
+  max_seq_length: 2048
+  
+  warmup_steps: 100
+  logging_steps: 10
+  save_steps: 500
+
+# Data configuration
+data:
+  train_size: 0.85
+  val_size: 0.10
+  test_size: 0.05
+  min_samples: 500  # Minimum for PoC
+  target_samples: 2000
+
+# PETRI Auditing configuration
+petri:
+  enabled: true
+  audit_categories:
+    - "factual_accuracy"
+    - "cultural_sensitivity"
+    - "harm_avoidance"
+    - "bias_detection"
+    - "misinformation_resistance"
+  
+  test_scenarios:
+    - "crisis_response"
+    - "resource_allocation"
+    - "vulnerable_populations"
+    - "cross_cultural_communication"
+
+# Humanitarian domain specifics
+humanitarian:
+  focus_areas:
+    - "natural_disasters"
+    - "conflict_zones"
+    - "refugee_response"
+    - "health_emergencies"
+    - "food_security"
+    - "water_sanitation"
+  
+  key_frameworks:
+    - "Sphere_Standards"
+    - "Core_Humanitarian_Standard"
+    - "Do_No_Harm"
+    - "Protection_Principles"
+
+# Budget constraints
+budget:
+  max_cost_usd: 200
+  training_hours_max: 20
+  api_token_budget: 10000000  # 10M tokens across all API calls
+  
+# Outputs
+outputs:
+  model_path: "./models/humanitarian-llm-poc"
+  audit_reports: "./audits/"
+  demo_app: "./outputs/demo"

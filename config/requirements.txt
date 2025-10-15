@@ -1,0 +1,149 @@
+# Humanitarian LLM POC - Python Dependencies
+
+# ============================================================================
+# Core Dependencies
+# ============================================================================
+
+python-dotenv==1.0.0
+pydantic==2.5.0
+pyyaml==6.0.1
+
+# ============================================================================
+# Petri Framework (Anthropic's Auditing Tool)
+# ============================================================================
+
+# Install from GitHub
+# git+https://github.com/safety-research/petri.git
+
+# Petri dependencies (will be installed with Petri)
+# inspect-ai>=0.3.0
+# anthropic>=0.18.0
+
+# ============================================================================
+# Fine-Tuning with Unsloth
+# ============================================================================
+
+# Unsloth for LoRA fine-tuning
+# Install via: pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+
+# Alternative: Use Hugging Face Transformers + PEFT
+transformers==4.36.0
+peft==0.7.0
+accelerate==0.25.0
+bitsandbytes==0.41.3
+datasets==2.15.0
+trl==0.7.4
+
+# ============================================================================
+# LLM API Clients
+# ============================================================================
+
+# Anthropic (Claude)
+anthropic==0.18.1
+
+# OpenRouter
+openai==1.6.1  # OpenRouter uses OpenAI-compatible API
+
+# Ollama
+ollama==0.1.6
+
+# ============================================================================
+# Data Processing
+# ============================================================================
+
+pandas==2.1.4
+numpy==1.26.2
+jsonlines==4.0.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+markdown==3.5.1
+
+# ============================================================================
+# ACE (Agentic Context Engineering) Dependencies
+# ============================================================================
+
+# For context optimization and reflection
+langchain==0.1.0
+langchain-community==0.0.10
+
+# ============================================================================
+# Evaluation and Metrics
+# ============================================================================
+
+# Model evaluation
+scikit-learn==1.3.2
+rouge-score==0.1.2
+nltk==3.8.1
+
+# ============================================================================
+# Cost Tracking
+# ============================================================================
+
+# Token counting
+tiktoken==0.5.2
+
+# ============================================================================
+# Utilities
+# ============================================================================
+
+# Progress bars
+tqdm==4.66.1
+
+# Logging
+loguru==0.7.2
+
+# HTTP requests
+requests==2.31.0
+aiohttp==3.9.1
+
+# JSON processing
+orjson==3.9.10
+
+# ============================================================================
+# Development Tools (Optional)
+# ============================================================================
+
+# Code formatting
+black==23.12.1
+isort==5.13.2
+
+# Linting
+pylint==3.0.3
+flake8==7.0.0
+
+# Type checking
+mypy==1.7.1
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.23.2
+
+# ============================================================================
+# Jupyter Notebook (Optional - for experimentation)
+# ============================================================================
+
+jupyter==1.0.0
+ipykernel==6.27.1
+ipywidgets==8.1.1
+
+# ============================================================================
+# Installation Notes
+# ============================================================================
+
+# 1. Install Ollama separately:
+#    curl -fsSL https://ollama.com/install.sh | sh
+#    ollama pull llama3.3:8b
+
+# 2. Install Petri:
+#    pip install git+https://github.com/safety-research/petri.git
+
+# 3. Install Unsloth (choose one method):
+#    Method A (recommended): pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+#    Method B (alternative): Use transformers + peft (already in this file)
+
+# 4. Install remaining requirements:
+#    pip install -r requirements.txt
+
+# 5. Set up environment variables:
+#    cp config/.env.example config/.env
+#    # Edit .env with your API keys
