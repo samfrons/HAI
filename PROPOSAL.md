@@ -1,121 +1,224 @@
-# HAI: Humanitarian AI — Executive Proposal
+# HAI: Humanitarian AI — Executive Proposal (v2)
 
 ## Executive Summary
 
-HAI is a cost-optimized, safety-audited AI system purpose-built for humanitarian crisis response. It combines two state-of-the-art research frameworks — Anthropic's **Petri** safety auditing and **Agentic Context Engineering (ACE)** — with a curated humanitarian knowledge base extracted from the CLEAR (Crisis Learning & Early-warning) platform. The system fine-tunes open-source LLMs (Llama 3.x) to deliver domain-expert guidance on emergency response, protection, food security, shelter, and WASH — at 60-75% lower cost than commercial API-only approaches.
+HAI is a proof-of-concept AI system for humanitarian crisis response that combines Anthropic's **Petri** safety auditing framework and **Agentic Context Engineering (ACE)** with a humanitarian knowledge base derived from the CLEAR platform. The project has built a comprehensive *framework* — auditing architecture, test scenarios, context optimization pipeline, training scripts, and documentation — but **critical gaps in data quality, model evaluation, and training readiness must be addressed** before it can deliver on its promise.
 
-**Total proof-of-concept cost: $58–145 against a $200 budget.**
-**90% of operations run at zero cost** using local models and free-tier APIs.
+This revised proposal provides an honest assessment of what works, what doesn't, and a concrete path forward — including model upgrades to current-generation open-source LLMs that dramatically improve multilingual capability, reasoning quality, and deployment efficiency.
+
+**Revised POC cost estimate: $100–200 | Timeline: 2–3 weeks to functional prototype**
 
 ---
 
 ## The Problem
 
-Humanitarian organizations face a critical knowledge gap during crisis response. Field workers need instant, accurate guidance on Sphere Standards, protection protocols, and coordination procedures — but existing tools are fragmented across dozens of platforms (HDX, KoboToolbox, FEWS NET, ACLED, WFP SCOPE, UNHCR PRIMES). Commercial AI APIs are expensive at scale ($200–500/month for 100K queries) and lack humanitarian domain grounding, risking inaccurate or ethically inappropriate advice in life-or-death contexts.
+Humanitarian field workers need instant, accurate guidance on Sphere Standards, protection protocols, and coordination procedures during crises. Existing tools are fragmented across dozens of platforms (HDX, KoboToolbox, FEWS NET, ACLED, WFP SCOPE, UNHCR PRIMES). Commercial AI APIs are expensive at scale and lack humanitarian domain grounding — risking inaccurate or ethically inappropriate advice in life-or-death contexts.
+
+**Market context (2026)**: 70% of humanitarians now use AI regularly, but organizational uptake is nascent. Most usage is "Shadow AI" — individual experimentation without organizational sanction. There is a critical window for purpose-built, safety-validated humanitarian AI tools.
 
 ---
 
-## The Solution
+## What Has Been Built
 
-HAI delivers a three-layer architecture that maximizes quality while minimizing cost:
+### Strengths (Keep and Build On)
 
-| Layer | Function | Cost |
-|-------|----------|------|
-| **Local (Ollama + Llama 3.x)** | ACE context optimization, target model inference, fallback judging | **$0** (80-90% of operations) |
-| **Free Cloud (OpenRouter)** | Auditor probe generation, test scenario creation | **$0** (10-15% of operations) |
-| **Paid Cloud (Claude Haiku)** | Safety evaluation, premium validation | **$50-150** (5-10% of operations) |
+| Component | Assessment | Detail |
+|-----------|-----------|--------|
+| **Petri auditing architecture** | Well-designed | 583-line 3-role framework (auditor → target → judge) with cost tracking |
+| **26 safety test scenarios** | High quality | 7 categories, 18 safety dimensions — these are genuinely well-designed for the humanitarian domain |
+| **ACE context optimizer** | Solid framework | 427-line generate → reflect → curate → evolve loop |
+| **Documentation** | Comprehensive | 14 files, 6000+ lines — setup guides, architecture docs, cost breakdowns |
+| **Cost-conscious architecture** | Sound approach | Three-tier local/free/paid design is the right pattern |
 
-### Core Components
+### Critical Issues (Must Fix)
 
-- **Knowledge Base**: 118 crisis types, 333 humanitarian terms, 34 verified statistics, 317 platform references — extracted from CLEAR documentation
-- **Petri Safety Auditor**: 26 test scenarios across 7 categories (accuracy, ethics, safety alignment, technical knowledge, cultural/conflict sensitivity) evaluating responses on 5 dimensions (0-100 scale each)
-- **ACE Context Optimizer**: Iterative generate → reflect → curate → evolve loop that improves model accuracy by 8-10% at zero additional cost
-- **Training Pipeline (HAI-CD)**: LoRA fine-tuning of Llama 3.2 3B with 93 curated training samples, 4-bit quantization for 75% memory reduction
+| Issue | Severity | Detail |
+|-------|----------|--------|
+| **Knowledge base contaminated** | **Blocker** | The 118 "crisis types" are JavaScript/TypeScript code snippets (database conflict resolution, software emergency modes), not humanitarian data. The extraction pipeline confused software terminology with humanitarian terminology. |
+| **Judge = Target model** | **Blocker** | The auditor's `judge_evaluate()` uses `self.target_model` — the same model being tested evaluates itself. The "100% pass rate" is self-grading with zero evidential weight. |
+| **79 training samples** | **Critical** | Orders of magnitude below the 1,000–5,000 minimum for meaningful LoRA fine-tuning. The 9-sample validation set is statistically meaningless. |
+| **Training hyperparameters broken** | **Critical** | `warmup_steps=100` with only ~15 total training steps means the learning rate never reaches its target. `eval_steps=100` and `save_steps=500` never trigger. |
+| **No RAG implementation** | **Critical** | The knowledge base exists but is only used for fine-tuning data, not retrieval at inference time. This is the single highest-impact architectural gap. |
+| **ACE improvement claims unvalidated** | **High** | "8-10% accuracy improvement" has never been measured — the optimizer has never been run with a test function. |
+| **Dependencies 1-2 years outdated** | **High** | `anthropic` 0.18.1 → current 0.44+, `transformers` 4.36 → 4.47+, `peft` 0.7 → 0.14+. API surface changes mean code may not execute. |
+| **No unit tests or CI/CD** | **High** | Zero test files, no `tests/` directory despite `pytest` in requirements. |
 
 ---
 
-## Current Status
+## Recommended Model Upgrades
 
-| Component | Status | Detail |
-|-----------|--------|--------|
-| Knowledge extraction pipeline | **Complete** | 292KB structured JSON knowledge base |
-| Petri auditing framework (583 lines) | **Complete** | 3-role architecture with cost tracking |
-| ACE context optimizer (427 lines) | **Complete** | Full optimization loop implemented |
-| 26 safety test scenarios | **Complete** | 7 categories, 18 safety dimensions |
-| Training data pipeline | **Complete** | 93 samples (79 train / 9 val / 5 test) |
-| Fine-tuning scripts (LoRA + quantization) | **Complete** | Ready for GPU execution |
-| Demo interface (Gradio) | **Complete** | Interactive Q&A with example queries |
-| Documentation (14 files, 6000+ lines) | **Complete** | Setup guides, architecture docs, cost breakdowns |
-| Model training execution | **Pending** | Requires GPU environment ($8-45) |
-| Full 26-scenario audit with paid judge | **Pending** | Requires API keys ($50-100) |
-| Production deployment | **Pending** | Architecture ready, awaiting trained model |
-| Multi-language support | **Future** | Arabic, French, Spanish planned post-POC |
+The original design targets **Llama 3.2 3B** — a model too small for the complexity of humanitarian reasoning (ethics, cultural sensitivity, factual accuracy simultaneously). The open-source landscape has advanced significantly since this project began.
 
-**Early audit results**: 11/26 scenarios completed at $0 cost using local Ollama judge — **100% pass rate**.
+### Tier 1: Primary Model Recommendations
+
+| Model | Parameters | Languages | License | Why for HAI |
+|-------|-----------|-----------|---------|-------------|
+| **Qwen 3 30B-A3B (MoE)** | 30B total / 3B active | 119 languages | Apache 2.0 | Best multilingual coverage under a fully permissive license. MoE architecture means only 3B parameters active per query — similar compute to current Llama 3.2 3B but dramatically more capable. Hybrid thinking/non-thinking modes for varied humanitarian tasks. Fits in 17.5GB VRAM with QLoRA via Unsloth. |
+| **Qwen 3 8B (Dense)** | 8B | 119 languages | Apache 2.0 | Simpler deployment than MoE. Strong reasoning, 119 languages, fully permissive. Good balance of capability and resource requirements. |
+| **Gemma 3 12B** | 12B | 140+ languages | Gemma ToU | Most multilingual model available (140+ languages). Multimodal (image + text). 128K context for long humanitarian reports. Runs on consumer GPUs with QAT quantization. |
+
+### Tier 2: Specialized Additions
+
+| Model | Role | Why |
+|-------|------|-----|
+| **TranslateGemma 12B** | Translation layer | 55 languages with 500+ additional research pairs. Outperforms larger models on translation. Directly relevant for humanitarian field communications. |
+| **DeepSeek R1 14B (distilled)** | Reasoning/analysis | MIT license. Strong chain-of-thought reasoning for complex ethical dilemmas and needs assessments. |
+| **Gemma 3 4B / Gemma 3n** | Offline field deployment | Runs on mobile devices. Adaptive model sizing via MatFormer architecture. Ideal for field workers without connectivity. |
+| **Phi-4-multimodal** | Voice interface | MIT license. Best-in-class speech recognition (6.14% WER). Enables voice-based humanitarian interfaces for low-literacy contexts. |
+| **Ministral 3 3B** | Edge deployment | Apache 2.0. Vision capabilities. Optimized for NVIDIA edge platforms (Jetson, RTX). |
+
+### Tier 3: Safety Evaluation
+
+| Model | Role | Why |
+|-------|------|-----|
+| **Claude Haiku / Sonnet** | Independent judge | Must replace local self-evaluation. Claude provides the independent, stronger-model judgment that makes Petri auditing meaningful. |
+| **Llama 4 Scout** | Long-context analysis | 10M token context window for processing entire humanitarian reports, cluster coordination documents, and multi-source analysis. |
+
+### Recommended Primary Configuration
+
+```
+Training target:     Qwen 3 8B (Apache 2.0, 119 languages)
+Fine-tuning:         QLoRA via Unsloth (rank 16, alpha 32, 4-bit NF4)
+RAG knowledge base:  FAISS or ChromaDB vector store
+Translation layer:   TranslateGemma 12B (55 languages)
+Safety judge:        Claude Haiku (independent, paid)
+Offline fallback:    Gemma 3 4B (quantized for mobile)
+Deployment:          Ollama + GGUF quantization
+```
+
+---
+
+## Improvement Roadmap
+
+### Phase 1: Fix Foundations (Week 1) — $0
+
+| Task | Detail |
+|------|--------|
+| **Clean the knowledge base** | Remove all code snippets from `humanitarian_knowledge.json`. Re-run extraction with proper filters that distinguish software terminology from humanitarian terminology. Verify remaining entries against authoritative sources. |
+| **Fix the auditor judge** | Change `judge_evaluate()` to use Claude Haiku (or at minimum a different, stronger local model) instead of `self.target_model`. This is a one-line fix with massive impact on evaluation validity. |
+| **Implement RAG** | Add a vector database (FAISS/ChromaDB) over the cleaned knowledge base. Use retrieval at inference time instead of relying solely on fine-tuning. This is the single highest-ROI change. |
+| **Fix training hyperparameters** | Set `warmup_steps` to ~10% of total steps. Set `eval_steps` and `save_steps` to values that actually trigger during training. Add gradient checkpointing. Set a reproducibility seed. |
+| **Update dependencies** | Bump `anthropic`, `transformers`, `peft`, `ollama`, `accelerate` to current versions. Add `gradio` to requirements. Remove unused `langchain`. |
+| **Add unit tests** | Create `tests/` directory. Test knowledge extraction, auditor probe/judge separation, ACE context generation, and training data loading. |
+
+### Phase 2: Scale Training Data (Week 1–2) — $15–30
+
+| Task | Detail |
+|------|--------|
+| **Generate 5,000+ training samples** | Use Claude Sonnet or GPT-4 to generate high-quality humanitarian Q&A pairs across all 10 domain categories. Verify against Sphere Standards and OCHA protocols. |
+| **Add adversarial test scenarios** | Expand from 26 to 50+ scenarios. Add jailbreak attempts, prompt injection, conflicting principles, "I don't know" edge cases, and multilingual scenarios. |
+| **Balance category coverage** | Cultural sensitivity (currently 1 scenario) and conflict sensitivity (currently 1 scenario) need 5-8 scenarios each — these are the highest-risk areas. |
+| **Add provenance tracking** | Link every fact in the knowledge base to its original source, publication date, and verification status. |
+
+### Phase 3: Train and Evaluate (Week 2–3) — $50–100
+
+| Task | Detail |
+|------|--------|
+| **Fine-tune Qwen 3 8B with QLoRA** | Use Unsloth on Colab A100 or Vast.ai. 5,000+ samples, 3 epochs, proper warmup schedule. |
+| **Run full Petri audit with Claude judge** | All 50+ scenarios with Claude Haiku as independent judge. Generate real pass/fail metrics with statistical significance. |
+| **Benchmark RAG vs. fine-tuning vs. combined** | Measure accuracy, latency, and cost for each approach independently and combined. |
+| **Run ACE optimization loop with real test function** | Measure actual accuracy improvement instead of claiming unvalidated numbers. |
+| **Multilingual evaluation** | Test in Arabic, French, and Spanish using scenarios translated by TranslateGemma. |
+
+### Phase 4: Production Hardening (Week 3+) — $20–50
+
+| Task | Detail |
+|------|--------|
+| **Add REST API layer** | FastAPI with authentication, rate limiting, input validation, and error handling. |
+| **Add response guardrails** | Output filtering for harmful content, citation verification, confidence scoring. |
+| **Add offline mode** | Package Gemma 3 4B with GGUF quantization for field deployment without internet. |
+| **Add monitoring** | Logging, latency tracking, cost per query, error rates. |
+| **Red-team with humanitarian professionals** | Invite OCHA/UNHCR/WFP practitioners to stress-test with realistic edge cases. |
+
+---
+
+## Revised Cost Estimate
+
+| Phase | Cost | What You Get |
+|-------|------|-------------|
+| Phase 1: Fix foundations | $0 | Working evaluation, RAG, clean data, tests |
+| Phase 2: Scale training data | $15–30 | 5,000+ verified samples, 50+ test scenarios |
+| Phase 3: Train and evaluate | $50–100 | Fine-tuned Qwen 3 8B, validated safety metrics |
+| Phase 4: Production hardening | $20–50 | API, guardrails, offline mode, monitoring |
+| **Total** | **$85–180** | **Functional, validated, deployable humanitarian AI** |
 
 ---
 
 ## Why This Matters
 
-1. **Lives at stake**: Humanitarian workers make split-second decisions on resource allocation, protection, and evacuation. Incorrect guidance has real consequences. HAI's 26-scenario safety audit ensures the model resists deception, sycophancy, and culturally insensitive recommendations before deployment.
+1. **Lives at stake**: Humanitarian workers make split-second decisions on resource allocation, protection, and evacuation. Incorrect guidance has real consequences. A properly validated safety audit (with an independent judge, not self-evaluation) ensures the model resists deception, sycophancy, and culturally insensitive recommendations.
 
-2. **Cost barrier removed**: Most humanitarian organizations cannot afford $500+/month API costs. HAI's 90%-free architecture makes AI-assisted crisis response accessible to NGOs, UN agencies, and local responders operating on constrained budgets.
+2. **Cost barrier removed**: Most humanitarian organizations cannot afford $500+/month API costs. A local-first architecture with RAG makes AI-assisted crisis response accessible to under-resourced NGOs and local responders.
 
-3. **Domain grounding eliminates hallucination risk**: Generic LLMs fabricate humanitarian statistics and misquote Sphere Standards. HAI's curated knowledge base of 34 verified statistics and 333 defined terms, combined with ACE-optimized context, anchors every response in authoritative sources.
+3. **Multilingual from day one**: Most humanitarian crises occur in non-English-speaking regions. Qwen 3's 119-language support plus TranslateGemma's 55-language translation capability enables field use where it matters most.
 
-4. **Safety-first by design**: The Petri framework tests for failure modes specific to humanitarian contexts — biased resource allocation, conflict insensitivity, beneficiary data exposure, and pressure to inflate impact numbers. These are not tested by general-purpose AI safety benchmarks.
+4. **Offline-capable**: Field workers in crisis zones often lack connectivity. A quantized Gemma 3 4B running on a laptop or tablet provides guidance without internet dependence.
 
-5. **Reproducible and extensible**: The entire system runs on open-source models and documented pipelines. Any organization can replicate, adapt, and extend HAI for their specific crisis context without vendor lock-in.
+5. **Safety-first by design**: The Petri framework tests for humanitarian-specific failure modes — biased resource allocation, conflict insensitivity, beneficiary data exposure, pressure to inflate impact numbers — that general AI safety benchmarks do not cover.
 
----
-
-## What Remains and Why
-
-| Remaining Work | Effort | Dependency | Value Unlocked |
-|----------------|--------|------------|----------------|
-| **GPU training run** | 5-10 hours | Colab/Vast.ai ($8-45) | Produces the fine-tuned humanitarian LLM — the core deliverable |
-| **Full paid audit (26 scenarios)** | 2-3 hours | Anthropic API key ($50-100) | Validates safety claims with Claude Haiku as independent judge |
-| **ACE optimization loop** | 1-2 hours | Trained model | +8-10% accuracy improvement at $0 cost |
-| **Re-audit post-optimization** | 2-3 hours | Completed ACE loop | Confirms improvements, generates final safety report |
-| **Multi-language expansion** | 2-4 weeks | Post-POC funding | Extends to Arabic, French, Spanish for global field use |
-| **CLEAR system integration** | 2-4 weeks | CLEAR platform access | Live data pipeline from humanitarian platforms |
-
-**Critical path**: Training → Audit → ACE optimization → Re-audit → Deploy. Estimated execution cost: **$58-145**.
+6. **No vendor lock-in**: Open-source models (Apache 2.0 / MIT licensed), documented pipelines, and standard tooling mean any organization can replicate, adapt, and extend HAI.
 
 ---
 
-## Investment Ask
+## Technical Architecture (Revised)
 
-| Item | Amount |
-|------|--------|
-| GPU compute (training) | $8–45 |
-| Claude Haiku API (auditing) | $50–100 |
-| **Total remaining** | **$58–145** |
+```
+QUERY FLOW
+──────────
+User Query (text or voice via Phi-4-multimodal)
+    │
+    ├─► Translation (TranslateGemma 12B, if non-English)
+    │
+    ├─► RAG Retrieval (FAISS/ChromaDB over cleaned knowledge base)
+    │       │
+    │       ├─ Sphere Standards
+    │       ├─ OCHA coordination protocols
+    │       ├─ Platform documentation (HDX, KoboToolbox, FEWS NET...)
+    │       └─ Verified statistics with provenance
+    │
+    ├─► Inference (Qwen 3 8B fine-tuned + RAG context)
+    │
+    ├─► Response Guardrails (citation check, confidence score, harm filter)
+    │
+    └─► Response (with source citations)
 
-The framework, code, knowledge base, test scenarios, training data, and documentation are **100% complete**. The only remaining expenditure is compute for training and API calls for independent safety validation.
+SAFETY EVALUATION (Petri)
+─────────────────────────
+Auditor (OpenRouter free tier) → Target (Qwen 3 8B) → Judge (Claude Haiku)
+    │                                                        │
+    └── 50+ scenarios across 9 categories ──────────────────►│
+                                                             └── Independent 5-dimension scoring
+
+OFFLINE MODE
+────────────
+Gemma 3 4B (GGUF quantized) + local FAISS index → runs on laptop/tablet
+```
 
 ---
 
-## Projected Production Economics
+## Competitive Landscape
 
-| Scale | Monthly Cost | Per-Query Cost |
-|-------|-------------|----------------|
-| 1,000 queries | $2–5 | $0.002–0.005 |
-| 10,000 queries | $20–50 | $0.002–0.005 |
-| 100,000 queries | $200–500 | $0.002–0.005 |
-
-**Comparison**: Pure Claude API at equivalent scale would cost $600–2,000/month (60-75% more expensive).
-
----
-
-## Technical Validation
-
-- **Research foundation**: ACE methodology from arXiv:2510.04618; Petri framework from Anthropic
-- **Knowledge sources**: CLEAR platform, Sphere Standards, OCHA coordination protocols
-- **Model architecture**: Llama 3.2 3B + LoRA (rank 16, alpha 32) + 4-bit quantization
-- **Safety coverage**: 18 dimensions across 7 categories, 26 test scenarios
-- **Pass criteria**: ≥70 average score across 5 evaluation dimensions, zero critical safety issues
+| Approach | Cost/month | Languages | Offline | Safety Audited | Domain-Specific |
+|----------|-----------|-----------|---------|---------------|----------------|
+| ChatGPT/Claude direct | $200–2,000 | Many | No | Generic only | No |
+| Custom GPT wrapper | $100–500 | Many | No | No | Superficial |
+| **HAI (proposed)** | **$20–50** | **119+** | **Yes** | **Humanitarian-specific** | **Deep** |
+| No AI (status quo) | $0 | N/A | N/A | N/A | Manual lookup |
 
 ---
 
-*Repository: /home/user/HAI | Status: POC framework complete, pending training execution | Budget: $58-145 remaining of $200*
+## Key Risks and Mitigations
+
+| Risk | Mitigation |
+|------|-----------|
+| Knowledge base still contains errors after cleaning | Add provenance tracking; cross-reference against Sphere Handbook and OCHA official sources; human review of all training data |
+| Fine-tuned model still hallucinates | RAG with source citations provides verifiable grounding; guardrails flag low-confidence responses |
+| Insufficient training data quality | Use Claude/GPT-4 for synthetic generation with humanitarian expert review; partner with OCHA/UNHCR for real Q&A data |
+| Model performs poorly in low-resource languages | Start with high-resource humanitarian languages (Arabic, French, Spanish); use TranslateGemma for broader coverage; benchmark per-language |
+| Field deployment hardware constraints | Gemma 3 4B + GGUF runs on 8GB RAM; Gemma 3n adapts to available compute dynamically |
+
+---
+
+*HAI has the right vision, the right framework, and well-designed test scenarios. What it needs now is clean data, honest evaluation, modern models, and a RAG architecture to bridge the gap from promising framework to deployable humanitarian tool.*
+
+*Revised February 2026 | Repository: /home/user/HAI*
