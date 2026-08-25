@@ -19,6 +19,7 @@ import {
   embeddingInput,
   ollamaHasModel,
   ollamaReachable,
+  truncatedInputCount,
 } from './embed.ts';
 import { extractDoc, type ExtractStats } from './extract.ts';
 import { loadChunks, serviceClient, supabaseConfigured, type LoadableChunk } from './load.ts';
@@ -325,6 +326,14 @@ async function main(): Promise<void> {
       item.entry.embedded = vectors.length;
       item.entry.stageReached = 'embed';
       console.log(`  ${item.doc.source}: ${vectors.length} vectors in ${minutes(Date.now() - started)}`);
+    }
+    const truncated = truncatedInputCount();
+    if (truncated > 0) {
+      // Chunk sizing should make this zero; a non-zero count means the
+      // characters-per-token estimate is drifting for some part of the corpus.
+      const note = `${truncated} input(s) were truncated to fit the ${env.embeddingModel} context window`;
+      console.log(`  note: ${note}`);
+      for (const item of pending) item.entry.notes.push(note);
     }
   }
 

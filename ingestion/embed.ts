@@ -10,6 +10,38 @@ import { env } from './config.ts';
 export const EMBED_DIMENSIONS = 1024;
 
 /**
+ * mxbai-embed-large is a BERT-family model: 512 tokens is an architectural
+ * limit, not a setting, and Ollama rejects a longer input outright rather than
+ * truncating it. Chunk size is therefore a function of the embedding model --
+ * see DEFAULT_CHUNK_OPTIONS, which sizes chunks to fit inside this window with
+ * room for the context summary and section path that are embedded alongside.
+ */
+export const EMBED_MAX_INPUT_TOKENS = 512;
+
+/**
+ * Last-resort guard so one outlier cannot fail a whole run. Chunking should
+ * already keep every input inside the window; this catches the case where the
+ * character-per-token estimate was optimistic for unusually dense text.
+ */
+const MAX_INPUT_CHARS = Math.floor(EMBED_MAX_INPUT_TOKENS * 3.4);
+
+let truncatedInputs = 0;
+
+/** How many inputs the guard above had to shorten during this process. */
+export function truncatedInputCount(): number {
+  return truncatedInputs;
+}
+
+function fitToWindow(text: string): string {
+  if (text.length <= MAX_INPUT_CHARS) return text;
+  truncatedInputs++;
+  // Cut at a word boundary so the tail of the vector is not a partial token.
+  const cut = text.slice(0, MAX_INPUT_CHARS);
+  const lastSpace = cut.lastIndexOf(' ');
+  return lastSpace > MAX_INPUT_CHARS * 0.8 ? cut.slice(0, lastSpace) : cut;
+}
+
+/**
  * Ollama embeds a batch sequentially inside one request, so a large batch just
  * makes a single request slow and easy to time out. 32 keeps each request
  * short enough to retry cheaply while still amortising the HTTP overhead.
@@ -60,7 +92,10 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
       const response = await fetch(`${env.ollamaBaseUrl}/api/embed`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ model: env.embeddingModel, input: texts }),
+        body: JSON.stringify({
+          model: env.embeddingModel,
+          input: texts.map(fitToWindow),
+        }),
         signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       });
 

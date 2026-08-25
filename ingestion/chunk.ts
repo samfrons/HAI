@@ -23,8 +23,16 @@ export interface ChunkOptions {
   maxHeadingDepth: number;
 }
 
+/**
+ * Sized to the embedding model, not to a round number. mxbai-embed-large accepts
+ * 512 tokens and rejects anything longer, and each chunk is embedded together
+ * with its context summary and section path, so roughly 100 tokens of that
+ * window are already spoken for. 400 leaves headroom for the
+ * characters-per-token estimate below being optimistic on dense text such as
+ * Sphere's indicator tables.
+ */
 export const DEFAULT_CHUNK_OPTIONS: ChunkOptions = {
-  targetTokens: 800,
+  targetTokens: 400,
   overlapRatio: 0.15,
   minTokens: 40,
   maxHeadingDepth: 4,
