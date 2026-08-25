@@ -1,23 +1,32 @@
 import { tool } from 'ai';
 import { z } from 'zod';
 
-// cost: free public API — ReliefWeb (UN OCHA). No key, no per-call charge.
+// cost: free public APIs — ReliefWeb (UN OCHA) and IFRC GO. No key, no per-call charge.
 
 /**
- * ReliefWeb has two access paths, and this tool uses whichever is available:
+ * Live crisis information comes from one of two sources, in this order:
  *
- * 1. The JSON API (api.reliefweb.int/v2). Richer and preferred, but since
- *    1 November 2025 it rejects any `appname` that OCHA has not pre-approved
- *    — approval is a reviewed request form, not a self-service key. Set
- *    RELIEFWEB_APPNAME once you have one and this path activates on its own.
- * 2. The public RSS feed on reliefweb.int. No registration, same editorial
- *    content, fewer fields. This is what runs today.
+ * 1. ReliefWeb's JSON API — the broadest humanitarian reporting index, and the
+ *    preferred source. Since 1 November 2025 it rejects any `appname` OCHA has
+ *    not pre-approved; approval is a reviewed request form, not a self-service
+ *    key. Set RELIEFWEB_APPNAME once granted and this path activates on its own.
+ * 2. IFRC GO — open, no registration, and used by default. Its lens is
+ *    narrower: Red Cross / Red Crescent emergency operations rather than the
+ *    whole humanitarian information space, so the most recent entry for a given
+ *    country can lag ReliefWeb. The tool labels which source answered so the
+ *    model can say so.
+ *
+ * ReliefWeb's public website is deliberately not scraped as a fallback: it
+ * serves `406 {"error":"Blocked due to bot activity."}` to automated clients,
+ * and working around that would be both fragile and contrary to the access
+ * policy the appname requirement expresses.
  */
 
 const RELIEFWEB_API = 'https://api.reliefweb.int/v2/reports';
-const RELIEFWEB_RSS = 'https://reliefweb.int/updates/rss.xml';
+const IFRC_GO_API = 'https://goadmin.ifrc.org/api/v2/event/';
 const RESULT_LIMIT = 5;
 const REQUEST_TIMEOUT_MS = 15_000;
+const USER_AGENT = 'HAI/1.0 (humanitarian operations assistant)';
 
 export interface CrisisUpdate {
   title: string;
@@ -25,19 +34,22 @@ export interface CrisisUpdate {
   source: string;
   url: string;
   excerpt: string;
+  /** Present on IFRC GO results only. */
+  severity?: string;
+  countries?: string[];
 }
 
 export interface CrisisUpdatesResult {
   query: string;
-  retrievedVia: 'reliefweb-api' | 'reliefweb-rss';
+  retrievedVia: 'reliefweb' | 'ifrc-go';
   updates: CrisisUpdate[];
   notice?: string;
 }
 
 /**
- * 60s in-memory cache. Per-instance and lost on restart, which is fine for a
- * feed that updates on the order of hours — it exists to stop a single
- * multi-step tool loop from hitting ReliefWeb repeatedly for the same query.
+ * 60s in-memory cache. Per-instance and lost on restart, which is fine for
+ * feeds that update on the order of hours — it exists to stop a single
+ * multi-step tool loop from refetching the same query.
  */
 const CACHE_TTL_MS = 60_000;
 const cache = new Map<string, { expiresAt: number; value: CrisisUpdatesResult }>();
@@ -52,10 +64,6 @@ function readCache(key: string): CrisisUpdatesResult | undefined {
   return hit.value;
 }
 
-function writeCache(key: string, value: CrisisUpdatesResult) {
-  cache.set(key, { expiresAt: Date.now() + CACHE_TTL_MS, value });
-}
-
 const HTML_ENTITIES: Record<string, string> = {
   amp: '&',
   lt: '<',
@@ -63,6 +71,8 @@ const HTML_ENTITIES: Record<string, string> = {
   quot: '"',
   apos: "'",
   nbsp: ' ',
+  ordm: 'º',
+  oacute: 'ó',
 };
 
 function decodeEntities(input: string): string {
@@ -78,74 +88,21 @@ function decodeEntities(input: string): string {
 }
 
 function toPlainText(html: string, maxLength: number): string {
-  const text = decodeEntities(decodeEntities(html))
-    .replace(/<[^>]*>/g, ' ')
+  const text = decodeEntities(html.replace(/<[^>]*>/g, ' '))
     .replace(/\s+/g, ' ')
     .trim();
   return text.length > maxLength ? `${text.slice(0, maxLength).trimEnd()}…` : text;
 }
 
-function tagContent(xml: string, tag: string): string | undefined {
-  const match = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`).exec(xml);
-  if (!match) return undefined;
-  const raw = match[1].replace(/^<!\[CDATA\[([\s\S]*?)\]\]>$/, '$1');
-  return decodeEntities(raw).trim();
-}
-
-/**
- * The RSS `description` packs the ReliefWeb tags and the report body into one
- * escaped HTML blob. The publishing organisation is the `source` tag, which is
- * what a practitioner needs to judge the report.
- */
-function parseRssItem(item: string): CrisisUpdate | undefined {
-  const title = tagContent(item, 'title');
-  const url = tagContent(item, 'link');
-  if (!title || !url) return undefined;
-
-  const description = tagContent(item, 'description') ?? '';
-  const sourceTag = /<div class="tag source">Sources?:\s*([\s\S]*?)<\/div>/.exec(
-    decodeEntities(description),
-  );
-
-  const body = decodeEntities(description).replace(
-    /<div class="tag [^"]*">[\s\S]*?<\/div>/g,
-    '',
-  );
-
-  return {
-    title,
-    date: tagContent(item, 'pubDate') ?? 'unknown',
-    source: sourceTag ? toPlainText(sourceTag[1], 200) : 'ReliefWeb',
-    url,
-    excerpt: toPlainText(body, 700) || 'No excerpt available.',
-  };
-}
-
 async function fetchWithTimeout(url: string, init?: RequestInit): Promise<Response> {
-  return fetch(url, { ...init, signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
-}
-
-async function fetchViaRss(query: string, country?: string): Promise<CrisisUpdate[]> {
-  const search = country ? `${country} ${query}`.trim() : query;
-  const url = `${RELIEFWEB_RSS}?search=${encodeURIComponent(search)}`;
-
-  const response = await fetchWithTimeout(url, {
-    headers: { Accept: 'application/rss+xml, application/xml' },
+  return fetch(url, {
+    ...init,
+    headers: { 'User-Agent': USER_AGENT, ...init?.headers },
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
-  if (!response.ok) {
-    throw new Error(`ReliefWeb RSS returned ${response.status}`);
-  }
-
-  const xml = await response.text();
-  const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
-
-  return items
-    .slice(0, RESULT_LIMIT)
-    .map(parseRssItem)
-    .filter((update): update is CrisisUpdate => update !== undefined);
 }
 
-interface ReliefWebApiFields {
+interface ReliefWebFields {
   title?: string;
   url?: string;
   date?: { created?: string };
@@ -153,16 +110,11 @@ interface ReliefWebApiFields {
   'body-html'?: string;
 }
 
-async function fetchViaApi(
+async function fetchFromReliefWeb(
   appname: string,
   query: string,
   country?: string,
 ): Promise<CrisisUpdate[]> {
-  const filters = [];
-  if (country) {
-    filters.push({ field: 'country', value: country });
-  }
-
   const response = await fetchWithTimeout(
     `${RELIEFWEB_API}?appname=${encodeURIComponent(appname)}`,
     {
@@ -170,7 +122,9 @@ async function fetchViaApi(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query: { value: query, operator: 'AND' },
-        ...(filters.length ? { filter: { operator: 'AND', conditions: filters } } : {}),
+        ...(country
+          ? { filter: { field: 'country', value: country } }
+          : {}),
         fields: {
           include: ['title', 'date.created', 'source.name', 'url', 'body-html'],
         },
@@ -185,18 +139,67 @@ async function fetchViaApi(
   }
 
   const payload = (await response.json()) as {
-    data?: Array<{ fields?: ReliefWebApiFields }>;
+    data?: Array<{ fields?: ReliefWebFields }>;
   };
 
   return (payload.data ?? []).map((entry) => {
     const fields = entry.fields ?? {};
     return {
       title: fields.title ?? 'Untitled report',
-      date: fields.date?.created ?? 'unknown',
+      date: fields.date?.created?.slice(0, 10) ?? 'unknown',
       source:
-        fields.source?.map((s) => s.name).filter(Boolean).join(', ') || 'ReliefWeb',
+        fields.source
+          ?.map((s) => s.name)
+          .filter(Boolean)
+          .join(', ') || 'ReliefWeb',
       url: fields.url ?? 'https://reliefweb.int',
       excerpt: toPlainText(fields['body-html'] ?? '', 700) || 'No excerpt available.',
+    };
+  });
+}
+
+interface GoEvent {
+  id?: number;
+  name?: string;
+  summary?: string;
+  disaster_start_date?: string;
+  ifrc_severity_level_display?: string;
+  num_affected?: number | null;
+  dtype?: { name?: string } | null;
+  countries?: Array<{ name?: string }>;
+}
+
+async function fetchFromIfrcGo(query: string, country?: string): Promise<CrisisUpdate[]> {
+  const search = [country, query].filter(Boolean).join(' ');
+  const params = new URLSearchParams({
+    search,
+    limit: String(RESULT_LIMIT),
+    ordering: '-disaster_start_date',
+  });
+
+  const response = await fetchWithTimeout(`${IFRC_GO_API}?${params}`, {
+    headers: { Accept: 'application/json' },
+  });
+  if (!response.ok) {
+    throw new Error(`IFRC GO returned ${response.status}`);
+  }
+
+  const payload = (await response.json()) as { results?: GoEvent[] };
+
+  return (payload.results ?? []).map((event) => {
+    const affected =
+      typeof event.num_affected === 'number'
+        ? ` Reported people affected: ${event.num_affected.toLocaleString('en-US')}.`
+        : '';
+    return {
+      title: event.name?.trim() || 'Unnamed emergency',
+      date: event.disaster_start_date?.slice(0, 10) ?? 'unknown',
+      source: `IFRC GO — ${event.dtype?.name ?? 'emergency'}`,
+      url: `https://go.ifrc.org/emergencies/${event.id ?? ''}`,
+      excerpt: `${toPlainText(event.summary ?? '', 600)}${affected}`.trim() ||
+        'No summary available.',
+      severity: event.ifrc_severity_level_display,
+      countries: event.countries?.map((c) => c.name ?? '').filter(Boolean),
     };
   });
 }
@@ -210,52 +213,52 @@ export async function getCrisisUpdates(
   if (cached) return cached;
 
   const appname = process.env.RELIEFWEB_APPNAME;
-  let result: CrisisUpdatesResult;
+  let result: CrisisUpdatesResult | undefined;
 
   if (appname) {
     try {
       result = {
         query,
-        retrievedVia: 'reliefweb-api',
-        updates: await fetchViaApi(appname, query, country),
+        retrievedVia: 'reliefweb',
+        updates: await fetchFromReliefWeb(appname, query, country),
       };
     } catch {
-      // An unapproved or revoked appname 403s. Fall through to the open feed
-      // rather than failing the user's question.
-      result = {
-        query,
-        retrievedVia: 'reliefweb-rss',
-        updates: await fetchViaRss(query, country),
-        notice:
-          'The ReliefWeb JSON API rejected the configured appname; these results come from the public ReliefWeb feed instead.',
-      };
+      // An unapproved or revoked appname 403s. Fall through to IFRC GO rather
+      // than failing the user's question.
+      result = undefined;
     }
-  } else {
+  }
+
+  if (!result) {
     result = {
       query,
-      retrievedVia: 'reliefweb-rss',
-      updates: await fetchViaRss(query, country),
+      retrievedVia: 'ifrc-go',
+      updates: await fetchFromIfrcGo(query, country),
+      notice: appname
+        ? 'ReliefWeb rejected the configured appname, so these results are IFRC GO emergency operations. Tell the user the source and that its coverage is narrower than ReliefWeb.'
+        : 'Results are IFRC GO emergency operations, not ReliefWeb: ReliefWeb now requires an OCHA-approved appname, which this deployment does not have. Attribute the figures to IFRC GO, note that its coverage is limited to Red Cross / Red Crescent operations, and point the user to reliefweb.int for the full reporting picture.',
     };
   }
 
   if (result.updates.length === 0) {
-    result.notice =
-      'ReliefWeb returned no reports for this query. Try a broader search term or the country name on its own.';
+    result.notice = `No matching emergencies were found${
+      country ? ` for ${country}` : ''
+    }. Say so rather than substituting remembered figures; suggest a broader search term or the country name on its own.`;
   }
 
-  writeCache(cacheKey, result);
+  cache.set(cacheKey, { expiresAt: Date.now() + CACHE_TTL_MS, value: result });
   return result;
 }
 
 export const crisisUpdatesTool = tool({
   description:
-    'Fetch recent situation reports, updates, and analysis published on ReliefWeb (UN OCHA) for a crisis, country, or theme. Use this for anything about the current state of an emergency — displacement, access, response activity, recent developments — rather than answering from memory. Returns titles, publication dates, publishing organisations, links, and excerpts.',
+    'Fetch recent situation reports and emergency records for a crisis, country, or theme from live humanitarian sources (ReliefWeb where configured, otherwise IFRC GO). Use this for anything about the current state of an emergency — displacement, access, response activity, recent developments — rather than answering from memory. Returns titles, dates, publishing organisations, links, and excerpts, plus which source answered. Always tell the user which source the information came from and the date of the report.',
   inputSchema: z.object({
     query: z
       .string()
       .min(1)
       .describe(
-        'What to search ReliefWeb for — a crisis, theme, or sector, e.g. "displacement", "cholera outbreak response", "humanitarian access".',
+        'What to search for — a crisis, theme, or sector, e.g. "displacement", "cholera outbreak", "flooding".',
       ),
     country: z
       .string()
@@ -271,9 +274,9 @@ export const crisisUpdatesTool = tool({
       return {
         query,
         updates: [],
-        error: `Could not reach ReliefWeb: ${
+        error: `Could not reach the live crisis feeds: ${
           error instanceof Error ? error.message : 'unknown error'
-        }. Tell the user that live situation reports are unavailable right now rather than substituting remembered figures.`,
+        }. Tell the user that live situation reports are unavailable right now rather than substituting remembered figures. Structured country indicators may still be available via the humanitarian_data tool.`,
       };
     }
   },

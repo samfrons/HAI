@@ -1,26 +1,189 @@
 @import "tailwindcss";
 
+/*
+ * HAI's palette. The reference points are OCHA and UN humanitarian products:
+ * near-neutral greys carrying the page, one deep institutional blue as the
+ * only saturated colour, and amber reserved for advisory notices so it keeps
+ * its signal value. Nothing here competes with the content.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #fbfbfa;
+  --surface: #ffffff;
+  --surface-muted: #f4f4f2;
+  --border: #e2e2de;
+  --border-strong: #c9c9c3;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground: #1b1c1e;
+  --muted: #5f6367;
+  --subtle: #85898d;
+
+  --accent: #1c4f9c;
+  --accent-hover: #17407f;
+  --accent-soft: #eaf0f9;
+  --accent-border: #c3d3ec;
+
+  --notice: #8a5a10;
+  --notice-soft: #fdf5e6;
+  --notice-border: #ecd9ae;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #131416;
+    --surface: #1a1c1f;
+    --surface-muted: #212428;
+    --border: #2c3035;
+    --border-strong: #3d4249;
+
+    --foreground: #e8e9ea;
+    --muted: #a2a7ad;
+    --subtle: #7d838a;
+
+    --accent: #7aa7e8;
+    --accent-hover: #94baf0;
+    --accent-soft: #1a2436;
+    --accent-border: #2d456b;
+
+    --notice: #e0b45f;
+    --notice-soft: #241d10;
+    --notice-border: #4a3c1c;
   }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border-subtle: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+
+  --color-notice: var(--notice);
+  --color-notice-soft: var(--notice-soft);
+  --color-notice-border: var(--notice-border);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tool activity indicator: a slow pulse, not a spinner — the work takes
+   seconds, and a fast animation reads as urgency the content doesn't have. */
+@keyframes hai-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+.hai-pulse {
+  animation: hai-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hai-pulse {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* Prose defaults for streamed markdown. Scoped tight so the assistant's
+   answers stay dense enough to scan under time pressure. */
+.hai-prose {
+  line-height: 1.65;
+}
+
+.hai-prose > * + * {
+  margin-top: 0.85rem;
+}
+
+.hai-prose h1,
+.hai-prose h2,
+.hai-prose h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1.5rem;
+  line-height: 1.3;
+}
+
+.hai-prose h1 { font-size: 1.15rem; }
+.hai-prose h2 { font-size: 1.05rem; }
+.hai-prose h3 { font-size: 0.975rem; }
+
+.hai-prose ul,
+.hai-prose ol {
+  padding-left: 1.35rem;
+}
+
+.hai-prose ul { list-style: disc; }
+.hai-prose ol { list-style: decimal; }
+
+.hai-prose li + li { margin-top: 0.3rem; }
+
+.hai-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hai-prose code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+.hai-prose pre {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+}
+
+.hai-prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hai-prose blockquote {
+  border-left: 3px solid var(--accent-border);
+  padding-left: 0.9rem;
+  color: var(--muted);
+}
+
+.hai-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  display: block;
+  overflow-x: auto;
+}
+
+.hai-prose th,
+.hai-prose td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.hai-prose th {
+  background: var(--surface-muted);
+  font-weight: 600;
 }

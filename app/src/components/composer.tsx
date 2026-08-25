@@ -1,0 +1,75 @@
+'use client';
+
+import { useEffect, useRef, type FormEvent, type KeyboardEvent } from 'react';
+
+export function Composer({
+  value,
+  onChange,
+  onSubmit,
+  onStop,
+  busy,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  onSubmit: () => void;
+  onStop: () => void;
+  busy: boolean;
+}) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Grow with the content instead of scrolling inside a fixed box — field
+  // questions are often several lines long.
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${Math.min(el.scrollHeight, 200)}px`;
+  }, [value]);
+
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    if (busy || !value.trim()) return;
+    onSubmit();
+  };
+
+  const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      if (!busy && value.trim()) onSubmit();
+    }
+  };
+
+  return (
+    <form onSubmit={submit} className="w-full">
+      <div className="flex items-end gap-2 rounded-xl border border-border-subtle bg-surface p-2 shadow-sm transition-colors focus-within:border-accent-border">
+        <textarea
+          ref={textareaRef}
+          value={value}
+          rows={1}
+          onChange={(event) => onChange(event.target.value)}
+          onKeyDown={onKeyDown}
+          placeholder="Ask about a standard, an indicator, or a current crisis…"
+          aria-label="Message HAI"
+          className="max-h-[200px] flex-1 resize-none bg-transparent px-2 py-1.5 text-sm leading-relaxed text-foreground placeholder:text-subtle focus:outline-none"
+        />
+        {busy ? (
+          <button
+            type="button"
+            onClick={onStop}
+            className="shrink-0 rounded-lg border border-border-strong px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-surface-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Stop
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={!value.trim()}
+            className="shrink-0 rounded-lg bg-accent px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Send
+          </button>
+        )}
+      </div>
+    </form>
+  );
+}

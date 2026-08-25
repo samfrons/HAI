@@ -1,4 +1,3 @@
-import { anthropic } from '@ai-sdk/anthropic';
 import {
   convertToModelMessages,
   stepCountIs,
@@ -8,13 +7,15 @@ import {
   type UIMessage,
 } from 'ai';
 
+import { getChatModel } from '@/lib/llm/provider';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
 import { haiTools } from '@/lib/tools';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
+export const maxDuration = 120;
 
-// cost: ~$0.003-0.03 per message (Claude Sonnet input+output, varies with tool loops)
+// cost: $0.00 per message — inference runs locally through Ollama by default.
+// Pointing LLM_BASE_URL at a hosted endpoint may introduce per-token billing.
 
 /** Shared with the client so message parts are typed against the real tools. */
 export type HaiUIMessage = UIMessage<never, UIDataTypes, InferUITools<typeof haiTools>>;
@@ -70,13 +71,6 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return Response.json(
-      { error: 'ANTHROPIC_API_KEY is not configured on the server.' },
-      { status: 500 },
-    );
-  }
-
   let messages: HaiUIMessage[];
   try {
     ({ messages } = (await request.json()) as { messages: HaiUIMessage[] });
@@ -89,7 +83,7 @@ export async function POST(request: Request) {
   }
 
   const result = streamText({
-    model: anthropic('claude-sonnet-5'),
+    model: getChatModel(),
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
     tools: haiTools,

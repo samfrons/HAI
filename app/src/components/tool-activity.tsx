@@ -1,0 +1,75 @@
+import type { HaiUIMessage } from '@/app/api/chat/route';
+
+type Part = HaiUIMessage['parts'][number];
+
+/**
+ * What each tool says while it is running. Phrased as the work being done, so
+ * the reader knows the answer is being grounded rather than composed.
+ */
+const RUNNING_LABELS: Record<string, string> = {
+  'tool-search_standards': 'Searching humanitarian standards',
+  'tool-crisis_updates': 'Fetching situation reports',
+  'tool-humanitarian_data': 'Retrieving country indicators',
+};
+
+const DONE_LABELS: Record<string, string> = {
+  'tool-search_standards': 'Searched humanitarian standards',
+  'tool-crisis_updates': 'Fetched situation reports',
+  'tool-humanitarian_data': 'Retrieved country indicators',
+};
+
+function detail(part: Part): string | undefined {
+  const input = (part as { input?: Record<string, unknown> }).input;
+  if (!input) return undefined;
+
+  if (typeof input.query === 'string' && input.query) {
+    const country = typeof input.country === 'string' ? input.country : undefined;
+    return country ? `${country} — ${input.query}` : input.query;
+  }
+  if (typeof input.country_iso3 === 'string') {
+    const dataset =
+      typeof input.dataset === 'string' ? input.dataset.replace(/_/g, ' ') : '';
+    return `${input.country_iso3}${dataset ? ` — ${dataset}` : ''}`;
+  }
+  return undefined;
+}
+
+export function ToolActivity({ part }: { part: Part }) {
+  const running = RUNNING_LABELS[part.type];
+  if (!running) return null;
+
+  const state = (part as { state?: string }).state;
+  const isDone = state === 'output-available' || state === 'output-error';
+  const failed = state === 'output-error';
+  const text = failed
+    ? 'Live source unavailable'
+    : isDone
+      ? DONE_LABELS[part.type]
+      : running;
+  const context = detail(part);
+
+  return (
+    <div
+      className="flex items-baseline gap-2 text-xs text-subtle"
+      aria-live={isDone ? 'off' : 'polite'}
+    >
+      <span
+        aria-hidden
+        className={`mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full ${
+          failed
+            ? 'bg-notice'
+            : isDone
+              ? 'bg-accent-border'
+              : 'bg-accent hai-pulse'
+        }`}
+      />
+      <span>
+        {text}
+        {context ? (
+          <span className="text-subtle/70"> · {context}</span>
+        ) : null}
+        {isDone ? null : <span className="hai-pulse">…</span>}
+      </span>
+    </div>
+  );
+}

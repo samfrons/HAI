@@ -62,7 +62,10 @@ async function hapiGet<T>(
 
 async function fetchWithTimeout(url: string): Promise<Response> {
   return fetch(url, {
-    headers: { Accept: 'application/json' },
+    headers: {
+      Accept: 'application/json',
+      'User-Agent': 'HAI/1.0 (humanitarian operations assistant)',
+    },
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
 }
@@ -97,6 +100,7 @@ function isoYearsAgo(years: number): string {
 interface PopulationRow extends PeriodRow {
   gender?: string | null;
   age_range?: string | null;
+  min_age?: number | null;
   population?: number;
 }
 
@@ -111,12 +115,24 @@ async function getPopulation(iso3: string) {
   const latest = latestPeriodStart(rows);
   const current = rows.filter((row) => row.reference_period_start === latest);
 
-  const total = current.reduce((sum, row) => sum + (row.population ?? 0), 0);
-  const byGender = current.reduce<Record<string, number>>((acc, row) => {
-    const key = row.gender ?? 'unspecified';
-    acc[key] = (acc[key] ?? 0) + (row.population ?? 0);
-    return acc;
-  }, {});
+  // HAPI returns the aggregate rows ('all') alongside every gender x age-band
+  // breakdown of the same people. Summing the response double-counts several
+  // times over, so read the aggregates rather than adding rows up.
+  const totals = current.filter((row) => row.age_range === 'all');
+  const total = totals.find((row) => row.gender === 'all')?.population;
+
+  const byGender = Object.fromEntries(
+    totals
+      .filter((row) => row.gender === 'f' || row.gender === 'm')
+      .map((row) => [row.gender === 'f' ? 'female' : 'male', row.population ?? 0]),
+  );
+
+  const byAgeBand = Object.fromEntries(
+    current
+      .filter((row) => row.gender === 'all' && row.age_range && row.age_range !== 'all')
+      .sort((a, b) => (a.min_age ?? 0) - (b.min_age ?? 0))
+      .map((row) => [row.age_range as string, row.population ?? 0]),
+  );
 
   return {
     dataset: 'population',
@@ -124,7 +140,8 @@ async function getPopulation(iso3: string) {
     referencePeriod: formatPeriod(current[0] ?? {}),
     totalPopulation: total,
     byGender,
-    note: 'Baseline population, national level. Gender keys: f = female, m = male.',
+    byAgeBand,
+    note: 'Baseline population estimate, national level.',
   };
 }
 
@@ -178,7 +195,19 @@ async function getFunding(iso3: string) {
     limit: 50,
   });
 
+  // FTS also carries forward-year pledge rows: no appeal name, no requirements,
+  // and a reference period years in the future. They are not appeals and would
+  // otherwise sort to the top and be reported as the current funding picture.
+  const today = new Date().toISOString().slice(0, 10);
+
   const appeals = rows
+    .filter(
+      (row) =>
+        typeof row.requirements_usd === 'number' &&
+        row.appeal_name &&
+        row.appeal_name !== 'Not specified' &&
+        (row.reference_period_start ?? '').slice(0, 10) <= today,
+    )
     .sort((a, b) =>
       (b.reference_period_start ?? '').localeCompare(a.reference_period_start ?? ''),
     )
@@ -223,24 +252,37 @@ async function getHumanitarianNeeds(iso3: string) {
   });
   if (rows.length === 0) return { dataset: 'humanitarian_needs', sectors: [] };
 
-  const latest = latestPeriodStart(rows);
-  const current = rows.filter((row) => row.reference_period_start === latest);
+  // Sectors are not all refreshed in the same planning cycle, so filtering to
+  // one global latest period collapses the answer to whichever sector reported
+  // most recently. Keep each sector's own latest figure instead, and carry the
+  // period on every row so nothing is compared across cycles by accident.
+  const latestPerSector = new Map<string, NeedsRow>();
+  for (const row of rows) {
+    const key = `${row.sector_name ?? row.sector_code}::${row.population_status}`;
+    const existing = latestPerSector.get(key);
+    if (
+      !existing ||
+      (row.reference_period_start ?? '') > (existing.reference_period_start ?? '')
+    ) {
+      latestPerSector.set(key, row);
+    }
+  }
 
   return {
     dataset: 'humanitarian_needs',
-    location: current[0]?.location_name ?? iso3,
-    referencePeriod: formatPeriod(current[0] ?? {}),
-    sectors: current
+    location: rows[0]?.location_name ?? iso3,
+    sectors: [...latestPerSector.values()]
       .map((row) => ({
         sector: row.sector_name ?? row.sector_code,
         status:
           POPULATION_STATUS_LABELS[row.population_status ?? ''] ??
           row.population_status,
         population: row.population,
+        referencePeriod: formatPeriod(row),
       }))
       .sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
       .slice(0, 25),
-    note: 'People in need / targeted by sector, from the Humanitarian Needs and Response Plan via HDX HAPI.',
+    note: 'People in need / targeted by sector, from the Humanitarian Needs and Response Plan via HDX HAPI. "Intersectoral" is the overall figure, not a sector — do not add it to the others. Each row carries its own reference period.',
   };
 }
 
