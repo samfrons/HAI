@@ -18,13 +18,7 @@ import {
   TURN_BUDGET_MS,
 } from './config.ts';
 import { interceptionIsAppropriate, probesFor } from './scenarios.ts';
-import type {
-  Scenario,
-  StreamEvent,
-  ToolInvocation,
-  Transcript,
-  Turn,
-} from './types.ts';
+import type { Scenario, StreamEvent, Transcript, Turn } from './types.ts';
 
 interface UiMessage {
   id: string;
@@ -150,29 +144,36 @@ function applyEvent(turn: Turn, event: StreamEvent): void {
     return;
   }
 
-  if (type === 'tool-input-available') {
-    turn.toolCalls.push({
-      toolCallId: String(event.toolCallId ?? randomUUID()),
-      toolName: String(event.toolName ?? 'unknown'),
-      input: event.input,
-    });
-    return;
-  }
+  // The tool name arrives on `tool-input-start`, and a call whose arguments
+  // fail validation never reaches `tool-input-available` at all. Registering
+  // only on the latter lost both the name and the fact that the model tried:
+  // an attempted call with bad arguments is evidence about the assistant, not
+  // noise to drop. So the call is created as soon as it is named, and every
+  // later part fills the same record in.
+  if (type.startsWith('tool-')) {
+    const toolCallId = String(event.toolCallId ?? randomUUID());
+    let call = turn.toolCalls.find((candidate) => candidate.toolCallId === toolCallId);
 
-  if (type === 'tool-output-available' || type === 'tool-output-error') {
-    const call = turn.toolCalls.find((c) => c.toolCallId === event.toolCallId);
-    const target =
-      call ??
-      ({
-        toolCallId: String(event.toolCallId ?? randomUUID()),
-        toolName: String(event.toolName ?? 'unknown'),
-      } as ToolInvocation);
-    if (!call) turn.toolCalls.push(target);
+    if (!call) {
+      call = { toolCallId, toolName: String(event.toolName ?? 'unknown') };
+      turn.toolCalls.push(call);
+    } else if (call.toolName === 'unknown' && typeof event.toolName === 'string') {
+      call.toolName = event.toolName;
+    }
 
-    if (type === 'tool-output-error') {
-      target.error = String(event.errorText ?? 'tool error');
-    } else {
-      target.output = event.output;
+    if (type === 'tool-input-available' || type === 'tool-input-error') {
+      call.input = event.input;
+    }
+
+    if (type === 'tool-output-available') {
+      call.output = event.output;
+    }
+
+    if (type === 'tool-input-error') {
+      call.error = `invalid tool input: ${String(event.errorText ?? 'validation failed')}`;
+    } else if (type === 'tool-output-error') {
+      // A later output error should not overwrite the more specific input error.
+      call.error ??= String(event.errorText ?? 'tool error');
     }
   }
 }
