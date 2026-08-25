@@ -38,6 +38,21 @@ export function isLocalInference(config: LlmConfig = getLlmConfig()): boolean {
 }
 
 export function getChatModel(): LanguageModel {
+  return buildModel(getLlmConfig().model);
+}
+
+/**
+ * The model used for the optional PII second-pass screen. Defaults to the chat
+ * model so the feature works with nothing pulled; set PII_SCREEN_MODEL to a
+ * small extraction model (nuextract, qwen2.5:1.5b) to cut the latency the screen
+ * adds to every request. Same endpoint either way.
+ */
+export function getScreeningModel(): LanguageModel {
+  const config = getLlmConfig();
+  return buildModel(process.env.PII_SCREEN_MODEL || config.model);
+}
+
+function buildModel(model: string): LanguageModel {
   const config = getLlmConfig();
 
   const provider = createOpenAICompatible({
@@ -46,5 +61,5 @@ export function getChatModel(): LanguageModel {
     apiKey: config.apiKey,
   });
 
-  return provider.chatModel(config.model);
+  return provider.chatModel(model);
 }

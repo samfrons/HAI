@@ -1,14 +1,23 @@
 import {
   convertToModelMessages,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
   stepCountIs,
   streamText,
   type InferUITools,
-  type UIDataTypes,
   type UIMessage,
 } from 'ai';
 
 import { getChatModel } from '@/lib/llm/provider';
+import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
+import {
+  buildInterceptionMessage,
+  buildSafetyNotice,
+  type SafetyNoticeData,
+} from '@/lib/safety/intercept';
+import { llmScreen } from '@/lib/safety/llm-screen';
+import { screenForPii, type PiiFinding } from '@/lib/safety/pii';
 import { haiTools } from '@/lib/tools';
 
 export const dynamic = 'force-dynamic';
@@ -17,8 +26,13 @@ export const maxDuration = 120;
 // cost: $0.00 per message — inference runs locally through Ollama by default.
 // Pointing LLM_BASE_URL at a hosted endpoint may introduce per-token billing.
 
+/** Custom data parts HAI streams alongside text. */
+export type HaiDataParts = {
+  'safety-notice': SafetyNoticeData;
+};
+
 /** Shared with the client so message parts are typed against the real tools. */
-export type HaiUIMessage = UIMessage<never, UIDataTypes, InferUITools<typeof haiTools>>;
+export type HaiUIMessage = UIMessage<never, HaiDataParts, InferUITools<typeof haiTools>>;
 
 const RATE_LIMIT_PER_MINUTE = 20;
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -61,6 +75,72 @@ function isRateLimited(key: string): boolean {
   return false;
 }
 
+/* ------------------------------------------------------------------ *
+ * Data-responsibility screening
+ * ------------------------------------------------------------------ */
+
+const WITHHELD_PLACEHOLDER =
+  '[An earlier message in this conversation was withheld by data-responsibility screening. Its content was not retained.]';
+
+function messageText(message: HaiUIMessage): string {
+  return message.parts
+    .filter((part) => part.type === 'text')
+    .map((part) => part.text)
+    .join('\n');
+}
+
+/**
+ * The client keeps every message it has sent, including one that was refused.
+ * Left alone, a flagged message would be replayed to the model on the very next
+ * turn — screening would have delayed the exposure by one request rather than
+ * prevented it. So earlier flagged turns are replaced with a placeholder before
+ * the history is converted, and only the newest message triggers a refusal.
+ * That also means one bad paste never strands the conversation: the user can
+ * carry on, and the model simply never sees it.
+ */
+function withHistoryRedacted(
+  messages: HaiUIMessage[],
+  newestUserMessage: HaiUIMessage | undefined,
+): HaiUIMessage[] {
+  return messages.map((message) => {
+    if (message.role !== 'user') return message;
+    if (message === newestUserMessage) return message;
+    if (!screenForPii(messageText(message)).flagged) return message;
+
+    return {
+      ...message,
+      parts: [{ type: 'text' as const, text: WITHHELD_PLACEHOLDER }],
+    };
+  });
+}
+
+/**
+ * The refusal is streamed as an ordinary assistant message rather than returned
+ * as an HTTP error. A 4xx renders in the UI as a red "something went wrong"
+ * banner, which frames a correct data-responsibility decision as a broken app —
+ * the reading most likely to send someone to paste the same thing into a tool
+ * with no screening at all.
+ */
+function interceptionResponse(findings: PiiFinding[]): Response {
+  const notice = buildSafetyNotice(findings);
+  const body = buildInterceptionMessage(findings);
+
+  const stream = createUIMessageStream<HaiUIMessage>({
+    execute: ({ writer }) => {
+      writer.write({ type: 'start' });
+      writer.write({ type: 'start-step' });
+      writer.write({ type: 'data-safety-notice', data: notice });
+      writer.write({ type: 'text-start', id: 'safety-refusal' });
+      writer.write({ type: 'text-delta', id: 'safety-refusal', delta: body });
+      writer.write({ type: 'text-end', id: 'safety-refusal' });
+      writer.write({ type: 'finish-step' });
+      writer.write({ type: 'finish' });
+    },
+  });
+
+  return createUIMessageStreamResponse({ stream });
+}
+
 export async function POST(request: Request) {
   if (isRateLimited(clientKey(request))) {
     return Response.json(
@@ -72,8 +152,12 @@ export async function POST(request: Request) {
   }
 
   let messages: HaiUIMessage[];
+  let mode: 'default' | 'coach';
   try {
-    ({ messages } = (await request.json()) as { messages: HaiUIMessage[] });
+    ({ messages, mode = 'default' } = (await request.json()) as {
+      messages: HaiUIMessage[];
+      mode?: 'default' | 'coach';
+    });
   } catch {
     return Response.json({ error: 'Malformed request body.' }, { status: 400 });
   }
@@ -82,10 +166,30 @@ export async function POST(request: Request) {
     return Response.json({ error: 'No messages provided.' }, { status: 400 });
   }
 
+  // Screen before anything else touches the text: no logging, no retrieval, no
+  // model call. What comes back is masked, so the refusal, the stream, and the
+  // UI all handle shapes rather than values.
+  const newestUserMessage = [...messages].reverse().find((m) => m.role === 'user');
+  const newestUserText = newestUserMessage ? messageText(newestUserMessage) : '';
+
+  const deterministic = screenForPii(newestUserText);
+  if (deterministic.flagged) {
+    return interceptionResponse(deterministic.findings);
+  }
+
+  // Only reached when the regex pass found nothing, so the extra round-trip is
+  // paid on clean messages rather than obvious ones. Off unless PII_LLM_SCREEN=true.
+  const semantic = await llmScreen(newestUserText);
+  if (semantic) {
+    return interceptionResponse([semantic]);
+  }
+
   const result = streamText({
     model: getChatModel(),
-    system: SYSTEM_PROMPT,
-    messages: await convertToModelMessages(messages),
+    system: mode === 'coach' ? COACH_SYSTEM_PROMPT : SYSTEM_PROMPT,
+    messages: await convertToModelMessages(
+      withHistoryRedacted(messages, newestUserMessage),
+    ),
     tools: haiTools,
     // Near-deterministic on purpose. This assistant reports thresholds and
     // figures; sampling variety buys nothing here and measurably costs

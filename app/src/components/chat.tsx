@@ -3,19 +3,29 @@
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import type { HaiUIMessage } from '@/app/api/chat/route';
 import { Citations } from './citations';
 import { Composer } from './composer';
 import { EmptyState } from './empty-state';
 import { Markdown } from './markdown';
+import { NavLinks } from './nav-links';
+import { SafetyNotice } from './safety-notice';
 import { SourcePanel } from './source-panel';
 import { collectRetrievalNotice, collectSources, type Source } from './sources';
 import { ToolActivity } from './tool-activity';
 
 export function Chat() {
-  const [input, setInput] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // "Try in chat" links land here as `/?q=...`. Prefill the composer from it
+  // on first render — without sending; the user presses send — via lazy
+  // initial state rather than an effect, since this only needs to run once.
+  const [input, setInput] = useState(() => searchParams.get('q') ?? '');
   const [activeSource, setActiveSource] = useState<Source | null>(null);
+  const [coachMode, setCoachMode] = useState(false);
   const scrollAnchor = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, status, stop, error } = useChat<HaiUIMessage>({
@@ -28,26 +38,56 @@ export function Chat() {
     scrollAnchor.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages, status]);
 
+  // Drop `q` from the URL once it's been read, so a refresh doesn't
+  // re-prefill over whatever the user has typed since.
+  useEffect(() => {
+    if (searchParams.get('q')) router.replace('/', { scroll: false });
+  }, [searchParams, router]);
+
   const send = useCallback(
     (text: string) => {
       const trimmed = text.trim();
       if (!trimmed) return;
       setInput('');
-      void sendMessage({ text: trimmed });
+      void sendMessage({ text: trimmed }, { body: { mode: coachMode ? 'coach' : 'default' } });
     },
-    [sendMessage],
+    [sendMessage, coachMode],
   );
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
       <header className="sticky top-0 z-20 border-b border-border-subtle bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-baseline gap-3 px-5 py-3.5">
-          <span className="text-base font-semibold tracking-tight text-foreground">
-            HAI
-          </span>
-          <span className="text-xs text-subtle">
-            Humanitarian operations assistant
-          </span>
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-3.5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-base font-semibold tracking-tight text-foreground">
+              HAI
+            </span>
+            <span className="hidden text-xs text-subtle sm:inline">
+              Humanitarian operations assistant
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setCoachMode((value) => !value)}
+              title="Coach mode: before answering, HAI briefly points out one strength and one improvement to your prompt, then answers the improved version."
+              aria-pressed={coachMode}
+              className={`flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                coachMode
+                  ? 'border-accent-border bg-accent-soft text-accent'
+                  : 'border-border-subtle text-muted hover:text-foreground'
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className={`h-3.5 w-3.5 rounded-full border transition-colors ${
+                  coachMode ? 'border-accent bg-accent' : 'border-border-strong bg-transparent'
+                }`}
+              />
+              Coach mode
+            </button>
+            <NavLinks />
+          </div>
         </div>
       </header>
 
@@ -134,6 +174,9 @@ function MessageBlock({
               <Markdown>{part.text}</Markdown>
             </div>
           );
+        }
+        if (part.type === 'data-safety-notice') {
+          return <SafetyNotice key={index} notice={part.data} />;
         }
         if (part.type.startsWith('tool-')) {
           return <ToolActivity key={index} part={part} />;

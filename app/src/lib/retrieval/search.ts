@@ -1,11 +1,18 @@
 /**
  * Retrieval interface over the humanitarian standards corpus.
  *
- * The implementation of `searchStandards` is currently a stub. The contract
- * below (argument shape, return shape, the `notice` escape hatch) is the part
- * that other modules depend on — the ingestion work replaces the function
- * body only, and nothing else in the app needs to change.
+ * Backed by `public.search_standards_hybrid` in the local Supabase/pgvector
+ * stack — see ingestion/README.md § "RPC contract for the app" for the full
+ * contract this implementation follows. The DB stores five source keys
+ * (`sphere`, `chs`, `iasc_data_responsibility`, `iasc_protection`,
+ * `iasc_disability`); this module's `StandardsSource` union collapses the
+ * three IASC documents to one and maps back with `startsWith('iasc')`.
+ *
+ * The contract below (argument shape, return shape, the `notice` escape
+ * hatch) is the part other modules depend on and stays exactly as it was.
  */
+
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 export type StandardsSource = 'sphere' | 'chs' | 'iasc';
 
@@ -57,20 +64,159 @@ export interface SearchStandardsResult {
 const NOT_INGESTED_NOTICE =
   'RETRIEVAL FAILED: the standards corpus has not been ingested yet, so nothing was searched and no passage was found. You MUST NOT state any standard, indicator, threshold, or figure as if it came from the Sphere Handbook, the CHS, or IASC guidance, and you MUST NOT cite a section, chapter, or page number — any you recall may be from a superseded edition or invented. Tell the user plainly that the standards corpus is unavailable and that you cannot give a sourced answer. You may offer general humanitarian practice only if you label it explicitly as unsourced and recommend they verify it against the published handbook.';
 
+/** Same instruction, worded for a backend that is down rather than unconfigured. */
+const RETRIEVAL_UNAVAILABLE_NOTICE =
+  'RETRIEVAL FAILED: the standards search backend is unavailable right now, so nothing was searched and no passage was found. You MUST NOT state any standard, indicator, threshold, or figure as if it came from the Sphere Handbook, the CHS, or IASC guidance, and you MUST NOT cite a section, chapter, or page number — any you recall may be from a superseded edition or invented. Tell the user plainly that the standards search is temporarily unavailable and that you cannot give a sourced answer right now. You may offer general humanitarian practice only if you label it explicitly as unsourced and recommend they verify it against the published handbook.';
+
+// --- Query embedding ---------------------------------------------------
+//
+// mxbai-embed-large is trained with an asymmetric retrieval prompt: queries
+// carry this prefix, documents do not (see ingestion/embed.ts, which the
+// corpus was embedded with). Omitting it measurably degrades recall.
+
+const OLLAMA_BASE_URL = (process.env.OLLAMA_BASE_URL ?? 'http://localhost:11434').replace(/\/+$/, '');
+const EMBEDDING_MODEL = process.env.EMBEDDING_MODEL ?? 'mxbai-embed-large';
+const EMBED_DIMENSIONS = 1024;
+const QUERY_PREFIX = 'Represent this sentence for searching relevant passages: ';
+const EMBED_TIMEOUT_MS = 15_000;
+
+interface OllamaEmbedResponse {
+  embeddings?: number[][];
+}
+
+/**
+ * Returns `null` on any failure (unreachable server, wrong dimensions) rather
+ * than throwing — a query still reaches `search_standards_hybrid` with
+ * `query_embedding: null`, which falls back to the full-text leg alone
+ * instead of failing the whole search.
+ */
+async function embedQuery(text: string): Promise<number[] | null> {
+  try {
+    const response = await fetch(`${OLLAMA_BASE_URL}/api/embed`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        model: EMBEDDING_MODEL,
+        input: [`${QUERY_PREFIX}${text}`],
+      }),
+      signal: AbortSignal.timeout(EMBED_TIMEOUT_MS),
+    });
+    if (!response.ok) return null;
+
+    const json = (await response.json()) as OllamaEmbedResponse;
+    const vector = json.embeddings?.[0];
+    if (!vector || vector.length !== EMBED_DIMENSIONS) return null;
+    return vector;
+  } catch {
+    return null;
+  }
+}
+
+// --- Supabase client -----------------------------------------------------
+//
+// RLS on standards_chunks grants SELECT only to anon/authenticated and the
+// RPC is security invoker, so the anon key is safe for server-side search —
+// no service role key needed here (ingestion uses that, to bypass RLS for
+// writes).
+
+let cachedClient: SupabaseClient | null = null;
+
+function getClient(): SupabaseClient | null {
+  if (cachedClient) return cachedClient;
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+
+  cachedClient = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  return cachedClient;
+}
+
+// --- Row mapping -----------------------------------------------------------
+
+interface HybridSearchRow {
+  id: string;
+  source: string;
+  doc_title: string;
+  section_path: string;
+  page_start: number | null;
+  page_end: number | null;
+  content: string;
+  score: number;
+}
+
+function toStandardsSource(source: string): StandardsSource {
+  if (source.startsWith('iasc')) return 'iasc';
+  return source as StandardsSource;
+}
+
+/** e.g. "WASH > Water supply > Water supply standard 2.1 (Sphere Handbook..., p106–107)". */
+function formatSection(row: HybridSearchRow): string {
+  const page =
+    row.page_start == null
+      ? null
+      : row.page_end != null && row.page_end !== row.page_start
+        ? `p${row.page_start}-${row.page_end}`
+        : `p${row.page_start}`;
+
+  const location = row.section_path?.trim() || row.doc_title;
+  const detail = [row.doc_title, page].filter(Boolean).join(', ');
+
+  return location === row.doc_title ? `${location}${page ? ` (${page})` : ''}` : `${location} (${detail})`;
+}
+
+function toChunk(row: HybridSearchRow): StandardsChunk {
+  return {
+    id: row.id,
+    source: toStandardsSource(row.source),
+    section: formatSection(row),
+    text: row.content,
+    score: row.score,
+  };
+}
+
+// --- Public API --------------------------------------------------------
+
 /**
  * Search the standards corpus for passages relevant to `query`.
  *
- * STUB: returns an empty result set with a notice. Replace the body with the
- * real retrieval (embed the query, search the vector store, return ranked
- * chunks) — the signature and types above stay as they are.
+ * Embeds the query (with the required asymmetric prefix), then calls
+ * `search_standards_hybrid` for reciprocal-rank-fused vector + full-text
+ * results. Returns an empty result set with an instruction-shaped `notice`
+ * when the corpus isn't configured or the backend is unreachable — never
+ * throws, so a down retrieval backend degrades to "tell the user", not a
+ * broken chat turn.
  */
 export async function searchStandards(
   options: SearchStandardsOptions,
 ): Promise<SearchStandardsResult> {
-  void options;
+  const client = getClient();
+  if (!client) {
+    return { chunks: [], notice: NOT_INGESTED_NOTICE };
+  }
 
-  return {
-    chunks: [],
-    notice: NOT_INGESTED_NOTICE,
-  };
+  const filterSource =
+    !options.source || options.source === 'all' ? null : options.source;
+
+  try {
+    const embedding = await embedQuery(options.query);
+
+    const { data, error } = await client.rpc('search_standards_hybrid', {
+      query_text: options.query,
+      query_embedding: embedding ? JSON.stringify(embedding) : null,
+      match_count: options.limit ?? 8,
+      filter_source: filterSource,
+    });
+
+    if (error) {
+      return { chunks: [], notice: RETRIEVAL_UNAVAILABLE_NOTICE };
+    }
+
+    const rows = (data ?? []) as HybridSearchRow[];
+    return { chunks: rows.map(toChunk) };
+  } catch {
+    return { chunks: [], notice: RETRIEVAL_UNAVAILABLE_NOTICE };
+  }
 }
