@@ -94,8 +94,16 @@ alter table public.standards_chunks enable row level security;
 -- The corpus is public reference material: everyone reads, nobody writes
 -- through the Data API. Ingestion connects with the service role, which bypasses
 -- RLS entirely.
+--
+-- Every grant is explicit rather than inherited from default privileges. Recent
+-- Supabase CLI versions no longer expose tables that `postgres` creates in
+-- `public` to the Data API roles automatically, so relying on the default left
+-- service_role unable to read or write its own table.
+grant usage on schema public to anon, authenticated, service_role;
+
 revoke all on public.standards_chunks from anon, authenticated;
 grant select on public.standards_chunks to anon, authenticated;
+grant select, insert, update, delete on public.standards_chunks to service_role;
 
 create policy standards_chunks_public_read
   on public.standards_chunks

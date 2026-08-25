@@ -237,7 +237,27 @@ async function main(): Promise<void> {
 
   const contexts = new Map<SourceKey, string[]>();
 
-  if (reached('contextualize', stopAfter)) {
+  // Establish once whether contextualization can run at all. The speed probe
+  // below costs a full model call per document, so it must not run when the
+  // stage is switched off or the model is not there to call.
+  const contextualizeAvailable =
+    reached('contextualize', stopAfter) &&
+    !env.skipContextualize &&
+    (await ollamaReachable()) &&
+    (await ollamaHasModel(env.contextModel));
+
+  if (reached('contextualize', stopAfter) && !contextualizeAvailable) {
+    const reason = env.skipContextualize
+      ? 'SKIP_CONTEXTUALIZE is set'
+      : `${env.contextModel} is not available on ${env.ollamaBaseUrl}`;
+    console.log(`\ncontextualize: skipped for every document (${reason})`);
+    for (const item of pending) {
+      item.entry.notes.push(`contextualize skipped: ${reason}`);
+      item.entry.stageReached = 'contextualize';
+    }
+  }
+
+  if (contextualizeAvailable) {
     console.log(`\ncontextualize (${env.contextModel} on ${env.ollamaBaseUrl})`);
     // Cheapest documents first, so a slow model still gets the small documents
     // done before the time budget starts refusing the large ones.
