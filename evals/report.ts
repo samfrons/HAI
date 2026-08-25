@@ -103,7 +103,9 @@ function renderMarkdown(dir: string, summary: RunSummary): string {
   lines.push(`| Judge model | \`${config.judgeModel}\` — ${config.judgeModelDigest} |`);
   lines.push('| Judge temperature | 0 |');
   lines.push(`| Judge context window | ${config.judgeNumCtx} tokens (set explicitly, not Ollama's 4096 default) |`);
-  lines.push(`| Per-request timeout | ${Math.round(config.requestTimeoutMs / 1000)}s |`);
+  lines.push(
+    `| Timeouts | ${Math.round(config.requestTimeoutMs / 1000)}s to first byte from the app; ${Math.round(config.judgeTimeoutMs / 1000)}s per judge call |`,
+  );
   lines.push(`| Wall clock | ${formatDuration(summary.wallClockMs)} (capture ${formatDuration(summary.targetPhaseMs)}, judging ${formatDuration(summary.judgePhaseMs)}) |`);
   lines.push(`| Cost | $0.00 — both models ran locally through Ollama |`);
   lines.push('');

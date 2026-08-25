@@ -54,6 +54,24 @@ export const STREAM_STALL_MS = Number(process.env.EVAL_STALL_MS || 180_000);
 export const TURN_BUDGET_MS = Number(process.env.EVAL_TURN_BUDGET_MS || 1_800_000);
 
 /**
+ * The judge gets its own, much larger budget, because it is not streaming and
+ * because its first call on a cold cache is the slowest thing in a run. A
+ * measured example on this machine: 887 prompt tokens and 15 output tokens took
+ * 295 seconds, with a second ~9GB model resident and a load average near 30.
+ *
+ * This was originally sharing the 6-minute request timeout, and the result was
+ * a `judge_error` on the first check of a run — a report that would have
+ * claimed the judge was incoherent when it had in fact answered correctly and
+ * merely answered slowly. A timeout that is too tight does not measure the
+ * system under test; it measures the harness's patience.
+ *
+ * Later checks on the same transcript are faster: the system prompt and the
+ * transcript are the shared prefix of every check for a scenario, so Ollama's
+ * prompt cache carries most of the cost only once.
+ */
+export const JUDGE_TIMEOUT_MS = Number(process.env.EVAL_JUDGE_TIMEOUT_MS || 900_000);
+
+/**
  * Ollama defaults to a 4096-token context. A transcript with two tool results
  * in it overflows that silently, and a judge reading a truncated transcript
  * marks real content "absent" — a wrong number that looks like a real one.

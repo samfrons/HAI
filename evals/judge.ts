@@ -23,11 +23,11 @@
 import {
   JUDGE_MODEL,
   JUDGE_NUM_CTX,
+  JUDGE_TIMEOUT_MS,
   KEEP_ALIVE,
   MAX_TOOL_RESULT_CHARS,
   MAX_TRANSCRIPT_CHARS,
   OLLAMA_BASE_URL,
-  REQUEST_TIMEOUT_MS,
 } from './config.ts';
 import type {
   ClaimJudgment,
@@ -117,7 +117,7 @@ async function ollamaChat(system: string, user: string): Promise<string> {
         { role: 'user', content: user },
       ],
     }),
-    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    signal: AbortSignal.timeout(JUDGE_TIMEOUT_MS),
   });
 
   if (!response.ok) {

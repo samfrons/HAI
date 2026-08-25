@@ -147,6 +147,7 @@ export interface RunConfig {
   judgeModelDigest: string;
   targetModelDigest: string;
   requestTimeoutMs: number;
+  judgeTimeoutMs: number;
   judgeNumCtx: number;
   mode: 'smoke' | 'full' | 'custom';
   scenarioIds: string[];

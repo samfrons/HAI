@@ -104,7 +104,8 @@ makes hundreds of calls.
 | `HAI_CHAT_URL` | `http://localhost:3000/api/chat` |
 | `EVAL_OLLAMA_URL` | `http://localhost:11434` |
 | `EVAL_JUDGE_MODEL` | `deepseek-r1:latest` |
-| `EVAL_TIMEOUT_MS` | `360000` (time to first byte, and the judge call budget) |
+| `EVAL_TIMEOUT_MS` | `360000` (time to first byte from the app) |
+| `EVAL_JUDGE_TIMEOUT_MS` | `900000` (one judge call; the first is the slowest) |
 | `EVAL_STALL_MS` | `180000` (abort a stream that has gone silent this long) |
 | `EVAL_TURN_BUDGET_MS` | `1800000` (hard cap so one bad turn cannot block a sweep) |
 | `EVAL_JUDGE_NUM_CTX` | `8192` |
