@@ -1,6 +1,6 @@
 /**
- * Smoke-test the deployed hybrid search: embeds a query with Voyage and calls
- * the search_standards_hybrid RPC exactly the way the app should.
+ * Smoke-test the deployed hybrid search: embeds a query with local Ollama and
+ * calls the search_standards_hybrid RPC exactly the way the app should.
  *
  *   pnpm search "minimum water supply per person per day"
  *   pnpm search "informed consent" --source=iasc_data_responsibility --count=5

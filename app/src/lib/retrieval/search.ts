@@ -78,38 +78,61 @@ const OLLAMA_BASE_URL = (process.env.OLLAMA_BASE_URL ?? 'http://localhost:11434'
 const EMBEDDING_MODEL = process.env.EMBEDDING_MODEL ?? 'mxbai-embed-large';
 const EMBED_DIMENSIONS = 1024;
 const QUERY_PREFIX = 'Represent this sentence for searching relevant passages: ';
-const EMBED_TIMEOUT_MS = 15_000;
+/*
+ * Raised from 15s: a concurrent eval run driving two other local models
+ * (qwen2.5 + deepseek-r1) starved this endpoint enough to blow the old
+ * timeout on an otherwise-healthy Ollama server. Still well under the
+ * chat route's own stall timeout.
+ */
+const EMBED_TIMEOUT_MS = 20_000;
+/** One retry, short backoff — enough to survive a transient contention spike
+ * without turning a slow moment into a user-visible "retrieval unavailable". */
+const RETRY_DELAY_MS = 2_000;
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 interface OllamaEmbedResponse {
   embeddings?: number[][];
 }
 
+async function fetchEmbedding(text: string): Promise<number[] | null> {
+  const response = await fetch(`${OLLAMA_BASE_URL}/api/embed`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      model: EMBEDDING_MODEL,
+      input: [`${QUERY_PREFIX}${text}`],
+    }),
+    signal: AbortSignal.timeout(EMBED_TIMEOUT_MS),
+  });
+  if (!response.ok) return null;
+
+  const json = (await response.json()) as OllamaEmbedResponse;
+  const vector = json.embeddings?.[0];
+  if (!vector || vector.length !== EMBED_DIMENSIONS) return null;
+  return vector;
+}
+
 /**
- * Returns `null` on any failure (unreachable server, wrong dimensions) rather
- * than throwing — a query still reaches `search_standards_hybrid` with
- * `query_embedding: null`, which falls back to the full-text leg alone
- * instead of failing the whole search.
+ * Returns `null` on any failure (unreachable server, wrong dimensions, or a
+ * second consecutive miss after the retry) rather than throwing — a query
+ * still reaches `search_standards_hybrid` with `query_embedding: null`,
+ * which falls back to the full-text leg alone instead of failing the whole
+ * search.
  */
 async function embedQuery(text: string): Promise<number[] | null> {
-  try {
-    const response = await fetch(`${OLLAMA_BASE_URL}/api/embed`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        model: EMBEDDING_MODEL,
-        input: [`${QUERY_PREFIX}${text}`],
-      }),
-      signal: AbortSignal.timeout(EMBED_TIMEOUT_MS),
-    });
-    if (!response.ok) return null;
-
-    const json = (await response.json()) as OllamaEmbedResponse;
-    const vector = json.embeddings?.[0];
-    if (!vector || vector.length !== EMBED_DIMENSIONS) return null;
-    return vector;
-  } catch {
-    return null;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const vector = await fetchEmbedding(text);
+      if (vector) return vector;
+    } catch {
+      // fall through to retry/give-up below
+    }
+    if (attempt === 0) await delay(RETRY_DELAY_MS);
   }
+  return null;
 }
 
 // --- Supabase client -----------------------------------------------------
@@ -203,18 +226,32 @@ export async function searchStandards(
   try {
     const embedding = await embedQuery(options.query);
 
-    const { data, error } = await client.rpc('search_standards_hybrid', {
-      query_text: options.query,
-      query_embedding: embedding ? JSON.stringify(embedding) : null,
-      match_count: options.limit ?? 8,
-      filter_source: filterSource,
-    });
+    // One retry here too: the RPC hits Postgres over the pooler, and a
+    // statement-timeout under load is exactly as transient as a slow embed —
+    // worth one short wait before telling the user retrieval is down.
+    let rows: HybridSearchRow[] = [];
+    let succeeded = false;
+    for (let attempt = 0; attempt < 2 && !succeeded; attempt++) {
+      const { data, error } = await client.rpc('search_standards_hybrid', {
+        query_text: options.query,
+        query_embedding: embedding ? JSON.stringify(embedding) : null,
+        match_count: options.limit ?? 8,
+        filter_source: filterSource,
+      });
 
-    if (error) {
+      if (!error) {
+        rows = (data ?? []) as HybridSearchRow[];
+        succeeded = true;
+        break;
+      }
+
+      if (attempt === 0) await delay(RETRY_DELAY_MS);
+    }
+
+    if (!succeeded) {
       return { chunks: [], notice: RETRIEVAL_UNAVAILABLE_NOTICE };
     }
 
-    const rows = (data ?? []) as HybridSearchRow[];
     return { chunks: rows.map(toChunk) };
   } catch {
     return { chunks: [], notice: RETRIEVAL_UNAVAILABLE_NOTICE };
