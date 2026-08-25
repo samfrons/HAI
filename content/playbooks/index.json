@@ -1,0 +1,44 @@
+[
+  {
+    "id": "program-officer",
+    "title": "Program Officer Playbook",
+    "role": "Program Officer",
+    "summary": "Using HAI for program design, proposal drafting, and workplan review — grounded in Sphere, CHS, and live crisis data rather than model memory.",
+    "file": "program-officer.md"
+  },
+  {
+    "id": "protection-officer",
+    "title": "Protection Officer Playbook",
+    "role": "Protection Officer",
+    "summary": "Using HAI for protection mainstreaming checks, referral pathway lookups, and template drafting — with a hard line against any identifiable case data.",
+    "file": "protection-officer.md"
+  },
+  {
+    "id": "meal-officer",
+    "title": "MEAL Officer Playbook",
+    "role": "MEAL Officer",
+    "summary": "Using HAI for indicator design, survey question review, and qualitative coding assistance across Monitoring, Evaluation, Accountability and Learning work.",
+    "file": "meal-officer.md"
+  },
+  {
+    "id": "communications",
+    "title": "Communications Officer Playbook",
+    "role": "Communications Officer",
+    "summary": "Using HAI for sitrep summarization, donor reporting drafts, and multilingual drafting — with every fact traced back to a source before publication.",
+    "file": "communications.md"
+  },
+  {
+    "id": "grants-partnerships",
+    "title": "Grants & Partnerships Officer Playbook",
+    "role": "Grants & Partnerships Officer",
+    "summary": "Using HAI for donor compliance checks, budget narrative drafting, and due diligence summaries — always grounded in current guidance text, never model memory of donor rules.",
+    "file": "grants-partnerships.md"
+  },
+  {
+    "id": "field-logistics",
+    "title": "Field Logistics Officer Playbook",
+    "role": "Field Logistics Officer",
+    "summary": "Using HAI for procurement document drafting, distribution planning aids, and supply pipeline queries — never for vendor decisions or real-time safety calls.",
+    "file": "field-logistics.md"
+  }
+]
