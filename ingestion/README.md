@@ -75,6 +75,37 @@ values derived from the chunk's identity, so re-ingesting upserts onto the same
 rows; rows a previous run produced that this run does not are deleted, so a
 change to the chunker cannot leave stale citations behind.
 
+## Current state of the loaded corpus
+
+Full run on 2026-08-25 against the local stack: **1,631 chunks, every one
+embedded**, no truncated inputs.
+
+| Source | Chunks | Pages |
+|---|---:|---|
+| `sphere` | 930 | 3–434 |
+| `iasc_disability` | 476 | 3–109 |
+| `iasc_data_responsibility` | 108 | 3–44 |
+| `iasc_protection` | 100 | 2–40 |
+| `chs` | 17 | 1–6 |
+
+Embedding the whole corpus takes about 6 minutes on this machine.
+
+**Known gap: `context_summary` is empty for every chunk.** Contextualization was
+measured at 50–100 s per chunk on this machine — `qwen2.5:14b` ran at 0.19
+tokens/s with ~18% free RAM, because a 9.3 GB model plus everything else makes
+the box swap. That is many hours for 1,631 chunks, well past the 45-minute
+budget, so the corpus was loaded without preambles. Retrieval works, but without
+the contextual-retrieval boost. To fill them in when the machine is idle:
+
+```bash
+unset SKIP_CONTEXTUALIZE      # or remove it from .env
+ollama stop <any large model> # frees memory; halved embedding time in testing
+pnpm ingest --force
+```
+
+A smaller context model would make this practical without waiting for an idle
+machine.
+
 ## How each stage works
 
 **`extract.ts`** — pdf.js (via `unpdf`) text items, grouped into lines and
@@ -198,6 +229,14 @@ The machine also has `dengcao/Qwen3-Reranker-4B:Q8_0` in Ollama. A rerank stage
 would slot in **after** RRF, not instead of it: call the RPC with
 `match_count: 30`, score each `(query, content)` pair with the reranker, and keep
 the top 8 by that score. RRF is good at recall and indifferent to fine-grained
-relevance, which is exactly what a cross-encoder fixes. The cost is latency — a
-4B cross-encoder scores pairs one at a time — so it belongs behind a flag and
-wants measuring on real queries before being turned on. Not built.
+ordering, which is exactly what a cross-encoder fixes.
+
+There is already evidence it would help. For `minimum water supply per person
+per day`, four of the top five results are the right section — Sphere's Water
+supply standard 2.1 — but the chunk that actually answers the question
+("Minimum of 15 litres per person per day") ranks **4th**, behind two chunks of
+surrounding discussion. Recall is right, ordering is not.
+
+The cost is latency: a 4B cross-encoder scores pairs one at a time, and this
+machine is already memory-constrained. It belongs behind a flag and wants
+measuring on a set of real queries before being turned on. Not built.

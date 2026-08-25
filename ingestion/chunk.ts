@@ -27,22 +27,23 @@ export interface ChunkOptions {
  * Sized to the embedding model, not to a round number. mxbai-embed-large accepts
  * 512 tokens and rejects anything longer, and each chunk is embedded together
  * with its context summary and section path, so roughly 100 tokens of that
- * window are already spoken for. 400 leaves headroom for the
+ * window are already spoken for. 380 leaves headroom for the
  * characters-per-token estimate below being optimistic on dense text such as
- * Sphere's indicator tables.
+ * Sphere's indicator tables -- the estimate is what decided this number, so it
+ * is verified by embed.ts reporting zero truncated inputs after a full run.
  */
 export const DEFAULT_CHUNK_OPTIONS: ChunkOptions = {
-  targetTokens: 400,
+  targetTokens: 380,
   overlapRatio: 0.15,
   minTokens: 40,
   maxHeadingDepth: 4,
 };
 
 /**
- * Rough token count. Voyage tokenizes with its own vocabulary and is not
- * available offline, so the pipeline uses the standard ~4-characters-per-token
- * approximation for English prose and treats the result as an estimate
- * everywhere it matters (chunk sizing, cost estimation).
+ * Rough token count, using the standard ~4-characters-per-token approximation
+ * for English prose. Running the embedding model's own tokenizer per candidate
+ * chunk would cost a round trip per line, so this stays an estimate and
+ * embed.ts guards the real limit.
  */
 export function estimateTokens(text: string): number {
   return Math.ceil(text.length / 4);
@@ -109,9 +110,17 @@ function flushSection(
     const taken: PendingLine[] = [];
     let tokens = 0;
     let i = cursor;
-    while (i < pending.length && (tokens < options.targetTokens || taken.length === 0)) {
-      taken.push(pending[i]);
-      tokens += pending[i].tokens;
+    // Stop *before* crossing the target rather than after. Overshooting by a
+    // whole line pushed 7% of chunks past the embedding model's window, and
+    // those were silently truncated -- the stored content stayed complete and
+    // findable by full-text search, but their vectors were missing the tail.
+    // A single line longer than the target is still taken whole, since dropping
+    // it would lose the text entirely.
+    while (i < pending.length) {
+      const line = pending[i];
+      if (taken.length > 0 && tokens + line.tokens > options.targetTokens) break;
+      taken.push(line);
+      tokens += line.tokens;
       i++;
     }
 
