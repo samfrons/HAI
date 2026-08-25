@@ -14,6 +14,7 @@
  * run keeps everything it had already measured.
  */
 
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import {
@@ -40,10 +41,11 @@ import type { RunConfig, RunSummary, Scenario, ScenarioResult, Transcript } from
 interface Options {
   smoke: boolean;
   only: string[];
+  resume: string;
 }
 
 function parseArgs(argv: string[]): Options {
-  const options: Options = { smoke: false, only: [] };
+  const options: Options = { smoke: false, only: [], resume: '' };
   for (const arg of argv) {
     if (arg === '--smoke') options.smoke = true;
     else if (arg.startsWith('--only=')) {
@@ -52,8 +54,10 @@ function parseArgs(argv: string[]): Options {
         .split(',')
         .map((id) => id.trim())
         .filter(Boolean);
+    } else if (arg.startsWith('--resume=')) {
+      options.resume = resolve(arg.slice('--resume='.length));
     } else if (arg === '--help' || arg === '-h') {
-      console.log('Usage: pnpm eval [--smoke] [--only=id1,id2]');
+      console.log('Usage: pnpm eval [--smoke] [--only=id1,id2] [--resume=reports/<timestamp>]');
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${arg}`);
@@ -64,6 +68,15 @@ function parseArgs(argv: string[]): Options {
 
 function log(message = ''): void {
   console.log(message);
+}
+
+/** A previously captured transcript, or null if there isn't a usable one. */
+function readTranscript(path: string): Transcript | null {
+  try {
+    return JSON.parse(readFileSync(path, 'utf8')) as Transcript;
+  } catch {
+    return null;
+  }
 }
 
 /** Fails fast and specifically, rather than producing a report of timeouts. */
@@ -112,8 +125,9 @@ async function main(): Promise<void> {
   const scenarios = selectScenarios(loadScenarios(), options);
   const mode: RunConfig['mode'] = options.only.length ? 'custom' : options.smoke ? 'smoke' : 'full';
 
-  const dir = createRunDirectory();
+  const dir = options.resume || createRunDirectory();
   log(`HAI eval — ${mode} run, ${scenarios.length} scenario(s)`);
+  if (options.resume) log(`Resuming into ${dir} — transcripts already on disk will be reused.`);
   log(`Target: ${CHAT_URL}`);
   log(`Judge:  ${JUDGE_MODEL} @ ${OLLAMA_BASE_URL} (temperature 0, num_ctx ${JUDGE_NUM_CTX})`);
   log(`Output: ${dir}`);
@@ -128,14 +142,27 @@ async function main(): Promise<void> {
 
   for (const [index, scenario] of scenarios.entries()) {
     const label = `[${index + 1}/${scenarios.length}] ${scenario.id}`;
+    const path = resolve(dir, 'transcripts', `${scenario.id}.json`);
+
+    // Capturing a transcript costs minutes of local inference, and a run can
+    // die for reasons that have nothing to do with the assistant — the dev
+    // server restarting underneath it, for one. A transcript already on disk
+    // is a completed measurement, so --resume reuses it rather than paying
+    // for it twice.
+    const existing = options.resume ? readTranscript(path) : null;
+    if (existing) {
+      captured.push({ scenario, transcript: existing, path });
+      log(`  ${label} — reusing transcript captured at ${existing.startedAt}`);
+      continue;
+    }
+
     log(`  ${label} — sending probe…`);
 
     const transcript = await runScenario(scenario);
-    const path = resolve(dir, 'transcripts', `${scenario.id}.json`);
     writeJson(path, transcript);
     captured.push({ scenario, transcript, path });
 
-    if (index === 0) observedModels = await loadedModels();
+    if (!observedModels.length) observedModels = await loadedModels();
 
     const notes = [
       formatDuration(transcript.durationMs),
