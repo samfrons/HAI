@@ -140,9 +140,9 @@ corpus currently loads without contextual-retrieval preambles — retrieval
 works, the ranking boost doesn't yet) is in
 [`ingestion/README.md`](ingestion/README.md).
 
-| ![PII interception banner](docs/assets/pii-safety-notice.png) | ![Arabic RTL layout](docs/assets/chat-arabic-rtl.png) |
-|---|---|
-| Safety layer: a case-detail paste caught before it reaches the model, with the IASC principle named | Arabic locale — full RTL layout, not just translated labels |
+| ![PII interception banner](docs/assets/pii-safety-notice.png) | ![Arabic RTL layout](docs/assets/chat-arabic-rtl.png) | ![Playbooks index](docs/assets/playbooks-index.png) |
+|---|---|---|
+| Safety layer: a case-detail paste caught before it reaches the model, with the IASC principle named | Arabic locale — full RTL layout, not just translated labels | The six role playbooks |
 
 ## Docs
 
