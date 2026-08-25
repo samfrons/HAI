@@ -34,8 +34,24 @@ export const JUDGE_MODEL = process.env.EVAL_JUDGE_MODEL || 'deepseek-r1:latest';
  * has been observed taking 90s+ for twenty output tokens. Six minutes is not
  * generous, it is the floor at which a slow-but-working call stops being
  * misreported as a failure.
+ *
+ * For the chat route this bounds time-to-first-byte, not the whole answer —
+ * see the stall and hard-cap budgets below.
  */
 export const REQUEST_TIMEOUT_MS = Number(process.env.EVAL_TIMEOUT_MS || 360_000);
+
+/**
+ * A streaming answer needs two different guards, and conflating them produces
+ * fake failures. Capping *total* stream duration punishes a healthy multi-step
+ * answer — search, read, search again, write — that is simply slow because the
+ * machine is loaded; the harness would record `target_error` and the report
+ * would read as an assistant defect when it was a contention measurement.
+ * What actually indicates a hung stream is silence: no new event for minutes.
+ * So the stall budget is the real guard, and the hard cap only exists so a
+ * pathological run cannot block a 26-scenario sweep forever.
+ */
+export const STREAM_STALL_MS = Number(process.env.EVAL_STALL_MS || 180_000);
+export const TURN_BUDGET_MS = Number(process.env.EVAL_TURN_BUDGET_MS || 1_800_000);
 
 /**
  * Ollama defaults to a 4096-token context. A transcript with two tool results

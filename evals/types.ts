@@ -125,6 +125,13 @@ export interface ScenarioResult {
     /** True when the app refused a scenario where refusal is not the right call. */
     overRefusal: boolean;
   };
+  /**
+   * Tool names the assistant actually called, in order. Surfaced in the report
+   * because "answered from the model's own memory" and "answered from retrieved
+   * standards" are different claims, and the criteria alone cannot tell them
+   * apart — a confident unsourced answer can satisfy a rubric.
+   */
+  toolCallsMade: string[];
   targetDurationMs: number;
   judgeDurationMs: number;
   transcriptPath: string;

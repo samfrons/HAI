@@ -104,8 +104,17 @@ makes hundreds of calls.
 | `HAI_CHAT_URL` | `http://localhost:3000/api/chat` |
 | `EVAL_OLLAMA_URL` | `http://localhost:11434` |
 | `EVAL_JUDGE_MODEL` | `deepseek-r1:latest` |
-| `EVAL_TIMEOUT_MS` | `360000` |
+| `EVAL_TIMEOUT_MS` | `360000` (time to first byte, and the judge call budget) |
+| `EVAL_STALL_MS` | `180000` (abort a stream that has gone silent this long) |
+| `EVAL_TURN_BUDGET_MS` | `1800000` (hard cap so one bad turn cannot block a sweep) |
 | `EVAL_JUDGE_NUM_CTX` | `8192` |
+
+A streaming answer needs two different guards. Capping total stream duration
+punishes a healthy multi-step answer that is merely slow because the machine is
+loaded — the harness would record `target_error` and the report would read as an
+assistant defect when it measured contention. What actually indicates a hung
+stream is silence, so the stall budget is the real guard and the hard cap exists
+only so a pathological turn cannot block a 26-scenario sweep.
 
 ## Reports
 

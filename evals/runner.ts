@@ -11,7 +11,12 @@
 
 import { randomUUID } from 'node:crypto';
 
-import { CHAT_URL, REQUEST_TIMEOUT_MS } from './config.ts';
+import {
+  CHAT_URL,
+  REQUEST_TIMEOUT_MS,
+  STREAM_STALL_MS,
+  TURN_BUDGET_MS,
+} from './config.ts';
 import { interceptionIsAppropriate, probesFor } from './scenarios.ts';
 import type {
   Scenario,
@@ -41,23 +46,61 @@ async function sendProbe(probe: string, history: UiMessage[]): Promise<Turn> {
     events: [],
   };
 
+  // One controller for the whole turn, so aborting also tears down a body that
+  // is still streaming. Three budgets share it, and whichever fires first
+  // records *why* — an abort with no reason reads as a mystery in the report.
+  const controller = new AbortController();
+  let abortReason = '';
+  const abort = (reason: string): void => {
+    if (abortReason) return;
+    abortReason = reason;
+    controller.abort();
+  };
+
+  const connectTimer = setTimeout(
+    () => abort(`no response headers within ${Math.round(REQUEST_TIMEOUT_MS / 1000)}s`),
+    REQUEST_TIMEOUT_MS,
+  );
+  const budgetTimer = setTimeout(
+    () => abort(`turn exceeded the hard cap of ${Math.round(TURN_BUDGET_MS / 1000)}s`),
+    TURN_BUDGET_MS,
+  );
+  let stallTimer: NodeJS.Timeout | undefined;
+  const resetStall = (): void => {
+    clearTimeout(stallTimer);
+    stallTimer = setTimeout(
+      () => abort(`stream produced nothing for ${Math.round(STREAM_STALL_MS / 1000)}s`),
+      STREAM_STALL_MS,
+    );
+  };
+  const clearTimers = (): void => {
+    clearTimeout(connectTimer);
+    clearTimeout(budgetTimer);
+    clearTimeout(stallTimer);
+  };
+  const explain = (error: unknown): string =>
+    abortReason ? `aborted: ${abortReason}` : describe(error);
+
   let response: Response;
   try {
     response = await fetch(CHAT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: history }),
-      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      signal: controller.signal,
     });
   } catch (error) {
-    turn.errors.push(`request failed: ${describe(error)}`);
+    clearTimers();
+    turn.errors.push(`request failed: ${explain(error)}`);
     turn.durationMs = Date.now() - startedAt;
     return turn;
   }
 
+  clearTimeout(connectTimer);
   turn.httpStatus = response.status;
 
   if (!response.ok) {
+    clearTimers();
     const body = await response.text().catch(() => '');
     turn.errors.push(`HTTP ${response.status}: ${body.slice(0, 500)}`);
     turn.durationMs = Date.now() - startedAt;
@@ -65,18 +108,23 @@ async function sendProbe(probe: string, history: UiMessage[]): Promise<Turn> {
   }
 
   if (!response.body) {
+    clearTimers();
     turn.errors.push('response had no body');
     turn.durationMs = Date.now() - startedAt;
     return turn;
   }
 
+  resetStall();
   try {
     for await (const event of readSse(response.body)) {
+      resetStall();
       turn.events.push(event);
       applyEvent(turn, event);
     }
   } catch (error) {
-    turn.errors.push(`stream failed: ${describe(error)}`);
+    turn.errors.push(`stream failed: ${explain(error)}`);
+  } finally {
+    clearTimers();
   }
 
   turn.durationMs = Date.now() - startedAt;

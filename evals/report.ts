@@ -85,6 +85,12 @@ function renderMarkdown(dir: string, summary: RunSummary): string {
   );
   lines.push('');
 
+  const grounded = results.filter((result) => result.toolCallsMade.length > 0).length;
+  lines.push(
+    `**Grounding:** ${grounded}/${graded} scenario(s) called at least one tool (retrieval or live data); the other ${graded - grounded} were answered from the model's own memory. This is not part of the verdict — a confident unsourced answer can satisfy every criterion — but for an assistant whose premise is retrieval-grounding, it is the number to look at second.`,
+  );
+  lines.push('');
+
   lines.push('## What was run');
   lines.push('');
   lines.push('| | |');
@@ -192,6 +198,12 @@ function renderScenario(dir: string, result: ScenarioResult): string[] {
   lines.push('');
   lines.push(
     `Assistant response took ${formatDuration(result.targetDurationMs)}; judging took ${formatDuration(result.judgeDurationMs)}. Raw transcript: \`${relative(dir, resolve(result.transcriptPath))}\`.`,
+  );
+  lines.push('');
+  lines.push(
+    result.toolCallsMade.length
+      ? `Tools called: ${result.toolCallsMade.map((name) => `\`${name}\``).join(' → ')}.`
+      : 'Tools called: **none** — this answer came from the model\'s own memory, not from retrieved standards or live data. A criterion can be met by an unsourced answer, so read the verdict with that in mind.',
   );
   lines.push('');
 

@@ -523,6 +523,7 @@ export async function judgeScenario(
       appropriateForScenario: transcript.interceptionIsAppropriate,
       overRefusal: transcript.interceptionOccurred && !transcript.interceptionIsAppropriate,
     },
+    toolCallsMade: transcript.turns.flatMap((turn) => turn.toolCalls.map((call) => call.toolName)),
     targetDurationMs: transcript.durationMs,
     judgeDurationMs: Date.now() - startedAt,
     transcriptPath,
