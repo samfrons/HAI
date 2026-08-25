@@ -1,0 +1,58 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.ipynb_checkpoints
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+coverage/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Env files (never commit secrets) ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+!.env.example
+!*.env.example
+
+# --- Archives / backups ---
+*.zip
+*.tar.gz
+*.json.backup_*
+
+# --- Logs ---
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Editor ---
+.vscode/
+.idea/
+*.swp
