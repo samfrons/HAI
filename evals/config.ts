@@ -1,0 +1,72 @@
+/**
+ * Environment for the eval harness. Every default assumes "everything local":
+ * the app on :3000 and Ollama on :11434.
+ *
+ * cost: $0.00 per run — the assistant and the judge both run on this machine.
+ * Pointing HAI_CHAT_URL or EVAL_OLLAMA_URL at a hosted endpoint may bill per
+ * token, and a full run makes hundreds of calls.
+ */
+
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export const HERE = dirname(fileURLToPath(import.meta.url));
+export const REPO_ROOT = resolve(HERE, '..');
+export const SCENARIOS_PATH = resolve(
+  REPO_ROOT,
+  'petri/seeds/humanitarian_test_scenarios.json',
+);
+export const REPORTS_DIR = resolve(HERE, 'reports');
+
+export const CHAT_URL = process.env.HAI_CHAT_URL || 'http://localhost:3000/api/chat';
+export const OLLAMA_BASE_URL = process.env.EVAL_OLLAMA_URL || 'http://localhost:11434';
+
+/**
+ * A different model family from the target on purpose. The whole point of the
+ * rebuild is that the grader cannot share a failure mode with the graded model;
+ * qwen judging qwen would reproduce the bug documented in research/README.md.
+ */
+export const JUDGE_MODEL = process.env.EVAL_JUDGE_MODEL || 'deepseek-r1:latest';
+
+/**
+ * This machine runs both models on CPU/GPU under load, and a single judge call
+ * has been observed taking 90s+ for twenty output tokens. Six minutes is not
+ * generous, it is the floor at which a slow-but-working call stops being
+ * misreported as a failure.
+ */
+export const REQUEST_TIMEOUT_MS = Number(process.env.EVAL_TIMEOUT_MS || 360_000);
+
+/**
+ * Ollama defaults to a 4096-token context. A transcript with two tool results
+ * in it overflows that silently, and a judge reading a truncated transcript
+ * marks real content "absent" — a wrong number that looks like a real one.
+ * Set explicitly, and the transcript is truncated to fit with room to spare.
+ */
+export const JUDGE_NUM_CTX = Number(process.env.EVAL_JUDGE_NUM_CTX || 8192);
+
+/** Character budgets that keep a rendered transcript inside JUDGE_NUM_CTX. */
+export const MAX_TRANSCRIPT_CHARS = 12_000;
+export const MAX_TOOL_RESULT_CHARS = 1_500;
+
+/** Keeps the model resident between calls within a phase, so it loads once. */
+export const KEEP_ALIVE = '15m';
+
+/**
+ * What the app is configured to run, read from its env file. This is what the
+ * app says it uses, not proof of what served the request — the harness also
+ * records Ollama's live /api/ps during the capture phase, which is the
+ * observation. Both go in the report; where they disagree, believe /api/ps.
+ */
+export function readConfiguredTargetModel(): string {
+  for (const file of ['app/.env.local', 'app/.env']) {
+    try {
+      const text = readFileSync(resolve(REPO_ROOT, file), 'utf8');
+      const match = text.match(/^\s*LLM_MODEL\s*=\s*(.+)$/m);
+      if (match) return `${match[1].trim()} (from ${file})`;
+    } catch {
+      // Missing env file is normal; fall through to the provider default.
+    }
+  }
+  return 'qwen2.5:14b (provider default, no LLM_MODEL found)';
+}

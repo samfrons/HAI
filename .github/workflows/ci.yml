@@ -1,0 +1,114 @@
+# Continuous integration for HAI.
+#
+# What this proves: the app lints, typechecks, and passes its unit tests, and
+# the two Node side-projects (ingestion, evals) typecheck.
+#
+# What this deliberately does NOT do: run the eval suite. The evals need a local
+# Ollama serving a ~9GB target model and a ~5GB judge model, and a single run
+# takes hours on a laptop. A hosted runner has neither, so an eval job here
+# could only ever be a stub — and a green "evals passing" badge that never
+# graded a transcript is precisely the kind of reassuring-but-meaningless number
+# this project already published once and had to retract (see research/README.md).
+# Eval numbers come from `pnpm eval` on a machine with the models, and land in
+# evals/reports/ with the judge's evidence attached so they can be checked.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+  PNPM_VERSION: '10.13.1'
+
+jobs:
+  app:
+    name: app — lint, typecheck, test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      # next-env.d.ts and the generated route types are gitignored, so they have
+      # to be produced before tsc can see them. `typegen` does that without
+      # paying for a full build.
+      - name: Generate Next.js types
+        run: pnpm exec next typegen
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+
+      - name: Unit tests
+        run: pnpm test
+
+  evals:
+    name: evals — typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: evals
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: evals/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+  ingestion:
+    name: ingestion — typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ingestion
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: ingestion/pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
