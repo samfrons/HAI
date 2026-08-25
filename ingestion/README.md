@@ -134,7 +134,7 @@ and function already exist in `supabase/migrations/`.
 | `query_text` | `text` | — | The user's query, unmodified |
 | `query_embedding` | `vector(1024)` | — | 1024 floats from `mxbai-embed-large` **with the query prefix**; pass `null` to use the full-text leg alone |
 | `match_count` | `integer` | `8` | Clamped server-side to 1..50 |
-| `filter_source` | `text` | `null` | One of `sphere`, `chs`, `iasc_data_responsibility`, `iasc_protection`, `iasc_disability` |
+| `filter_source` | `text` | `null` | An exact source key, or a family prefix — see below |
 
 Returns one row per chunk, ordered by `score` descending:
 
@@ -168,6 +168,26 @@ const { data, error } = await supabase.rpc('search_standards_hybrid', {
 
 `ingestion/load.ts` exports `searchStandardsHybrid()` and the `HybridSearchRow`
 type as the reference implementation, and `pnpm search "<query>"` exercises it.
+
+### Source keys, and how they map to the app's three
+
+The table stores five source keys, because a citation has to name *which* IASC
+guidance a passage came from:
+
+`sphere`, `chs`, `iasc_data_responsibility`, `iasc_protection`, `iasc_disability`
+
+`app/src/lib/retrieval/search.ts` models the corpus with three
+(`'sphere' | 'chs' | 'iasc'`). `filter_source` therefore accepts a **family
+prefix** as well as an exact key: passing `'iasc'` matches all three IASC
+documents, while each exact key still matches only itself. The app can pass its
+own enum straight through, and map results back with
+`row.source.startsWith('iasc') ? 'iasc' : row.source`.
+
+The app's `StandardsChunk.section` is a single human-readable location string;
+compose it from the row rather than adding a column — for example
+`` `${row.section_path} (${row.doc_title}, p. ${row.page_start})` ``, falling
+back to `doc_title` alone when `section_path` is empty. `content` is
+`StandardsChunk.text`, and `score` passes through as-is.
 
 RLS is on: `anon` and `authenticated` may only `SELECT`, and the function is
 `security invoker`, so the anon key is safe for read-only search from the app.
