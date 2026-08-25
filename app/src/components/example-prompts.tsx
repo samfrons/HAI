@@ -1,4 +1,7 @@
+'use client';
+
 import type { PlaybookExample } from '@/lib/content';
+import { useLocale } from '@/lib/i18n/context';
 import { TryInChatButton } from './try-in-chat-button';
 
 const LEVEL_STYLES: Record<string, string> = {
@@ -12,12 +15,13 @@ function levelStyle(level: string): string {
 }
 
 export function ExamplePrompts({ examples }: { examples: PlaybookExample[] }) {
+  const { t } = useLocale();
   if (examples.length === 0) return null;
 
   return (
     <section>
       <h2 className="text-[1.05rem] font-semibold tracking-tight text-foreground">
-        Example prompts
+        {t.playbookDetail.examplePromptsHeading}
       </h2>
       <div className="mt-4 space-y-3">
         {examples.map((example) => (
@@ -39,7 +43,7 @@ export function ExamplePrompts({ examples }: { examples: PlaybookExample[] }) {
               &ldquo;{example.prompt}&rdquo;
             </p>
             <p className="mt-2 text-xs leading-relaxed text-muted italic">
-              Why it works: {example.why}
+              {t.playbookDetail.whyItWorks} {example.why}
             </p>
           </div>
         ))}

@@ -1,22 +1,17 @@
+'use client';
+
 import type { HaiUIMessage } from '@/app/api/chat/route';
+import { useLocale } from '@/lib/i18n/context';
 
 type Part = HaiUIMessage['parts'][number];
 
-/**
- * What each tool says while it is running. Phrased as the work being done, so
- * the reader knows the answer is being grounded rather than composed.
- */
-const RUNNING_LABELS: Record<string, string> = {
-  'tool-search_standards': 'Searching humanitarian standards',
-  'tool-crisis_updates': 'Fetching situation reports',
-  'tool-humanitarian_data': 'Retrieving country indicators',
-};
+const KNOWN_TOOLS = ['search_standards', 'crisis_updates', 'humanitarian_data'] as const;
+type KnownTool = (typeof KNOWN_TOOLS)[number];
 
-const DONE_LABELS: Record<string, string> = {
-  'tool-search_standards': 'Searched humanitarian standards',
-  'tool-crisis_updates': 'Fetched situation reports',
-  'tool-humanitarian_data': 'Retrieved country indicators',
-};
+function toolName(partType: string): KnownTool | undefined {
+  const name = partType.replace(/^tool-/, '');
+  return (KNOWN_TOOLS as readonly string[]).includes(name) ? (name as KnownTool) : undefined;
+}
 
 function detail(part: Part): string | undefined {
   const input = (part as { input?: Record<string, unknown> }).input;
@@ -34,18 +29,23 @@ function detail(part: Part): string | undefined {
   return undefined;
 }
 
+/**
+ * What each tool says while it is running. Phrased as the work being done, so
+ * the reader knows the answer is being grounded rather than composed.
+ */
 export function ToolActivity({ part }: { part: Part }) {
-  const running = RUNNING_LABELS[part.type];
-  if (!running) return null;
+  const { t } = useLocale();
+  const tool = toolName(part.type);
+  if (!tool) return null;
 
   const state = (part as { state?: string }).state;
   const isDone = state === 'output-available' || state === 'output-error';
   const failed = state === 'output-error';
   const text = failed
-    ? 'Live source unavailable'
+    ? t.toolActivity.failed
     : isDone
-      ? DONE_LABELS[part.type]
-      : running;
+      ? t.toolActivity.done[tool]
+      : t.toolActivity.running[tool];
   const context = detail(part);
 
   return (

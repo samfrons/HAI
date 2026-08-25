@@ -6,9 +6,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import type { HaiUIMessage } from '@/app/api/chat/route';
+import { useLocale } from '@/lib/i18n/context';
 import { Citations } from './citations';
 import { Composer } from './composer';
 import { EmptyState } from './empty-state';
+import { LocaleSwitcher } from './locale-switcher';
 import { Markdown } from './markdown';
 import { NavLinks } from './nav-links';
 import { SafetyNotice } from './safety-notice';
@@ -19,6 +21,7 @@ import { ToolActivity } from './tool-activity';
 export function Chat() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t } = useLocale();
 
   // "Try in chat" links land here as `/?q=...`. Prefill the composer from it
   // on first render — without sending; the user presses send — via lazy
@@ -60,17 +63,15 @@ export function Chat() {
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-3.5">
           <div className="flex items-baseline gap-3">
             <span className="text-base font-semibold tracking-tight text-foreground">
-              HAI
+              {t.appName}
             </span>
-            <span className="hidden text-xs text-subtle sm:inline">
-              Humanitarian operations assistant
-            </span>
+            <span className="hidden text-xs text-subtle sm:inline">{t.tagline}</span>
           </div>
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setCoachMode((value) => !value)}
-              title="Coach mode: before answering, HAI briefly points out one strength and one improvement to your prompt, then answers the improved version."
+              title={t.coach.tooltip}
               aria-pressed={coachMode}
               className={`flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 coachMode
@@ -84,9 +85,10 @@ export function Chat() {
                   coachMode ? 'border-accent bg-accent' : 'border-border-strong bg-transparent'
                 }`}
               />
-              Coach mode
+              {t.coach.label}
             </button>
             <NavLinks />
+            <LocaleSwitcher />
           </div>
         </div>
       </header>
@@ -111,8 +113,7 @@ export function Chat() {
             role="alert"
             className="my-4 rounded-lg border border-notice-border bg-notice-soft px-4 py-3 text-sm text-notice"
           >
-            {error.message ||
-              'The assistant could not complete that request. Try again.'}
+            {error.message || t.errorFallback}
           </p>
         ) : null}
 
@@ -129,8 +130,7 @@ export function Chat() {
             busy={busy}
           />
           <p className="mt-2.5 text-center text-xs leading-relaxed text-subtle">
-            HAI provides guidance grounded in humanitarian standards. It does not
-            replace professional judgment.
+            {t.disclaimer}
           </p>
         </div>
       </div>
@@ -155,7 +155,7 @@ function MessageBlock({
 
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-md bg-accent px-4 py-2.5 text-sm leading-relaxed text-white">
+        <div className="max-w-[85%] rounded-2xl rounded-ee-md bg-accent px-4 py-2.5 text-sm leading-relaxed text-white">
           <p className="whitespace-pre-wrap">{text}</p>
         </div>
       </div>

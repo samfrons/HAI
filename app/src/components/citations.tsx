@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale } from '@/lib/i18n/context';
 import { sourceLabel, type Source } from './sources';
 
 export function Citations({
@@ -11,6 +12,8 @@ export function Citations({
   notice?: string;
   onSelect: (source: Source) => void;
 }) {
+  const { t } = useLocale();
+
   if (sources.length === 0) {
     // A notice with no passages is the honest case worth surfacing: the model
     // tried to ground the answer and the corpus had nothing to give it.
@@ -23,7 +26,7 @@ export function Citations({
 
   return (
     <div className="mt-3 flex flex-wrap items-center gap-1.5">
-      <span className="mr-0.5 text-xs font-medium text-subtle">Sources</span>
+      <span className="me-0.5 text-xs font-medium text-subtle">{t.citations.sources}</span>
       {sources.map((source) => (
         <button
           key={source.key}

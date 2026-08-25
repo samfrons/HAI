@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, type FormEvent, type KeyboardEvent } from 'react';
 
+import { useLocale } from '@/lib/i18n/context';
+
 export function Composer({
   value,
   onChange,
@@ -15,6 +17,7 @@ export function Composer({
   onStop: () => void;
   busy: boolean;
 }) {
+  const { t } = useLocale();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Grow with the content instead of scrolling inside a fixed box — field
@@ -48,8 +51,8 @@ export function Composer({
           rows={1}
           onChange={(event) => onChange(event.target.value)}
           onKeyDown={onKeyDown}
-          placeholder="Ask about a standard, an indicator, or a current crisis…"
-          aria-label="Message HAI"
+          placeholder={t.composer.placeholder}
+          aria-label={t.composer.ariaLabel}
           className="max-h-[200px] flex-1 resize-none bg-transparent px-2 py-1.5 text-sm leading-relaxed text-foreground placeholder:text-subtle focus:outline-none"
         />
         {busy ? (
@@ -58,7 +61,7 @@ export function Composer({
             onClick={onStop}
             className="shrink-0 rounded-lg border border-border-strong px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-surface-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            Stop
+            {t.composer.stop}
           </button>
         ) : (
           <button
@@ -66,7 +69,7 @@ export function Composer({
             disabled={!value.trim()}
             className="shrink-0 rounded-lg bg-accent px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            Send
+            {t.composer.send}
           </button>
         )}
       </div>

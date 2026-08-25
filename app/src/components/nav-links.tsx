@@ -3,11 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const LINKS = [
-  { href: '/', label: 'Chat' },
-  { href: '/playbooks', label: 'Playbooks' },
-  { href: '/guides', label: 'Guides' },
-] as const;
+import { useLocale } from '@/lib/i18n/context';
 
 function isActive(pathname: string, href: string): boolean {
   if (href === '/') return pathname === '/';
@@ -16,10 +12,17 @@ function isActive(pathname: string, href: string): boolean {
 
 export function NavLinks() {
   const pathname = usePathname();
+  const { t } = useLocale();
+
+  const links = [
+    { href: '/', label: t.nav.chat },
+    { href: '/playbooks', label: t.nav.playbooks },
+    { href: '/guides', label: t.nav.guides },
+  ] as const;
 
   return (
     <nav className="flex items-center gap-1" aria-label="Main">
-      {LINKS.map((link) => {
+      {links.map((link) => {
         const active = isActive(pathname, link.href);
         return (
           <Link
