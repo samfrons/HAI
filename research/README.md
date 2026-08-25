@@ -137,4 +137,5 @@ This scenario set is being reused as-is for the new eval harness (see
 | `src/petri/humanitarian_auditor.py` | The three-tier Petri auditor with Bug 1 |
 | `scripts/extract_humanitarian_knowledge.py` | The regex extractor with Bug 2 |
 | `config/` | Prototype-era requirements/env example |
-| `docs/` | Prior status reports and summaries (`HAI_FINAL_SUMMARY.md`, `SUMMARY.md`, `COMPARISON.md`, `INTEGRATION_GUIDE.md`, `PETRI_AUDIT_OVERVIEW.md`, `petri_audit_output.log`) — written when the invalid 100% result was believed to be real; read them as historical record, not as current status.
+| `docs/` | Prior status reports and summaries (`HAI_FINAL_SUMMARY.md`, `SUMMARY.md`, `COMPARISON.md`, `INTEGRATION_GUIDE.md`, `PETRI_AUDIT_OVERVIEW.md`, `petri_audit_output.log`, `GETTING_STARTED.md`) — written when the invalid 100% result was believed to be real; read them as historical record, not as current status. The current setup instructions are the root [`README.md`](../README.md#quickstart).
+| `data/processed/` | The regex extractor's output (Bug 2) — `humanitarian_knowledge.json`/`.jsonl`, `extraction_summary.json`. Moved here from the repo-root `data/` directory, which was a leftover from before the pivot; nothing outside this archive references it.
