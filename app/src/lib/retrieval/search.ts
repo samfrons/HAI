@@ -48,8 +48,14 @@ export interface SearchStandardsResult {
   notice?: string;
 }
 
+/*
+ * Worded as an instruction, not a status line. Smaller local models will
+ * otherwise treat an empty result as permission to answer from memory and
+ * invent a figure with a section number attached — which is the single worst
+ * failure this app can produce.
+ */
 const NOT_INGESTED_NOTICE =
-  'knowledge base not yet ingested — the standards corpus is unavailable, so no sourced answer can be given for this query';
+  'RETRIEVAL FAILED: the standards corpus has not been ingested yet, so nothing was searched and no passage was found. You MUST NOT state any standard, indicator, threshold, or figure as if it came from the Sphere Handbook, the CHS, or IASC guidance, and you MUST NOT cite a section, chapter, or page number — any you recall may be from a superseded edition or invented. Tell the user plainly that the standards corpus is unavailable and that you cannot give a sourced answer. You may offer general humanitarian practice only if you label it explicitly as unsourced and recommend they verify it against the published handbook.';
 
 /**
  * Search the standards corpus for passages relevant to `query`.
