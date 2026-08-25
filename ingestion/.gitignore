@@ -1,0 +1,4 @@
+# Local credentials
+.env
+
+# Corpus PDFs are gitignored at the repository root (licensing); see corpus/SOURCES.md

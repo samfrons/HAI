@@ -1,0 +1,23 @@
+{
+  "name": "hai-ingestion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Corpus ingestion for HAI: humanitarian standards PDFs -> contextual chunks -> Voyage embeddings -> Supabase pgvector",
+  "scripts": {
+    "ingest": "tsx run.ts",
+    "extract": "tsx run.ts --stop-after=chunk",
+    "search": "tsx search-check.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0",
+    "@supabase/supabase-js": "^2.58.0",
+    "unpdf": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
