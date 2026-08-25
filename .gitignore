@@ -40,6 +40,16 @@ coverage/
 !.env.example
 !*.env.example
 
+# --- Corpus source documents (licensing) ---
+# The Sphere Handbook is all-rights-reserved: local educational/research use is
+# permitted, redistribution is not. Other corpus PDFs are looser but are kept out
+# of git for consistency. Re-download them with ingestion/fetch-corpus.sh.
+# Provenance and per-file licenses stay tracked in ingestion/corpus/SOURCES.md.
+ingestion/corpus/*.pdf
+
+# --- Ingestion pipeline artifacts ---
+ingestion/.extract-cache/
+
 # --- Archives / backups ---
 *.zip
 *.tar.gz
