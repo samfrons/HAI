@@ -1,0 +1,3 @@
+# Content
+
+This directory holds HAI's AI-enablement content — playbooks and guides for humanitarian staff adopting the assistant into their daily work. The philosophy behind it: meet staff where they are, at whatever skill level they're starting from, rather than assuming AI fluency; teach through transparency, showing why a prompt works instead of handing over templates to copy blindly; treat adoption as the goal before automation, building trust and good habits with general-purpose prompting before investing engineering effort in custom features; and escalate proven use cases to custom tooling — when a real, repeated need outgrows what a well-crafted prompt can do, that's the signal to build, not a reason to have built it sooner.
