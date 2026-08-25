@@ -92,15 +92,15 @@ export const KEEP_ALIVE = '15m';
  * records Ollama's live /api/ps during the capture phase, which is the
  * observation. Both go in the report; where they disagree, believe /api/ps.
  */
-export function readConfiguredTargetModel(): string {
+export function readConfiguredTargetModel(): { model: string; source: string } {
   for (const file of ['app/.env.local', 'app/.env']) {
     try {
       const text = readFileSync(resolve(REPO_ROOT, file), 'utf8');
       const match = text.match(/^\s*LLM_MODEL\s*=\s*(.+)$/m);
-      if (match) return `${match[1].trim()} (from ${file})`;
+      if (match) return { model: match[1].trim(), source: file };
     } catch {
       // Missing env file is normal; fall through to the provider default.
     }
   }
-  return 'qwen2.5:14b (provider default, no LLM_MODEL found)';
+  return { model: 'qwen2.5:14b', source: 'provider default, no LLM_MODEL found' };
 }

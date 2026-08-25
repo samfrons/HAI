@@ -43,10 +43,11 @@ interface Options {
   smoke: boolean;
   only: string[];
   resume: string;
+  render: string;
 }
 
 function parseArgs(argv: string[]): Options {
-  const options: Options = { smoke: false, only: [], resume: '' };
+  const options: Options = { smoke: false, only: [], resume: '', render: '' };
   for (const arg of argv) {
     if (arg === '--smoke') options.smoke = true;
     else if (arg.startsWith('--only=')) {
@@ -57,8 +58,12 @@ function parseArgs(argv: string[]): Options {
         .filter(Boolean);
     } else if (arg.startsWith('--resume=')) {
       options.resume = resolve(arg.slice('--resume='.length));
+    } else if (arg.startsWith('--render=')) {
+      options.render = resolve(arg.slice('--render='.length));
     } else if (arg === '--help' || arg === '-h') {
-      console.log('Usage: pnpm eval [--smoke] [--only=id1,id2] [--resume=reports/<timestamp>]');
+      console.log(
+        'Usage: pnpm eval [--smoke] [--only=id1,id2] [--resume=reports/<ts>] [--render=reports/<ts>]',
+      );
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${arg}`);
@@ -120,6 +125,19 @@ async function preflight(): Promise<void> {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const startedAt = new Date();
+
+  // Re-render REPORT.md from a finished run's results.json. Report wording is
+  // edited far more often than judgments change, and re-running an hour of
+  // local inference to fix a table heading would be an incentive to leave the
+  // heading wrong. No model is called, and results.json is not modified.
+  if (options.render) {
+    const summary = JSON.parse(
+      readFileSync(resolve(options.render, 'results.json'), 'utf8'),
+    ) as RunSummary;
+    writeReport(options.render, summary);
+    log(`Re-rendered ${resolve(options.render, 'REPORT.md')} from results.json — no models called.`);
+    return;
+  }
 
   await preflight();
 
@@ -198,14 +216,19 @@ async function main(): Promise<void> {
   log(`Phase 2/2 — judging ${totalChecks} check(s) with ${JUDGE_MODEL}, one at a time.`);
   const judgePhaseStart = Date.now();
 
+  const target = readConfiguredTargetModel();
+
   const config: RunConfig = {
     chatUrl: CHAT_URL,
     ollamaBaseUrl: OLLAMA_BASE_URL,
     judgeModel: JUDGE_MODEL,
-    targetModelConfigured: readConfiguredTargetModel(),
+    targetModelConfigured: `${target.model} (from ${target.source})`,
     targetModelObserved: observedModels,
     judgeModelDigest: await describeModel(JUDGE_MODEL),
-    targetModelDigest: await describeModel(observedModels[0] ?? ''),
+    // The model the app is configured to use — never "whichever model happened
+    // to be resident first", which on a machine that just ran a judge is the
+    // judge.
+    targetModelDigest: await describeModel(target.model),
     requestTimeoutMs: REQUEST_TIMEOUT_MS,
     judgeTimeoutMs: JUDGE_TIMEOUT_MS,
     judgeNumCtx: JUDGE_NUM_CTX,

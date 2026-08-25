@@ -27,11 +27,25 @@ async function getJson<T>(path: string): Promise<T | null> {
   }
 }
 
-/** Short digest plus parameter size for a model name, or a stated unknown. */
+/**
+ * Short digest plus parameter size for a model name, or a stated unknown.
+ *
+ * Ollama tags always carry a version, but env files usually name a model
+ * without one ("hai-qwen2.5"), so a bare name is also matched against its
+ * `:latest` tag. Reporting "digest unknown" for a model that is right there
+ * would push a reader toward whatever digest is nearby, which is how a report
+ * ends up naming the judge's weights as the target's.
+ */
 export async function describeModel(name: string): Promise<string> {
+  if (!name) return 'digest unknown (no model name)';
+
   const tags = await getJson<{ models?: TagEntry[] }>('/api/tags');
-  const entry = tags?.models?.find((model) => model.name === name);
-  if (!entry) return 'digest unknown (not found in ollama /api/tags)';
+  const entry =
+    tags?.models?.find((model) => model.name === name) ??
+    (name.includes(':')
+      ? undefined
+      : tags?.models?.find((model) => model.name === `${name}:latest`));
+  if (!entry) return `digest unknown (${name} not found in ollama /api/tags)`;
 
   const digest = entry.digest ? entry.digest.slice(0, 12) : 'digest unknown';
   const size = entry.details?.parameter_size;

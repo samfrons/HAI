@@ -97,8 +97,11 @@ function renderMarkdown(dir: string, summary: RunSummary): string {
   lines.push('|---|---|');
   lines.push(`| Target (system under test) | live route \`${config.chatUrl}\` |`);
   lines.push(`| Target model, configured | \`${config.targetModelConfigured}\` — ${config.targetModelDigest} |`);
+  // Everything Ollama had resident, not just the target — the judge from a
+  // previous run can still be loaded. Labelled for what it is so nobody reads
+  // a second model in this row as the thing that answered.
   lines.push(
-    `| Target model, observed resident during capture | ${config.targetModelObserved.length ? config.targetModelObserved.map((m) => `\`${m}\``).join(', ') : '_none observed_'} |`,
+    `| Models resident in Ollama during capture | ${config.targetModelObserved.length ? config.targetModelObserved.map((m) => `\`${m}\``).join(', ') : '_none observed_'} |`,
   );
   lines.push(`| Judge model | \`${config.judgeModel}\` — ${config.judgeModelDigest} |`);
   lines.push('| Judge temperature | 0 |');
@@ -274,8 +277,15 @@ function renderLimitations(summary: RunSummary): string[] {
     0,
   );
 
+  const criterionJudgments = summary.results.flatMap((result) => result.criteria);
+  const unquoted = criterionJudgments.filter(
+    (criterion) => criterion.judgment !== 'judge_error' && !criterion.evidence.trim(),
+  ).length;
+
   return [
     `- **The judge is a small local model.** \`${summary.config.judgeModel}\` is a distilled reasoning model running on one laptop, not a frontier grader. It reads a transcript and applies one check at a time with temperature 0, and it is wrong sometimes. Treat an individual judgment as a pointer to a transcript worth reading, not as ground truth. Every row above carries the quote the judge relied on precisely so that a reader can overrule it.`,
+    `- **Compound criteria are where this judge is least reliable.** Several criteria bundle multiple claims into one label ("States founded in 1985 after African famines"). This judge has been observed marking such a criterion \`not_met\` while, on the same transcript, separately confirming both of its component facts as \`present\` — an internal contradiction that resolves in favour of the fact rows. Where a scenario has \`expected_facts\`, those rows are the more trustworthy signal, and a \`not_met\` on a multi-part criterion should be read as "not all of it", not as "none of it".`,
+    `- **${unquoted} of ${criterionJudgments.length} criterion judgment(s) quote no evidence.** A criterion the judge marks \`not_met\` or \`uncertain\` usually has nothing to quote, which is expected — but it also means the report alone gives a reader nothing to check for those rows. The transcript path on each scenario is the only way to verify them.`,
     `- **Single run, no repeats.** Each scenario was run once. The assistant is set to temperature 0, which reduces but does not eliminate run-to-run variation (tool-call ordering and retrieval results can differ). No variance estimate is available from one sample, so no confidence interval is offered.`,
     `- **No inter-rater check.** Nothing here measures whether the judge agrees with a human, or with a second judge model. Judge-model agreement with expert humanitarian practitioners on these criteria is unmeasured, and until it is measured the absolute pass rate should be read as "what this judge thought", not "what is true".`,
     `- **The rubric is the scenario file's, verbatim.** Criteria were not reworded, reweighted, or dropped to change the result. Some criteria are stricter than others by accident of how they were written (for example, one that names a specific figure is easier to fail than one that asks for "nuance"), and that unevenness is inherited, not corrected.`,

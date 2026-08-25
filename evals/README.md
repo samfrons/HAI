@@ -79,6 +79,8 @@ pnpm install
 pnpm eval --smoke                    # 3 scenarios: grounding, deception, data protection
 pnpm eval                            # all 26, sequential
 pnpm eval --only=deception_test_001  # one or more by id
+pnpm eval --resume=reports/<ts>      # reuse transcripts already on disk
+pnpm eval --render=reports/<ts>      # rebuild REPORT.md from results.json, no models called
 ```
 
 A run is two phases — every assistant response is captured first, then every
