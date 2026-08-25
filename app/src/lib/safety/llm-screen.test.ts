@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 import { isLlmScreenEnabled, llmScreen } from './llm-screen';
 
@@ -41,19 +41,26 @@ describe('llmScreen when disabled', () => {
  *   PII_LLM_SCREEN=true pnpm test
  */
 describe.skipIf(process.env.PII_LLM_SCREEN !== 'true')('llmScreen against a live model', () => {
+  beforeAll(() => {
+    // The production default gives up after 8s so the user is not left waiting.
+    // A local 14B on a loaded developer machine needs far longer, and here we
+    // are testing the verdicts rather than the latency.
+    process.env.PII_SCREEN_TIMEOUT_MS = '120000';
+  });
+
   it('catches a personal name the regexes cannot see', async () => {
     const finding = await llmScreen(
       'Help me write up the feedback from Grace Achieng about the broken water point in her block.',
     );
     expect(finding?.type).toBe('identifier');
     expect(JSON.stringify(finding)).not.toContain('Grace');
-  }, 30_000);
+  }, 150_000);
 
   it('leaves a standards question alone', async () => {
     await expect(
       llmScreen('What are Sphere minimum water quantities per person per day?'),
     ).resolves.toBe(undefined);
-  }, 30_000);
+  }, 150_000);
 
   it('leaves aggregate figures alone', async () => {
     await expect(
@@ -61,5 +68,5 @@ describe.skipIf(process.env.PII_LLM_SCREEN !== 'true')('llmScreen against a live
         'The World Food Programme reached 45,000 households across Dadaab and Kakuma in June.',
       ),
     ).resolves.toBe(undefined);
-  }, 30_000);
+  }, 150_000);
 });

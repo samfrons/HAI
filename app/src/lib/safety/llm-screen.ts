@@ -6,23 +6,39 @@
  * north of the health post, incident on Tuesday". Both are real, and both are
  * things a small model spots reliably. Set `PII_LLM_SCREEN=true` to turn it on.
  *
- * ## What it costs, honestly
+ * ## What it costs, measured rather than estimated
  *
- * This is a full model round-trip in front of every message, before the first
- * token of the answer. Measured against local Ollama on an M-series laptop:
+ * This is a full model round-trip in front of every message, paid before the
+ * first token of the answer. Numbers below are real measurements against local
+ * Ollama on an Apple-silicon laptop, using this module's actual system prompt
+ * (221 prompt tokens) — and taken while the same machine was running the dev
+ * server, an embedding model, and several concurrent builds, so it is a loaded
+ * machine rather than a benchmark rig. Treat them as the pessimistic end.
  *
- * - qwen2.5:14b (the default chat model, already resident): roughly 0.8–2.5s.
- * - A 0.5B extraction model such as nuextract, set via `PII_SCREEN_MODEL`:
- *   roughly 0.2–0.6s once warm, but it occupies a second model slot and Ollama
- *   will evict and reload models if memory is tight, which turns the first call
- *   after an idle period into a 5–15s cold start.
- * - A hosted endpoint: add network latency, and note that the screen sends the
- *   user's text off-machine — which for the exact content this feature exists to
- *   protect is a trade-off worth making deliberately rather than by default.
+ * - qwen2.5:14b, already resident: about 5s per call once the machine settled,
+ *   with all three smoke cases classified correctly (a named individual as
+ *   YES, a Sphere threshold question and an aggregate caseload figure as NO).
+ *   Under load the same calls took 69s and then ran past 120s once the machine
+ *   began swapping. The spread between 5s and 120s is the machine, not the
+ *   model, and it is the reason the timeout exists.
+ * - phi3.5: 6–16s, obeys the one-word format, but answered NO to a message
+ *   naming an individual — a false negative on precisely the case this screen
+ *   exists to catch. Not recommended.
+ * - nuextract: 1.7–18s, and it ignores the classification instruction
+ *   altogether, replying with extracted prose ("Title: Feed…"). Unusable here.
+ *   An extraction-tuned model is the wrong tool for a yes/no judgement, which
+ *   is worth knowing before reaching for the smallest thing available.
+ * - A hosted endpoint would be faster, but it sends the user's text
+ *   off-machine — for the exact content this feature exists to protect, that is
+ *   a trade-off to make deliberately rather than by default.
  *
- * That is why it ships off. The deterministic pass costs microseconds and
- * catches the patterns that carry the most risk; this one buys recall on names
- * at a cost the user should opt into.
+ * The short version: on a busy local machine this screen mostly times out and
+ * fails open, which costs latency and buys nothing. That is why it ships off,
+ * and why the honest recommendation is to enable it only against an endpoint
+ * that can answer a 221-token classification in about a second. The
+ * deterministic pass costs microseconds and catches the patterns carrying the
+ * most risk; this one buys recall on bare names at a price worth opting into
+ * knowingly.
  *
  * ## Failure behaviour
  *
@@ -37,7 +53,12 @@ import { generateText } from 'ai';
 import { getScreeningModel } from '@/lib/llm/provider';
 import type { PiiFinding } from './pii';
 
-const SCREEN_TIMEOUT_MS = 6_000;
+/**
+ * Bounded because the user is waiting behind it. Raising it does not make a
+ * slow endpoint usable — it just moves the cost from "screen skipped" to "user
+ * stares at an empty message". Override with PII_SCREEN_TIMEOUT_MS.
+ */
+const SCREEN_TIMEOUT_MS = Number(process.env.PII_SCREEN_TIMEOUT_MS) || 8_000;
 
 /** Cap what we send: a decision this coarse does not need the whole paste. */
 const MAX_SCREEN_CHARS = 4_000;
