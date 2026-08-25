@@ -1,0 +1,25 @@
+# Recommended local model for HAI.
+#
+#   ollama create hai-qwen2.5 -f app/ollama/Modelfile
+#   # then set LLM_MODEL=hai-qwen2.5
+#
+# Why a variant instead of using qwen2.5:14b directly: Ollama serves models with
+# a 4096-token context by default, and HAI does not fit in it. The system prompt
+# plus the three tool schemas are ~1,900 tokens before the user types anything,
+# and every step of a tool loop re-sends the whole conversation. On overflow
+# Ollama silently drops the oldest tokens — the system prompt goes first, and
+# the model then loses its grounding and language rules mid-answer. Measured
+# symptom: the same Sudan question answered in Thai with no tool call at 4096,
+# and correctly in English with the right tool call at 16384.
+#
+# Baking num_ctx into a variant keeps this repeatable and leaves the shared
+# Ollama server's own configuration alone. Setting OLLAMA_CONTEXT_LENGTH=16384
+# on the server instead works just as well.
+
+FROM qwen2.5:14b
+
+PARAMETER num_ctx 16384
+
+# HAI reports thresholds and figures; sampling variety buys nothing and costs
+# tool-calling reliability. The chat route also sends temperature 0.
+PARAMETER temperature 0

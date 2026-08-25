@@ -87,6 +87,11 @@ export async function POST(request: Request) {
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
     tools: haiTools,
+    // Near-deterministic on purpose. This assistant reports thresholds and
+    // figures; sampling variety buys nothing here and measurably costs
+    // tool-calling reliability on smaller local models, which at higher
+    // temperatures drift out of the user's language mid-answer.
+    temperature: 0,
     // Multi-step: the model searches the standards, reads what came back, and
     // then answers — each of those is a step, and a grounded answer that
     // consults several sources needs several.

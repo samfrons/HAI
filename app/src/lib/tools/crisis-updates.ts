@@ -24,7 +24,14 @@ import { z } from 'zod';
 
 const RELIEFWEB_API = 'https://api.reliefweb.int/v2/reports';
 const IFRC_GO_API = 'https://goadmin.ifrc.org/api/v2/event/';
-const RESULT_LIMIT = 5;
+/*
+ * Deliberately small. Every result is re-sent to the model on each step of the
+ * tool loop, and Ollama's default context is 4096 tokens — five long excerpts
+ * push the system prompt out of the window, at which point the model loses its
+ * grounding and language rules mid-answer. See README on OLLAMA_CONTEXT_LENGTH.
+ */
+const RESULT_LIMIT = 4;
+const EXCERPT_CHARS = 350;
 const REQUEST_TIMEOUT_MS = 15_000;
 const USER_AGENT = 'HAI/1.0 (humanitarian operations assistant)';
 
@@ -153,7 +160,7 @@ async function fetchFromReliefWeb(
           .filter(Boolean)
           .join(', ') || 'ReliefWeb',
       url: fields.url ?? 'https://reliefweb.int',
-      excerpt: toPlainText(fields['body-html'] ?? '', 700) || 'No excerpt available.',
+      excerpt: toPlainText(fields['body-html'] ?? '', EXCERPT_CHARS) || 'No excerpt available.',
     };
   });
 }
@@ -196,7 +203,7 @@ async function fetchFromIfrcGo(query: string, country?: string): Promise<CrisisU
       date: event.disaster_start_date?.slice(0, 10) ?? 'unknown',
       source: `IFRC GO — ${event.dtype?.name ?? 'emergency'}`,
       url: `https://go.ifrc.org/emergencies/${event.id ?? ''}`,
-      excerpt: `${toPlainText(event.summary ?? '', 600)}${affected}`.trim() ||
+      excerpt: `${toPlainText(event.summary ?? '', EXCERPT_CHARS)}${affected}`.trim() ||
         'No summary available.',
       severity: event.ifrc_severity_level_display,
       countries: event.countries?.map((c) => c.name ?? '').filter(Boolean),

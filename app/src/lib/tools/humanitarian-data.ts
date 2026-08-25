@@ -280,8 +280,9 @@ async function getHumanitarianNeeds(iso3: string) {
         population: row.population,
         referencePeriod: formatPeriod(row),
       }))
+      // Capped to keep the tool result inside a small local context window.
       .sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
-      .slice(0, 25),
+      .slice(0, 12),
     note: 'People in need / targeted by sector, from the Humanitarian Needs and Response Plan via HDX HAPI. "Intersectoral" is the overall figure, not a sector — do not add it to the others. Each row carries its own reference period.',
   };
 }
