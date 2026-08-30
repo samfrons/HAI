@@ -18,6 +18,16 @@ const DEFAULT_MODEL = 'qwen2.5:14b';
 /** Ollama ignores the key but the OpenAI wire format requires one to be present. */
 const DEFAULT_API_KEY = 'ollama';
 
+const PROVIDER_NAME = 'hai-llm';
+
+/**
+ * The `providerOptions` key for this provider: anything under it that the
+ * OpenAI-compatible schema does not recognise is spread verbatim into the
+ * request body. It is the camelCase form of PROVIDER_NAME — the SDK accepts the
+ * hyphenated name too but warns that it is deprecated.
+ */
+const PROVIDER_OPTIONS_KEY = 'haiLlm';
+
 export interface LlmConfig {
   baseUrl: string;
   model: string;
@@ -42,6 +52,30 @@ export function getChatModel(): LanguageModel {
 }
 
 /**
+ * Extra request-body parameters for the configured endpoint, or undefined.
+ *
+ * This exists for one specific and badly-behaved failure. A reasoning model
+ * returns its chain of thought as `reasoning_content`; the AI SDK keeps that on
+ * the assistant message and sends it back on the next step of a tool loop; and
+ * Groq then rejects its own field with "property 'reasoning_content' is
+ * unsupported". The result is the worst possible shape of bug for HAI: step one
+ * calls search_standards and succeeds, step two — the step that would have
+ * turned the retrieved passages into a cited answer — dies, so the user gets a
+ * tool spinner and no answer at all.
+ *
+ * Setting LLM_REASONING_FORMAT=hidden makes the endpoint omit the field
+ * entirely, so there is nothing to echo back. It is not defaulted on, because
+ * the parameter is Groq's and other OpenAI-compatible endpoints reject unknown
+ * body fields outright — the deployment that needs it sets it. See docs/DEPLOY.md.
+ */
+export function getProviderOptions(): Record<string, Record<string, string>> | undefined {
+  const reasoningFormat = process.env.LLM_REASONING_FORMAT?.trim();
+  if (!reasoningFormat) return undefined;
+
+  return { [PROVIDER_OPTIONS_KEY]: { reasoning_format: reasoningFormat } };
+}
+
+/**
  * The model used for the optional PII second-pass screen. Defaults to the chat
  * model so the feature works with nothing pulled; set PII_SCREEN_MODEL to a
  * small extraction model (nuextract, qwen2.5:1.5b) to cut the latency the screen
@@ -56,7 +90,7 @@ function buildModel(model: string): LanguageModel {
   const config = getLlmConfig();
 
   const provider = createOpenAICompatible({
-    name: 'hai-llm',
+    name: PROVIDER_NAME,
     baseURL: config.baseUrl,
     apiKey: config.apiKey,
   });

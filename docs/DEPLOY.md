@@ -113,6 +113,7 @@ Set each for **Preview** and **Production**
 | `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | Groq's OpenAI-compatible endpoint |
 | `LLM_MODEL` | `openai/gpt-oss-120b` | must support tool calling — see below |
 | `LLM_API_KEY` | `gsk_...` | https://console.groq.com/keys |
+| `LLM_REASONING_FORMAT` | `hidden` | **required with a reasoning model** — see below |
 | `EMBEDDINGS_PROVIDER` | `hf` | switches query embedding off Ollama |
 | `HF_TOKEN` | `hf_...` | token with the "Inference Providers" permission |
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://REF.supabase.co` | |
@@ -151,6 +152,25 @@ silent: a model that streams fluent prose while ignoring `search_standards`
 produces confident unsourced figures with section numbers attached, which is
 worse than an error. HAI has no fallback for that — the grounding contract *is*
 the tool call.
+
+### Why `LLM_REASONING_FORMAT=hidden` is not optional here
+
+`openai/gpt-oss-120b` is a reasoning model. It returns its chain of thought as
+`reasoning_content`; the AI SDK keeps that on the assistant message and sends it
+back on the next step of the tool loop; and Groq then rejects its own field with
+`property 'reasoning_content' is unsupported`.
+
+The shape of that failure is the reason it is called out here rather than left
+as a footnote. Step one — the `search_standards` call — succeeds. Step two, the
+step that would turn the retrieved passages into a cited answer, dies. The user
+watches the search complete and then receives nothing. A single-step smoke test
+passes against this broken configuration, which is how it reached a deployed
+preview once already; the second test in `hosted-tool-calling.test.ts` exists
+specifically to catch it, and fails loudly with this variable unset.
+
+Setting it to `hidden` makes the endpoint omit the field, so there is nothing to
+echo back. It is deliberately not defaulted on in code: the parameter is Groq's,
+and other OpenAI-compatible endpoints reject unknown body fields outright.
 
 ---
 

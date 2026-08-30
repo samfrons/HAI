@@ -9,7 +9,7 @@ import {
 } from 'ai';
 
 import { claimDailyRequest, dailyCapMessage } from '@/lib/limits/daily-cap';
-import { getChatModel } from '@/lib/llm/provider';
+import { getChatModel, getProviderOptions } from '@/lib/llm/provider';
 import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
 import {
@@ -229,6 +229,7 @@ export async function POST(request: Request) {
 
   const result = streamText({
     model: getChatModel(),
+    providerOptions: getProviderOptions(),
     system: mode === 'coach' ? COACH_SYSTEM_PROMPT : SYSTEM_PROMPT,
     messages: await convertToModelMessages(
       withHistoryRedacted(messages, newestUserMessage),
