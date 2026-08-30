@@ -4,18 +4,31 @@ import path from 'node:path';
 import matter from 'gray-matter';
 
 /**
- * Reads HAI's enablement content (playbooks and guides) from `content/` at
- * the repository root, one level above this Next.js project. Server-only —
- * every export here does filesystem I/O and must not be imported from a
- * Client Component.
+ * Reads HAI's enablement content (playbooks and guides). Server-only — every
+ * export here does filesystem I/O and must not be imported from a Client
+ * Component.
  *
- * `content/` lives outside the Next.js project root, so `next.config.ts`
- * declares it via `outputFileTracingIncludes` for the routes that read it —
- * otherwise a deployed build would trace only files under `app/` and ship
- * without the content directory.
+ * The canonical copy is `content/` at the repository root, one level above this
+ * Next.js project, and that is what a repo-root build reads. A deploy made from
+ * `app/` cannot reach it: only `app/` is uploaded, so nothing above it exists at
+ * build time. `app/content/` is a vendored copy for exactly that case, and it
+ * wins when present.
+ *
+ * The cost of this is a second copy that has to be kept in step with the root
+ * one; the alternative was for the deployed site to silently lose its guides and
+ * playbooks. If the Vercel project's Root Directory is ever set to `app`, or
+ * deploys move back to the repository root for good, one of the two copies
+ * should go — see docs/DEPLOY.md.
+ *
+ * `next.config.ts` declares the content directory via `outputFileTracingIncludes`
+ * for the routes that read it; otherwise a build would trace only files under
+ * `src/` and ship without it.
  */
 
-const CONTENT_DIR = path.join(process.cwd(), '..', 'content');
+const VENDORED_CONTENT_DIR = path.join(process.cwd(), 'content');
+const CONTENT_DIR = fs.existsSync(VENDORED_CONTENT_DIR)
+  ? VENDORED_CONTENT_DIR
+  : path.join(process.cwd(), '..', 'content');
 const PLAYBOOKS_DIR = path.join(CONTENT_DIR, 'playbooks');
 const GUIDES_DIR = path.join(CONTENT_DIR, 'guides');
 

@@ -97,11 +97,34 @@ the app once `HF_TOKEN` is set.
 
 ```bash
 vercel login                         # if `vercel whoami` errors
-vercel link                          # from the repo root
+vercel link
 ```
 
-`vercel.json` at the repo root points the build at `app/`; the Next.js project is
-not at the repository root.
+### Where to deploy from
+
+The Next.js project is `app/`, not the repository root, and the live demo is
+deployed **from inside `app/`**:
+
+```bash
+cd app && vercel deploy --prod
+```
+
+That works because `app/content/` holds a vendored copy of the root `content/`
+directory. A deploy from `app/` uploads only `app/`, so nothing above it exists
+at build time — without the vendored copy the site ships with no guides and no
+playbooks. `src/lib/content.ts` prefers the vendored copy and falls back to the
+root one.
+
+Deploying from the repository root also works: `vercel.json` and `package.json`
+there exist to make the repo root a valid build root, because Vercel resolves
+both the package manager and framework detection from a manifest at whatever
+directory it builds in. Keep them — a Git-triggered deploy builds from the root
+unless the project's Root Directory setting says otherwise, and would fail
+without them.
+
+The tidier end state is to set Root Directory to `app` in project settings and
+delete one of the two content copies. That is a dashboard setting, so it is left
+as a deliberate follow-up rather than something a script does.
 
 ### Environment variables
 
@@ -111,9 +134,9 @@ Set each for **Preview** and **Production**
 | Variable | Value | Notes |
 |---|---|---|
 | `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | Groq's OpenAI-compatible endpoint |
-| `LLM_MODEL` | `openai/gpt-oss-120b` | must support tool calling — see below |
+| `LLM_MODEL` | `qwen/qwen3.8-27b` | must support tool calling — see below |
 | `LLM_API_KEY` | `gsk_...` | https://console.groq.com/keys |
-| `LLM_REASONING_FORMAT` | `hidden` | **required with a reasoning model** — see below |
+| `LLM_REASONING_FORMAT` | `hidden` | **required with `openai/gpt-oss-120b`** — see below |
 | `EMBEDDINGS_PROVIDER` | `hf` | switches query embedding off Ollama |
 | `HF_TOKEN` | `hf_...` | token with the "Inference Providers" permission |
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://REF.supabase.co` | |
@@ -141,10 +164,21 @@ verify the model you choose actually drives HAI's tool loop:
 ```bash
 cd app
 LLM_BASE_URL=https://api.groq.com/openai/v1 \
-LLM_MODEL=openai/gpt-oss-120b \
+LLM_MODEL=qwen/qwen3.8-27b \
 LLM_API_KEY=gsk_... \
   pnpm test hosted-tool-calling
 ```
+
+Measured against the free tier on 2026-08-31:
+
+| Model | Result |
+|---|---|
+| `qwen/qwen3.8-27b` | passes with or without `LLM_REASONING_FORMAT` |
+| `openai/gpt-oss-120b` | multi-step step fails unless `LLM_REASONING_FORMAT=hidden` |
+| `llama-3.3-70b-versatile` | no longer exists on Groq |
+
+`qwen/qwen3.8-27b` is the deployed default because it is the one that does not
+depend on a vendor-specific request parameter to complete a tool loop.
 
 That test is skipped whenever `LLM_BASE_URL` is local, so `pnpm test` stays
 offline by default. It is worth running because the failure it catches is
