@@ -2,6 +2,7 @@
 
 import { useLocale } from '@/lib/i18n/context';
 import { LOCALES, LOCALE_LABELS, isLocale } from '@/lib/i18n/locales';
+import { IconLanguage } from './icons';
 
 /**
  * Compact locale switcher for the header. A native `<select>` rather than a
@@ -13,6 +14,7 @@ export function LocaleSwitcher() {
 
   return (
     <label className="flex items-center gap-1.5 text-xs font-medium text-muted">
+      <IconLanguage size={14} className="shrink-0" />
       <span className="sr-only">{t.localeSwitcher.label}</span>
       <select
         value={locale}
@@ -20,7 +22,7 @@ export function LocaleSwitcher() {
           const { value } = event.target;
           if (isLocale(value)) setLocale(value);
         }}
-        className="rounded-md border border-border-subtle bg-surface px-1.5 py-1 text-xs text-foreground transition-colors hover:border-accent-border focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="border border-border-subtle bg-surface px-1.5 py-1 text-xs text-foreground transition-colors hover:border-accent-border focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {LOCALES.map((code) => (
           <option key={code} value={code}>

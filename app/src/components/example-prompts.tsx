@@ -20,21 +20,12 @@ export function ExamplePrompts({ examples }: { examples: PlaybookExample[] }) {
 
   return (
     <section>
-      <h2 className="text-[1.05rem] font-semibold tracking-tight text-foreground">
-        {t.playbookDetail.examplePromptsHeading}
-      </h2>
+      <h2 className="hai-heading text-[1.05rem] text-foreground">{t.playbookDetail.examplePromptsHeading}</h2>
       <div className="mt-4 space-y-3">
         {examples.map((example) => (
-          <div
-            key={example.number}
-            className="rounded-lg border border-border-subtle bg-surface p-4"
-          >
+          <div key={example.number} className="border border-border-subtle bg-surface p-4">
             <div className="flex items-start justify-between gap-3">
-              <span
-                className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ${levelStyle(
-                  example.level,
-                )}`}
-              >
+              <span className={`hai-eyebrow shrink-0 px-2 py-0.5 ${levelStyle(example.level)}`}>
                 {example.level}
               </span>
               <TryInChatButton prompt={example.prompt} />

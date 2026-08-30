@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { PlaybooksIndex } from '@/components/playbooks-index';
-import { getPlaybookIcons, getPlaybookIndex } from '@/lib/content';
+import { getPlaybookIndex } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Playbooks — HAI',
@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function PlaybooksIndexPage() {
   const playbooks = getPlaybookIndex();
-  const icons = getPlaybookIcons();
 
-  return <PlaybooksIndex playbooks={playbooks} icons={icons} />;
+  return <PlaybooksIndex playbooks={playbooks} />;
 }

@@ -18,10 +18,11 @@ export function NavLinks() {
     { href: '/', label: t.nav.chat },
     { href: '/playbooks', label: t.nav.playbooks },
     { href: '/guides', label: t.nav.guides },
+    { href: '/about', label: t.nav.about },
   ] as const;
 
   return (
-    <nav className="flex items-center gap-1" aria-label="Main">
+    <nav className="flex flex-wrap items-center gap-x-4 gap-y-1" aria-label="Main">
       {links.map((link) => {
         const active = isActive(pathname, link.href);
         return (
@@ -29,10 +30,10 @@ export function NavLinks() {
             key={link.href}
             href={link.href}
             aria-current={active ? 'page' : undefined}
-            className={`rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
+            className={`hai-eyebrow border-b-2 pb-0.5 transition-colors ${
               active
-                ? 'bg-accent-soft text-accent'
-                : 'text-muted hover:bg-surface-muted hover:text-foreground'
+                ? 'border-accent text-foreground'
+                : 'border-transparent text-muted hover:text-foreground'
             }`}
           >
             {link.label}

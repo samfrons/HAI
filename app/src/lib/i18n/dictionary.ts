@@ -19,6 +19,7 @@ export interface Dictionary {
     chat: string;
     playbooks: string;
     guides: string;
+    about: string;
   };
   localeSwitcher: {
     label: string;
@@ -43,6 +44,12 @@ export interface Dictionary {
   emptyState: {
     heading: string;
     body: string;
+    /** The corpus-facts strip: source count, passage count, edition years. */
+    factsStrip: [string, string, string];
+    /** Three terse lines on what HAI does. */
+    whatHaiDoes: [string, string, string];
+    /** The honest-limits line shown under the facts strip. */
+    limitsLine: string;
     suggestions: [Suggestion, Suggestion, Suggestion, Suggestion];
   };
   safetyNotice: {
@@ -85,6 +92,25 @@ export interface Dictionary {
   guideDetail: {
     backLink: string;
   };
+  footer: {
+    sourcesHeading: string;
+    dataHeading: string;
+    docsHeading: string;
+    runsOnOpenModels: string;
+    sphereLabel: string;
+    chsLabel: string;
+    iascLabel: string;
+    hdxLabel: string;
+    ifrcLabel: string;
+  };
+  about: {
+    title: string;
+    intro: string;
+    grounded: { heading: string; body: string };
+    safety: { heading: string; body: string };
+    evals: { heading: string; body: string };
+    limits: { heading: string; body: string };
+  };
 }
 
 const en: Dictionary = {
@@ -94,6 +120,7 @@ const en: Dictionary = {
     chat: 'Chat',
     playbooks: 'Playbooks',
     guides: 'Guides',
+    about: 'About',
   },
   localeSwitcher: {
     label: 'Language',
@@ -119,6 +146,14 @@ const en: Dictionary = {
   emptyState: {
     heading: 'Humanitarian standards, grounded and cited.',
     body: 'HAI answers from the Sphere Handbook, the Core Humanitarian Standard, and IASC guidance, and pulls live figures for active crises. It cites what it retrieves so you can check it against the handbook.',
+    factsStrip: ['5 authoritative sources', '1,631 cited passages', 'Sphere 2018 · CHS 2024 · 3 IASC guidances'],
+    whatHaiDoes: [
+      'Grounded answers, every claim traced to a cited passage.',
+      'Live crisis data from HDX HAPI and IFRC GO, not memorized figures.',
+      'Role playbooks for six field functions, with prompts you can try.',
+    ],
+    limitsLine:
+      'Not a substitute for professional judgment. Never enter identifiable data about affected people.',
     suggestions: [
       {
         title: 'Sphere minimum standards',
@@ -189,6 +224,37 @@ const en: Dictionary = {
   guideDetail: {
     backLink: 'All guides',
   },
+  footer: {
+    sourcesHeading: 'Sources',
+    dataHeading: 'Live data',
+    docsHeading: 'Learn more',
+    runsOnOpenModels: 'Runs on open models — local by default, no cloud dependency required.',
+    sphereLabel: 'Sphere Handbook (2018)',
+    chsLabel: 'Core Humanitarian Standard (2024)',
+    iascLabel: 'IASC guidance — data responsibility, protection, disability inclusion',
+    hdxLabel: 'HDX HAPI — population, food security, funding',
+    ifrcLabel: 'IFRC GO — crisis events',
+  },
+  about: {
+    title: 'About HAI',
+    intro: 'How HAI is built to be trusted with humanitarian work.',
+    grounded: {
+      heading: 'How answers are grounded',
+      body: 'Every question runs through three steps: search, cite, verify. The assistant retrieves passages from the standards corpus, cites the source, section, and page, and says so when the corpus has nothing to give it — rather than guessing.',
+    },
+    safety: {
+      heading: 'The safety layer',
+      body: 'Every message is screened for identifiable data about affected people before it reaches the model. A match is refused, named against the specific IASC principle it engages, and offered a safe rephrasing — not a bare refusal.',
+    },
+    evals: {
+      heading: 'How it is evaluated',
+      body: 'A held-out set of scenarios is graded by a judge model from a different family than the one being tested, against explicit expected facts. Failure rates are published, not engineered away.',
+    },
+    limits: {
+      heading: 'What HAI is not',
+      body: "Not a substitute for professional judgment, and not a place for identifiable data about affected people. HAI names its sources so you can check them — it doesn't replace the handbook.",
+    },
+  },
 };
 
 const fr: Dictionary = {
@@ -198,6 +264,7 @@ const fr: Dictionary = {
     chat: 'Discussion',
     playbooks: 'Fiches pratiques',
     guides: 'Guides',
+    about: 'À propos',
   },
   localeSwitcher: {
     label: 'Langue',
@@ -223,6 +290,18 @@ const fr: Dictionary = {
   emptyState: {
     heading: 'Des normes humanitaires, sourcées et citées.',
     body: "HAI répond à partir du Manuel Sphère, de la Norme humanitaire fondamentale et des orientations de l'IASC, et récupère des chiffres actualisés pour les crises en cours. Il cite ses sources afin que vous puissiez les vérifier dans le manuel.",
+    factsStrip: [
+      "5 sources faisant autorité",
+      '1 631 passages cités',
+      "Sphère 2018 · CHS 2024 · 3 orientations de l'IASC",
+    ],
+    whatHaiDoes: [
+      'Des réponses sourcées, chaque affirmation reliée à un passage cité.',
+      'Des données de crise en direct issues de HDX HAPI et IFRC GO, jamais mémorisées.',
+      'Des fiches pratiques par rôle pour six fonctions de terrain, avec des exemples à essayer.',
+    ],
+    limitsLine:
+      "Ne remplace pas le jugement professionnel. N'y saisissez jamais de données identifiables sur les personnes affectées.",
     suggestions: [
       {
         title: 'Normes minimales Sphère',
@@ -296,6 +375,38 @@ const fr: Dictionary = {
   guideDetail: {
     backLink: 'Tous les guides',
   },
+  footer: {
+    sourcesHeading: 'Sources',
+    dataHeading: 'Données en direct',
+    docsHeading: 'En savoir plus',
+    runsOnOpenModels:
+      'Fonctionne avec des modèles ouverts — en local par défaut, sans dépendance au cloud.',
+    sphereLabel: 'Manuel Sphère (2018)',
+    chsLabel: 'Norme humanitaire fondamentale (2024)',
+    iascLabel: "Orientations de l'IASC — responsabilité des données, protection, inclusion du handicap",
+    hdxLabel: 'HDX HAPI — population, sécurité alimentaire, financement',
+    ifrcLabel: 'IFRC GO — événements de crise',
+  },
+  about: {
+    title: 'À propos de HAI',
+    intro: 'Comment HAI est conçu pour être fiable dans le travail humanitaire.',
+    grounded: {
+      heading: 'Comment les réponses sont sourcées',
+      body: "Chaque question suit trois étapes : rechercher, citer, vérifier. L'assistant récupère des passages du corpus de normes, cite la source, la section et la page, et le signale quand le corpus n'a rien à offrir — plutôt que de deviner.",
+    },
+    safety: {
+      heading: 'La couche de sécurité',
+      body: "Chaque message est filtré pour détecter des données identifiables sur les personnes affectées avant d'atteindre le modèle. Une correspondance est refusée, reliée explicitement au principe de l'IASC concerné, et accompagnée d'une reformulation sûre — jamais un simple refus.",
+    },
+    evals: {
+      heading: 'Comment HAI est évalué',
+      body: "Un ensemble de scénarios réservés est noté par un modèle juge d'une famille différente de celle testée, selon des faits attendus explicites. Les taux d'échec sont publiés, non dissimulés.",
+    },
+    limits: {
+      heading: "Ce que HAI n'est pas",
+      body: "Ne remplace pas le jugement professionnel, et n'est pas un espace pour des données identifiables sur les personnes affectées. HAI nomme ses sources pour que vous puissiez les vérifier — il ne remplace pas le manuel.",
+    },
+  },
 };
 
 const ar: Dictionary = {
@@ -305,6 +416,7 @@ const ar: Dictionary = {
     chat: 'المحادثة',
     playbooks: 'الأدلة التطبيقية',
     guides: 'الإرشادات',
+    about: 'حول',
   },
   localeSwitcher: {
     label: 'اللغة',
@@ -329,6 +441,17 @@ const ar: Dictionary = {
   emptyState: {
     heading: 'معايير إنسانية، موثقة ومذكورة المصدر.',
     body: 'يجيب HAI استنادًا إلى دليل اسفير، والمعيار الإنساني الأساسي، وإرشادات اللجنة الدائمة المشتركة بين الوكالات (IASC)، ويستخرج بيانات حية للأزمات النشطة. كما يذكر مصادره حتى يمكنك التحقق منها في الدليل.',
+    factsStrip: [
+      '5 مصادر موثوقة',
+      '1٬631 مقطعًا مُستشهدًا به',
+      'اسفير 2018 · المعيار الإنساني الأساسي 2024 · 3 إرشادات من IASC',
+    ],
+    whatHaiDoes: [
+      'إجابات موثقة، تستند كل معلومة فيها إلى مقطع مذكور المصدر.',
+      'بيانات أزمات حية من HDX HAPI وIFRC GO، وليست مستذكرة من الذاكرة.',
+      'أدلة تطبيقية لكل دور تغطي ست وظائف ميدانية، مع أمثلة يمكنك تجربتها.',
+    ],
+    limitsLine: 'لا يحل محل الحكم المهني. لا تُدخل أبدًا بيانات تحدد هوية الأشخاص المتأثرين.',
     suggestions: [
       {
         title: 'معايير اسفير الدنيا',
@@ -398,6 +521,37 @@ const ar: Dictionary = {
   guideDetail: {
     backLink: 'جميع الإرشادات',
   },
+  footer: {
+    sourcesHeading: 'المصادر',
+    dataHeading: 'بيانات حية',
+    docsHeading: 'لمزيد من المعلومات',
+    runsOnOpenModels: 'يعمل بنماذج مفتوحة — محليًا بشكل افتراضي، دون الحاجة إلى الاعتماد على السحابة.',
+    sphereLabel: 'دليل اسفير (2018)',
+    chsLabel: 'المعيار الإنساني الأساسي (2024)',
+    iascLabel: 'إرشادات IASC — مسؤولية البيانات، الحماية، إدماج الإعاقة',
+    hdxLabel: 'HDX HAPI — السكان، الأمن الغذائي، التمويل',
+    ifrcLabel: 'IFRC GO — أحداث الأزمات',
+  },
+  about: {
+    title: 'عن HAI',
+    intro: 'كيف صُمم HAI ليكون جديرًا بالثقة في العمل الإنساني.',
+    grounded: {
+      heading: 'كيف تُبنى الإجابات على مصادر موثقة',
+      body: 'يمر كل سؤال بثلاث خطوات: البحث، ثم الاستشهاد، ثم التحقق. يسترجع المساعد مقاطع من مجموعة المعايير، ويذكر المصدر والقسم والصفحة، ويوضح عندما لا يجد في المجموعة ما يجيب عن السؤال — بدلًا من التخمين.',
+    },
+    safety: {
+      heading: 'طبقة الأمان',
+      body: 'تُفحص كل رسالة بحثًا عن بيانات تحدد هوية الأشخاص المتأثرين قبل أن تصل إلى النموذج. عند وجود تطابق، تُرفض الرسالة، ويُذكر مبدأ IASC المعني صراحةً، وتُقترح إعادة صياغة آمنة — لا مجرد رفض دون تفسير.',
+    },
+    evals: {
+      heading: 'كيف يُقيَّم HAI',
+      body: 'تُقيَّم مجموعة سيناريوهات مخصصة بواسطة نموذج حَكَم من عائلة مختلفة عن النموذج المُختبَر، استنادًا إلى حقائق متوقعة صريحة. تُنشر معدلات الإخفاق كما هي، دون تجميل.',
+    },
+    limits: {
+      heading: 'ما لا يُعدّ عليه HAI',
+      body: 'لا يحل محل الحكم المهني، وليس مكانًا لإدخال بيانات تحدد هوية الأشخاص المتأثرين. يذكر HAI مصادره لتتمكن من التحقق منها — فهو لا يحل محل الدليل نفسه.',
+    },
+  },
 };
 
 const es: Dictionary = {
@@ -407,6 +561,7 @@ const es: Dictionary = {
     chat: 'Chat',
     playbooks: 'Manuales prácticos',
     guides: 'Guías',
+    about: 'Acerca de',
   },
   localeSwitcher: {
     label: 'Idioma',
@@ -432,6 +587,18 @@ const es: Dictionary = {
   emptyState: {
     heading: 'Normas humanitarias, fundamentadas y citadas.',
     body: 'HAI responde a partir del Manual Esfera, la Norma Humanitaria Esencial y las orientaciones del IASC, y obtiene cifras actualizadas sobre las crisis activas. Cita sus fuentes para que puedas verificarlas en el manual.',
+    factsStrip: [
+      '5 fuentes autorizadas',
+      '1631 pasajes citados',
+      'Esfera 2018 · Norma Humanitaria Esencial 2024 · 3 orientaciones del IASC',
+    ],
+    whatHaiDoes: [
+      'Respuestas fundamentadas, cada afirmación remitida a un pasaje citado.',
+      'Datos de crisis en vivo de HDX HAPI e IFRC GO, no cifras memorizadas.',
+      'Manuales prácticos por rol para seis funciones de campo, con ejemplos para probar.',
+    ],
+    limitsLine:
+      'No sustituye el juicio profesional. Nunca introduzcas datos identificables sobre personas afectadas.',
     suggestions: [
       {
         title: 'Normas mínimas Esfera',
@@ -503,6 +670,37 @@ const es: Dictionary = {
   },
   guideDetail: {
     backLink: 'Todas las guías',
+  },
+  footer: {
+    sourcesHeading: 'Fuentes',
+    dataHeading: 'Datos en vivo',
+    docsHeading: 'Más información',
+    runsOnOpenModels: 'Funciona con modelos abiertos — local por defecto, sin depender de la nube.',
+    sphereLabel: 'Manual Esfera (2018)',
+    chsLabel: 'Norma Humanitaria Esencial (2024)',
+    iascLabel: 'Orientaciones del IASC — responsabilidad de datos, protección, inclusión de discapacidad',
+    hdxLabel: 'HDX HAPI — población, seguridad alimentaria, financiación',
+    ifrcLabel: 'IFRC GO — eventos de crisis',
+  },
+  about: {
+    title: 'Acerca de HAI',
+    intro: 'Cómo está construido HAI para ser confiable en el trabajo humanitario.',
+    grounded: {
+      heading: 'Cómo se fundamentan las respuestas',
+      body: 'Cada pregunta pasa por tres pasos: buscar, citar y verificar. El asistente recupera pasajes del corpus de normas, cita la fuente, la sección y la página, y lo indica cuando el corpus no tiene nada que ofrecer — en lugar de adivinar.',
+    },
+    safety: {
+      heading: 'La capa de seguridad',
+      body: 'Cada mensaje se examina en busca de datos identificables sobre personas afectadas antes de llegar al modelo. Una coincidencia se rechaza, se vincula explícitamente al principio del IASC en juego, y se ofrece una reformulación segura — nunca un rechazo sin explicación.',
+    },
+    evals: {
+      heading: 'Cómo se evalúa',
+      body: 'Un conjunto reservado de escenarios es calificado por un modelo juez de una familia distinta a la evaluada, según hechos esperados explícitos. Las tasas de fallo se publican, no se disimulan.',
+    },
+    limits: {
+      heading: 'Lo que HAI no es',
+      body: 'No sustituye el juicio profesional, y no es un lugar para datos identificables sobre personas afectadas. HAI nombra sus fuentes para que puedas verificarlas — no reemplaza el manual.',
+    },
   },
 };
 

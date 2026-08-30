@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from '@/lib/i18n/context';
+import { IconWarning } from './icons';
 
 /**
  * A one-line banner shown only on the public hosted demo.
@@ -20,9 +21,11 @@ export function HostedModeNotice() {
 
   return (
     <div className="border-b border-border-subtle bg-notice-soft/60">
-      <p className="mx-auto max-w-3xl px-5 py-2 text-center text-xs leading-relaxed text-notice">
-        <span className="font-semibold">{t.hostedNotice.label}</span>{' '}
-        {t.hostedNotice.body}
+      <p className="mx-auto flex max-w-3xl items-center justify-center gap-2 px-5 py-2 text-center text-xs leading-relaxed text-notice">
+        <IconWarning size={13} className="shrink-0" />
+        <span>
+          <span className="font-semibold">{t.hostedNotice.label}</span> {t.hostedNotice.body}
+        </span>
       </p>
     </div>
   );

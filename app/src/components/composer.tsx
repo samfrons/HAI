@@ -44,7 +44,7 @@ export function Composer({
 
   return (
     <form onSubmit={submit} className="w-full">
-      <div className="flex items-end gap-2 rounded-xl border border-border-subtle bg-surface p-2 shadow-sm transition-colors focus-within:border-accent-border">
+      <div className="flex items-end gap-2 border border-border-strong bg-surface p-2 transition-colors focus-within:border-accent">
         <textarea
           ref={textareaRef}
           value={value}
@@ -59,7 +59,7 @@ export function Composer({
           <button
             type="button"
             onClick={onStop}
-            className="shrink-0 rounded-lg border border-border-strong px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-surface-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="hai-eyebrow shrink-0 border border-border-strong px-3 py-1.5 text-muted transition-colors hover:bg-surface-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             {t.composer.stop}
           </button>
@@ -67,7 +67,7 @@ export function Composer({
           <button
             type="submit"
             disabled={!value.trim()}
-            className="shrink-0 rounded-lg bg-accent px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="hai-eyebrow shrink-0 bg-accent px-3.5 py-1.5 text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t.composer.send}
           </button>

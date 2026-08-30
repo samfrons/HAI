@@ -2,6 +2,7 @@
 
 import type { HaiUIMessage } from '@/app/api/chat/route';
 import { useLocale } from '@/lib/i18n/context';
+import { IconWarning, TOOL_ICONS } from './icons';
 
 type Part = HaiUIMessage['parts'][number];
 
@@ -47,27 +48,21 @@ export function ToolActivity({ part }: { part: Part }) {
       ? t.toolActivity.done[tool]
       : t.toolActivity.running[tool];
   const context = detail(part);
+  const ToolIcon = TOOL_ICONS[tool];
 
   return (
     <div
-      className="flex items-baseline gap-2 text-xs text-subtle"
+      className="flex items-center gap-2 text-xs text-subtle"
       aria-live={isDone ? 'off' : 'polite'}
     >
-      <span
-        aria-hidden
-        className={`mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full ${
-          failed
-            ? 'bg-notice'
-            : isDone
-              ? 'bg-accent-border'
-              : 'bg-accent hai-pulse'
-        }`}
-      />
+      {failed ? (
+        <IconWarning size={14} className="shrink-0 text-notice" />
+      ) : (
+        <ToolIcon size={14} className={`shrink-0 ${isDone ? 'text-subtle' : 'text-accent hai-pulse'}`} />
+      )}
       <span>
         {text}
-        {context ? (
-          <span className="text-subtle/70"> · {context}</span>
-        ) : null}
+        {context ? <span className="text-subtle/70"> · {context}</span> : null}
         {isDone ? null : <span className="hai-pulse">…</span>}
       </span>
     </div>

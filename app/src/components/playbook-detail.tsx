@@ -6,17 +6,16 @@ import type { Playbook } from '@/lib/content';
 import { useLocale } from '@/lib/i18n/context';
 import { ContentEnglishNote } from './content-english-note';
 import { ExamplePrompts } from './example-prompts';
+import { IconDocument, PLAYBOOK_ICONS } from './icons';
 import { Markdown } from './markdown';
 
 export function PlaybookDetail({ playbook }: { playbook: Playbook }) {
   const { t } = useLocale();
+  const Icon = PLAYBOOK_ICONS[playbook.id] ?? IconDocument;
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link
-        href="/playbooks"
-        className="text-sm font-medium text-muted transition-colors hover:text-foreground"
-      >
+      <Link href="/playbooks" className="text-sm font-medium text-muted transition-colors hover:text-foreground">
         <span aria-hidden="true" className="rtl:-scale-x-100">
           ←
         </span>{' '}
@@ -24,10 +23,8 @@ export function PlaybookDetail({ playbook }: { playbook: Playbook }) {
       </Link>
 
       <div className="mt-4 flex items-center gap-3">
-        <span className="text-3xl" aria-hidden="true">
-          {playbook.icon}
-        </span>
-        <span className="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
+        <Icon size={30} className="text-accent" />
+        <span className="hai-eyebrow border border-border-strong px-2 py-1 text-foreground">
           {playbook.role}
         </span>
       </div>

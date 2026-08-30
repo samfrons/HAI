@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { useLocale } from '@/lib/i18n/context';
 import { type SafetyNoticeData } from '@/lib/safety/intercept';
+import { IconWarning } from './icons';
 
 /**
  * The amber banner on an intercepted message. Advisory, not alarming: the same
@@ -20,11 +21,9 @@ export function SafetyNotice({ notice }: { notice: SafetyNoticeData }) {
   const { t } = useLocale();
 
   return (
-    <aside className="rounded-lg border border-notice-border bg-notice-soft px-3.5 py-3 text-xs leading-relaxed text-notice">
-      <div className="flex items-baseline gap-2">
-        <span aria-hidden className="font-semibold">
-          &#9888;
-        </span>
+    <aside className="border border-notice-border bg-notice-soft px-3.5 py-3 text-xs leading-relaxed text-notice">
+      <div className="flex items-start gap-2">
+        <IconWarning size={16} className="mt-0.5 shrink-0" />
         <div className="space-y-1.5">
           <p className="font-semibold">{t.safetyNotice.title}</p>
 
@@ -39,9 +38,7 @@ export function SafetyNotice({ notice }: { notice: SafetyNoticeData }) {
             {notice.findings.map((finding, index) => (
               <li key={`${finding.type}-${index}`} className="opacity-90">
                 <span className="font-medium">{finding.label}</span>{' '}
-                <code className="rounded bg-notice-border/40 px-1 py-px font-mono">
-                  {finding.snippet}
-                </code>
+                <code className="hai-data bg-notice-border/40 px-1 py-px">{finding.snippet}</code>
               </li>
             ))}
           </ul>
