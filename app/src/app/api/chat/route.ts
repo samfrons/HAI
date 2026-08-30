@@ -8,6 +8,7 @@ import {
   type UIMessage,
 } from 'ai';
 
+import { claimDailyRequest, dailyCapMessage } from '@/lib/limits/daily-cap';
 import { getChatModel } from '@/lib/llm/provider';
 import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
@@ -21,7 +22,18 @@ import { screenForPii, type PiiFinding } from '@/lib/safety/pii';
 import { haiTools } from '@/lib/tools';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 120;
+
+/*
+ * Serverless execution budget, and a Vercel-only concern — `next dev` and
+ * `next start` ignore it, so the local demo is unaffected by this number.
+ *
+ * 60 rather than the 120 a slow local model wants, because Vercel's Hobby plan
+ * caps functions at 60s without Fluid compute and rejects the deployment
+ * outright above it. Hosted inference is fast enough that this is not the
+ * binding constraint: a multi-step tool-calling turn against Groq finishes well
+ * inside it. Raise it if you deploy on a plan that allows more.
+ */
+export const maxDuration = 60;
 
 // cost: $0.00 per message — inference runs locally through Ollama by default.
 // Pointing LLM_BASE_URL at a hosted endpoint may introduce per-token billing.
@@ -34,17 +46,35 @@ export type HaiDataParts = {
 /** Shared with the client so message parts are typed against the real tools. */
 export type HaiUIMessage = UIMessage<never, HaiDataParts, InferUITools<typeof haiTools>>;
 
-const RATE_LIMIT_PER_MINUTE = 20;
+const DEFAULT_RATE_LIMIT_PER_MINUTE = 20;
 const RATE_LIMIT_WINDOW_MS = 60_000;
+
+function ratePerMinute(): number {
+  const parsed = Number.parseInt(process.env.RATE_LIMIT_RPM ?? '', 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_RATE_LIMIT_PER_MINUTE;
+}
 
 /**
  * Per-IP rate limit held in process memory. This is genuinely not a production
  * rate limiter: it resets on deploy, and every serverless instance keeps its
  * own counter, so the effective limit is the configured one multiplied by the
- * number of live instances. Anything user-facing needs durable shared storage
- * (Redis, Upstash, or a database table) before it can be relied on.
+ * number of live instances. On Vercel that multiplier is whatever the platform
+ * decides to scale to, which is exactly why it is paired with the shared daily
+ * cap below rather than trusted on its own — this one paces a single impatient
+ * browser, and `claimDailyRequest` is what actually bounds a day.
  */
 const requestLog = new Map<string, number[]>();
+
+/** The daily counter rolls over on the database's `current_date`, i.e. UTC. */
+function secondsUntilUtcMidnight(): number {
+  const now = new Date();
+  const midnight = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate() + 1,
+  );
+  return Math.max(1, Math.ceil((midnight - now.getTime()) / 1000));
+}
 
 function clientKey(request: Request): string {
   const forwarded = request.headers.get('x-forwarded-for');
@@ -57,7 +87,7 @@ function isRateLimited(key: string): boolean {
   const cutoff = now - RATE_LIMIT_WINDOW_MS;
   const recent = (requestLog.get(key) ?? []).filter((at) => at > cutoff);
 
-  if (recent.length >= RATE_LIMIT_PER_MINUTE) {
+  if (recent.length >= ratePerMinute()) {
     requestLog.set(key, recent);
     return true;
   }
@@ -145,9 +175,22 @@ export async function POST(request: Request) {
   if (isRateLimited(clientKey(request))) {
     return Response.json(
       {
-        error: `Rate limit exceeded — ${RATE_LIMIT_PER_MINUTE} messages per minute. Wait a moment and try again.`,
+        error: `Rate limit exceeded — ${ratePerMinute()} messages per minute. Wait a moment and try again.`,
       },
       { status: 429, headers: { 'Retry-After': '60' } },
+    );
+  }
+
+  // Claimed before the body is even parsed: a request that cannot be served
+  // should not cost a model call, a retrieval round-trip, or a screening pass.
+  // No-ops entirely in local mode, where inference is free.
+  const daily = await claimDailyRequest();
+  if (!daily.allowed) {
+    return Response.json(
+      { error: dailyCapMessage(daily) },
+      // Until 00:00 UTC, so a client that honours Retry-After waits for the
+      // actual reset instead of hammering the endpoint for the rest of the day.
+      { status: 429, headers: { 'Retry-After': String(secondsUntilUtcMidnight()) } },
     );
   }
 

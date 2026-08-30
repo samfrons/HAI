@@ -34,6 +34,11 @@ export interface Dictionary {
     stop: string;
   };
   disclaimer: string;
+  /** Shown only on the public hosted demo — see `HostedModeNotice`. */
+  hostedNotice: {
+    label: string;
+    body: string;
+  };
   errorFallback: string;
   emptyState: {
     heading: string;
@@ -106,6 +111,10 @@ const en: Dictionary = {
   },
   disclaimer:
     'HAI provides guidance grounded in humanitarian standards. It does not replace professional judgment.',
+  hostedNotice: {
+    label: 'Hosted demo.',
+    body: 'Messages are sent to a third-party model provider. Do not enter personal data about affected people. Run HAI locally to keep everything on your own machine.',
+  },
   errorFallback: 'The assistant could not complete that request. Try again.',
   emptyState: {
     heading: 'Humanitarian standards, grounded and cited.',
@@ -206,6 +215,10 @@ const fr: Dictionary = {
   },
   disclaimer:
     "HAI fournit des orientations fondées sur les normes humanitaires. Il ne remplace pas le jugement professionnel.",
+  hostedNotice: {
+    label: 'Démonstration hébergée.',
+    body: "Les messages sont transmis à un fournisseur de modèle tiers. N'y saisissez aucune donnée personnelle concernant les personnes affectées. Installez HAI en local pour que tout reste sur votre machine.",
+  },
   errorFallback: "L'assistant n'a pas pu traiter cette demande. Veuillez réessayer.",
   emptyState: {
     heading: 'Des normes humanitaires, sourcées et citées.',
@@ -308,6 +321,10 @@ const ar: Dictionary = {
     stop: 'إيقاف',
   },
   disclaimer: 'يقدّم HAI إرشادات مستندة إلى المعايير الإنسانية. وهو لا يحل محل الحكم المهني.',
+  hostedNotice: {
+    label: 'نسخة تجريبية مستضافة.',
+    body: 'تُرسَل الرسائل إلى مزوّد نماذج خارجي. لا تُدخِل أي بيانات شخصية عن الأشخاص المتأثرين. شغّل HAI محليًا ليبقى كل شيء على جهازك.',
+  },
   errorFallback: 'تعذّر على المساعد إتمام هذا الطلب. حاول مرة أخرى.',
   emptyState: {
     heading: 'معايير إنسانية، موثقة ومذكورة المصدر.',
@@ -407,6 +424,10 @@ const es: Dictionary = {
   },
   disclaimer:
     'HAI ofrece orientación basada en normas humanitarias. No sustituye el juicio profesional.',
+  hostedNotice: {
+    label: 'Demo alojada.',
+    body: 'Los mensajes se envían a un proveedor de modelos externo. No introduzcas datos personales sobre personas afectadas. Ejecuta HAI en local para que todo permanezca en tu propia máquina.',
+  },
   errorFallback: 'El asistente no pudo completar esa solicitud. Inténtalo de nuevo.',
   emptyState: {
     heading: 'Normas humanitarias, fundamentadas y citadas.',

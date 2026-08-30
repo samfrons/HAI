@@ -10,6 +10,7 @@ import { useLocale } from '@/lib/i18n/context';
 import { Citations } from './citations';
 import { Composer } from './composer';
 import { EmptyState } from './empty-state';
+import { HostedModeNotice } from './hosted-mode-notice';
 import { LocaleSwitcher } from './locale-switcher';
 import { Markdown } from './markdown';
 import { NavLinks } from './nav-links';
@@ -18,7 +19,7 @@ import { SourcePanel } from './source-panel';
 import { collectRetrievalNotice, collectSources, type Source } from './sources';
 import { ToolActivity } from './tool-activity';
 
-export function Chat() {
+export function Chat({ hosted = false }: { hosted?: boolean }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { t } = useLocale();
@@ -91,6 +92,7 @@ export function Chat() {
             <LocaleSwitcher />
           </div>
         </div>
+        {hosted ? <HostedModeNotice /> : null}
       </header>
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-5">

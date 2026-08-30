@@ -1,0 +1,14 @@
+{
+  "name": "hai",
+  "private": true,
+  "description": "Build-root manifest for Vercel. The application lives in app/; this file exists so the repository root can be the build root, which it must be because the Next.js app reads content/ from the parent of its own directory (see app/src/lib/content.ts). Vercel detects a framework by looking for it in the dependencies of the package.json at the build root, and reads packageManager from the same file — without this, the build fails first on an incompatible pnpm and then on 'No Next.js version detected'. The dependency below is never installed: vercel.json overrides installCommand to run pnpm inside app/.",
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "build": "pnpm --dir app build",
+    "dev": "pnpm --dir app dev",
+    "test": "pnpm --dir app test"
+  },
+  "dependencies": {
+    "next": "16.3.2"
+  }
+}

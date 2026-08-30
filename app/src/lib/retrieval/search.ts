@@ -14,6 +14,8 @@
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
+import { embedQuery } from './embeddings';
+
 export type StandardsSource = 'sphere' | 'chs' | 'iasc';
 
 /** `'all'` is accepted at the call site and means "no source filter". */
@@ -70,69 +72,18 @@ const RETRIEVAL_UNAVAILABLE_NOTICE =
 
 // --- Query embedding ---------------------------------------------------
 //
-// mxbai-embed-large is trained with an asymmetric retrieval prompt: queries
-// carry this prefix, documents do not (see ingestion/embed.ts, which the
-// corpus was embedded with). Omitting it measurably degrades recall.
+// Delegated to ./embeddings, which serves the same mxbai-embed-large vectors
+// from local Ollama or hosted Hugging Face depending on EMBEDDINGS_PROVIDER.
+// It returns null rather than throwing on any failure, and a null embedding
+// still reaches `search_standards_hybrid`, which then falls back to the
+// full-text leg alone instead of failing the whole search.
 
-const OLLAMA_BASE_URL = (process.env.OLLAMA_BASE_URL ?? 'http://localhost:11434').replace(/\/+$/, '');
-const EMBEDDING_MODEL = process.env.EMBEDDING_MODEL ?? 'mxbai-embed-large';
-const EMBED_DIMENSIONS = 1024;
-const QUERY_PREFIX = 'Represent this sentence for searching relevant passages: ';
-/*
- * Raised from 15s: a concurrent eval run driving two other local models
- * (qwen2.5 + deepseek-r1) starved this endpoint enough to blow the old
- * timeout on an otherwise-healthy Ollama server. Still well under the
- * chat route's own stall timeout.
- */
-const EMBED_TIMEOUT_MS = 20_000;
 /** One retry, short backoff — enough to survive a transient contention spike
  * without turning a slow moment into a user-visible "retrieval unavailable". */
 const RETRY_DELAY_MS = 2_000;
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-interface OllamaEmbedResponse {
-  embeddings?: number[][];
-}
-
-async function fetchEmbedding(text: string): Promise<number[] | null> {
-  const response = await fetch(`${OLLAMA_BASE_URL}/api/embed`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      model: EMBEDDING_MODEL,
-      input: [`${QUERY_PREFIX}${text}`],
-    }),
-    signal: AbortSignal.timeout(EMBED_TIMEOUT_MS),
-  });
-  if (!response.ok) return null;
-
-  const json = (await response.json()) as OllamaEmbedResponse;
-  const vector = json.embeddings?.[0];
-  if (!vector || vector.length !== EMBED_DIMENSIONS) return null;
-  return vector;
-}
-
-/**
- * Returns `null` on any failure (unreachable server, wrong dimensions, or a
- * second consecutive miss after the retry) rather than throwing — a query
- * still reaches `search_standards_hybrid` with `query_embedding: null`,
- * which falls back to the full-text leg alone instead of failing the whole
- * search.
- */
-async function embedQuery(text: string): Promise<number[] | null> {
-  for (let attempt = 0; attempt < 2; attempt++) {
-    try {
-      const vector = await fetchEmbedding(text);
-      if (vector) return vector;
-    } catch {
-      // fall through to retry/give-up below
-    }
-    if (attempt === 0) await delay(RETRY_DELAY_MS);
-  }
-  return null;
 }
 
 // --- Supabase client -----------------------------------------------------
