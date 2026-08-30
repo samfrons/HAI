@@ -43,7 +43,10 @@ fi
 # and will overwrite it, which silently turns the column list below into a number.
 SEED_COLUMNS="id, source, doc_title, section_path, page_start, page_end, content, context_summary, embedding"
 
-echo "Loading ${SEED_FILE} into ${SUPABASE_DB_URL%%@*}@…"
+# Print only the host. `${SUPABASE_DB_URL%%@*}` would keep everything *before*
+# the @, which is precisely the password — this line is echoed into terminal
+# scrollback and CI logs, so it names the destination and nothing else.
+echo "Loading ${SEED_FILE} into ${SUPABASE_DB_URL##*@}"
 
 # One psql session, one transaction: the staging table is temporary, so a
 # failure anywhere leaves the destination exactly as it was. ON_ERROR_STOP turns
