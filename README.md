@@ -107,11 +107,10 @@ entries are code fragments or malformed Q&A rather than humanitarian prose.
 
 ## Quick start
 
-Environment setup — installs Ollama, pulls `llama3.3:8b`, creates a virtualenv, and
-installs `config/requirements.txt` plus Petri from source. Its last step copies
-`config/.env.example` to `config/.env`, and that template is not present in this
-repository, so that step fails; API keys can be exported directly instead
-(`ANTHROPIC_API_KEY`, `OPENROUTER_API_KEY`).
+Environment setup — installs Ollama, pulls `llama3.3:8b`, creates a virtualenv,
+installs `config/requirements.txt` plus Petri from source, and copies
+`config/.env.example` to `config/.env` for API keys (`ANTHROPIC_API_KEY`,
+`OPENROUTER_API_KEY`).
 
 ```
 bash scripts/setup.sh
