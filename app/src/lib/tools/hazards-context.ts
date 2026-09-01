@@ -10,7 +10,7 @@ import { fetchCountryContext, type WorldBankIndicatorValue } from './live-source
 // OCHA HPC) behind one tool call, so a source that is down degrades its own
 // section instead of failing the whole answer.
 //
-// Ported from claude/platform-features-data-depth-euiakz (src/hai/situation.py),
+// Ported from commit eb5e5c3 (src/hai/situation.py),
 // which combines the same connectors into `global_overview` / `country_brief`
 // reports with a `_try`-per-source degradation pattern reproduced here.
 

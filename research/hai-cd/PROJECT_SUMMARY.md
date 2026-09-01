@@ -1,3 +1,8 @@
+> **ARCHIVED — invalid results.** This document describes an abandoned
+> prototype and reports numbers that do not hold up; the audit behind them
+> was a model grading itself. See the
+> [postmortem](../README.md) for what went wrong.
+
 # 🎉 Humanitarian Expert LLM - Project Complete!
 
 ## Executive Summary

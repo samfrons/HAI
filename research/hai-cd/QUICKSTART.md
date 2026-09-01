@@ -1,3 +1,8 @@
+> **ARCHIVED — invalid results.** These steps set up the abandoned
+> fine-tuning prototype, not the current system. See the
+> [postmortem](../README.md); to actually run HAI, use the
+> [root README](../../README.md#quickstart).
+
 # 🚀 Quick Start Guide - Humanitarian LLM PoC
 
 ## ✅ What's Already Done

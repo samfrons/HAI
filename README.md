@@ -24,7 +24,11 @@ facts memorized into model weights.
 - **Evaluated by an independent judge.** A held-out set of 26 domain
   scenarios (`petri/seeds/humanitarian_test_scenarios.json`) is graded by a
   model from a different family than the one being tested, against explicit
-  expected facts — not a self-graded, keyword-ratio heuristic. See
+  expected facts — not a self-graded, keyword-ratio heuristic. Current
+  published baseline: **1 of 26 scenarios passing (4%)**, published as-is —
+  the suite is a regression instrument, not a trophy (see
+  [`docs/STRATEGY.md`](docs/STRATEGY.md#what-the-evals-are-for) and the full
+  reports in [`evals/reports/`](evals/reports/)). See
   [`evals/README.md`](evals/README.md).
 
 ![HAI chat, empty state](docs/assets/chat-empty-en.png)

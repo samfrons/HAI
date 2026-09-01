@@ -60,6 +60,11 @@ postmortem; the archived file has since been fixed in place (see the
 [addendum](#addendum-the-auditor-bugs-were-later-fixed)), so its current
 contents no longer match it.
 
+Bugs 1 and 2 were not first found here: an independent review on branch
+`claude/repo-review-proposal-qeRw2` (commit `cc9c14b`, `PROPOSAL.md`) caught
+both — the judge/target collapse and the extractor scraping source code —
+before this postmortem was written.
+
 ### Bug 2 — the training data extractor scraped source code, not prose
 
 `scripts/extract_humanitarian_knowledge.py`, `_extract_terminology`

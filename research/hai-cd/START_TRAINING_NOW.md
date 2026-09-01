@@ -1,3 +1,7 @@
+> **ARCHIVED — invalid results, and this training run was never valid to
+> start.** The dataset it points at is ~75% corrupted (see Bug 2 in the
+> [postmortem](../README.md)); do not run these steps.
+
 # 🚀 HAI Model Training - START NOW!
 
 ## ✅ SETUP COMPLETE - READY TO TRAIN!
