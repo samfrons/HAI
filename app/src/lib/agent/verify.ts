@@ -242,6 +242,47 @@ const VERDICTS: Record<string, Verdict> = {
   unverifiable: 'unverifiable',
 };
 
+/**
+ * Evidence budget for the batched check.
+ *
+ * Deliberately well under the draft step's, because the check does not need
+ * what the draft needed. The draft was given the section's whole evidence set
+ * because it had to decide what to write from it; the check is asking a narrow
+ * question about a handful of sentences that the cheap pass could not settle,
+ * and every item unrelated to those sentences is budget spent to no effect.
+ *
+ * That mattered more than it looks. Verify ran once per section on the same
+ * evidence the draft had just been sent, so a brief was paying for its evidence
+ * twice — and the second time was the call most likely to be the one that tipped
+ * a section over the endpoint's ceiling, because it landed immediately after the
+ * draft rather than after a pause.
+ */
+export const VERIFY_EVIDENCE_CHARS = 1_800;
+
+/**
+ * The evidence items that bear on the claims still in question.
+ *
+ * Ranked by the same lexical overlap the deterministic pass uses, so an item is
+ * "relevant" here on exactly the criterion that would have let it settle a claim
+ * there. Falls back to the original order when nothing overlaps — a claim whose
+ * subject appears nowhere in the evidence is precisely the one that should come
+ * back `unverifiable`, and it needs some evidence in front of the model to be
+ * judged that rather than none.
+ */
+function relevantEvidence(claims: string[], evidence: EvidenceItem[]): EvidenceItem[] {
+  if (evidence.length === 0) return evidence;
+  const wanted = contentWords(claims.join(' '));
+
+  const scored = evidence.map((item, index) => ({
+    item,
+    index,
+    score: overlap(contentWords(`${item.label} ${item.text}`), wanted),
+  }));
+
+  scored.sort((left, right) => right.score - left.score || left.index - right.index);
+  return scored.map((entry) => entry.item);
+}
+
 async function checkWithModel(
   claims: string[],
   evidence: EvidenceItem[],
@@ -253,7 +294,7 @@ async function checkWithModel(
   const prompt = `You are checking a draft against the evidence it was written from. Judge only what the evidence says. Your own knowledge is irrelevant and must not be used.
 
 EVIDENCE:
-${formatEvidence(evidence, 2_600)}
+${formatEvidence(relevantEvidence(claims, evidence), VERIFY_EVIDENCE_CHARS)}
 
 CLAIMS:
 ${claims.map((claim, index) => `${index + 1}. ${claim}`).join('\n')}

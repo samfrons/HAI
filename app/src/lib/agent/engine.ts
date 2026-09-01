@@ -47,7 +47,7 @@ import {
   type ToolSet,
 } from 'ai';
 
-import { getChatModel, getProviderOptions } from '@/lib/llm/provider';
+import { getDeliverablesBudget, getDeliverablesModel, getProviderOptions } from '@/lib/llm/provider';
 import { haiTools } from '@/lib/tools';
 
 import {
@@ -62,12 +62,14 @@ import {
   TokenPacer,
   estimateToolLoopTokens,
   estimateTokens,
+  isDailyLimit,
   isRateLimitError,
+  sleep,
   withRateLimitRetry,
 } from './pacer';
 import { renderSection, renderSourcesAndCaveats } from './render';
 import type { SectionSpec, TraceEvent, WorkflowDefinition } from './types';
-import { verifySection } from './verify';
+import { VERIFY_EVIDENCE_CHARS, verifySection } from './verify';
 
 /* ------------------------------------------------------------------ *
  * Step-scoped prompts
@@ -115,6 +117,95 @@ const GATHER_STEP_CAP = 2;
 /** Guard on section length — a brief is scanned under time pressure. */
 const DRAFT_MAX_WORDS = 200;
 
+/**
+ * Explicit output ceilings on every call, and why omitting them was a bug
+ * rather than a default.
+ *
+ * The endpoint admits a request against `prompt + reserved completion`, not
+ * against what the completion turns out to be — its refusals say so in as many
+ * words: "Limit 8000, Requested 16395". When `maxOutputTokens` is left unset the
+ * reservation becomes the model's own maximum, which for the deployed models is
+ * 16,384 or 65,536 tokens: two to eight times the entire per-minute ceiling. A
+ * gather step with a 2,000-token prompt was therefore being refused for
+ * requesting 18,000, at a moment when the endpoint's own headers reported
+ * nearly 7,000 tokens free — a 429 that no amount of pacing could have avoided,
+ * because the number being rejected was never the number we were pacing.
+ *
+ * So every call states its ceiling. Sizing them, however, is not simply a
+ * matter of how much prose the step should produce, and getting that wrong
+ * broke a run in a much quieter way than a 429 does.
+ *
+ * A reasoning model spends output tokens thinking before it writes anything,
+ * and those tokens come out of this same ceiling: a draft call measured against
+ * `openai/gpt-oss-120b` used 133 reasoning tokens before its first visible
+ * character. Cap the output at what the prose needs and a long prompt produces
+ * a completion that is entirely reasoning, truncated at the limit, with no text
+ * at all — and the step reports success, because nothing failed. On the first
+ * run with caps set to 600 that happened to four of five sections, and the only
+ * one that survived was the one with the shortest prompt.
+ *
+ * So these are sized as reasoning headroom plus the visible answer, and stay far
+ * enough under the per-minute ceiling that prompt plus reservation still fits
+ * inside it with room for the accumulating tool results.
+ */
+const GATHER_MAX_OUTPUT = 1_200;
+const DRAFT_MAX_OUTPUT = 1_600;
+/**
+ * The plan step returns one `Name|ISO3` line — but it is a model call like any
+ * other, and at 24 tokens a reasoning model spent every one of them thinking
+ * and returned nothing. The subject then failed to resolve to an ISO3 code and
+ * every country-scoped tool in the run lost its most useful argument.
+ */
+const RESOLVE_MAX_OUTPUT = 400;
+
+/**
+ * Raised when the endpoint's per-day ceiling is shut.
+ *
+ * Distinct from any other failure because the only useful response is to stop:
+ * the sections already written stand, the reader is told plainly that the day's
+ * free budget is spent rather than watching a counter, and nothing else is
+ * attempted. Caught by `runWorkflow`'s outer handler like anything else, so the
+ * run still ends on a `workflow-error` rather than a broken stream.
+ */
+class DailyBudgetExhausted extends Error {
+  constructor(readonly waitMs: number) {
+    super(
+      'the endpoint\'s free daily token budget for this model is used up; the run stopped rather than waiting for it to reset',
+    );
+    this.name = 'DailyBudgetExhausted';
+  }
+}
+
+/**
+ * Announce a pacing wait, serve it, and say when it is over.
+ *
+ * Hoisted out of the individual steps and into the generator on purpose. The
+ * pacer can only sleep; it cannot emit, because it is not the thing the route
+ * is iterating. Leaving the wait inside `reserve` is what made the trace panel
+ * stop dead for forty seconds at a time with nothing said — and a progress view
+ * that goes silent during the longest part of the run is worse than no progress
+ * view, because the reader's only available conclusion is that it broke.
+ */
+async function* awaitBudget(
+  pacer: TokenPacer,
+  tokens: number,
+  now: () => number,
+  stepId?: string,
+): AsyncGenerator<TraceEvent> {
+  const daily = pacer.dailyBlockMs();
+  if (daily > 0) {
+    yield { type: 'budget-wait', at: now(), waitMs: daily, scope: 'tokens-per-day', stepId };
+    throw new DailyBudgetExhausted(daily);
+  }
+
+  const wait = pacer.waitFor(tokens);
+  if (wait <= 0) return;
+
+  yield { type: 'budget-wait', at: now(), waitMs: wait, scope: 'tokens-per-minute', stepId };
+  await sleep(wait);
+  yield { type: 'budget-resumed', at: now(), stepId };
+}
+
 /* ------------------------------------------------------------------ *
  * Engine
  * ------------------------------------------------------------------ */
@@ -124,6 +215,18 @@ export interface WorkflowRunInput {
   /** The user's country or topic line. Already PII-screened by the route. */
   subject: string;
   signal?: AbortSignal;
+  /**
+   * Epoch ms after which no further section may be started.
+   *
+   * The serverless function this runs inside has a hard lifetime, and a run
+   * killed at that boundary takes the stream with it: the document stops
+   * mid-sentence with no caveat and no way for the reader to tell an empty
+   * section from an unattempted one. Given a deadline the engine stops one
+   * section early and says so, which is the same amount of document and a great
+   * deal more information. Omitted by tests and by any caller without a
+   * lifetime to respect.
+   */
+  deadline?: number;
 }
 
 export interface EngineDeps {
@@ -153,11 +256,11 @@ export async function* runWorkflow(
   input: WorkflowRunInput,
   deps: EngineDeps = {},
 ): AsyncGenerator<TraceEvent> {
-  const model = deps.model ?? getChatModel();
+  const model = deps.model ?? getDeliverablesModel();
   const registry = deps.tools ?? (haiTools as unknown as ToolSet);
-  const pacer = deps.pacer ?? new TokenPacer();
+  const pacer = deps.pacer ?? new TokenPacer(getDeliverablesBudget());
   const now = deps.now ?? Date.now;
-  const { workflow, subject, signal } = input;
+  const { workflow, subject, signal, deadline } = input;
 
   const state: RunState = {
     subject: subject.trim(),
@@ -169,6 +272,8 @@ export async function* runWorkflow(
   };
 
   const nextEvidenceId = () => `e${++state.evidenceCounter}`;
+  /** Set once the run runs out of time, so the caveat is recorded only once. */
+  let outOfTime = false;
 
   try {
     /* -------------------------------------------------------------- *
@@ -222,6 +327,25 @@ export async function* runWorkflow(
      * -------------------------------------------------------------- */
     for (const section of workflow.sections) {
       throwIfAborted(signal);
+
+      // Checked per section rather than per call: a section is the smallest
+      // unit that is worth anything on its own, and abandoning one halfway
+      // leaves a heading with a truncated paragraph under it.
+      //
+      // Skipped rather than broken out of, so that the synthesised sources and
+      // caveats block still assembles. A truncated run is precisely the run
+      // whose reader most needs it: it is the only part of the document that
+      // says which sections are missing and why.
+      if (deadline !== undefined && now() >= deadline && !section.synthesised) {
+        if (!outOfTime) {
+          outOfTime = true;
+          const message =
+            'the run reached the time limit for a single request; the sections after this one were not attempted';
+          state.sourceErrors.push({ source: 'run', message });
+          yield { type: 'source-error', at: now(), source: 'run', message };
+        }
+        continue;
+      }
 
       if (section.synthesised === 'sources-and-caveats') {
         // Assembled from the run's own bookkeeping rather than from the model:
@@ -282,15 +406,17 @@ export async function* runWorkflow(
       } else {
         let gatherNote: string | undefined;
         let calls = 0;
+        const gatherPromptText = gatherPrompt(workflow, section, state);
 
         try {
+          yield* awaitBudget(pacer, gatherCost(gatherPromptText, activeTools.names.length), now, gatherId);
           for await (const event of gather({
             model,
             pacer,
             signal,
             stepId: gatherId,
             tools: activeTools.set,
-            prompt: gatherPrompt(workflow, section, state),
+            prompt: gatherPromptText,
             now,
             onHarvest: (tool, output) => {
               const result = harvest(tool, output, nextEvidenceId);
@@ -307,6 +433,12 @@ export async function* runWorkflow(
           // A gather that fails outright is one degraded section, not a dead
           // run — the draft step below will write what the absence of evidence
           // permits, which is a sentence saying the sources were unreachable.
+          //
+          // Unless the endpoint has closed for the day, which is not a property
+          // of this section and will not be different for the next one. Letting
+          // that degrade section by section would produce a document whose every
+          // section blamed its own sources for a single account-level fact.
+          if (isDailyLimit(error)) throw new DailyBudgetExhausted(0);
           gatherNote = errorMessage(error);
           state.sourceErrors.push({ source: section.id, message: gatherNote });
           yield { type: 'source-error', at: now(), source: section.id, message: gatherNote };
@@ -338,20 +470,39 @@ export async function* runWorkflow(
 
       let raw = '';
       let draftFailed = false;
+      const draftPromptText = draftPrompt(workflow, section, state, sectionEvidence);
       try {
+        yield* awaitBudget(pacer, draftCost(draftPromptText), now, draftId);
         for await (const delta of draft({
           model,
           pacer,
           signal,
-          prompt: draftPrompt(workflow, section, state, sectionEvidence),
+          prompt: draftPromptText,
         })) {
           raw += delta;
           yield { type: 'draft-delta', at: now(), sectionId: section.id, delta };
         }
       } catch (error) {
+        if (isDailyLimit(error)) throw new DailyBudgetExhausted(0);
         const note = errorMessage(error);
         draftFailed = true;
         raw = `_This section could not be drafted: ${note}_`;
+        state.sourceErrors.push({ source: section.id, message: `draft failed — ${note}` });
+        yield { type: 'step-finished', at: now(), stepId: draftId, ok: false, note };
+      }
+
+      // A call that succeeded and returned no prose. Rare, and it used to pass
+      // in total silence: the section was written as an empty string, the step
+      // emitted no `step-finished` at all, and the finished document simply had
+      // a heading with nothing under it and nothing in the caveats to say why.
+      // The cause is above — an output ceiling consumed entirely by a reasoning
+      // model's hidden tokens — but any future cause deserves the same
+      // treatment, because a silently missing section is the one failure mode a
+      // document like this must never have.
+      if (!draftFailed && !raw.trim()) {
+        draftFailed = true;
+        const note = 'the model returned an empty completion for this section';
+        raw = `_This section could not be drafted: ${note}._`;
         state.sourceErrors.push({ source: section.id, message: `draft failed — ${note}` });
         yield { type: 'step-finished', at: now(), stepId: draftId, ok: false, note };
       }
@@ -393,6 +544,7 @@ export async function* runWorkflow(
       };
 
       try {
+        yield* awaitBudget(pacer, verifyCost(rendered.markdown, sectionEvidence), now, verifyId);
         const checked = await verifySection({
           sectionId: section.id,
           markdown: rendered.markdown,
@@ -472,7 +624,7 @@ Reply with exactly one line, nothing else:
 If it is not a country or territory, or you are not certain of the code, reply:
 ${subject}|NONE`;
 
-  const estimated = estimateTokens(prompt, 20);
+  const estimated = estimateTokens(prompt, RESOLVE_MAX_OUTPUT);
   await ctx.pacer.reserve(estimated);
 
   try {
@@ -482,7 +634,7 @@ ${subject}|NONE`;
         providerOptions: getProviderOptions(),
         prompt,
         temperature: 0,
-        maxOutputTokens: 24,
+        maxOutputTokens: RESOLVE_MAX_OUTPUT,
         abortSignal: ctx.signal,
       }),
     );
@@ -536,6 +688,7 @@ async function* gather(ctx: GatherContext): AsyncGenerator<TraceEvent> {
       prompt: ctx.prompt,
       tools: ctx.tools,
       temperature: 0,
+      maxOutputTokens: GATHER_MAX_OUTPUT,
       // One call per step (see `getProviderOptions`) times this cap is the most
       // evidence one section can pull. Three is enough to cross-check a figure
       // against a second source and no more; a fourth mostly re-runs the first.
@@ -604,6 +757,7 @@ async function* gather(ctx: GatherContext): AsyncGenerator<TraceEvent> {
     tools: ctx.tools,
     toolChoice: 'required',
     temperature: 0,
+    maxOutputTokens: GATHER_MAX_OUTPUT,
     stopWhen: stepCountIs(1),
     abortSignal: ctx.signal,
   });
@@ -661,6 +815,7 @@ async function* draft(ctx: {
     system: STEP_POLICY,
     prompt: ctx.prompt,
     temperature: 0,
+    maxOutputTokens: DRAFT_MAX_OUTPUT,
     abortSignal: ctx.signal,
   });
 
@@ -716,6 +871,39 @@ Under ${DRAFT_MAX_WORDS} words. Prefer a short list or a compact table over para
 
 Cite every figure and every substantive claim with the bracketed evidence id it came from, like [e2], placed at the end of the sentence. A sentence with a figure and no id will be rejected. Give the reference period for every figure — it is in the evidence.
 If the evidence does not cover part of this section, write one sentence naming what is missing instead of filling the gap.`;
+}
+
+/* ------------------------------------------------------------------ *
+ * Cost projection
+ * ------------------------------------------------------------------ */
+
+/*
+ * What each step is about to cost, projected before it runs.
+ *
+ * These mirror the reservations the steps themselves make, and exist as
+ * separate functions for one reason: the wait has to be announced by the
+ * generator, and the generator therefore has to know the number before the step
+ * it belongs to is entered. Kept beside the prompt builders so that a prompt
+ * that grows and a projection that does not stay visibly out of step.
+ *
+ * A projection being somewhat wrong is now cheap. It decides only how long to
+ * pause before asking; what the call actually spent comes back from the
+ * endpoint's own headers a moment later — see `lib/llm/rate-limit.ts`.
+ */
+
+export function gatherCost(prompt: string, toolCount: number): number {
+  return (
+    estimateTokens(`${STEP_POLICY}${prompt}`, GATHER_MAX_OUTPUT) +
+    estimateToolLoopTokens(toolCount, GATHER_STEP_CAP)
+  );
+}
+
+export function draftCost(prompt: string): number {
+  return estimateTokens(`${STEP_POLICY}${prompt}`, DRAFT_MAX_OUTPUT);
+}
+
+export function verifyCost(markdown: string, evidence: EvidenceItem[]): number {
+  return estimateTokens(`${markdown}${formatEvidence(evidence, VERIFY_EVIDENCE_CHARS)}`, 300);
 }
 
 /* ------------------------------------------------------------------ *

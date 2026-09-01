@@ -11,27 +11,35 @@
  * two and then fail, and it fails in the worst way: half a document, the trace
  * stopped mid-tick, and a 429 the user cannot act on.
  *
- * So the engine paces itself. Before each call it declares an estimated cost;
- * the pacer holds it until the trailing minute has room. The wait is real time
- * the user spends watching the trace panel rather than an error page, which is
- * the trade this whole feature is built around — a brief that takes three
- * minutes and is auditable beats one that takes forty seconds and is not.
+ * So the engine paces itself. Before each call it projects a cost; the pacer
+ * holds it until the endpoint has room. The wait is real time the user spends
+ * watching the trace panel rather than an error page, which is the trade this
+ * whole feature is built around — a brief that takes three minutes and is
+ * auditable beats one that takes forty seconds and is not.
  *
- * None of this applies to local inference, where the ceiling does not exist:
- * `isLocalInference()` disables pacing entirely rather than slowing the
- * development loop down to imitate a limit that is not there.
+ * # What changed, and why the first version was not enough
+ *
+ * This file used to be the whole accountant: a per-run sliding window of
+ * *estimated* spends, enabled by checking whether the base URL looked local.
+ * Both halves were wrong in production.
+ *
+ * The estimates were wrong because the quantity that matters is not knowable
+ * from the prompt string — the SDK adds tool schemas, accumulated tool results
+ * and its own internal retries on the way out, and a hosted brief spent well
+ * over what the arithmetic here predicted. The window was wrong because it was
+ * per run, while the quota is per account: a chat turn arriving mid-brief, or a
+ * second brief, spent from a bucket this pacer did not know existed.
+ *
+ * Both are now read from the endpoint's own rate-limit headers on every
+ * response — see `lib/llm/rate-limit.ts`. What is left in this file is the
+ * projection (how much is this next call likely to cost, so we can ask whether
+ * it fits) and the headroom policy. The `isLocalInference()` check is gone with
+ * them: an endpoint that never claims a ceiling is never paced, which covers
+ * local Ollama without naming it.
  */
 
-import { getLlmConfig, isLocalInference } from '@/lib/llm/provider';
-
-/**
- * Groq's free tier at the time of writing. Configurable because it is the one
- * number here that is a property of somebody else's billing page rather than of
- * this code — a paid tier or a different endpoint moves it, and nothing else
- * needs to change.
- */
-const DEFAULT_TOKENS_PER_MINUTE = 8_000;
-const WINDOW_MS = 60_000;
+import { getModelBudget } from '@/lib/llm/provider';
+import { parseRateLimitError, type TokenBudget } from '@/lib/llm/rate-limit';
 
 /**
  * Characters per token. Deliberately pessimistic: the real ratio for English
@@ -90,9 +98,17 @@ export function estimateToolLoopTokens(
   return schemas + accumulated + steps * outputPerStep;
 }
 
-export function tokensPerMinute(): number {
+/**
+ * `LLM_TOKENS_PER_MINUTE`, when a deployment sets one.
+ *
+ * Undefined is now the normal case rather than a fallback to a hard-coded 8,000:
+ * the endpoint reports its own ceiling on every response, so a paid tier or a
+ * different provider is paced correctly with no configuration. This is for the
+ * endpoint that meters silently — see `TokenBudget.declareLimit`.
+ */
+export function declaredTokensPerMinute(): number | undefined {
   const parsed = Number.parseInt(process.env.LLM_TOKENS_PER_MINUTE ?? '', 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_TOKENS_PER_MINUTE;
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 }
 
 /** Rough token count for a prompt, from its character length. */
@@ -100,79 +116,97 @@ export function estimateTokens(text: string, expectedOutput = DEFAULT_OUTPUT_TOK
   return Math.ceil(text.length / CHARS_PER_TOKEN) + expectedOutput;
 }
 
-interface Spend {
-  at: number;
-  tokens: number;
-}
+/**
+ * Headroom kept below the endpoint's stated ceiling.
+ *
+ * The budget is read from headers that describe the moment a response was
+ * written, and by the time we act on it another request may already be in
+ * flight. Aiming at 100% of the bucket means every mis-timing is a 429; aiming
+ * at 85% costs a few seconds a run and makes the ceiling a wall we stop short
+ * of rather than one we discover by hitting it.
+ */
+const SAFETY_FRACTION = 0.85;
 
 /**
- * A sliding-window budget over one endpoint.
+ * The pacer, now a thin policy layer over a measured budget.
  *
- * Held per run rather than per process: two people generating briefs at once on
- * the same deployment do share the real quota, but a shared pacer would make
- * each wait on the other's spending with no way to tell them why. The daily cap
- * in `lib/limits` is what actually bounds concurrent use; this bounds one run.
+ * Everything that used to live here — a per-run sliding window of estimated
+ * spends, an enabled flag derived from the base URL — is gone, because it was
+ * modelling something the endpoint reports directly. What remains is the two
+ * decisions that are genuinely ours: how much headroom to leave under the
+ * stated ceiling, and how to project the cost of a call that has not been made
+ * yet. See `lib/llm/rate-limit.ts` for why the reading is authoritative.
+ *
+ * The budget is shared per process and per model rather than per run. That is a
+ * deliberate reversal: two runs on one instance really do take from the same
+ * quota, and a pacer that gave each its own imaginary window was how a second
+ * request pushed the first into a 429 it had already paced around.
  */
 export class TokenPacer {
-  private readonly spends: Spend[] = [];
-  private readonly limit: number;
-  private readonly enabled: boolean;
+  private readonly budget: TokenBudget;
 
-  constructor(limit = tokensPerMinute(), enabled = !isLocalInference(getLlmConfig())) {
-    this.limit = limit;
-    this.enabled = enabled;
+  /**
+   * Tests inject a budget; production takes the shared one for the configured
+   * model. A `LLM_TOKENS_PER_MINUTE` override is declared onto the budget
+   * rather than held here, so that everything reading the budget — the engine's
+   * trace, the chat route's queue notice — sees one consistent ceiling.
+   */
+  constructor(budget: TokenBudget = getModelBudget()) {
+    this.budget = budget;
+    const declared = declaredTokensPerMinute();
+    if (declared !== undefined) this.budget.declareLimit(declared);
   }
 
-  private trim(now: number): void {
-    const cutoff = now - WINDOW_MS;
-    while (this.spends.length > 0 && this.spends[0].at <= cutoff) this.spends.shift();
+  /** Whether the endpoint has claimed a ceiling this pacer must respect. */
+  get isPacing(): boolean {
+    return this.budget.isMeasured;
   }
 
-  private used(now: number): number {
-    this.trim(now);
-    return this.spends.reduce((total, spend) => total + spend.tokens, 0);
+  /**
+   * How long the endpoint's per-day ceiling stays shut, or 0.
+   *
+   * Kept separate from `waitFor` because the caller must be able to act
+   * differently: a per-minute wait is paced through, a per-day one is reported
+   * and the run stops. Folding them together is what let a run spend twelve
+   * minutes retrying into a limit that resets tomorrow.
+   */
+  dailyBlockMs(now = Date.now()): number {
+    return this.budget.dailyBlockFor(now);
+  }
+
+  snapshot() {
+    return this.budget.snapshot();
   }
 
   /**
    * Milliseconds to wait before spending `tokens`, or 0. Exposed separately
-   * from `reserve` so tests can assert the arithmetic without sleeping and so
-   * the engine can report a long wait in the trace rather than going silent.
+   * from `reserve` so the engine can announce a long wait in the trace before
+   * going quiet for it, and so tests can assert the arithmetic without sleeping.
    */
   waitFor(tokens: number, now = Date.now()): number {
-    if (!this.enabled) return 0;
-    if (this.used(now) + tokens <= this.limit) return 0;
-
-    // Wait until enough of the oldest spending has aged out of the window.
-    let freed = 0;
-    const needed = this.used(now) + tokens - this.limit;
-    for (const spend of this.spends) {
-      freed += spend.tokens;
-      if (freed >= needed) return Math.max(0, spend.at + WINDOW_MS - now);
-    }
-    // A single call larger than the whole budget: nothing to wait for, let it
-    // through and let the endpoint decide. Pacing cannot fix a call that does
-    // not fit, and stalling forever is worse than a clear upstream error.
-    return 0;
+    return this.budget.waitFor(tokens / SAFETY_FRACTION, now);
   }
 
-  /** Wait if needed, then record the spend. */
+  /** Wait if needed, then record the spend against the in-flight ledger. */
   async reserve(tokens: number): Promise<void> {
-    if (!this.enabled) return;
     const wait = this.waitFor(tokens);
     if (wait > 0) await sleep(wait);
-    this.spends.push({ at: Date.now(), tokens });
+    this.budget.debit(tokens);
   }
 
   /**
-   * Correct a reservation once real usage is known. Estimates run high on
-   * purpose (see `CHARS_PER_TOKEN`), so without this the pacer would slow a run
-   * down by whatever margin it built in.
+   * Correct a reservation once real usage is known.
+   *
+   * Mostly a no-op now, and deliberately so: the response that carried the
+   * usage also carried `x-ratelimit-remaining-tokens`, which the provider's
+   * fetch has already folded in as ground truth. This only matters for an
+   * endpoint that meters but does not say so in headers, where the estimate
+   * remains the only ledger there is.
    */
   settle(estimated: number, actual: number): void {
-    if (!this.enabled || this.spends.length === 0) return;
-    const last = this.spends[this.spends.length - 1];
-    if (last.tokens !== estimated) return;
-    last.tokens = Math.max(0, actual);
+    if (!this.budget.isMeasured) return;
+    const correction = actual - estimated;
+    if (correction > 0) this.budget.debit(correction);
   }
 }
 
@@ -212,6 +246,12 @@ export async function withRateLimitRetry<T>(
     return await operation();
   } catch (error) {
     if (!isRateLimitError(error)) throw error;
+    // A daily ceiling is not something to retry into. The retry that used to
+    // happen here waited out a capped 45 seconds against a limit whose own
+    // message said "try again in 17m31s", burned a request doing it, and failed
+    // again — which is how a single exhausted quota turned into a run that
+    // looked hung for twelve minutes before dying.
+    if (isDailyLimit(error)) throw error;
     const wait = retryAfterMs(error) ?? 20_000;
     onWait?.(wait);
     await sleep(wait);
@@ -219,14 +259,16 @@ export async function withRateLimitRetry<T>(
   }
 }
 
+/** Whether a refusal was about the per-day ceiling rather than the per-minute one. */
+export function isDailyLimit(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error ?? '');
+  return parseRateLimitError(message).scope === 'tokens-per-day';
+}
+
 /** The endpoint's own `retry-after`, when it sent one, capped at 45s. */
 function retryAfterMs(error: unknown): number | undefined {
   const message = error instanceof Error ? error.message : String(error ?? '');
-  const match = /try again in ([\d.]+)\s*(ms|s|m)\b/i.exec(message);
-  if (!match) return undefined;
-  const value = Number.parseFloat(match[1]);
-  if (!Number.isFinite(value)) return undefined;
-  const unit = match[2].toLowerCase();
-  const ms = unit === 'ms' ? value : unit === 'm' ? value * 60_000 : value * 1_000;
-  return Math.min(45_000, Math.ceil(ms) + 500);
+  const parsed = parseRateLimitError(message).retryAfterMs;
+  if (parsed === undefined) return undefined;
+  return Math.min(45_000, parsed + 500);
 }

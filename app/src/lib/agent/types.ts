@@ -208,6 +208,37 @@ export type TraceEvent =
       message: string;
     }
   | {
+      /**
+       * The run is deliberately idle, waiting for the endpoint's token budget
+       * to refill before the next step.
+       *
+       * This exists because the alternative is a lie by omission. Pacing means
+       * a brief spends a large fraction of its wall clock doing nothing on
+       * purpose, and a trace panel that simply stops updating for forty seconds
+       * is indistinguishable from one that has crashed — which is what QA
+       * reported on the live deployment. Naming the wait, with the time it will
+       * take, turns the most alarming part of the run into the most legible.
+       *
+       * `scope` decides what the reader is told, and the two cases are not the
+       * same news. A per-minute wait resolves itself; a per-day one does not,
+       * and dressing it up as "resuming shortly" would leave someone watching a
+       * counter that will still be there tomorrow.
+       */
+      type: 'budget-wait';
+      at: number;
+      /** Milliseconds from `at` until the run intends to continue. */
+      waitMs: number;
+      scope: 'tokens-per-minute' | 'tokens-per-day';
+      /** The step the run is about to take, when it is waiting to take one. */
+      stepId?: string;
+    }
+  | {
+      /** The wait announced by the preceding `budget-wait` is over. */
+      type: 'budget-resumed';
+      at: number;
+      stepId?: string;
+    }
+  | {
       type: 'workflow-done';
       at: number;
       /** ISO-8601 UTC, rendered into the document's own caveats section. */

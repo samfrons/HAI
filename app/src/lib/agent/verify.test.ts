@@ -3,10 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { scriptedModel, text } from './__testing__/mock-model';
 import type { EvidenceItem } from './evidence';
 import { TokenPacer } from './pacer';
+import { TokenBudget } from '@/lib/llm/rate-limit';
 import { UNVERIFIED_MARK } from './render';
 import { annotate, extractClaims, verifySection } from './verify';
 
-const pacer = new TokenPacer(8_000, false);
+const pacer = new TokenPacer(new TokenBudget());
 
 const evidence: EvidenceItem[] = [
   {

@@ -5,10 +5,11 @@ import { z } from 'zod';
 import { scriptedModel, text, toolCall } from './__testing__/mock-model';
 import { runWorkflow, selectTools } from './engine';
 import { TokenPacer } from './pacer';
+import { TokenBudget } from '@/lib/llm/rate-limit';
 import { UNVERIFIED_MARK } from './render';
 import type { TraceEvent, WorkflowDefinition } from './types';
 
-const pacer = () => new TokenPacer(8_000, false);
+const pacer = () => new TokenPacer(new TokenBudget());
 
 /** A two-section brief plus the synthesised caveats block — a full run, fast. */
 const workflow: WorkflowDefinition = {

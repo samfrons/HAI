@@ -14,27 +14,44 @@ import { warmSupabaseConnection } from '@/lib/retrieval/search';
 export const dynamic = 'force-dynamic';
 
 /*
- * Vercel's Hobby ceiling, and the binding constraint on this route rather than a
- * comfortable margin — which is the opposite of the chat route's situation and
- * worth being explicit about.
+ * The wall clock a complete brief needs, with margin — and the binding
+ * constraint on this route rather than a comfortable one, which is the opposite
+ * of the chat route's situation and worth being explicit about.
  *
- * A situation brief is about sixteen model calls. Against hosted inference those
- * are fast, but the free Groq tier meters 8,000 tokens a minute and a full run
- * spends roughly 20,000, so `lib/agent/pacer.ts` deliberately waits — which puts
- * a complete run at two to three minutes of wall clock. That does not fit here.
+ * A situation brief is nineteen model calls. Against hosted inference those are
+ * fast; what takes the time is the pacing. The free tier meters 8,000 tokens a
+ * minute and a full run spends roughly 25,000, so `lib/agent/pacer.ts`
+ * deliberately waits out the difference. A measured end-to-end Sudan brief —
+ * six sections, every one populated, no request refused — took 142 seconds, of
+ * which about 105 were spent idle inside those waits on purpose.
  *
- * Three things follow, none of them hidden from the user. The stream is written
- * incrementally, so a run cut short at 60s leaves the reader with the sections
- * that finished rather than nothing. The client renders a partial document and
- * says it is partial. And a deployment that wants complete briefs needs either a
- * plan with a longer function budget (Fluid compute raises this substantially)
- * or an endpoint without the per-minute cap — at which point
- * `LLM_TOKENS_PER_MINUTE` turns the pacing off and a run finishes in well under
- * a minute. See docs/DEPLOY.md.
+ * So this is 300, Vercel's ceiling with Fluid compute (the default for new
+ * projects, Hobby included), and the measured run leaves roughly a two-times
+ * margin under it. That margin is real but it is not unlimited: the token
+ * bucket is shared with anything else on the same key, so a run competing with
+ * chat traffic paces harder and takes longer.
+ *
+ * Two things follow, neither hidden from the user. The stream is written
+ * incrementally, so a run cut short still leaves the reader the sections that
+ * finished rather than nothing, and the client says the document is partial.
+ * And the engine stops itself before the platform can — see `deadline` below —
+ * so the last thing a truncated run does is explain itself rather than having
+ * its connection dropped mid-sentence.
  *
  * Local `next dev` and `next start` ignore this value entirely.
  */
-export const maxDuration = 60;
+export const maxDuration = 300;
+
+/**
+ * Margin left for the run to end tidily inside the function's lifetime.
+ *
+ * A serverless function that hits its ceiling is killed, and a killed stream is
+ * the one failure the reader cannot interpret: the document simply stops, with
+ * no caveat, no timestamp, and no indication whether the missing sections were
+ * empty or never attempted. Ending the run ourselves a few seconds early costs
+ * one section and buys an honest ending.
+ */
+const DEADLINE_MARGIN_MS = 15_000;
 
 // cost: $0.00 per run with the default local Ollama endpoint. A hosted
 // LLM_BASE_URL may bill per token, and one run is ~16 calls, not one.
@@ -156,6 +173,7 @@ export async function POST(request: Request) {
         workflow,
         subject,
         signal: request.signal,
+        deadline: Date.now() + maxDuration * 1_000 - DEADLINE_MARGIN_MS,
       })) {
         writer.write({ type: 'data-trace', data: event });
       }

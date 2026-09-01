@@ -1,52 +1,121 @@
 import { describe, expect, it } from 'vitest';
 
+import { TokenBudget, parseRateLimitError } from '@/lib/llm/rate-limit';
+
 import {
   TokenPacer,
   estimateToolLoopTokens,
   estimateTokens,
+  isDailyLimit,
   isRateLimitError,
 } from './pacer';
 
+/**
+ * A budget already told what the endpoint's ceiling is, without a live call.
+ * `declareLimit` is the same door `LLM_TOKENS_PER_MINUTE` comes through, so
+ * these exercise the production path rather than a test-only seam.
+ */
+function measured(limit = 8_000): TokenBudget {
+  const budget = new TokenBudget();
+  budget.declareLimit(limit);
+  return budget;
+}
+
 describe('TokenPacer', () => {
-  it('lets a run through until the minute is spent', () => {
-    const pacer = new TokenPacer(8_000, true);
-    expect(pacer.waitFor(3_000)).toBe(0);
+  it('lets a run through while the endpoint has room', () => {
+    expect(new TokenPacer(measured()).waitFor(3_000)).toBe(0);
   });
 
-  it('holds the next call until the oldest spending ages out', async () => {
-    const pacer = new TokenPacer(8_000, true);
+  it('holds the next call until the bucket has refilled enough', async () => {
+    const pacer = new TokenPacer(measured());
     await pacer.reserve(5_000);
     await pacer.reserve(2_500);
 
-    // 7,500 of 8,000 spent: a 1,000-token call has to wait for the 5,000 to
-    // fall out of the trailing minute.
+    // 7,500 of 8,000 spent. The bucket refills continuously rather than in
+    // steps, so the wait is the time to earn back what is short — not a full
+    // window. The old sliding-window pacer waited nearly a minute here, and
+    // that difference is most of why a six-section brief could not finish.
     const wait = pacer.waitFor(1_000);
-    expect(wait).toBeGreaterThan(55_000);
-    expect(wait).toBeLessThanOrEqual(60_000);
+    expect(wait).toBeGreaterThan(0);
+    expect(wait).toBeLessThan(30_000);
   });
 
-  /*
-   * Estimates are deliberately high (see CHARS_PER_TOKEN). Without settling
-   * them against real usage the pacer would throttle a run by whatever margin
-   * it built in — which on an eighteen-call workflow is minutes of invented
-   * waiting.
-   */
-  it('gives back the margin once real usage is known', async () => {
-    const pacer = new TokenPacer(8_000, true);
-    await pacer.reserve(7_900);
-    pacer.settle(7_900, 1_200);
-    expect(pacer.waitFor(5_000)).toBe(0);
-  });
-
-  it('does nothing at all against a local endpoint, where there is no ceiling', async () => {
-    const pacer = new TokenPacer(10, false);
+  it('is silent about an endpoint that never claims a ceiling', async () => {
+    // No headers seen and nothing declared: local Ollama, vLLM, anything self
+    // hosted. Replaces the old `isLocalInference()` URL check.
+    const pacer = new TokenPacer(new TokenBudget());
     await pacer.reserve(1_000_000);
     expect(pacer.waitFor(1_000_000)).toBe(0);
+    expect(pacer.isPacing).toBe(false);
   });
 
   it('lets a call larger than the whole budget through rather than stalling forever', () => {
-    const pacer = new TokenPacer(8_000, true);
-    expect(pacer.waitFor(20_000)).toBe(0);
+    expect(new TokenPacer(measured()).waitFor(20_000)).toBe(0);
+  });
+
+  /*
+   * The failure this file was rewritten for. Groq refused a live Sudan brief on
+   * its per-day ceiling while its per-minute headers reported the bucket full,
+   * and the engine — which only knew about minutes — retried into it for twelve
+   * minutes. A daily block has to be legible as something other than pacing.
+   */
+  it('reports a daily ceiling separately from a per-minute one', () => {
+    const budget = measured();
+    budget.observeRefusal(
+      parseRateLimitError(
+        'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_x` ' +
+          'service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199754, ' +
+          'Requested 2679. Please try again in 17m31.056s.',
+      ),
+    );
+    const pacer = new TokenPacer(budget);
+
+    expect(pacer.dailyBlockMs()).toBeGreaterThan(17 * 60_000);
+    // The per-minute bucket is untouched by this, which is exactly the trap:
+    // a pacer looking only here would conclude everything was fine.
+    expect(pacer.waitFor(1_000)).toBe(0);
+    expect(pacer.snapshot().dailyExhausted?.used).toBe(199_754);
+  });
+});
+
+describe('parseRateLimitError', () => {
+  it('reads the numbers out of a per-day refusal', () => {
+    const facts = parseRateLimitError(
+      'on tokens per day (TPD): Limit 200000, Used 199754, Requested 2679. ' +
+        'Please try again in 17m31.056s.',
+    );
+    expect(facts).toMatchObject({
+      scope: 'tokens-per-day',
+      limit: 200_000,
+      used: 199_754,
+      requested: 2_679,
+    });
+    expect(facts.retryAfterMs).toBeCloseTo(1_051_056, -3);
+  });
+
+  /*
+   * The other half of the live failure: a request refused not for the account
+   * being out of budget but for reserving a completion larger than the whole
+   * per-minute ceiling. `Requested 16395` against `Limit 8000` is an uncapped
+   * `maxOutputTokens`, not a busy endpoint — see the engine's output caps.
+   */
+  it('reads a per-minute refusal caused by an oversized reservation', () => {
+    expect(
+      parseRateLimitError(
+        'on tokens per minute (TPM): Limit 8000, Requested 16395, please reduce your message size',
+      ),
+    ).toMatchObject({ scope: 'tokens-per-minute', limit: 8_000, requested: 16_395 });
+  });
+
+  it('degrades to unknown rather than inventing a scope', () => {
+    expect(parseRateLimitError('something went wrong').scope).toBe('unknown');
+  });
+});
+
+describe('isDailyLimit', () => {
+  it('separates the wall from the pause', () => {
+    expect(isDailyLimit(new Error('on tokens per day (TPD): Limit 200000'))).toBe(true);
+    expect(isDailyLimit(new Error('on tokens per minute (TPM): Limit 8000'))).toBe(false);
   });
 });
 
