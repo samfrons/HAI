@@ -17,6 +17,7 @@ import { Markdown } from './markdown';
 import { NavLinks } from './nav-links';
 import { PendingStatus } from './pending-status';
 import { SafetyNotice } from './safety-notice';
+import { ShowWorking } from './show-working';
 import { SourcePanel } from './source-panel';
 import { collectRetrievalNotice, collectSources, type Source } from './sources';
 import { ToolActivity } from './tool-activity';
@@ -271,6 +272,10 @@ function MessageBlock({
       ) : null}
 
       <Citations sources={sources} notice={notice} onSelect={onSelectSource} />
+
+      {/* Only once the turn has settled: a disclosure that appears mid-stream
+          invites a click onto a list that is still growing underneath it. */}
+      {isLast && pendingPhase !== null ? null : <ShowWorking message={message} />}
     </div>
   );
 }
