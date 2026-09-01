@@ -37,6 +37,7 @@ flowchart LR
     A --> T1[search_standards<br/>Sphere · CHS · IASC<br/>pgvector hybrid search]
     A --> T2[crisis_updates<br/>IFRC GO live API]
     A --> T3[humanitarian_data<br/>HDX HAPI: population,<br/>food security, funding]
+    A --> T4[hazards_context<br/>USGS · GDACS<br/>World Bank · OCHA HPC]
     T1 --> C[Citations panel<br/>source · section · page]
 ```
 
