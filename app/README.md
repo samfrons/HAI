@@ -9,8 +9,8 @@ This file covers just this package.
 
 | Path | What's in it |
 |---|---|
-| `src/app/` | Routes — chat (`/`), playbooks, guides, `/api/chat` |
-| `src/lib/tools/` | The three tools the model calls: `search-standards.ts`, `crisis-updates.ts` (IFRC GO / ReliefWeb), `humanitarian-data.ts` (HDX HAPI) |
+| `src/app/` | Routes — chat (`/`), playbooks, guides, `/about`, `/deliverables`, `/api/chat`, `/api/deliverables` |
+| `src/lib/tools/` | The four tools the model calls: `search-standards.ts`, `crisis-updates.ts` (IFRC GO / ReliefWeb), `humanitarian-data.ts` (HDX HAPI), `hazards-context.ts` (USGS / GDACS / World Bank / OCHA HPC) |
 | `src/lib/retrieval/` | `search.ts` — embeds the query via Ollama and calls the `search_standards_hybrid` Supabase RPC |
 | `src/lib/safety/` | `pii.ts` (deterministic regex/heuristic screening), `llm-screen.ts` (optional second-pass), `intercept.ts` (turns findings into the banner copy) |
 | `src/lib/prompts/` | `system.ts` (base system prompt), `coach.ts` (coach-mode addition) |

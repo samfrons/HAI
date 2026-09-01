@@ -10,6 +10,8 @@ import { z } from 'zod';
  *    preferred source. Since 1 November 2025 it rejects any `appname` OCHA has
  *    not pre-approved; approval is a reviewed request form, not a self-service
  *    key. Set RELIEFWEB_APPNAME once granted and this path activates on its own.
+ *    Until then the source is treated as disabled rather than broken: it is not
+ *    called at all, and it says once per result that it is not configured.
  * 2. IFRC GO — open, no registration, and used by default. Its lens is
  *    narrower: Red Cross / Red Crescent emergency operations rather than the
  *    whole humanitarian information space, so the most recent entry for a given
@@ -46,11 +48,58 @@ export interface CrisisUpdate {
   countries?: string[];
 }
 
+/** One upstream source that was unavailable, in the shape `harvest()` reads. */
+export interface SourceIssue {
+  source: string;
+  message: string;
+}
+
 export interface CrisisUpdatesResult {
   query: string;
   retrievedVia: 'reliefweb' | 'ifrc-go';
   updates: CrisisUpdate[];
+  /**
+   * How the model should attribute a successful retrieval — which source
+   * answered and what its coverage excludes.
+   *
+   * Deliberately NOT `notice`. Across this codebase `notice` means "this
+   * retrieval came back empty" and is read as a failure by both trace paths:
+   * `chat-trace.ts` turns it into an `ok: false` step and `evidence.ts`
+   * `extractFailures` turns it into a `source-error`. Carrying routine sourcing
+   * guidance in that field marked every successful IFRC GO answer as a failed
+   * source, once per call and once per deliverable section.
+   */
+  sourceNote?: string;
+  /** Reserved for a genuinely empty retrieval. */
   notice?: string;
+  /**
+   * Sources that did not answer, reported per source rather than as a whole-tool
+   * failure. `harvest()` renders these into the deliverable's "Source issues"
+   * block (de-duplicated there) and the trace panel shows them as notices.
+   */
+  errors?: SourceIssue[];
+}
+
+/**
+ * ReliefWeb without an approved appname is an expected deployment state, not a
+ * fault: the API is never called, and the absence is announced once through the
+ * same per-source channel any other unavailable source uses.
+ */
+const RELIEFWEB_NOT_CONFIGURED: SourceIssue = {
+  source: 'ReliefWeb',
+  message:
+    'Not enabled on this deployment, so it was not queried: ReliefWeb requires an appname approved by OCHA and none is configured. Crisis updates below come from IFRC GO, which covers Red Cross / Red Crescent operations only — consult reliefweb.int directly for the fuller reporting picture.',
+};
+
+type ReliefWebConfig =
+  | { configured: true; appname: string }
+  | { configured: false; issue: SourceIssue };
+
+function reliefWebConfig(): ReliefWebConfig {
+  const appname = process.env.RELIEFWEB_APPNAME?.trim();
+  return appname
+    ? { configured: true, appname }
+    : { configured: false, issue: RELIEFWEB_NOT_CONFIGURED };
 }
 
 /**
@@ -219,21 +268,32 @@ export async function getCrisisUpdates(
   const cached = readCache(cacheKey);
   if (cached) return cached;
 
-  const appname = process.env.RELIEFWEB_APPNAME;
+  // Configuration is settled before any request goes out, so the unconfigured
+  // path costs no call and raises nothing.
+  const config = reliefWebConfig();
+  const issues: SourceIssue[] = [];
   let result: CrisisUpdatesResult | undefined;
 
-  if (appname) {
+  if (config.configured) {
     try {
       result = {
         query,
         retrievedVia: 'reliefweb',
-        updates: await fetchFromReliefWeb(appname, query, country),
+        updates: await fetchFromReliefWeb(config.appname, query, country),
       };
-    } catch {
-      // An unapproved or revoked appname 403s. Fall through to IFRC GO rather
-      // than failing the user's question.
-      result = undefined;
+    } catch (error) {
+      // An unapproved or revoked appname 403s. That is a real degradation, so
+      // it is recorded against ReliefWeb — but it still falls through to IFRC
+      // GO rather than failing the user's question.
+      issues.push({
+        source: 'ReliefWeb',
+        message: `Configured but did not answer (${
+          error instanceof Error ? error.message : 'unknown error'
+        }). Results below are from IFRC GO instead; the appname may no longer be approved.`,
+      });
     }
+  } else {
+    issues.push(config.issue);
   }
 
   if (!result) {
@@ -241,10 +301,13 @@ export async function getCrisisUpdates(
       query,
       retrievedVia: 'ifrc-go',
       updates: await fetchFromIfrcGo(query, country),
-      notice: appname
-        ? 'ReliefWeb rejected the configured appname, so these results are IFRC GO emergency operations. Tell the user the source and that its coverage is narrower than ReliefWeb.'
-        : 'Results are IFRC GO emergency operations, not ReliefWeb: ReliefWeb now requires an OCHA-approved appname, which this deployment does not have. Attribute the figures to IFRC GO, note that its coverage is limited to Red Cross / Red Crescent operations, and point the user to reliefweb.int for the full reporting picture.',
+      sourceNote:
+        'These results are IFRC GO emergency operations, not ReliefWeb. Attribute the figures to IFRC GO, say that its coverage is limited to Red Cross / Red Crescent operations, and point the user to reliefweb.int for the full reporting picture.',
     };
+  }
+
+  if (issues.length > 0) {
+    result.errors = issues;
   }
 
   if (result.updates.length === 0) {

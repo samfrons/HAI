@@ -7,6 +7,19 @@ import type { Locale } from './locales';
  * `content/guides`, which stays English — see `contentEnglishNote` for the
  * note shown next to it in non-English locales.
  */
+/**
+ * Tools with their own activity strings, keyed by the registry names in
+ * `lib/tools/index.ts`. Widening this makes the compiler list every locale that
+ * still needs the new tool's two lines, which is the point — a missing
+ * translation should fail the build, not render an English string inside an
+ * Arabic answer.
+ */
+export type KnownToolName =
+  | 'search_standards'
+  | 'crisis_updates'
+  | 'humanitarian_data'
+  | 'hazards_context';
+
 export interface Suggestion {
   title: string;
   prompt: string;
@@ -17,6 +30,7 @@ export interface Dictionary {
   tagline: string;
   nav: {
     chat: string;
+    deliverables: string;
     playbooks: string;
     guides: string;
     about: string;
@@ -70,8 +84,8 @@ export interface Dictionary {
     verifyText: string;
   };
   toolActivity: {
-    running: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', string>;
-    done: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', string>;
+    running: Record<KnownToolName, string>;
+    done: Record<KnownToolName, string>;
     failed: string;
   };
   /** The pending state shown between submit and the first visible token — see `PendingStatus`. */
@@ -82,6 +96,80 @@ export interface Dictionary {
     writing: string;
     /** A subtle elapsed-time suffix, shown only once a wait passes ~3s. */
     elapsed: (seconds: number) => string;
+    /**
+     * Replaces the phase line once a turn has been silent past ~8s. The phase
+     * words claim something specific ("contacting", "writing"); after eight
+     * seconds of nothing the only honest claim left is that the turn is still
+     * alive, so the line stops asserting more than it knows.
+     */
+    stillWorking: string;
+    /**
+     * Shown instead when the endpoint has refused on its token budget and this
+     * turn is waiting behind that refusal — a queue, not a slow model.
+     */
+    queued: string;
+  };
+  /**
+   * The deliverables surface: the template picker, the run view, and the trace
+   * panel. `steps`, `verdicts`, and `templates` are keyed by values the engine
+   * emits (`StepKind`, `Verdict`, workflow id) rather than by display strings,
+   * so a locale cannot drift out of sync with the events it is labelling.
+   *
+   * The template names duplicate the English ones in `lib/agent/workflows/*` on
+   * purpose: those are the document's own title, which stays in the language the
+   * document is written in, while these are interface chrome and follow the
+   * interface locale.
+   */
+  deliverables: {
+    title: string;
+    description: string;
+    templateHeading: string;
+    templates: Record<
+      'situation-brief' | 'donor-report-section',
+      { name: string; description: string }
+    >;
+    subjectLabelCountry: string;
+    subjectLabelTopic: string;
+    subjectPlaceholderCountry: string;
+    subjectPlaceholderTopic: string;
+    generate: string;
+    generating: string;
+    stop: string;
+    reset: string;
+    documentHeading: string;
+    documentEmpty: string;
+    copy: string;
+    copied: string;
+    download: string;
+    /** Shown above a document whose run was cut short. */
+    partialNotice: string;
+    /** Shown above a document carrying unverified claims. */
+    flaggedNotice: (count: number) => string;
+    traceHeading: string;
+    traceExplainer: string;
+    traceEmpty: string;
+    planHeading: string;
+    /**
+     * The pacing row. The run is deliberately idle inside the endpoint's token
+     * budget — on a measured Sudan brief that is 105 of 142 seconds — and the
+     * panel says so rather than going silent, which reads as a crash.
+     */
+    budgetWaiting: string;
+    /** The live countdown on that row. Interpolated, never baked into the sentence. */
+    budgetResumesIn: (seconds: number) => string;
+    /**
+     * The per-day ceiling, which is a wall rather than a pause: the run has
+     * stopped and no countdown is offered, because the next opening is tomorrow.
+     */
+    budgetDailyExhausted: string;
+    steps: Record<'plan' | 'gather' | 'draft' | 'verify', string>;
+    verdicts: Record<'supported' | 'unsupported' | 'unverifiable', string>;
+    done: string;
+    doneWithFlags: (count: number) => string;
+    hasFlags: string;
+    /** The chat's per-message disclosure, which reuses the trace rendering. */
+    showWorking: string;
+    hideWorking: string;
   };
   contentEnglishNote: string;
   playbooksPage: {
@@ -127,6 +215,7 @@ const en: Dictionary = {
   tagline: 'Humanitarian operations assistant',
   nav: {
     chat: 'Chat',
+    deliverables: 'Deliverables',
     playbooks: 'Playbooks',
     guides: 'Guides',
     about: 'About',
@@ -205,11 +294,13 @@ const en: Dictionary = {
       search_standards: 'Searching humanitarian standards',
       crisis_updates: 'Fetching situation reports',
       humanitarian_data: 'Retrieving country indicators',
+      hazards_context: 'Checking hazard alerts and country context',
     },
     done: {
       search_standards: 'Searched humanitarian standards',
       crisis_updates: 'Fetched situation reports',
       humanitarian_data: 'Retrieved country indicators',
+      hazards_context: 'Checked hazard alerts and country context',
     },
     failed: 'Live source unavailable',
   },
@@ -217,6 +308,62 @@ const en: Dictionary = {
     contacting: 'Contacting model…',
     writing: 'Writing answer…',
     elapsed: (seconds) => `${seconds}s`,
+    stillWorking: 'Still working',
+    queued: 'Queued by the free-tier token budget',
+  },
+  deliverables: {
+    title: 'Deliverables',
+    description:
+      'Generate a situation brief or a donor report section, grounded in retrieved sources — with every step of the working shown beside it.',
+    templateHeading: 'Choose a template',
+    templates: {
+      'situation-brief': {
+        name: 'Situation brief',
+        description:
+          'Hazards, needs and figures, funding, and the standards that apply — for one country.',
+      },
+      'donor-report-section': {
+        name: 'Donor report section',
+        description:
+          'Context, needs and gaps, and the ask. The achievements narrative stays a template for your own monitoring data.',
+      },
+    },
+    subjectLabelCountry: 'Country',
+    subjectLabelTopic: 'Programme or topic',
+    subjectPlaceholderCountry: 'e.g. Sudan',
+    subjectPlaceholderTopic: 'e.g. WASH programme, northern Nigeria',
+    generate: 'Generate',
+    generating: 'Generating',
+    stop: 'Stop',
+    reset: 'Start over',
+    documentHeading: 'Document',
+    documentEmpty: 'The document assembles here, section by section.',
+    copy: 'Copy',
+    copied: 'Copied',
+    download: 'Download .md',
+    partialNotice:
+      'This run did not finish. What is below is only what was completed — treat it as partial.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? '1 claim could not be matched to retrieved evidence and is marked in place. Verify it before using this document.'
+        : `${count} claims could not be matched to retrieved evidence and are marked in place. Verify them before using this document.`,
+    traceHeading: 'Working',
+    traceExplainer:
+      'Every source consulted and every claim checked, in the order it happened. Nothing in the document comes from anywhere else.',
+    traceEmpty: 'Waiting for the first step.',
+    planHeading: 'Plan',
+    budgetWaiting: 'Waiting for the token budget',
+    budgetResumesIn: (seconds) => `resumes in ${seconds}s`,
+    budgetDailyExhausted:
+      'The free daily token budget for this model is used up. The run stopped.',
+    steps: { plan: 'Plan', gather: 'Gather', draft: 'Draft', verify: 'Check' },
+    verdicts: { supported: 'Supported', unsupported: 'Unsupported', unverifiable: 'Unverified' },
+    done: 'Run complete',
+    doneWithFlags: (count) =>
+      count === 1 ? 'Run complete — 1 claim flagged' : `Run complete — ${count} claims flagged`,
+    hasFlags: 'Contains flagged claims',
+    showWorking: 'Show working',
+    hideWorking: 'Hide working',
   },
   contentEnglishNote: 'This content is available in English only.',
   playbooksPage: {
@@ -276,6 +423,7 @@ const fr: Dictionary = {
   tagline: 'Assistant pour les opérations humanitaires',
   nav: {
     chat: 'Discussion',
+    deliverables: 'Livrables',
     playbooks: 'Fiches pratiques',
     guides: 'Guides',
     about: 'À propos',
@@ -361,11 +509,13 @@ const fr: Dictionary = {
       search_standards: 'Recherche dans les normes humanitaires',
       crisis_updates: 'Récupération des rapports de situation',
       humanitarian_data: 'Récupération des indicateurs du pays',
+      hazards_context: 'Consultation des alertes et du contexte pays',
     },
     done: {
       search_standards: 'Normes humanitaires consultées',
       crisis_updates: 'Rapports de situation récupérés',
       humanitarian_data: 'Indicateurs du pays récupérés',
+      hazards_context: 'Alertes et contexte pays consultés',
     },
     failed: 'Source en direct indisponible',
   },
@@ -373,6 +523,64 @@ const fr: Dictionary = {
     contacting: 'Connexion au modèle…',
     writing: 'Rédaction de la réponse…',
     elapsed: (seconds) => `${seconds} s`,
+    stillWorking: 'Toujours en cours',
+    queued: "En file d'attente : quota de jetons de l'offre gratuite",
+  },
+  deliverables: {
+    title: 'Livrables',
+    description:
+      "Générez une note de situation ou une section de rapport bailleur, fondée sur des sources récupérées — avec le détail du travail affiché à côté.",
+    templateHeading: 'Choisissez un modèle',
+    templates: {
+      'situation-brief': {
+        name: 'Note de situation',
+        description:
+          'Aléas, besoins et chiffres, financement et normes applicables — pour un pays.',
+      },
+      'donor-report-section': {
+        name: 'Section de rapport bailleur',
+        description:
+          "Contexte, besoins et écarts, et la demande. Le récit des réalisations reste un gabarit à remplir avec vos propres données de suivi.",
+      },
+    },
+    subjectLabelCountry: 'Pays',
+    subjectLabelTopic: 'Programme ou thème',
+    subjectPlaceholderCountry: 'ex. Soudan',
+    subjectPlaceholderTopic: 'ex. programme EAH, nord du Nigéria',
+    generate: 'Générer',
+    generating: 'Génération',
+    stop: 'Arrêter',
+    reset: 'Recommencer',
+    documentHeading: 'Document',
+    documentEmpty: "Le document s'assemble ici, section par section.",
+    copy: 'Copier',
+    copied: 'Copié',
+    download: 'Télécharger .md',
+    partialNotice:
+      "Cette exécution ne s'est pas terminée. Ce qui suit est seulement ce qui a été achevé — considérez-le comme partiel.",
+    flaggedNotice: (count) =>
+      count === 1
+        ? "1 affirmation n'a pas pu être rattachée aux sources récupérées et est signalée dans le texte. Vérifiez-la avant d'utiliser ce document."
+        : `${count} affirmations n'ont pas pu être rattachées aux sources récupérées et sont signalées dans le texte. Vérifiez-les avant d'utiliser ce document.`,
+    traceHeading: 'Déroulé',
+    traceExplainer:
+      "Chaque source consultée et chaque affirmation vérifiée, dans l'ordre où cela s'est produit. Rien dans le document ne vient d'ailleurs.",
+    traceEmpty: 'En attente de la première étape.',
+    planHeading: 'Plan',
+    budgetWaiting: 'En attente du quota de jetons',
+    budgetResumesIn: (seconds) => `reprise dans ${seconds} s`,
+    budgetDailyExhausted:
+      "Le quota quotidien gratuit de jetons de ce modèle est épuisé. L'exécution s'est arrêtée.",
+    steps: { plan: 'Plan', gather: 'Collecte', draft: 'Rédaction', verify: 'Vérification' },
+    verdicts: { supported: 'Étayé', unsupported: 'Non étayé', unverifiable: 'Non vérifié' },
+    done: 'Exécution terminée',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'Exécution terminée — 1 affirmation signalée'
+        : `Exécution terminée — ${count} affirmations signalées`,
+    hasFlags: 'Contient des affirmations signalées',
+    showWorking: 'Afficher le déroulé',
+    hideWorking: 'Masquer le déroulé',
   },
   contentEnglishNote: "Ce contenu n'est disponible qu'en anglais.",
   playbooksPage: {
@@ -433,6 +641,7 @@ const ar: Dictionary = {
   tagline: 'مساعد العمليات الإنسانية',
   nav: {
     chat: 'المحادثة',
+    deliverables: 'المخرجات',
     playbooks: 'الأدلة التطبيقية',
     guides: 'الإرشادات',
     about: 'حول',
@@ -512,11 +721,13 @@ const ar: Dictionary = {
       search_standards: 'جارٍ البحث في المعايير الإنسانية',
       crisis_updates: 'جارٍ جلب تقارير الحالة',
       humanitarian_data: 'جارٍ استرجاع مؤشرات البلد',
+      hazards_context: 'جارٍ فحص تنبيهات الأخطار وسياق البلد',
     },
     done: {
       search_standards: 'تم البحث في المعايير الإنسانية',
       crisis_updates: 'تم جلب تقارير الحالة',
       humanitarian_data: 'تم استرجاع مؤشرات البلد',
+      hazards_context: 'تم فحص تنبيهات الأخطار وسياق البلد',
     },
     failed: 'المصدر الحي غير متاح',
   },
@@ -524,6 +735,63 @@ const ar: Dictionary = {
     contacting: 'جارٍ الاتصال بالنموذج…',
     writing: 'جارٍ كتابة الإجابة…',
     elapsed: (seconds) => `${seconds} ث`,
+    stillWorking: 'العمل ما زال جارياً',
+    queued: 'في قائمة الانتظار بسبب حصة الرموز في الخطة المجانية',
+  },
+  deliverables: {
+    title: 'المخرجات',
+    description:
+      'أنشئ موجزاً عن الوضع أو قسماً من تقرير للمانحين، مستنداً إلى مصادر مسترجَعة — مع عرض كل خطوة من خطوات العمل بجانبه.',
+    templateHeading: 'اختر قالباً',
+    templates: {
+      'situation-brief': {
+        name: 'موجز الوضع',
+        description: 'الأخطار والاحتياجات والأرقام والتمويل والمعايير المنطبقة — لبلد واحد.',
+      },
+      'donor-report-section': {
+        name: 'قسم تقرير المانحين',
+        description:
+          'السياق والاحتياجات والفجوات والطلب. يبقى سرد الإنجازات قالباً تملؤه ببيانات الرصد الخاصة بك.',
+      },
+    },
+    subjectLabelCountry: 'البلد',
+    subjectLabelTopic: 'البرنامج أو الموضوع',
+    subjectPlaceholderCountry: 'مثال: السودان',
+    subjectPlaceholderTopic: 'مثال: برنامج المياه والإصحاح، شمال نيجيريا',
+    generate: 'إنشاء',
+    generating: 'جارٍ الإنشاء',
+    stop: 'إيقاف',
+    reset: 'البدء من جديد',
+    documentHeading: 'المستند',
+    documentEmpty: 'يُجمَّع المستند هنا، قسماً بعد قسم.',
+    copy: 'نسخ',
+    copied: 'تم النسخ',
+    download: 'تنزيل ملف md.',
+    partialNotice:
+      'لم تكتمل هذه العملية. ما يظهر أدناه هو ما أُنجز فقط — تعامل معه على أنه جزئي.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? 'تعذّر ربط ادعاء واحد بالأدلة المسترجَعة، وقد جرى تعليمه في موضعه. تحقّق منه قبل استخدام هذا المستند.'
+        : `تعذّر ربط ${count} ادعاءات بالأدلة المسترجَعة، وقد جرى تعليمها في مواضعها. تحقّق منها قبل استخدام هذا المستند.`,
+    traceHeading: 'سير العمل',
+    traceExplainer:
+      'كل مصدر جرت استشارته وكل ادعاء جرى التحقق منه، بالترتيب الذي حدث به. لا شيء في المستند يأتي من مكان آخر.',
+    traceEmpty: 'في انتظار الخطوة الأولى.',
+    planHeading: 'الخطة',
+    budgetWaiting: 'في انتظار حصة الرموز',
+    budgetResumesIn: (seconds) => `الاستئناف خلال ${seconds} ث`,
+    budgetDailyExhausted:
+      'استُنفدت الحصة اليومية المجانية من الرموز لهذا النموذج. توقّفت العملية.',
+    steps: { plan: 'التخطيط', gather: 'الجمع', draft: 'الصياغة', verify: 'التحقق' },
+    verdicts: { supported: 'مدعوم', unsupported: 'غير مدعوم', unverifiable: 'غير مُتحقَّق منه' },
+    done: 'اكتملت العملية',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'اكتملت العملية — ادعاء واحد مُعلَّم'
+        : `اكتملت العملية — ${count} ادعاءات مُعلَّمة`,
+    hasFlags: 'يحتوي على ادعاءات مُعلَّمة',
+    showWorking: 'إظهار سير العمل',
+    hideWorking: 'إخفاء سير العمل',
   },
   contentEnglishNote: 'هذا المحتوى متاح باللغة الإنجليزية فقط.',
   playbooksPage: {
@@ -583,6 +851,7 @@ const es: Dictionary = {
   tagline: 'Asistente de operaciones humanitarias',
   nav: {
     chat: 'Chat',
+    deliverables: 'Entregables',
     playbooks: 'Manuales prácticos',
     guides: 'Guías',
     about: 'Acerca de',
@@ -667,11 +936,13 @@ const es: Dictionary = {
       search_standards: 'Buscando en las normas humanitarias',
       crisis_updates: 'Obteniendo informes de situación',
       humanitarian_data: 'Recuperando indicadores del país',
+      hazards_context: 'Consultando alertas de amenazas y contexto del país',
     },
     done: {
       search_standards: 'Normas humanitarias consultadas',
       crisis_updates: 'Informes de situación obtenidos',
       humanitarian_data: 'Indicadores del país recuperados',
+      hazards_context: 'Alertas de amenazas y contexto del país consultados',
     },
     failed: 'Fuente en vivo no disponible',
   },
@@ -679,6 +950,68 @@ const es: Dictionary = {
     contacting: 'Contactando con el modelo…',
     writing: 'Redactando la respuesta…',
     elapsed: (seconds) => `${seconds} s`,
+    stillWorking: 'Sigue en curso',
+    queued: 'En cola por el presupuesto de tokens del plan gratuito',
+  },
+  deliverables: {
+    title: 'Entregables',
+    description:
+      'Genera una nota de situación o una sección de informe para donantes, fundamentada en fuentes recuperadas — con cada paso del trabajo a la vista.',
+    templateHeading: 'Elige una plantilla',
+    templates: {
+      'situation-brief': {
+        name: 'Nota de situación',
+        description:
+          'Amenazas, necesidades y cifras, financiación y las normas aplicables — para un país.',
+      },
+      'donor-report-section': {
+        name: 'Sección de informe para donantes',
+        description:
+          'Contexto, necesidades y brechas, y la petición. El relato de logros queda como plantilla para tus propios datos de seguimiento.',
+      },
+    },
+    subjectLabelCountry: 'País',
+    subjectLabelTopic: 'Programa o tema',
+    subjectPlaceholderCountry: 'p. ej. Sudán',
+    subjectPlaceholderTopic: 'p. ej. programa de agua y saneamiento, norte de Nigeria',
+    generate: 'Generar',
+    generating: 'Generando',
+    stop: 'Detener',
+    reset: 'Empezar de nuevo',
+    documentHeading: 'Documento',
+    documentEmpty: 'El documento se va montando aquí, sección a sección.',
+    copy: 'Copiar',
+    copied: 'Copiado',
+    download: 'Descargar .md',
+    partialNotice:
+      'Esta ejecución no terminó. Lo que aparece debajo es solo lo que se completó — trátalo como parcial.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? '1 afirmación no pudo vincularse a las fuentes recuperadas y está señalada en el texto. Verifícala antes de usar este documento.'
+        : `${count} afirmaciones no pudieron vincularse a las fuentes recuperadas y están señaladas en el texto. Verifícalas antes de usar este documento.`,
+    traceHeading: 'Proceso',
+    traceExplainer:
+      'Cada fuente consultada y cada afirmación verificada, en el orden en que ocurrió. Nada del documento procede de otro sitio.',
+    traceEmpty: 'Esperando el primer paso.',
+    planHeading: 'Plan',
+    budgetWaiting: 'Esperando el presupuesto de tokens',
+    budgetResumesIn: (seconds) => `se reanuda en ${seconds} s`,
+    budgetDailyExhausted:
+      'El presupuesto diario gratuito de tokens de este modelo se ha agotado. La ejecución se detuvo.',
+    steps: { plan: 'Plan', gather: 'Recopilación', draft: 'Redacción', verify: 'Verificación' },
+    verdicts: {
+      supported: 'Respaldado',
+      unsupported: 'Sin respaldo',
+      unverifiable: 'Sin verificar',
+    },
+    done: 'Ejecución completada',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'Ejecución completada — 1 afirmación señalada'
+        : `Ejecución completada — ${count} afirmaciones señaladas`,
+    hasFlags: 'Contiene afirmaciones señaladas',
+    showWorking: 'Mostrar el proceso',
+    hideWorking: 'Ocultar el proceso',
   },
   contentEnglishNote: 'Este contenido solo está disponible en inglés.',
   playbooksPage: {

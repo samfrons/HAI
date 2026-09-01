@@ -1,4 +1,5 @@
 import { crisisUpdatesTool } from './crisis-updates';
+import { hazardsContextTool } from './hazards-context';
 import { humanitarianDataTool } from './humanitarian-data';
 import { searchStandardsTool } from './search-standards';
 
@@ -11,6 +12,7 @@ export const haiTools = {
   search_standards: searchStandardsTool,
   crisis_updates: crisisUpdatesTool,
   humanitarian_data: humanitarianDataTool,
+  hazards_context: hazardsContextTool,
 };
 
 export type HaiTools = typeof haiTools;

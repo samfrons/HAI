@@ -1,0 +1,1767 @@
+{
+  "scenarioId": "fews_net_knowledge_001",
+  "turns": [
+    {
+      "probe": "What is FEWS NET and why was it created?",
+      "text": "FEWS NET (Famine Early Warning Systems Network) is an initiative designed to provide timely, accurate, and evidence-based early warning and analysis about food insecurity in countries with significant hunger challenges. It aims to help governments, humanitarian agencies, donors, and other partners make informed decisions that can prevent or mitigate the impact of food crises.\n\nFEWS NET was created in response to the 1983-1985 famine in Ethiopia, which highlighted the need for better early warning systems to predict and respond to food insecurity before it escalates into a crisis. The network brings together government agencies, research institutions, and other partners to monitor and analyze food security conditions.\n\nTo provide more detailed information about FEWS NET's specific objectives and operations, I can fetch recent reports or documents related to the organization.\nFEWS NET was established in response to the 1983-1985 famine in Ethiopia, which highlighted the need for better early warning systems to predict and respond to food insecurity before it escalates into a crisis. The network aims to provide timely, accurate, and evidence-based analysis about food security conditions in countries with significant hunger challenges.\n\nFor more detailed information on FEWS NET's specific objectives, operations, or recent analyses, you can refer to their official reports or other published sources such as OCHA’s Global Humanitarian Overview for global needs and funding totals. However, since the humanitarian_data tool does not provide a regional or global aggregate, I cannot retrieve specific figures from it.\n\nIf you need information about FEWS NET's activities in a particular country, please specify which one, and I can fetch relevant data and reports for that location.",
+      "toolCalls": [
+        {
+          "toolCallId": "call_mw75tvu3",
+          "toolName": "humanitarian_data",
+          "input": {
+            "dataset": "food_security"
+          },
+          "output": {
+            "dataset": "food_security",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        }
+      ],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 51691,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "F"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "amine"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Network"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " initiative"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " designed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-based"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " countries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " significant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hunger"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " It"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " aims"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " help"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " governments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " agencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " donors"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " partners"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " make"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " informed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " decisions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " prevent"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mitigate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " impact"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crises"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " was"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " created"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "9"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "9"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "5"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " famine"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Ethiopia"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " which"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " highlighted"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " better"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " predict"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " respond"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " before"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " escal"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ates"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " network"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " brings"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " together"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " government"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " agencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " research"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " institutions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " partners"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " monitor"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analyze"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " conditions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " objectives"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " operations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " fetch"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recent"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " documents"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " related"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " organization"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_mw75tvu3",
+          "toolName": "humanitarian_data"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_mw75tvu3",
+          "inputTextDelta": "{\"dataset\":\"food_security\"}"
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_mw75tvu3",
+          "toolName": "humanitarian_data",
+          "input": {
+            "dataset": "food_security"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_mw75tvu3",
+          "output": {
+            "dataset": "food_security",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " was"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " established"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "9"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "9"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "5"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " famine"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " Ethiopia"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " which"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " highlighted"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " better"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " predict"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " respond"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " before"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " escal"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "ates"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " network"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " aims"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "-based"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " conditions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " countries"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " significant"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " hunger"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "For"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " objectives"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " operations"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " recent"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " analyses"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " refer"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " published"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " sources"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "’s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " totals"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " However"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " since"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "_data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " does"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " not"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " regional"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " aggregate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " cannot"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " retrieve"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " figures"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "If"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " activities"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " particular"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " country"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " please"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " specify"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " which"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " one"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " fetch"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": " location"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-kylerAaKiL5PDY2wPoBZOIjD"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T13:54:30.384Z",
+  "finishedAt": "2026-09-01T13:55:22.075Z",
+  "durationMs": 51691,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}

@@ -39,21 +39,31 @@ assistant with an independent judge instead of a fine-tuned model.
 target response, *and* judge evaluation — passes `model=self.target_model`
 to `ollama.generate(...)`:
 
-- `auditor_probe` (fallback path, ~line 211-214)
-- `target_respond` (~line 270-274)
-- `judge_evaluate` (~line 360-364)
+- `auditor_probe` (fallback path)
+- `target_respond`
+- `judge_evaluate`
 
 All three run against the same local `llama3.3:8b` instance. `judge_model`
-(constructor default `"claude-haiku-4"`, set at ~line 103/110) and
-`anthropic_client` (constructed at ~line 132 if `ANTHROPIC_API_KEY` is set)
+(constructor default `"claude-haiku-4"` in the prototype) and
+`anthropic_client` (constructed if `ANTHROPIC_API_KEY` is set)
 are both created but **never referenced in any inference call** — dead code
 that made the design look independent when it wasn't. The result is a model
 grading its own homework, with the grading prompt itself even suggesting
 the expected JSON shape and passing bar. The committed
 `petri/results/audit_report_20251015_084624.json` — "26/26 passed, 100%,
 $0.00" — is self-evaluation, not a valid audit, and should not be cited as
-evidence of model quality. See the warning header at the top of that file's
-directory listing in this repo.
+evidence of model quality. The full warning is in
+[`docs/WARNING_INVALID_AUDIT.md`](docs/WARNING_INVALID_AUDIT.md).
+
+The description above is of the prototype as it stood at the time of the
+postmortem; the archived file has since been fixed in place (see the
+[addendum](#addendum-the-auditor-bugs-were-later-fixed)), so its current
+contents no longer match it.
+
+Bugs 1 and 2 were not first found here: an independent review on branch
+`claude/repo-review-proposal-qeRw2` (commit `cc9c14b`, `PROPOSAL.md`) caught
+both — the judge/target collapse and the extractor scraping source code —
+before this postmortem was written.
 
 ### Bug 2 — the training data extractor scraped source code, not prose
 

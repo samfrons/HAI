@@ -1,3 +1,8 @@
+> **ARCHIVED — invalid results.** This describes the fine-tuning prototype
+> the project abandoned. Its reported accuracy is not a real measurement.
+> See the [postmortem](../README.md); the current system is documented in the
+> [root README](../../README.md).
+
 # 🌍 Humanitarian Expert LLM - Proof of Concept
 
 A specialized Large Language Model for humanitarian crisis response, built using:

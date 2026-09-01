@@ -37,6 +37,7 @@ flowchart LR
     A --> T1[search_standards<br/>Sphere · CHS · IASC<br/>pgvector hybrid search]
     A --> T2[crisis_updates<br/>IFRC GO live API]
     A --> T3[humanitarian_data<br/>HDX HAPI: population,<br/>food security, funding]
+    A --> T4[hazards_context<br/>USGS · GDACS<br/>World Bank · OCHA HPC]
     T1 --> C[Citations panel<br/>source · section · page]
 ```
 
@@ -45,7 +46,7 @@ Five properties matter more than any individual component:
 1. **Local-first.** The model, embeddings, and database all run on one machine with no cloud dependency. In humanitarian terms: deployable where connectivity is poor, data sovereignty is contested, or cloud AI procurement is blocked. Zero marginal inference cost also changes the adoption calculus for budget-constrained country offices.
 2. **Provider-agnostic by one env var.** The same codebase runs against any OpenAI-compatible endpoint. An org that later chooses a hosted frontier model changes configuration, not architecture.
 3. **Citations are the product.** The agent is instructed to never answer standards questions from memory; the UI renders which passages grounded each claim. Transparency doubles as AI literacy training — staff see *how* a good answer gets assembled.
-4. **Safety at the point of entry.** A deterministic PII screen (114 tests, including 48 false-positive guards so "15 litres per person per day" is never mistaken for a phone number) intercepts beneficiary data before it reaches any model, responds by teaching (naming the IASC data-responsibility principle at stake, offering a safe rephrasing), and redacts flagged turns from conversation history.
+4. **Safety at the point of entry.** A deterministic PII screen (114 tests, 55 of which assert that benign humanitarian text is *not* flagged, so "15 litres per person per day" is never mistaken for a phone number) intercepts beneficiary data before it reaches any model, responds by teaching (naming the IASC data-responsibility principle at stake, offering a safe rephrasing), and redacts flagged turns from conversation history.
 5. **Honest evaluation.** The 26-scenario safety suite (deception resistance, sycophancy resistance, conflict sensitivity, beneficiary data protection, among 18 dimensions) is scored by an *independent judge from a different model family*, with failure rates published rather than engineered away. The previous prototype's self-graded "100% pass" is preserved in `research/` as the cautionary example.
 
 ## What the evals are for
