@@ -129,6 +129,16 @@ The scenario *design* was never the problem — the auditor that ran them was.
 This scenario set is being reused as-is for the new eval harness (see
 `evals/README.md`).
 
+### Addendum: the auditor bugs were later fixed
+
+A separate cleanup effort (branch `claude/hai-repo-cleanup-wmrizq`,
+2026-09-01) fixed Bug 1 in place: `src/petri/humanitarian_auditor.py` in
+this archive now routes the judge to an actually independent model,
+enforces the pass rule, and de-anchors the judge prompt, with unit tests
+in `tests/`. The fix is preserved here for completeness; the production
+evaluation path is the TypeScript harness in `evals/`, which was built
+against the same failure modes from the start.
+
 ## Files in this archive
 
 | Path | What it is |
