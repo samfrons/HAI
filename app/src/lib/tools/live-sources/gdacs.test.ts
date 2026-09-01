@@ -82,4 +82,29 @@ describe('fetchAlerts', () => {
     const alerts = await fetchAlerts({ minLevel: 'red', country: 'nowhere-cache-buster' });
     expect(alerts).toHaveLength(0);
   });
+
+  /**
+   * Regression. GDACS answers `406 Not Acceptable` to `Accept:
+   * application/rss+xml` on its own — the header this connector shipped with —
+   * because it serves the feed as `application/xml`. Every deployed fetch
+   * failed while this suite stayed green, since the suite stubs `fetch` and
+   * never looked at what was sent. So look at what is sent.
+   */
+  it('asks for a media type GDACS will actually serve, and identifies itself', async () => {
+    const sent: RequestInit[] = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (...args: [string, RequestInit?]) => {
+        if (args[1]) sent.push(args[1]);
+        return new Response(rssText, { status: 200 });
+      }),
+    );
+
+    await fetchAlerts({ minLevel: 'red', country: 'nowhere-header-check' });
+
+    const headers = sent[0].headers as Record<string, string>;
+    expect(headers.Accept).toContain('application/xml');
+    expect(headers.Accept).toContain('*/*');
+    expect(headers['User-Agent']).toContain('HAI/');
+  });
 });

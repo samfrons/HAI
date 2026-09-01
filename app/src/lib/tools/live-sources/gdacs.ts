@@ -12,6 +12,25 @@ const RSS_URL = 'https://www.gdacs.org/xml/rss.xml';
 const REQUEST_TIMEOUT_MS = 15_000;
 const USER_AGENT = 'HAI/1.0 (humanitarian operations assistant)';
 
+/**
+ * GDACS serves the feed as `Content-Type: application/xml` and runs strict
+ * content negotiation: a request whose `Accept` does not admit that exact type
+ * is answered `406 Not Acceptable`, with no body to explain why. Asking for the
+ * semantically-correct `application/rss+xml` alone — which is what this
+ * connector did — is therefore rejected outright, as is `text/xml`.
+ *
+ * Verified against the live endpoint (identical User-Agent throughout):
+ *   Accept: application/rss+xml                       -> 406
+ *   Accept: text/xml                                  -> 406
+ *   Accept: application/xml                           -> 200
+ *   Accept: rss+xml then application/xml then wildcard  -> 200
+ *
+ * The failure never showed up in the test suite because the tests stub `fetch`,
+ * and it is not IP- or User-Agent-dependent, so keep the wildcard fallback: it
+ * is what makes the header survive GDACS changing the type it serves.
+ */
+const ACCEPT_RSS = 'application/rss+xml, application/xml;q=0.9, */*;q=0.8';
+
 /** RSS updates on the order of hours; this only guards a single tool-loop burst. */
 const CACHE_TTL_MS = 180_000;
 
@@ -138,7 +157,7 @@ export async function fetchAlerts(filters: GdacsFilters = {}): Promise<GdacsAler
   if (cached) return cached;
 
   const response = await fetch(RSS_URL, {
-    headers: { 'User-Agent': USER_AGENT, Accept: 'application/rss+xml' },
+    headers: { 'User-Agent': USER_AGENT, Accept: ACCEPT_RSS },
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
   if (!response.ok) {
