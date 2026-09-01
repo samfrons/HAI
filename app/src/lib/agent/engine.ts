@@ -649,16 +649,20 @@ async function* draft(ctx: {
   const estimated = estimateTokens(`${STEP_POLICY}${ctx.prompt}`, DRAFT_MAX_WORDS * 2);
   await ctx.pacer.reserve(estimated);
 
-  const result = await withRateLimitRetry(async () =>
-    streamText({
-      model: ctx.model,
-      providerOptions: getProviderOptions(),
-      system: STEP_POLICY,
-      prompt: ctx.prompt,
-      temperature: 0,
-      abortSignal: ctx.signal,
-    }),
-  );
+  // Not wrapped in `withRateLimitRetry`, deliberately. `streamText` returns
+  // synchronously and reports failures as an `error` part in the stream, so a
+  // retry around the call can never fire — it would be a comforting no-op. The
+  // SDK's own `maxRetries` already backs off inside the call, the pacer is what
+  // stops a rate limit being reached in the first place, and a draft that still
+  // fails degrades to a named caveat, which is the honest outcome.
+  const result = streamText({
+    model: ctx.model,
+    providerOptions: getProviderOptions(),
+    system: STEP_POLICY,
+    prompt: ctx.prompt,
+    temperature: 0,
+    abortSignal: ctx.signal,
+  });
 
   for await (const part of result.fullStream) {
     if (part.type === 'text-delta') yield part.text;
