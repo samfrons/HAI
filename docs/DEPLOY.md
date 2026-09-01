@@ -143,7 +143,8 @@ Set each for **Preview** and **Production**
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://REF.supabase.co` | |
 | `SUPABASE_ANON_KEY` | the anon key | RLS grants SELECT only; no service role here |
 | `MAX_DAILY_REQUESTS` | `500` | shared daily ceiling; default if unset |
-| `RATE_LIMIT_RPM` | `20` | per-IP pacing; default if unset |
+| `RATE_LIMIT_RPM` | `20` | per-IP chat pacing; default if unset |
+| `LLM_TOKENS_PER_MINUTE` | `8000` | the ceiling `/deliverables` paces itself against; default if unset. Raise it on a paid tier — see below |
 
 `OLLAMA_BASE_URL`, `EMBEDDING_MODEL`, and `PII_SCREEN_MODEL` are local-mode only
 and should be left unset in Vercel.
@@ -245,6 +246,41 @@ from 6) bounds how many times a stuck turn can re-send that ~1,900-token
 prompt; trimming the prompt itself would buy more headroom but was left alone
 here to avoid touching the grounding and safety rules under time pressure —
 worth revisiting if demo traffic grows.
+
+### `/deliverables` does not fit in a 60-second function, and says so
+
+This is the one route where the free-tier ceiling above changes what the product
+can do, rather than just making it slower.
+
+A situation brief is six sections and roughly sixteen model calls with no human
+in the loop, spending about 20,000 tokens in total. At 8,000 tokens a minute
+that is two to three minutes of wall clock, most of it spent in
+`lib/agent/pacer.ts` deliberately waiting so the endpoint is never asked to
+refuse. Vercel's Hobby plan caps a function at 60 seconds and rejects a
+deployment that asks for more, so on Hobby a run is cut off part way.
+
+That failure is handled rather than hidden: the route streams incrementally, so
+the sections that finished are already on the reader's screen, and the page
+labels the document partial instead of presenting six-tenths of a brief as a
+whole one. But it is a real limitation, and there are exactly two ways out.
+
+1. **Give the function more time.** Fluid compute raises the ceiling
+   substantially; raise `maxDuration` in
+   `app/src/app/api/deliverables/route.ts` to match whatever the plan allows.
+2. **Remove the per-minute cap.** A paid Groq tier, or any endpoint without an
+   8k/min limit, makes the pacing unnecessary — set `LLM_TOKENS_PER_MINUTE` to
+   the real ceiling and a full run finishes in well under a minute. Setting it
+   too high does not fail loudly; it fails as a 429 mid-run, which the trace
+   panel reports as a degraded section.
+
+Local `next dev` and `next start` ignore `maxDuration` entirely, and pacing is
+switched off altogether against a localhost endpoint, so neither constraint
+applies to the local demo.
+
+The per-IP limit on this route is **3 runs per 10 minutes**, not
+`RATE_LIMIT_RPM`. One run is sixteen model calls and several live API round
+trips; twenty a minute would not be a limit. It is a separate counter in
+`lib/limits/burst.ts` and is not configurable by environment variable.
 
 ---
 
