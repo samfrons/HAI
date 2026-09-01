@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-25T17:47:46.747Z",
+  "documents": {
+    "sphere": {
+      "source": "sphere",
+      "file": "Sphere-Handbook-2018-EN.pdf",
+      "fileSha256": "eeb7e680c296e15389ca8a1e5882a3796f23cbba31cfb21dd4661332c4c8cf63",
+      "docTitle": "The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018)",
+      "ingestedAt": "2026-08-25T17:42:14.572Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 458,
+        "lines": 16906,
+        "headings": 813,
+        "bodyLines": 14490,
+        "minorLines": 1603,
+        "characters": 934444,
+        "emptyPages": 21,
+        "maxColumnsOnAPage": 4,
+        "dehyphenatedExplicit": 538,
+        "dehyphenatedInferred": 32,
+        "bodyFontSize": 9,
+        "usesPrintedPageLabels": true
+      },
+      "chunk": {
+        "chunks": 930,
+        "totalTokens": 257516,
+        "medianTokens": 355,
+        "minTokens": 5,
+        "maxTokens": 425,
+        "withSectionPath": 930
+      },
+      "contextualized": 0,
+      "embedded": 930,
+      "loaded": 930,
+      "deletedStale": 573,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    },
+    "chs": {
+      "source": "chs",
+      "file": "CHS-2024.pdf",
+      "fileSha256": "79419ef5dae4141bc4100245dfa5af9a3d6dcd1b7de9eb142e344b91694b012d",
+      "docTitle": "The Core Humanitarian Standard on Quality and Accountability (2024 Edition)",
+      "ingestedAt": "2026-08-25T17:42:14.623Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 6,
+        "lines": 197,
+        "headings": 9,
+        "bodyLines": 182,
+        "minorLines": 6,
+        "characters": 16001,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 1,
+        "dehyphenatedExplicit": 2,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 17,
+        "totalTokens": 4371,
+        "medianTokens": 249,
+        "minTokens": 15,
+        "maxTokens": 376,
+        "withSectionPath": 16
+      },
+      "contextualized": 0,
+      "embedded": 17,
+      "loaded": 17,
+      "deletedStale": 11,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    },
+    "iasc_data_responsibility": {
+      "source": "iasc_data_responsibility",
+      "file": "IASC-Data-Responsibility-2023.pdf",
+      "fileSha256": "662e73bbcf6cac6225cfdec464a477a2961af65edd80e27a64e53fb25d1ad781",
+      "docTitle": "IASC Operational Guidance on Data Responsibility in Humanitarian Action (2023, 2nd edition)",
+      "ingestedAt": "2026-08-25T17:42:14.804Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 44,
+        "lines": 1734,
+        "headings": 115,
+        "bodyLines": 1325,
+        "minorLines": 294,
+        "characters": 130648,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 3,
+        "dehyphenatedExplicit": 64,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 11,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 108,
+        "totalTokens": 32063,
+        "medianTokens": 358,
+        "minTokens": 23,
+        "maxTokens": 380,
+        "withSectionPath": 108
+      },
+      "contextualized": 0,
+      "embedded": 108,
+      "loaded": 108,
+      "deletedStale": 78,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    },
+    "iasc_protection": {
+      "source": "iasc_protection",
+      "file": "IASC-Protection-Policy-2016.pdf",
+      "fileSha256": "2a36792d65db64ebc6de82063da51c8177ff24007eb88b22ffbbd208ce456a68",
+      "docTitle": "IASC Policy on Protection in Humanitarian Action (2016)",
+      "ingestedAt": "2026-08-25T17:42:15.029Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 40,
+        "lines": 1479,
+        "headings": 58,
+        "bodyLines": 1239,
+        "minorLines": 182,
+        "characters": 111079,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 3,
+        "dehyphenatedExplicit": 15,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10.5,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 100,
+        "totalTokens": 29304,
+        "medianTokens": 356,
+        "minTokens": 19,
+        "maxTokens": 380,
+        "withSectionPath": 100
+      },
+      "contextualized": 0,
+      "embedded": 100,
+      "loaded": 100,
+      "deletedStale": 66,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    },
+    "iasc_disability": {
+      "source": "iasc_disability",
+      "file": "IASC-Disability-Inclusion-2019.pdf",
+      "fileSha256": "bb93dc370a688ca5c81c030674391687c6cf69fcc2a71253ed7301fb84ec3767",
+      "docTitle": "IASC Guidelines on the Inclusion of Persons with Disabilities in Humanitarian Action (2019)",
+      "ingestedAt": "2026-08-25T17:42:15.788Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 110,
+        "lines": 9670,
+        "headings": 629,
+        "bodyLines": 6549,
+        "minorLines": 2492,
+        "characters": 458606,
+        "emptyPages": 2,
+        "maxColumnsOnAPage": 9,
+        "dehyphenatedExplicit": 749,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 476,
+        "totalTokens": 109472,
+        "medianTokens": 238,
+        "minTokens": 40,
+        "maxTokens": 380,
+        "withSectionPath": 476
+      },
+      "contextualized": 0,
+      "embedded": 476,
+      "loaded": 476,
+      "deletedStale": 185,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    }
+  }
+}

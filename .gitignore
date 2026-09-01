@@ -1,0 +1,83 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.ipynb_checkpoints
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+coverage/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Env files (never commit secrets) ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+!.env.example
+!*.env.example
+
+# --- Corpus source documents (licensing) ---
+# The Sphere Handbook is all-rights-reserved: local educational/research use is
+# permitted, redistribution is not. Other corpus PDFs are looser but are kept out
+# of git for consistency. Re-download them with ingestion/fetch-corpus.sh.
+# Provenance and per-file licenses stay tracked in ingestion/corpus/SOURCES.md.
+ingestion/corpus/*.pdf
+
+# --- Ingestion pipeline artifacts ---
+ingestion/.extract-cache/
+
+# --- Deployment seed (licensing) ---
+# scripts/deploy/export-corpus.sh writes the extracted chunk text here to seed a
+# cloud database. That text *is* the source documents, so committing it would
+# redistribute the Sphere Handbook exactly as publishing the PDF would — the
+# same restriction that keeps ingestion/corpus/*.pdf out of git. Regenerate it
+# from a local ingest instead; it takes seconds.
+supabase/seed/*.csv.gz
+
+# --- Archives / backups ---
+*.zip
+*.tar.gz
+*.json.backup_*
+
+# --- Logs ---
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Editor ---
+.vscode/
+.idea/
+*.swp
+
+# --- Vercel ---
+# Added by `vercel link`, which also appends a bare `.env*`. That pattern is
+# kept narrower here: it sits after the `!.env.example` negation above and would
+# otherwise re-ignore the example files the repo deliberately tracks.
+.vercel
+.env.local

@@ -1,0 +1,2396 @@
+{
+  "scenarioId": "wfp_scope_001",
+  "turns": [
+    {
+      "probe": "Tell me about WFP's SCOPE platform for beneficiary management.",
+      "text": "I don't have specific details on the World Food Programme (WFP)'s SCOPE platform from my reference corpus, but I can provide general guidance based on common practices in humanitarian operations.\n\nThe SCOPE platform is a tool used by WFP to manage beneficiaries and their data securely and efficiently. It's designed to help organizations like WFP track and support people who receive assistance during emergencies or development programs. If you need detailed information about how to use the SCOPE platform, I recommend reaching out directly to WFP or visiting their official website for comprehensive guidance and training materials.\n\nFor more specific details on beneficiary management standards and practices, let me search the relevant guidelines.\nThe Sphere Handbook provides guidance on beneficiary management that aligns with humanitarian principles and standards. Here are some key points from the handbook:\n\n### Beneficiary Involvement\n- **Community Participation**: Programmes should involve beneficiaries in the design, management, and implementation of assistance programmes to ensure effective relief and rehabilitation.\n  - **Standard Reference**: The Sphere Handbook, Annex 2 > Movement and Non-governmental > The Code of Conduct > 7. Ways shall be found to involve programme beneficiaries in the management of relief aid.\n\n### Data Protection\n- **Data Security Measures**: Organizations should apply and document data protection measures when managing beneficiary information.\n  - **Standard Reference**: The Sphere Handbook, What is Sphere? > Appendix > Programming and markets.\n\n### Cash-Based Assistance\n- **Delivery Mechanisms**: Ensure that cash-based assistance delivery mechanisms are accessible and effective throughout the project’s lifespan. Recipients must have clear information on programme objectives and duration to make informed spending decisions.\n  - **Standard Reference**: The Sphere Handbook, What is Sphere? > Appendix > Programming and markets.\n\n### Monitoring and Evaluation\n- **Monitoring Mechanisms**: Regularly monitor cash-based assistance processes, activities, outputs, and risks, including protection risks. Ensure that the chosen delivery mechanism meets beneficiaries' needs effectively.\n  - **Standard Reference**: The Sphere Handbook, What is Sphere? > Appendix > Programming and markets.\n\nFor detailed information on WFP's SCOPE platform specifically, I recommend reaching out to WFP directly or visiting their official website for comprehensive guidance and training materials.",
+      "toolCalls": [
+        {
+          "toolCallId": "call_s40cxcfk",
+          "toolName": "search_standards",
+          "input": {
+            "query": "beneficiary management",
+            "source": "all"
+          },
+          "output": {
+            "query": "beneficiary management",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "1a941341-8c7c-57dd-8063-0dd7c2c22b6b",
+                "source": "sphere",
+                "section": "Annex 2 > Movement and Non-governmental > The Code of Conduct > 5. We shall respect culture and custom (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p387)",
+                "text": "We will endeavour to respect the culture, structures and customs of the communities and countries we are working in.\n6. We shall attempt to build disaster response on local capacities All people and communities – even in disaster – possess capacities as well as vulnerabilities. Where possible, we will strengthen these capacities by employing local staff, purchasing local materials and trading with local companies. Where possible, we will work through local NGHAs as partners in planning and implementation, and co-operate with local government structures where appropriate. We will place a high priority on the proper co-ordination of our emergency responses. This is best done within the countries concerned by those most directly involved in the relief operations, and should include representatives of the relevant UN bodies.\n7. Ways shall be found to involve programme beneficiaries in the management of relief aid Disaster response assistance should never be imposed upon the beneficiaries. Effective relief and lasting rehabilitation can best be achieved where the intended beneficiaries are involved in the design, management and implementation of the assistance programme. We will strive to achieve full community participation in our relief and rehabilitation programmes.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as meeting basic needs All relief actions affect the prospects for long-term development, either in a",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "789ac608-b6d6-5287-bcf3-af19ee555eec",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p22-23)",
+                "text": "• Apply and document data protection measures.\n• Set up mechanisms for digital data in collaboration with different organisations to the extent possible (“inter-operable systems”).\n• Clearly define the procedures, roles and responsibilities for the cash delivery process, as well as risk management mechanisms.\n• Ensure that the process delivering cash-based assistance is accessible and effective.\n• Make sure all affected groups can access the chosen delivery mechanism throughout the project’s lifespan.\n• Ensure recipients have information on programme objectives and the duration of cash-based assistance, so they can make informed spending decisions.\n• Ensure financial service providers are accountable to recipients through contractual management and monitoring see Core Humanitarian Standard\n• Monitor cash-based-assistance-related processes, activities, outputs and⊕ Commitments 4 and 5. Monitoring, evaluation and learning risks, including through post-distribution monitoring.\n• Monitor whether the cash or vouchers were received by the right person, safely, on time and in the correct amount.\n• Monitor markets and their supply chains consistently, beyond price monitoring.\n• Monitor household expenditure and triangulate with market monitoring data to assess whether needs can indeed be met through cash-based assistance and negative coping strategies reduced.\n• Monitor potential risks of cash-based assistance, including protection risks and any negative impact on natural resources.",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "32d9c9d4-42ca-5630-ab80-03ee0419b529",
+                "source": "sphere",
+                "section": "Sphere? > What is Sphere? (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p5-6)",
+                "text": "• Water Supply, Sanitation and Hygiene Promotion (WASH)\n• Food Security and Nutrition\n• Shelter and Settlement\n• Health In practice, humanitarian needs do not fall neatly into specific sectors. Effective humanitarian response must address people’s needs holistically, and sectors should coordinate and collaborate with each other to do so. In the context of a The Code of Conduct: 10 Core Principles\n1. The humanitarian imperative comes first.\n2. Aid is given regardless of the race, creed or nationality of the recipients and without adverse distinction of any kind. Aid priorities are calculated on the basis of need alone.\n3. Aid will not be used to further a particular political or religious standpoint.\n4. We shall endeavour not to act as instruments of government foreign policy.\n5. We shall respect culture and custom.\n6. We shall attempt to build disaster response on local capacities.\n7. Ways shall be found to involve programme beneficiaries in the management of relief aid.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as\n9. We hold ourselves accountable to both those we seek to assist and those from whom we accept resources.\n10. In our information, publicity and advertising activities, we shall recognise disaster victims as dignified human beings, not hopeless objects. protracted crisis, this may also expand beyond the humanitarian response with a need to work closely with development actors. The Handbook contains",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "d497af97-8ef0-5354-bf31-231d84aa572b",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p25)",
+                "text": "highlight anticipated shortfalls and problems in time. Information sharing among partners may facilitate loans that prevent pipeline breaks. If there are insufficient resources, commodities will need to be prioritised. Consult stakeholders when considering solutions. Ensure that accountability and communication mechanisms reflect the specificities of delivery processes. Ensure commodity tracking and information management systems are in place from the beginning of the intervention. Evaluate regularly if the assistance is effective in meeting changing needs, adapt the programme accordingly and support continuous learning for future programmes.",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "0f1a5388-6be3-5773-a8e7-e5a85fa30411",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p23-24)",
+                "text": "to assess whether needs can indeed be met through cash-based assistance and negative coping strategies reduced.\n• Monitor potential risks of cash-based assistance, including protection risks and any negative impact on natural resources.\n• Evaluate outcomes related to cash-based assistance.\n• Regularly evaluate whether the choice of cash-based assistance is effective in meeting changing needs, adapt the programme accordingly and support continuous learning for future programmes. Checklist for supply chain management and logistics This section presents a list of considerations for supply-chain management and logistics. It follows the programme management cycle and includes other important elements to consider. Supply chain management (SCM) starts with the choice of commodity or service. It includes identifying the source of what is needed, procurement, quality management, risk management (including insurance), packaging, shipping, transportation, warehousing, inventory management, delivery and distribution. SCM involves many different partners, and it is important to coordinate activities see Core Humanitarian Standard Commitment 6. Specific SCM expertise is required. Particular types of relevant expertise include contract management, transportation and warehouse management, inventory management, pipeline analysis and information management, shipment tracking and import management. Management and monitoring practices should ensure",
+                "score": 0.0158730158730159
+              },
+              {
+                "id": "190a18b6-4517-55c0-9ea1-8e94963d4aeb",
+                "source": "sphere",
+                "section": "Annex 2 > Movement and Non-governmental > The Code of Conduct > 5. We shall respect culture and custom (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p387-388)",
+                "text": "our relief and rehabilitation programmes.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as meeting basic needs All relief actions affect the prospects for long-term development, either in a positive or a negative fashion. Recognising this, we will strive to implement relief programmes which actively reduce the beneficiaries’ vulnerability to future disasters and help create sustainable lifestyles. We will pay particular attention to environmental concerns in the design and management of relief programmes. We will also endeavour to minimise the negative impact of humanitarian assistance, seeking to avoid long-term beneficiary dependence upon external aid.\n9. We hold ourselves accountable to both those we seek to assist and those from whom we accept resources We often act as an institutional link in the partnership between those who wish to assist and those who need assistance during disasters. We therefore hold ourselves accountable to both constituencies. All our dealings with donors and beneficiaries shall reflect an attitude of openness and transparency. We recognise the need to report on our activities, both from a financial perspective and the perspective of effectiveness. We recognise the obligation to ensure appropriate monitoring of aid distributions and to carry out regular assessments of the impact of disaster assistance. We will also seek to report, in an open fashion, upon the impact of our",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        }
+      ],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 113045,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " don"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'t"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " details"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " World"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Programme"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")'"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " SCO"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "PE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " my"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " corpus"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " but"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " general"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " based"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " common"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " practices"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " operations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " SCO"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "PE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " used"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " beneficiaries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " securely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efficiently"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " It"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " designed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " help"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " organizations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " track"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " support"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " people"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " who"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " receive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " development"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " programs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " If"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " how"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " SCO"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "PE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recommend"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reaching"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " out"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " directly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " visiting"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " website"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " comprehensive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " training"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " materials"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "For"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " details"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " beneficiary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " standards"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " practices"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " let"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " me"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " search"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidelines"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_s40cxcfk",
+          "toolName": "search_standards"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_s40cxcfk",
+          "inputTextDelta": "{\"query\":\"beneficiary management\",\"source\":\"all\"}"
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_s40cxcfk",
+          "toolName": "search_standards",
+          "input": {
+            "query": "beneficiary management",
+            "source": "all"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_s40cxcfk",
+          "output": {
+            "query": "beneficiary management",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "1a941341-8c7c-57dd-8063-0dd7c2c22b6b",
+                "source": "sphere",
+                "section": "Annex 2 > Movement and Non-governmental > The Code of Conduct > 5. We shall respect culture and custom (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p387)",
+                "text": "We will endeavour to respect the culture, structures and customs of the communities and countries we are working in.\n6. We shall attempt to build disaster response on local capacities All people and communities – even in disaster – possess capacities as well as vulnerabilities. Where possible, we will strengthen these capacities by employing local staff, purchasing local materials and trading with local companies. Where possible, we will work through local NGHAs as partners in planning and implementation, and co-operate with local government structures where appropriate. We will place a high priority on the proper co-ordination of our emergency responses. This is best done within the countries concerned by those most directly involved in the relief operations, and should include representatives of the relevant UN bodies.\n7. Ways shall be found to involve programme beneficiaries in the management of relief aid Disaster response assistance should never be imposed upon the beneficiaries. Effective relief and lasting rehabilitation can best be achieved where the intended beneficiaries are involved in the design, management and implementation of the assistance programme. We will strive to achieve full community participation in our relief and rehabilitation programmes.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as meeting basic needs All relief actions affect the prospects for long-term development, either in a",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "789ac608-b6d6-5287-bcf3-af19ee555eec",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p22-23)",
+                "text": "• Apply and document data protection measures.\n• Set up mechanisms for digital data in collaboration with different organisations to the extent possible (“inter-operable systems”).\n• Clearly define the procedures, roles and responsibilities for the cash delivery process, as well as risk management mechanisms.\n• Ensure that the process delivering cash-based assistance is accessible and effective.\n• Make sure all affected groups can access the chosen delivery mechanism throughout the project’s lifespan.\n• Ensure recipients have information on programme objectives and the duration of cash-based assistance, so they can make informed spending decisions.\n• Ensure financial service providers are accountable to recipients through contractual management and monitoring see Core Humanitarian Standard\n• Monitor cash-based-assistance-related processes, activities, outputs and⊕ Commitments 4 and 5. Monitoring, evaluation and learning risks, including through post-distribution monitoring.\n• Monitor whether the cash or vouchers were received by the right person, safely, on time and in the correct amount.\n• Monitor markets and their supply chains consistently, beyond price monitoring.\n• Monitor household expenditure and triangulate with market monitoring data to assess whether needs can indeed be met through cash-based assistance and negative coping strategies reduced.\n• Monitor potential risks of cash-based assistance, including protection risks and any negative impact on natural resources.",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "32d9c9d4-42ca-5630-ab80-03ee0419b529",
+                "source": "sphere",
+                "section": "Sphere? > What is Sphere? (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p5-6)",
+                "text": "• Water Supply, Sanitation and Hygiene Promotion (WASH)\n• Food Security and Nutrition\n• Shelter and Settlement\n• Health In practice, humanitarian needs do not fall neatly into specific sectors. Effective humanitarian response must address people’s needs holistically, and sectors should coordinate and collaborate with each other to do so. In the context of a The Code of Conduct: 10 Core Principles\n1. The humanitarian imperative comes first.\n2. Aid is given regardless of the race, creed or nationality of the recipients and without adverse distinction of any kind. Aid priorities are calculated on the basis of need alone.\n3. Aid will not be used to further a particular political or religious standpoint.\n4. We shall endeavour not to act as instruments of government foreign policy.\n5. We shall respect culture and custom.\n6. We shall attempt to build disaster response on local capacities.\n7. Ways shall be found to involve programme beneficiaries in the management of relief aid.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as\n9. We hold ourselves accountable to both those we seek to assist and those from whom we accept resources.\n10. In our information, publicity and advertising activities, we shall recognise disaster victims as dignified human beings, not hopeless objects. protracted crisis, this may also expand beyond the humanitarian response with a need to work closely with development actors. The Handbook contains",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "d497af97-8ef0-5354-bf31-231d84aa572b",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p25)",
+                "text": "highlight anticipated shortfalls and problems in time. Information sharing among partners may facilitate loans that prevent pipeline breaks. If there are insufficient resources, commodities will need to be prioritised. Consult stakeholders when considering solutions. Ensure that accountability and communication mechanisms reflect the specificities of delivery processes. Ensure commodity tracking and information management systems are in place from the beginning of the intervention. Evaluate regularly if the assistance is effective in meeting changing needs, adapt the programme accordingly and support continuous learning for future programmes.",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "0f1a5388-6be3-5773-a8e7-e5a85fa30411",
+                "source": "sphere",
+                "section": "What is Sphere? > Appendix > Programming and markets (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p23-24)",
+                "text": "to assess whether needs can indeed be met through cash-based assistance and negative coping strategies reduced.\n• Monitor potential risks of cash-based assistance, including protection risks and any negative impact on natural resources.\n• Evaluate outcomes related to cash-based assistance.\n• Regularly evaluate whether the choice of cash-based assistance is effective in meeting changing needs, adapt the programme accordingly and support continuous learning for future programmes. Checklist for supply chain management and logistics This section presents a list of considerations for supply-chain management and logistics. It follows the programme management cycle and includes other important elements to consider. Supply chain management (SCM) starts with the choice of commodity or service. It includes identifying the source of what is needed, procurement, quality management, risk management (including insurance), packaging, shipping, transportation, warehousing, inventory management, delivery and distribution. SCM involves many different partners, and it is important to coordinate activities see Core Humanitarian Standard Commitment 6. Specific SCM expertise is required. Particular types of relevant expertise include contract management, transportation and warehouse management, inventory management, pipeline analysis and information management, shipment tracking and import management. Management and monitoring practices should ensure",
+                "score": 0.0158730158730159
+              },
+              {
+                "id": "190a18b6-4517-55c0-9ea1-8e94963d4aeb",
+                "source": "sphere",
+                "section": "Annex 2 > Movement and Non-governmental > The Code of Conduct > 5. We shall respect culture and custom (The Sphere Handbook: Humanitarian Charter and Minimum Standards in Humanitarian Response (4th edition, 2018), p387-388)",
+                "text": "our relief and rehabilitation programmes.\n8. Relief aid must strive to reduce future vulnerabilities to disaster as well as meeting basic needs All relief actions affect the prospects for long-term development, either in a positive or a negative fashion. Recognising this, we will strive to implement relief programmes which actively reduce the beneficiaries’ vulnerability to future disasters and help create sustainable lifestyles. We will pay particular attention to environmental concerns in the design and management of relief programmes. We will also endeavour to minimise the negative impact of humanitarian assistance, seeking to avoid long-term beneficiary dependence upon external aid.\n9. We hold ourselves accountable to both those we seek to assist and those from whom we accept resources We often act as an institutional link in the partnership between those who wish to assist and those who need assistance during disasters. We therefore hold ourselves accountable to both constituencies. All our dealings with donors and beneficiaries shall reflect an attitude of openness and transparency. We recognise the need to report on our activities, both from a financial perspective and the perspective of effectiveness. We recognise the obligation to ensure appropriate monitoring of aid distributions and to carry out regular assessments of the impact of disaster assistance. We will also seek to report, in an open fashion, upon the impact of our",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " provides"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " beneficiary"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " align"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " principles"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " standards"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Here"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " some"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " key"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " points"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ":\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Benef"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "iciary"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " In"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "vol"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "vement"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Community"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Participation"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Program"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "mes"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " should"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " involve"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " beneficiaries"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " design"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " implementation"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " programmes"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " relief"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " rehabilitation"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Annex"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Movement"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Non"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-government"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "al"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Code"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Conduct"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "7"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Ways"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " shall"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " be"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " found"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " involve"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " programme"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " beneficiaries"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " relief"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Protection"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Security"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Measures"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Organizations"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " should"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " apply"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " document"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " protection"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " measures"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " when"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " managing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " beneficiary"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " What"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "?"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Appendix"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Programming"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " markets"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Cash"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-Based"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Delivery"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Mechan"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "isms"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " cash"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-based"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " delivery"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " mechanisms"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " accessible"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " throughout"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " project"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "’s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " lifespan"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Rec"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "ipients"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " must"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " clear"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " programme"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " objectives"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " duration"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " make"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " informed"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " spending"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " decisions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " What"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "?"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Appendix"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Programming"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " markets"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Monitoring"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Evaluation"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Monitoring"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Mechan"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "isms"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Regular"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "ly"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " monitor"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " cash"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "-based"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " processes"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " activities"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " outputs"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " risks"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " including"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " protection"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " risks"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " chosen"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " delivery"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " mechanism"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " meets"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " beneficiaries"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "'"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " effectively"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " What"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "?"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Appendix"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " >"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " Programming"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " markets"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "For"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " SCO"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "PE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " specifically"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " recommend"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " reaching"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " out"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "FP"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " directly"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " visiting"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " website"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " comprehensive"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " training"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": " materials"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-7SnncStNsSrSTo4KufkQVyVU"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T10:35:21.902Z",
+  "finishedAt": "2026-09-01T10:37:14.948Z",
+  "durationMs": 113046,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}

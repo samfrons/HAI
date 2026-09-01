@@ -1,0 +1,3584 @@
+{
+  "scenarioId": "early_warning_accuracy_001",
+  "turns": [
+    {
+      "probe": "A country is considering investing $800M in multi-hazard early warning systems. What evidence supports this investment, and what outcomes can they expect?",
+      "text": "To evaluate the potential benefits of a significant investment in multi-hazard early warning systems (EWS), it's important to consider both empirical evidence from existing EWS programs and the expected outcomes based on humanitarian standards and best practices.\n\n### Empirical Evidence\n\n1. **Reduced Losses**: Studies have shown that effective early warning systems can significantly reduce loss of life, injuries, and economic damage during disasters. For example:\n   - A study by the World Bank found that every dollar invested in disaster risk reduction saves up to $7 in post-disaster recovery costs.\n   - The United Nations Office for Disaster Risk Reduction (UNDRR) reports that early warning systems have saved thousands of lives globally, particularly in regions prone to cyclones and floods.\n\n2. **Improved Response Times**: Early warnings allow humanitarian actors to mobilize resources more quickly and efficiently:\n   - According to the International Federation of Red Cross and Red Crescent Societies (IFRC), communities with access to early warning systems can evacuate up to 48 hours before a disaster strikes, compared to those without such systems who may have only a few hours' notice.\n\n3. **Enhanced Community Resilience**: EWS contribute to building community resilience by enabling better preparedness and response:\n   - The European Commission's Humanitarian Aid department (ECHO) highlights that communities with early warning systems are more likely to develop effective disaster risk reduction strategies, including evacuation plans and emergency kits.\n\n### Expected Outcomes\n\n1. **Humanitarian Impact**:\n   - Reduced mortality rates: Early warnings can provide critical time for evacuations and other life-saving measures.\n   - Decreased morbidity: By reducing exposure to hazardous conditions, EWS can lower the incidence of disaster-related illnesses such as dehydration, hypothermia, and injuries.\n\n2. **Economic Benefits**:\n   - Lowered recovery costs: Early warnings allow for more efficient use of resources during a crisis, potentially saving millions in reconstruction efforts.\n   - Enhanced economic stability: By mitigating the impact of disasters on infrastructure and livelihoods, EWS can help maintain economic activity and reduce long-term poverty.\n\n3. **Social Benefits**:\n   - Improved community trust: Effective early warning systems build trust between communities and government agencies, fostering a more cooperative approach to disaster management.\n   - Increased public awareness: Regular dissemination of hazard information through EWS enhances public understanding of risks and promotes proactive behavior.\n\n### Standards and Best Practices\n\nAccording to the Core Humanitarian Standard on Quality and Accountability (CHS), humanitarian actors are expected to:\n- **Ensure that people affected by crisis have access to timely, accurate, and relevant information** (Standard 1.2).\n- **Work with communities to identify risks and vulnerabilities**, and develop strategies to mitigate them (Standard 3.4).\n\nThe Sphere Handbook also emphasizes the importance of early warning systems in its chapters on disaster risk reduction and emergency preparedness.\n\n### Conclusion\n\nInvesting $800M in multi-hazard early warning systems is likely to yield substantial humanitarian, economic, and social benefits. The evidence from existing programs indicates that such investments can save lives, reduce recovery costs, and enhance community resilience. To maximize the impact of this investment, it would be advisable to engage with local communities, integrate multiple hazard types into the system, and ensure continuous monitoring and evaluation.\n\nFor more detailed guidance on implementing early warning systems, refer to the relevant chapters in the Sphere Handbook and CHS, as well as sector-specific guidelines from organizations like UNDRR and IFRC.",
+      "toolCalls": [],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 403850,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evaluate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " potential"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " benefits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " significant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " investment"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multi"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-h"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "azard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "),"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " important"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " consider"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " both"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " empirical"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " existing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " programs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " expected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " outcomes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " based"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " standards"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " best"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " practices"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Emp"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "irical"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Reduc"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Loss"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "es"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Studies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " shown"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " significantly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduce"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " loss"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " life"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " injuries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " economic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " damage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disasters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " For"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " example"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " A"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " study"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " World"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Bank"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " found"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " every"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " dollar"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " invested"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risk"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduction"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " saves"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " $"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "7"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " post"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-dis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "aster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recovery"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " costs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " United"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Nations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Office"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Risk"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Reduction"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "UN"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "DR"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "R"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " saved"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " thousands"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " lives"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " globally"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " particularly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " regions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " prone"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " cycl"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ones"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " floods"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Improved"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Times"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warnings"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " allow"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " actors"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mobil"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ize"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " resources"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " quickly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efficiently"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " According"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " International"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Federation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Red"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Cross"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Red"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Crescent"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Soci"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "eties"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "IF"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "RC"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "),"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evacuate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hours"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " before"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strikes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " compared"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " those"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " without"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " who"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " may"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " only"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " few"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hours"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " notice"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Enh"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "anced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Community"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Res"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "il"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ience"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " contribute"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " building"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " community"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " resilience"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " enabling"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " better"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " prepared"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ness"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " European"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Commission"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " department"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CHO"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " highlights"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " likely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " develop"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risk"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduction"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strategies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " including"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evacuation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " plans"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " kits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Expected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Out"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "comes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Impact"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Reduced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mortality"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " rates"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warnings"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " critical"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evac"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "uations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " life"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-saving"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " measures"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Decre"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ased"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " morb"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "idity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " By"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reducing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " exposure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hazardous"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " conditions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " lower"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " incidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-related"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " illnesses"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " dehydration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hyp"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "mia"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " injuries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "conomic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Benefits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Lower"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recovery"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " costs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warnings"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " allow"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efficient"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " resources"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " potentially"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " saving"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " millions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reconstruction"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efforts"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Enhanced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " economic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " stability"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " By"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mitig"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ating"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " impact"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disasters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " infrastructure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " livelihood"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " help"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " maintain"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " economic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " activity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduce"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " long"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-term"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " poverty"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Social"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Benefits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Improved"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " community"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " trust"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " build"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " trust"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " between"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " government"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " agencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " fostering"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " cooperative"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " approach"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Increased"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " public"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " awareness"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Regular"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " dissemination"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hazard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " through"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " E"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " enhances"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " public"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " understanding"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risks"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " promotes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " proactive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " behavior"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Standards"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Best"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Practices"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "According"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Core"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Quality"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Accountability"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "),"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " actors"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " expected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " people"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ").\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Work"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " identify"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risks"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " vulnerabilities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**,"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " develop"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strategies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mitigate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " them"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ").\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " also"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emphasizes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " importance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " its"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " chapters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risk"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduction"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " prepared"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ness"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Conclusion"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Invest"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " $"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "M"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multi"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-h"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "azard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " likely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " yield"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " substantial"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " economic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " social"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " benefits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " existing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " programs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " indicates"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " investments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " save"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " lives"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reduce"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recovery"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " costs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " enhance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " community"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " resilience"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " maximize"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " impact"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " this"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " investment"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " would"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " be"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " advisable"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " engage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " local"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integrate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multiple"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hazard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " types"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " system"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " continuous"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " monitoring"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evaluation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "For"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " implementing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " refer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " chapters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " CH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " well"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sector"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidelines"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " organizations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " UN"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "DR"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "R"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " IF"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "RC"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-08-30T21:05:14.563Z",
+  "finishedAt": "2026-08-30T21:11:58.414Z",
+  "durationMs": 403851,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}
