@@ -259,7 +259,7 @@ export async function getCrisisUpdates(
 
 export const crisisUpdatesTool = tool({
   description:
-    'Fetch recent situation reports and emergency records for a crisis, country, or theme from live humanitarian sources (ReliefWeb where configured, otherwise IFRC GO). Use this for anything about the current state of an emergency — displacement, access, response activity, recent developments — rather than answering from memory. Returns titles, dates, publishing organisations, links, and excerpts, plus which source answered. Always tell the user which source the information came from and the date of the report.',
+    'Fetch recent situation reports and emergency records for a crisis, country, or theme from live humanitarian sources (ReliefWeb where configured, otherwise IFRC GO). Mandatory before describing the current state of any emergency — displacement, access, response activity, recent developments — rather than answering from memory. Returns titles, dates, publishing organisations, links, and excerpts, plus which source answered. Always name the source and the report date. These are narrative reports, not a statistical series: use humanitarian_data for a country caseload or funding figure, and do not present a number quoted inside a situation report as a current official total.',
   inputSchema: z.object({
     query: z
       .string()

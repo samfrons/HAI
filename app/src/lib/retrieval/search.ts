@@ -66,6 +66,17 @@ export interface SearchStandardsResult {
 const NOT_INGESTED_NOTICE =
   'RETRIEVAL FAILED: the standards corpus has not been ingested yet, so nothing was searched and no passage was found. You MUST NOT state any standard, indicator, threshold, or figure as if it came from the Sphere Handbook, the CHS, or IASC guidance, and you MUST NOT cite a section, chapter, or page number — any you recall may be from a superseded edition or invented. Tell the user plainly that the standards corpus is unavailable and that you cannot give a sourced answer. You may offer general humanitarian practice only if you label it explicitly as unsourced and recommend they verify it against the published handbook.';
 
+/**
+ * Same instruction again, for the case the other two do not cover: retrieval
+ * worked and the corpus simply does not contain the answer. Most eval questions
+ * that went unsourced were of this kind — platform, dataset and organisational
+ * facts (what HDX hosts, what PRIMES manages) that the handbooks never carried.
+ * Without a notice they returned a bare empty array, which reads to the model
+ * exactly like permission to answer from memory.
+ */
+const NO_MATCH_NOTICE =
+  'NO MATCH: the search ran and the corpus returned no relevant passage, so this question is not covered by the Sphere Handbook, the CHS, or IASC guidance. You MUST NOT cite any of them for it, and you MUST NOT invent a section or figure. Say plainly which part of the question the corpus does not cover. If the question is about a humanitarian platform, dataset, organisation, or a global statistic, note that this corpus holds standards rather than organisational facts, name the authoritative publisher instead (for example OCHA for HDX and funding, UNHCR for refugee registration figures), and give any general knowledge explicitly labelled as unsourced and unverified.';
+
 /** Same instruction, worded for a backend that is down rather than unconfigured. */
 const RETRIEVAL_UNAVAILABLE_NOTICE =
   'RETRIEVAL FAILED: the standards search backend is unavailable right now, so nothing was searched and no passage was found. You MUST NOT state any standard, indicator, threshold, or figure as if it came from the Sphere Handbook, the CHS, or IASC guidance, and you MUST NOT cite a section, chapter, or page number — any you recall may be from a superseded edition or invented. Tell the user plainly that the standards search is temporarily unavailable and that you cannot give a sourced answer right now. You may offer general humanitarian practice only if you label it explicitly as unsourced and recommend they verify it against the published handbook.';
@@ -224,6 +235,10 @@ export async function searchStandards(
 
     if (!succeeded) {
       return { chunks: [], notice: RETRIEVAL_UNAVAILABLE_NOTICE };
+    }
+
+    if (rows.length === 0) {
+      return { chunks: [], notice: NO_MATCH_NOTICE };
     }
 
     return { chunks: rows.map(toChunk) };

@@ -7,7 +7,7 @@ import { searchStandards } from '@/lib/retrieval/search';
 
 export const searchStandardsTool = tool({
   description:
-    'Search the humanitarian standards corpus (Sphere Handbook 2018, Core Humanitarian Standard 2024, IASC guidance) for passages relevant to a question. Call this before stating any standard, indicator, threshold, minimum figure, or commitment — including ones you believe you know. Returns ranked passages with their source and section for citation.',
+    'Search the humanitarian standards corpus (Sphere Handbook 2018, Core Humanitarian Standard 2024, IASC guidance) for passages relevant to a question. Mandatory before stating any standard, indicator, threshold, minimum figure, commitment, or named principle, and before agreeing with one the user has supplied — including ones you are sure you know, since your recollection may be of a superseded edition. Returns ranked passages with their source and section to cite. An empty result carries a `notice` saying so: it means the corpus does not cover the question, never that you may answer it from memory.',
   inputSchema: z.object({
     query: z
       .string()
