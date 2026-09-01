@@ -17,7 +17,7 @@
  * disclosure reuses so the two views can never drift apart.
  */
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useLocale } from '@/lib/i18n/context';
 import type { PlannedSection, TraceEvent, Verdict } from '@/lib/agent/types';
@@ -188,6 +188,19 @@ function TraceRow({ event }: { event: TraceEvent }) {
         </Row>
       );
 
+    case 'budget-wait':
+      // The per-minute wait is rendered live by `TraceList` from the tail of
+      // the stream, not here: once it is over there is nothing left to say,
+      // and a row frozen at "resumes in 44s" would be a lie about the past.
+      // The per-day one is not a wait at all — it is where the run ended —
+      // so it stays in the log where the reader can still see it.
+      if (event.scope !== 'tokens-per-day') return null;
+      return (
+        <Row icon={<IconWarning size={13} className="text-notice" />}>
+          <span className="text-notice">{d.budgetDailyExhausted}</span>
+        </Row>
+      );
+
     case 'workflow-error':
       return (
         <Row icon={<IconWarning size={13} className="text-notice" />}>
@@ -242,6 +255,70 @@ function Row({
   );
 }
 
+/* ------------------------------------------------------------------ *
+ * The pacing row
+ * ------------------------------------------------------------------ */
+
+type BudgetWait = Extract<TraceEvent, { type: 'budget-wait' }>;
+
+/**
+ * The per-minute wait the run is inside *right now*, or null.
+ *
+ * "Right now" is exactly the tail of the stream: the engine emits nothing
+ * between a `budget-wait` and the `budget-resumed` that ends it, so a wait that
+ * is still the last event is a wait still being served, and any event after it
+ * — the resume, the step that followed, the workflow error after a daily wall —
+ * has already cleared it.
+ */
+function activeBudgetWait(events: TraceEvent[]): BudgetWait | null {
+  const last = events[events.length - 1];
+  if (!last || last.type !== 'budget-wait') return null;
+  return last.scope === 'tokens-per-minute' ? last : null;
+}
+
+/**
+ * A wait, named and counted down.
+ *
+ * The count is a one-second interval rather than a re-render of the whole
+ * panel: only this row's number changes, and the trace above it must not
+ * reflow once a second while somebody is reading it.
+ *
+ * The deadline is anchored to when this row mounted plus `waitMs`, not to
+ * `event.at + waitMs`, because `at` is the *server's* clock and this subtraction
+ * would otherwise be as wrong as the difference between the two machines — a
+ * browser thirty seconds behind would show a countdown that never ends. The
+ * event arrives over an open stream within milliseconds of being emitted, so
+ * mount time is the better anchor by a wide margin.
+ *
+ * Deliberately still: a muted, unpulsed mark. The pulse in this design means
+ * "work is happening here", and no work is happening here.
+ */
+function BudgetWaitRow({ event }: { event: BudgetWait }) {
+  const { t } = useLocale();
+  const [remaining, setRemaining] = useState(() => Math.ceil(event.waitMs / 1000));
+
+  useEffect(() => {
+    const deadline = Date.now() + event.waitMs;
+    const tick = () => setRemaining(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [event.waitMs]);
+
+  return (
+    <Row icon={<IconMark size={7} className="text-subtle/60" />}>
+      <span className="text-subtle">{t.deliverables.budgetWaiting}</span>
+      {/* Hidden from assistive tech: the sentence beside it is the message,
+          and a number that changes every second inside the panel's polite
+          live region would talk over everything else the run has to say. */}
+      <span className="hai-data text-subtle/70" aria-hidden="true">
+        {' · '}
+        {t.deliverables.budgetResumesIn(remaining)}
+      </span>
+    </Row>
+  );
+}
+
 function truncate(text: string, max: number): string {
   const flat = text.replace(/\s+/g, ' ').trim();
   return flat.length <= max ? flat : `${flat.slice(0, max).trimEnd()}…`;
@@ -254,6 +331,7 @@ function truncate(text: string, max: number): string {
 /** The event log alone — reused by the chat's "show working" disclosure. */
 export function TraceList({ events }: { events: TraceEvent[] }) {
   const { t } = useLocale();
+  const wait = activeBudgetWait(events);
 
   if (events.length === 0) {
     return <p className="text-xs text-subtle">{t.deliverables.traceEmpty}</p>;
@@ -264,6 +342,9 @@ export function TraceList({ events }: { events: TraceEvent[] }) {
       {events.map((event, index) => (
         <TraceRow key={`${event.type}-${event.at}-${index}`} event={event} />
       ))}
+      {/* Keyed by the wait it belongs to, so a second wait gets a second row
+          with a freshly anchored countdown rather than inheriting the first's. */}
+      {wait ? <BudgetWaitRow key={`wait-${wait.at}`} event={wait} /> : null}
     </ul>
   );
 }

@@ -4,12 +4,14 @@ import {
   createUIMessageStreamResponse,
   stepCountIs,
   streamText,
+  type InferUIMessageChunk,
   type InferUITools,
   type UIMessage,
+  type UIMessageStreamWriter,
 } from 'ai';
 
 import { claimDailyRequest, dailyCapMessage } from '@/lib/limits/daily-cap';
-import { getChatModel, getProviderOptions } from '@/lib/llm/provider';
+import { getChatModel, getModelBudget, getProviderOptions } from '@/lib/llm/provider';
 import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
 import { warmEmbeddingsEndpoint } from '@/lib/retrieval/embeddings';
@@ -43,6 +45,13 @@ export const maxDuration = 60;
 /** Custom data parts HAI streams alongside text. */
 export type HaiDataParts = {
   'safety-notice': SafetyNoticeData;
+  /**
+   * The turn is waiting behind the endpoint's own token budget rather than
+   * behind a slow model. Streamed transiently — it is a fact about right now,
+   * not part of the answer, and it must not be replayed in the history of a
+   * conversation whose answer arrived fine thirty seconds later.
+   */
+  queued: { retryAfterMs: number };
 };
 
 /** Shared with the client so message parts are typed against the real tools. */
@@ -105,6 +114,60 @@ function isRateLimited(key: string): boolean {
   }
 
   return false;
+}
+
+/* ------------------------------------------------------------------ *
+ * Dead air, explained
+ * ------------------------------------------------------------------ */
+
+/** How often the budget is re-read while the first chunk is outstanding. */
+const QUEUE_POLL_MS = 1_000;
+/**
+ * How long that polling runs. Bounded rather than open-ended so this can never
+ * hold the response open on its own: the watch stops well inside `maxDuration`,
+ * and the answer streams on regardless of whether anything was ever announced.
+ */
+const QUEUE_WATCH_MS = 30_000;
+
+/**
+ * Say when a turn is queued behind the free tier rather than merely slow.
+ *
+ * The provider's fetch already folds every response — including a 429 and its
+ * `retry-after` — into the model's `TokenBudget` (see `lib/llm/rate-limit.ts`),
+ * so the fact exists server-side the moment the endpoint refuses. What it did
+ * not have was a way out to the browser: the SDK retries a 429 internally and
+ * silently, and from the client that is indistinguishable from a model taking
+ * twenty seconds to think. This writes one transient data part when the budget
+ * says the wait is a queue, and nothing at all otherwise — a local endpoint
+ * never reports a limit, so it never becomes measured, so this never fires.
+ */
+async function watchTokenQueue(
+  writer: UIMessageStreamWriter<HaiUIMessage>,
+  firstChunk: Promise<void>,
+): Promise<void> {
+  const budget = getModelBudget();
+  const deadline = Date.now() + QUEUE_WATCH_MS;
+
+  while (Date.now() < deadline) {
+    const arrived = await Promise.race([
+      firstChunk.then(() => true),
+      new Promise<boolean>((resolve) => setTimeout(() => resolve(false), QUEUE_POLL_MS)),
+    ]);
+    if (arrived) return;
+
+    // `waitFor(0)` is exactly the unexpired part of a refusal's `retry-after`:
+    // spending nothing needs no refill, so anything left is the block itself.
+    const blockedMs = budget.waitFor(0);
+    const daily = budget.snapshot().dailyExhausted;
+    if (daily || blockedMs > 0) {
+      writer.write({
+        type: 'data-queued',
+        data: { retryAfterMs: daily?.untilMs ?? blockedMs },
+        transient: true,
+      });
+      return;
+    }
+  }
 }
 
 /* ------------------------------------------------------------------ *
@@ -261,8 +324,40 @@ export async function POST(request: Request) {
     stopWhen: stepCountIs(4),
   });
 
-  return result.toUIMessageStreamResponse({
-    onError: (error) =>
-      error instanceof Error ? error.message : 'The assistant hit an unexpected error.',
+  const onError = (error: unknown) =>
+    error instanceof Error ? error.message : 'The assistant hit an unexpected error.';
+
+  const stream = createUIMessageStream<HaiUIMessage>({
+    onError,
+    execute: async ({ writer }) => {
+      // Resolved by the first chunk that says the model actually answered.
+      // `start` and `start-step` are emitted by the SDK before the request has
+      // been answered at all, so they are precisely the two that prove nothing.
+      let responded: () => void = () => {};
+      const firstChunk = new Promise<void>((resolve) => {
+        responded = resolve;
+      });
+
+      writer.merge(
+        result.toUIMessageStream<HaiUIMessage>({ onError }).pipeThrough(
+          new TransformStream<InferUIMessageChunk<HaiUIMessage>, InferUIMessageChunk<HaiUIMessage>>(
+            {
+              transform(chunk, controller) {
+                if (chunk.type !== 'start' && chunk.type !== 'start-step') responded();
+                controller.enqueue(chunk);
+              },
+              // A turn that ends without ever producing one — an error, an
+              // abort — must still release the watch rather than hold the
+              // response open for its full window.
+              flush: () => responded(),
+            },
+          ),
+        ),
+      );
+
+      await watchTokenQueue(writer, firstChunk);
+    },
   });
+
+  return createUIMessageStreamResponse({ stream });
 }

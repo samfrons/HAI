@@ -96,6 +96,18 @@ export interface Dictionary {
     writing: string;
     /** A subtle elapsed-time suffix, shown only once a wait passes ~3s. */
     elapsed: (seconds: number) => string;
+    /**
+     * Replaces the phase line once a turn has been silent past ~8s. The phase
+     * words claim something specific ("contacting", "writing"); after eight
+     * seconds of nothing the only honest claim left is that the turn is still
+     * alive, so the line stops asserting more than it knows.
+     */
+    stillWorking: string;
+    /**
+     * Shown instead when the endpoint has refused on its token budget and this
+     * turn is waiting behind that refusal — a queue, not a slow model.
+     */
+    queued: string;
   };
   /**
    * The deliverables surface: the template picker, the run view, and the trace
@@ -137,6 +149,19 @@ export interface Dictionary {
     traceExplainer: string;
     traceEmpty: string;
     planHeading: string;
+    /**
+     * The pacing row. The run is deliberately idle inside the endpoint's token
+     * budget — on a measured Sudan brief that is 105 of 142 seconds — and the
+     * panel says so rather than going silent, which reads as a crash.
+     */
+    budgetWaiting: string;
+    /** The live countdown on that row. Interpolated, never baked into the sentence. */
+    budgetResumesIn: (seconds: number) => string;
+    /**
+     * The per-day ceiling, which is a wall rather than a pause: the run has
+     * stopped and no countdown is offered, because the next opening is tomorrow.
+     */
+    budgetDailyExhausted: string;
     steps: Record<'plan' | 'gather' | 'draft' | 'verify', string>;
     verdicts: Record<'supported' | 'unsupported' | 'unverifiable', string>;
     done: string;
@@ -283,6 +308,8 @@ const en: Dictionary = {
     contacting: 'Contacting model…',
     writing: 'Writing answer…',
     elapsed: (seconds) => `${seconds}s`,
+    stillWorking: 'Still working',
+    queued: 'Queued by the free-tier token budget',
   },
   deliverables: {
     title: 'Deliverables',
@@ -325,6 +352,10 @@ const en: Dictionary = {
       'Every source consulted and every claim checked, in the order it happened. Nothing in the document comes from anywhere else.',
     traceEmpty: 'Waiting for the first step.',
     planHeading: 'Plan',
+    budgetWaiting: 'Waiting for the token budget',
+    budgetResumesIn: (seconds) => `resumes in ${seconds}s`,
+    budgetDailyExhausted:
+      'The free daily token budget for this model is used up. The run stopped.',
     steps: { plan: 'Plan', gather: 'Gather', draft: 'Draft', verify: 'Check' },
     verdicts: { supported: 'Supported', unsupported: 'Unsupported', unverifiable: 'Unverified' },
     done: 'Run complete',
@@ -492,6 +523,8 @@ const fr: Dictionary = {
     contacting: 'Connexion au modèle…',
     writing: 'Rédaction de la réponse…',
     elapsed: (seconds) => `${seconds} s`,
+    stillWorking: 'Toujours en cours',
+    queued: "En file d'attente : quota de jetons de l'offre gratuite",
   },
   deliverables: {
     title: 'Livrables',
@@ -534,6 +567,10 @@ const fr: Dictionary = {
       "Chaque source consultée et chaque affirmation vérifiée, dans l'ordre où cela s'est produit. Rien dans le document ne vient d'ailleurs.",
     traceEmpty: 'En attente de la première étape.',
     planHeading: 'Plan',
+    budgetWaiting: 'En attente du quota de jetons',
+    budgetResumesIn: (seconds) => `reprise dans ${seconds} s`,
+    budgetDailyExhausted:
+      "Le quota quotidien gratuit de jetons de ce modèle est épuisé. L'exécution s'est arrêtée.",
     steps: { plan: 'Plan', gather: 'Collecte', draft: 'Rédaction', verify: 'Vérification' },
     verdicts: { supported: 'Étayé', unsupported: 'Non étayé', unverifiable: 'Non vérifié' },
     done: 'Exécution terminée',
@@ -698,6 +735,8 @@ const ar: Dictionary = {
     contacting: 'جارٍ الاتصال بالنموذج…',
     writing: 'جارٍ كتابة الإجابة…',
     elapsed: (seconds) => `${seconds} ث`,
+    stillWorking: 'العمل ما زال جارياً',
+    queued: 'في قائمة الانتظار بسبب حصة الرموز في الخطة المجانية',
   },
   deliverables: {
     title: 'المخرجات',
@@ -739,6 +778,10 @@ const ar: Dictionary = {
       'كل مصدر جرت استشارته وكل ادعاء جرى التحقق منه، بالترتيب الذي حدث به. لا شيء في المستند يأتي من مكان آخر.',
     traceEmpty: 'في انتظار الخطوة الأولى.',
     planHeading: 'الخطة',
+    budgetWaiting: 'في انتظار حصة الرموز',
+    budgetResumesIn: (seconds) => `الاستئناف خلال ${seconds} ث`,
+    budgetDailyExhausted:
+      'استُنفدت الحصة اليومية المجانية من الرموز لهذا النموذج. توقّفت العملية.',
     steps: { plan: 'التخطيط', gather: 'الجمع', draft: 'الصياغة', verify: 'التحقق' },
     verdicts: { supported: 'مدعوم', unsupported: 'غير مدعوم', unverifiable: 'غير مُتحقَّق منه' },
     done: 'اكتملت العملية',
@@ -907,6 +950,8 @@ const es: Dictionary = {
     contacting: 'Contactando con el modelo…',
     writing: 'Redactando la respuesta…',
     elapsed: (seconds) => `${seconds} s`,
+    stillWorking: 'Sigue en curso',
+    queued: 'En cola por el presupuesto de tokens del plan gratuito',
   },
   deliverables: {
     title: 'Entregables',
@@ -949,6 +994,10 @@ const es: Dictionary = {
       'Cada fuente consultada y cada afirmación verificada, en el orden en que ocurrió. Nada del documento procede de otro sitio.',
     traceEmpty: 'Esperando el primer paso.',
     planHeading: 'Plan',
+    budgetWaiting: 'Esperando el presupuesto de tokens',
+    budgetResumesIn: (seconds) => `se reanuda en ${seconds} s`,
+    budgetDailyExhausted:
+      'El presupuesto diario gratuito de tokens de este modelo se ha agotado. La ejecución se detuvo.',
     steps: { plan: 'Plan', gather: 'Recopilación', draft: 'Redacción', verify: 'Verificación' },
     verdicts: {
       supported: 'Respaldado',
