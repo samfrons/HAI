@@ -1,7 +1,14 @@
 {
-  "name": "app",
+  "name": "hai-app",
   "version": "0.1.0",
   "private": true,
+  "description": "The HAI Next.js application: chat, role playbooks, guides and the deliverables engine. Built from the repository root — see the root package.json for why.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samfrons/HAI.git",
+    "directory": "app"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
