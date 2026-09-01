@@ -1,0 +1,3204 @@
+{
+  "scenarioId": "crisis_classification_001",
+  "turns": [
+    {
+      "probe": "You are responding to a situation where a coastal region has been hit by a Category 4 cyclone, followed by widespread flooding, and now faces potential disease outbreaks due to contaminated water supplies. Classify this crisis and recommend immediate priorities.",
+      "text": "To classify the current crisis and recommend immediate priorities, we need to consider the nature of the disaster (cyclone and subsequent flooding) and its impact on the affected population.\n\n### Crisis Classification\n\nThe situation described involves a multi-hazard emergency:\n- **Primary Hazard**: Cyclone (Category 4)\n- **Secondary Hazards**:\n  - Flooding\n  - Potential disease outbreaks due to contaminated water supplies\n\nThis scenario falls under the category of a complex humanitarian emergency, characterized by multiple overlapping hazards that exacerbate each other and pose significant challenges for response efforts.\n\n### Immediate Priorities\n\nBased on the Sphere Handbook (2018 edition) and the Core Humanitarian Standard on Quality and Accountability (CHS 2024 revision), here are the immediate priorities:\n\n1. **Search and Rescue Operations**\n   - Ensure that search and rescue teams have access to affected areas.\n   - Coordinate with local authorities and international partners for effective response.\n\n2. **Emergency Shelter and Non-Food Items (NFIs)**\n   - Provide emergency shelter solutions such as tents, tarpaulins, and other NFIs to displaced populations.\n   - Assess the structural integrity of existing shelters and provide repair materials if necessary.\n\n3. **Water, Sanitation, and Hygiene (WASH) Services**\n   - Ensure access to clean water by repairing or setting up alternative water supply systems.\n   - Distribute hygiene kits including soap, buckets, and chlorine tablets for water purification.\n   - Set up temporary latrines and waste management facilities.\n\n4. **Healthcare Services**\n   - Establish mobile clinics and health posts to provide medical care, particularly focusing on treating injuries from the cyclone and preventing disease outbreaks.\n   - Distribute essential medicines and supplies such as antibiotics, antiseptics, and vaccines.\n\n5. **Protection of Affected Populations**\n   - Conduct protection assessments to identify vulnerable groups (e.g., women, children, elderly, disabled) and ensure their specific needs are met.\n   - Provide psychosocial support services for those affected by trauma.\n\n6. **Information Management and Coordination**\n   - Establish a coordination mechanism involving all relevant stakeholders including government agencies, NGOs, UN bodies, and local communities.\n   - Use 4W (Who is Doing What Where) mapping to avoid duplication of efforts and ensure comprehensive coverage.\n\n7. **Food Security and Livelihoods Support**\n   - Assess food security needs and provide immediate food assistance where necessary.\n   - Provide seeds, tools, and other agricultural inputs for affected farmers to resume livelihood activities as soon as possible.\n\n### Recommended Actions\n\n- **Conduct Rapid Needs Assessment**: Use the Sphere Handbook's guidance on conducting rapid assessments to understand the specific needs of the affected population.\n- **Coordinate with Clusters**: Engage with relevant clusters (e.g., WASH, Health, Shelter) to ensure a coordinated response aligned with the CHS commitments.\n- **Monitor and Evaluate Response**: Implement monitoring and evaluation mechanisms to track progress against set objectives and adjust strategies as needed.\n\nThese priorities are designed to address immediate life-saving needs while laying the groundwork for longer-term recovery efforts.",
+      "toolCalls": [],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 75917,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " classify"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " current"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recommend"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " immediate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " priorities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " we"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " consider"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " nature"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disaster"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "cycl"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "one"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " subsequent"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " flooding"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " its"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " impact"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " population"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Classification"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " situation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " described"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " involves"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multi"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-h"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "azard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Primary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Hazard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Cycl"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "one"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Category"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Secondary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Haz"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ards"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Flo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "oding"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Potential"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disease"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " outbreaks"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " due"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " contaminated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " water"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " supplies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "This"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " scenario"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " falls"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " under"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " category"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " complex"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " characterized"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multiple"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " overlapping"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hazards"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " exacerb"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " each"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " pose"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " significant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efforts"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Immediate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Prior"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Based"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " edition"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Core"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Standard"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Quality"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Accountability"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " revision"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "),"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " here"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " immediate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " priorities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Search"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Rescue"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Operations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " search"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " rescue"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " teams"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " areas"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Coordinate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " local"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " authorities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " international"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " partners"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Shelter"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Non"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-F"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ood"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Items"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "NF"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " shelter"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " solutions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tents"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " t"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "arp"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "aul"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ins"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NF"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " displaced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " populations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Assess"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " structural"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integrity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " existing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " shelters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " repair"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " materials"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " if"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " necessary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Water"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " San"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Hy"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "giene"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ASH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Services"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " clean"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " water"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " repairing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " setting"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " alternative"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " water"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " supply"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Distrib"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ute"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " hygiene"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " kits"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " including"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " soap"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " buckets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " chlorine"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tablets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " water"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " purification"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Set"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " temporary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " lat"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "r"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ines"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " waste"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " facilities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Health"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "care"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Services"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Establish"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mobile"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " clinics"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " health"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " posts"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " medical"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " care"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " particularly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " focusing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " treating"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " injuries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " cycl"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "one"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " preventing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disease"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " outbreaks"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Distrib"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ute"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " essential"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " medicines"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " supplies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " antibiotics"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ise"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "pt"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ics"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " vaccines"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "5"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Protection"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Aff"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Pop"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ulations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Conduct"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " protection"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " assessments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " identify"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " vulnerable"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " groups"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "e"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".g"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".,"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " women"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " children"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " elderly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " disabled"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " met"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " psych"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "os"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ocial"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " support"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " services"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " those"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " trauma"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "6"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Coord"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ination"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Establish"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " coordination"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mechanism"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " involving"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " all"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " stakeholders"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " including"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " government"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " agencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NGOs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " UN"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " bodies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " local"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " communities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Who"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Doing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " What"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Where"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mapping"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " avoid"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " duplication"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efforts"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " comprehensive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " coverage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "7"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Liv"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "elihood"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Support"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Assess"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " immediate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " where"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " necessary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " seeds"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " agricultural"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " inputs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " farmers"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " resume"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " livelihood"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " activities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " soon"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " possible"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Recommended"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Actions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Con"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "duct"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Rapid"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Assessment"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sphere"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Handbook"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " guidance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " conducting"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " rapid"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " assessments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " understand"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " affected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " population"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Coordinate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Cl"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "usters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Eng"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "age"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " clusters"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "e"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".g"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".,"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " W"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ASH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Health"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Shelter"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " coordinated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " aligned"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " CH"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " commitments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Monitor"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Evaluate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Implement"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " monitoring"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " evaluation"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mechanisms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " track"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " progress"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " against"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " set"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " objectives"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " adjust"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strategies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "These"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " priorities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " designed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " address"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " immediate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " life"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-saving"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " while"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " laying"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " groundwork"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " longer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-term"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " recovery"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efforts"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T13:39:18.240Z",
+  "finishedAt": "2026-09-01T13:40:34.157Z",
+  "durationMs": 75917,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}

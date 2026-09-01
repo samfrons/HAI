@@ -1,0 +1,3399 @@
+{
+  "scenarioId": "platform_integration_001",
+  "turns": [
+    {
+      "probe": "A humanitarian organization needs to implement an end-to-end crisis response system. They currently use KoboToolbox for data collection, HDX for data sharing, and manual spreadsheets for coordination. What integration challenges will they face, and what solutions exist?",
+      "text": "Implementing an end-to-end crisis response system involves integrating various tools and platforms to ensure seamless data collection, analysis, and dissemination. Given that your organization currently uses KoboToolbox for data collection, HDX (Humanitarian Data Exchange) for data sharing, and manual spreadsheets for coordination, here are some integration challenges you might face along with potential solutions:\n\n### Challenges\n\n1. **Data Inconsistency**: Manual entry into spreadsheets can lead to inconsistencies and errors.\n2. **Lack of Real-Time Collaboration**: Spreadsheets do not support real-time collaboration effectively, which is crucial in a crisis response scenario where multiple stakeholders need to access and update data simultaneously.\n3. **Scalability Issues**: As the volume of data increases during a crisis, manual processes become inefficient and unsustainable.\n4. **Data Security and Privacy**: Manual handling of sensitive information poses risks related to data security and privacy.\n5. **Complexity in Data Analysis**: Integrating data from KoboToolbox with HDX manually can be cumbersome and time-consuming for analysis.\n\n### Solutions\n\n1. **Automated Data Transfer**:\n   - Use APIs or third-party integrations (like Zapier) to automate the transfer of data collected via KoboToolbox directly into HDX.\n   - Example: Set up an API endpoint in KoboToolbox that triggers a script to upload datasets automatically to HDX.\n\n2. **Real-Time Collaboration Tools**:\n   - Transition from manual spreadsheets to collaborative tools like Google Sheets or Microsoft Excel Online, which support real-time editing and version control.\n   - Alternatively, consider using specialized crisis management platforms such as Ushahidi or ReliefWeb’s Crisis Information Management System (CIMS) that offer built-in collaboration features.\n\n3. **Centralized Data Management**:\n   - Implement a centralized data management platform like OCHA's Humanitarian Response Platform (HRP) to manage and coordinate all aspects of the crisis response.\n   - This platform can integrate with KoboToolbox for data collection, HDX for sharing datasets, and provide real-time collaboration features.\n\n4. **Enhanced Security Measures**:\n   - Ensure that any automated systems or platforms used adhere to strict security protocols and comply with relevant regulations (e.g., GDPR).\n   - Use encryption methods and secure authentication mechanisms to protect sensitive information during data transfer and storage.\n\n5. **Advanced Data Analysis Tools**:\n   - Integrate advanced analytics tools like Tableau, Power BI, or QGIS into your workflow for more sophisticated analysis of the collected data.\n   - These tools can connect directly with HDX datasets and provide visualizations that aid in decision-making processes during a crisis.\n\n### Recommended Approach\n\n1. **Assess Current Needs**: Conduct an assessment to identify specific needs and gaps in your current system.\n2. **Pilot Integration Projects**: Start small by piloting automated data transfer between KoboToolbox and HDX for a subset of projects or datasets.\n3. **Training and Capacity Building**: Provide training sessions for staff on using new tools and platforms effectively.\n4. **Continuous Improvement**: Regularly review the system’s performance and make adjustments as needed based on feedback from users.\n\nBy addressing these challenges through strategic integration solutions, your organization can enhance its crisis response capabilities, ensuring more efficient, secure, and effective data management during emergencies.",
+      "toolCalls": [],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 95253,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Implement"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " end"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-end"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " system"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " involves"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integrating"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " various"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platforms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " seamless"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collection"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " dissemination"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Given"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " your"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " organization"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " currently"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " uses"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collection"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Exchange"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sharing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " spreads"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "heets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " coordination"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " here"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " are"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " some"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " might"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " face"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " along"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " potential"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " solutions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " In"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "cons"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "istency"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Manual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " entry"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " spreads"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "heets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " lead"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " inconsistencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " errors"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "L"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ack"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Real"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-Time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Collaboration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sp"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "reads"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "heets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " do"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " not"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " support"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " real"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collaboration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effectively"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " which"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crucial"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " scenario"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " where"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " multiple"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " stakeholders"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " update"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " simultaneously"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Sc"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "al"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ability"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Issues"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " As"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " volume"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " increases"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " processes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " become"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " inefficient"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " unsustainable"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Privacy"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Manual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " handling"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sensitive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " poses"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risks"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " related"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " privacy"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "5"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Complex"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Integr"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ating"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manually"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " be"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " cumbersome"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-consuming"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Solutions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Autom"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Transfer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " APIs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " third"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-party"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integr"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Zap"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ier"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " automate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " transfer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " via"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " directly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Example"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Set"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " API"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " endpoint"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " triggers"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " script"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " upload"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " datasets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " automatically"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Real"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-Time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Collaboration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Transition"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " spreads"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "heets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collaborative"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Google"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Sheets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Microsoft"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Excel"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Online"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " which"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " support"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " real"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " editing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " version"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " control"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Alternatively"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " consider"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " using"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specialized"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platforms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " U"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "sh"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ah"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "idi"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Relief"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Web"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "’s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " System"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "C"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "IMS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " offer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " built"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collaboration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " features"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Central"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ized"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Implement"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " centralized"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "HR"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "P"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " manage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " coordinate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " all"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " aspects"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " This"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integrate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collection"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sharing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " datasets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " real"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-time"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collaboration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " features"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Enh"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "anced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Measures"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Ensure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " any"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " automated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platforms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " used"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " adhere"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strict"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " protocols"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " comply"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " regulations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "e"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".g"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".,"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " GDPR"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ").\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Use"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " encryption"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " methods"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " secure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " authentication"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " mechanisms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " protect"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sensitive"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " transfer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " storage"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "5"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Advanced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ":\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Int"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "egrate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " advanced"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analytics"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " like"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Table"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "au"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Power"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " BI"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Q"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "GIS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " your"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " workflow"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sophisticated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " collected"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "  "
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " -"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " These"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " connect"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " directly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " datasets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " visual"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "izations"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " decision"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "-making"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " processes"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "###"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Recommended"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Approach"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Ass"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ess"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Current"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Conduct"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " assessment"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " identify"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needs"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " gaps"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " your"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " current"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " system"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "P"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ilot"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Integration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Projects"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Start"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " small"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " pil"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "oting"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " automated"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " transfer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " between"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " K"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "obo"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "box"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " subset"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " projects"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " datasets"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Training"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Capacity"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Building"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " training"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sessions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " staff"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " using"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " new"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " platforms"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effectively"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Continuous"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Improvement"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Regular"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ly"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " review"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " system"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "’s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " performance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " make"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " adjustments"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " needed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " based"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " feedback"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " users"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "By"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " addressing"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " these"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " challenges"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " through"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " strategic"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " integration"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " solutions"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " your"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " organization"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " enhance"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " its"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " crisis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " capabilities"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ensuring"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " efficient"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " secure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " effective"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " management"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " during"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " emergencies"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T13:44:34.779Z",
+  "finishedAt": "2026-09-01T13:46:10.032Z",
+  "durationMs": 95253,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}
