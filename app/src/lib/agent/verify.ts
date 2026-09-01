@@ -96,6 +96,46 @@ const FACTUAL_PATTERN =
  * humanitarian indicator is checkable too, because a wrong section number is as
  * damaging as a wrong number and much harder to spot.
  */
+/**
+ * Sentence boundaries, ignoring any that fall inside brackets.
+ *
+ * The naive split — a full stop, whitespace, then a capital — is wrong here in a
+ * way that showed up only on a real brief. Citations are rendered inline as
+ * `(sphere · Promotion > 2. Water supply > standard 2.1)`, and that label
+ * contains a full stop followed by a capital. Splitting there ends the "claim"
+ * halfway through its own source label, so `annotate` then inserted the
+ * unverified mark *inside* the citation, producing:
+ *
+ *   …500 per hand pump (sphere · Promotion > 2. **[unverified]** Water supply…
+ *
+ * which is worse than not flagging at all: it corrupts the provenance the
+ * reader needs in order to check the flag. Tracking bracket depth costs one
+ * loop and removes the whole class.
+ */
+function splitSentences(text: string): string[] {
+  const sentences: string[] = [];
+  let depth = 0;
+  let start = 0;
+
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    if (char === '(' || char === '[') depth += 1;
+    else if (char === ')' || char === ']') depth = Math.max(0, depth - 1);
+    else if (depth === 0 && (char === '.' || char === '!' || char === '?')) {
+      const rest = text.slice(index + 1);
+      const boundary = /^\s+[A-Z(]/.exec(rest);
+      if (boundary) {
+        sentences.push(text.slice(start, index + 1));
+        start = index + boundary[0].length;
+        index = start - 1;
+      }
+    }
+  }
+
+  sentences.push(text.slice(start));
+  return sentences;
+}
+
 export function extractClaims(markdown: string): string[] {
   const claims: string[] = [];
 
@@ -107,9 +147,7 @@ export function extractClaims(markdown: string): string[] {
       .trim();
     if (!text || /^[-|:\s]+$/.test(text)) continue;
 
-    // Sentence split that does not break on "24.6%" or "No. 3".
-    const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z(])/);
-    for (const sentence of sentences) {
+    for (const sentence of splitSentences(text)) {
       const claim = sentence.trim();
       if (claim.length < 25) continue;
       const hasFigure = /\d/.test(claim);

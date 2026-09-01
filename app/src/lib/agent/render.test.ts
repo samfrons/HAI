@@ -39,6 +39,28 @@ describe('renderSection', () => {
     expect(invented).toBe(1);
   });
 
+  /*
+   * Seen on the first live Sudan brief: a sentence resting on two passages came
+   * back as `[e58, e59]`, which the single-id pattern did not match, so the raw
+   * ids shipped in the finished document.
+   */
+  it('resolves several ids in one bracket', () => {
+    const { markdown, invented } = renderSection('Minimum 15 litres [e1, e2].', evidence);
+    expect(markdown).toBe('Minimum 15 litres (sphere · WASH 2.1; HDX HAPI · funding).');
+    expect(invented).toBe(0);
+  });
+
+  it('still counts an unknown id inside a multi-id bracket', () => {
+    const { markdown, invented } = renderSection('Minimum 15 litres [e1, e9].', evidence);
+    expect(markdown).toBe('Minimum 15 litres (sphere · WASH 2.1).');
+    expect(invented).toBe(1);
+  });
+
+  it('collapses a source cited several times in a row', () => {
+    const { markdown } = renderSection('Requirements are $2bn [e2][e2][e2].', evidence);
+    expect(markdown).toBe('Requirements are $2bn (HDX HAPI · funding).');
+  });
+
   it('drops a heading the draft step was told not to write', () => {
     const { markdown } = renderSection('## Overview\n\nSudan faces a crisis.', evidence);
     expect(markdown).toBe('Sudan faces a crisis.');

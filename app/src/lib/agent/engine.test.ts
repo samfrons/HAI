@@ -301,6 +301,63 @@ describe('runWorkflow', () => {
   });
 });
 
+describe('degraded runs', () => {
+  /*
+   * Both from the same live Sudan brief, and both worse than the failure they
+   * followed. The funding section's draft call hit Groq's per-minute ceiling;
+   * the engine then verified the resulting error message as if it were prose,
+   * so the document carried "This section could not be drafted: Failed after 3
+   * attempts… **[unverified]**" — and Groq's own text, ending "Upgrade to Dev
+   * Tier today at https://console.groq.com/settings/billing", was rendered
+   * verbatim into a humanitarian brief's caveats.
+   */
+  const rateLimit = new Error(
+    'Failed after 3 attempts. Last error: AI_APICallError: Rate limit reached for model `qwen/qwen3.8-27b`, used 8000, limit 8000. Please try again in 3m48.96s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing',
+  );
+
+  function runWithFailingDraft() {
+    let gathered = false;
+    return scriptedModel((prompt) => {
+      if (prompt.includes('ISO 3166-1 alpha-3 code')) return [text('Sudan|SDN')];
+      if (prompt.includes('Retrieve the evidence')) {
+        if (gathered) return [text('')];
+        gathered = true;
+        return [toolCall('humanitarian_data', { country_iso3: 'SDN', dataset: 'humanitarian_needs' })];
+      }
+      throw rateLimit;
+    });
+  }
+
+  it('does not verify a section that failed to draft', async () => {
+    const events = await collect(
+      runWorkflow(
+        { workflow, subject: 'Sudan' },
+        { model: runWithFailingDraft(), tools, pacer: pacer() },
+      ),
+    );
+
+    expect(ofType(events, 'check-run')).toHaveLength(0);
+    const section = ofType(events, 'draft-section').find((event) => event.sectionId === 'needs');
+    expect(section?.markdown).not.toContain(UNVERIFIED_MARK);
+  });
+
+  it('never puts an upstream billing URL in the document', async () => {
+    const events = await collect(
+      runWorkflow(
+        { workflow, subject: 'Sudan' },
+        { model: runWithFailingDraft(), tools, pacer: pacer() },
+      ),
+    );
+
+    const caveats = ofType(events, 'draft-section').find((event) => event.sectionId === 'sources');
+    expect(caveats?.markdown).not.toContain('console.groq.com');
+    expect(caveats?.markdown).not.toContain('Upgrade to Dev Tier');
+    expect(caveats?.markdown).toContain("per-minute token budget was exhausted");
+    // The operative fact survives: when it is worth retrying.
+    expect(caveats?.markdown).toContain('3m48');
+  });
+});
+
 describe('selectTools', () => {
   /*
    * The registry is edited by other work in parallel with this engine. A

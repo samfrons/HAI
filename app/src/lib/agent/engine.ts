@@ -58,7 +58,13 @@ import {
   type EvidenceItem,
   type SourceError,
 } from './evidence';
-import { TokenPacer, estimateTokens, withRateLimitRetry } from './pacer';
+import {
+  TokenPacer,
+  estimateToolLoopTokens,
+  estimateTokens,
+  isRateLimitError,
+  withRateLimitRetry,
+} from './pacer';
 import { renderSection, renderSourcesAndCaveats } from './render';
 import type { SectionSpec, TraceEvent, WorkflowDefinition } from './types';
 import { verifySection } from './verify';
@@ -87,8 +93,25 @@ Absolute rules:
 - Never write identifiable personal data about affected people — no names, no case or registration numbers, no household-level detail, no precise individual locations. Report in aggregate only.
 - Do not narrate yourself. No "let me", no "I will now", no apologies, no meta-commentary about the workflow.`;
 
-/** Max tool-calling steps allowed inside one gather. */
-const GATHER_STEP_CAP = 3;
+/**
+ * Max tool-calling steps allowed inside one gather.
+ *
+ * Two, lowered from three after the first live Sudan brief, and the reason is
+ * the token budget rather than the search quality. A gather's cost is dominated
+ * by results accumulating across its own steps (see `estimateToolLoopTokens`),
+ * so a third step costs roughly what the first two did together — and at three
+ * steps one section's gather reserves over 80% of a minute's ceiling, leaving
+ * the draft and verify calls that follow it to wait out most of the next
+ * minute.
+ *
+ * What that third step actually bought on the live run was mostly re-queries:
+ * `crisis_updates` asked about Sudan three times with different words and got
+ * the same empty answer. The useful fan-out — population, needs, and food
+ * security together — happened inside a single step, because the model issues
+ * several calls at once when the provider allows it. Two steps keep that and
+ * drop the retry.
+ */
+const GATHER_STEP_CAP = 2;
 /** Guard on section length — a brief is scanned under time pressure. */
 const DRAFT_MAX_WORDS = 200;
 
@@ -314,6 +337,7 @@ export async function* runWorkflow(
       };
 
       let raw = '';
+      let draftFailed = false;
       try {
         for await (const delta of draft({
           model,
@@ -326,6 +350,7 @@ export async function* runWorkflow(
         }
       } catch (error) {
         const note = errorMessage(error);
+        draftFailed = true;
         raw = `_This section could not be drafted: ${note}_`;
         state.sourceErrors.push({ source: section.id, message: `draft failed — ${note}` });
         yield { type: 'step-finished', at: now(), stepId: draftId, ok: false, note };
@@ -344,12 +369,17 @@ export async function* runWorkflow(
         heading: section.heading,
         markdown: rendered.markdown,
       };
-      if (raw && !raw.startsWith('_This section could not be drafted')) {
+      if (!draftFailed && raw) {
         yield { type: 'step-finished', at: now(), stepId: draftId, ok: true };
       }
 
       /* ---- verify ---- */
-      if (section.skipVerification || !rendered.markdown.trim()) continue;
+      // A section that failed to draft holds an error message, not prose.
+      // Verifying it produced the genuinely absurd output seen on a live run:
+      // the checker read "This section could not be drafted: Failed after 3
+      // attempts…" as a factual claim, found no evidence for it, and marked the
+      // failure notice itself **[unverified]**.
+      if (draftFailed || section.skipVerification || !rendered.markdown.trim()) continue;
 
       throwIfAborted(signal);
       const verifyId = `${section.id}:verify`;
@@ -489,7 +519,13 @@ interface GatherContext {
  * had not retrieved.
  */
 async function* gather(ctx: GatherContext): AsyncGenerator<TraceEvent> {
-  const estimated = estimateTokens(`${STEP_POLICY}${ctx.prompt}`, 400 * GATHER_STEP_CAP);
+  // Reserved for the whole loop up front, accumulation included — see
+  // `estimateToolLoopTokens`. Reserving per call instead would let the pacer
+  // wave three cheap-looking requests through inside one minute and then watch
+  // the endpoint refuse the third.
+  const estimated =
+    estimateTokens(`${STEP_POLICY}${ctx.prompt}`, 0) +
+    estimateToolLoopTokens(Object.keys(ctx.tools).length, GATHER_STEP_CAP);
   await ctx.pacer.reserve(estimated);
 
   const run = () =>
@@ -557,7 +593,8 @@ async function* gather(ctx: GatherContext): AsyncGenerator<TraceEvent> {
   // The model decided it already knew the answer. That is the exact failure the
   // whole grounding policy exists to prevent, so the step is run once more with
   // the choice taken away rather than accepted as an empty gather.
-  const forcedEstimate = estimateTokens(ctx.prompt, 400);
+  const forcedEstimate =
+    estimateTokens(ctx.prompt, 0) + estimateToolLoopTokens(Object.keys(ctx.tools).length, 1);
   await ctx.pacer.reserve(forcedEstimate);
   result = streamText({
     model: ctx.model,
@@ -708,8 +745,28 @@ function throwIfAborted(signal?: AbortSignal): void {
   if (signal?.aborted) throw new Error('The run was cancelled.');
 }
 
+/**
+ * An error as the document should describe it.
+ *
+ * Upstream messages are written for whoever is paying the bill, not for whoever
+ * is reading the brief. Groq's rate-limit text ends "Need more tokens? Upgrade
+ * to Dev Tier today at https://console.groq.com/settings/billing", and on a
+ * live run that sentence was rendered verbatim into a humanitarian situation
+ * brief's caveats section — a vendor upsell inside a document about a caseload
+ * of 33 million people. The reader needs the fact (a section is missing because
+ * the run hit the endpoint's per-minute budget), not the sales copy.
+ */
 function errorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'string') return error;
-  return 'unknown error';
+  const raw =
+    error instanceof Error ? error.message : typeof error === 'string' ? error : 'unknown error';
+
+  if (isRateLimitError(error)) {
+    const retry = /try again in ([\d.]+\s*[a-z]+\d*\.?\d*s?)/i.exec(raw);
+    return retry
+      ? `the endpoint's per-minute token budget was exhausted (retry after ${retry[1]})`
+      : "the endpoint's per-minute token budget was exhausted";
+  }
+
+  // Strip any URL: an upstream link in a generated document reads as a source.
+  return raw.replace(/https?:\/\/\S+/g, '').replace(/\s{2,}/g, ' ').trim() || 'unknown error';
 }

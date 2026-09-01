@@ -43,6 +43,53 @@ const CHARS_PER_TOKEN = 3.5;
 /** What a call is assumed to produce when nothing better is known. */
 const DEFAULT_OUTPUT_TOKENS = 500;
 
+/**
+ * A registered tool's description and JSON schema, as sent on every request.
+ *
+ * HAI's tool descriptions are long on purpose — they carry the grounding policy
+ * ("Mandatory before stating any caseload…") that keeps the model calling them.
+ * That prose is not free: it is re-sent with every step of a tool loop, for
+ * every tool in the subset, and measured against the deployed set it runs to
+ * roughly this per tool.
+ */
+const TOOL_SCHEMA_TOKENS = 320;
+
+/** What one tool result adds to the context it is returned into. */
+const TOOL_RESULT_TOKENS = 500;
+
+/**
+ * Tool calls assumed per step.
+ *
+ * Not one. Whether the model may fan out within a single step is decided by
+ * `parallel_tool_calls` in `lib/llm/provider.ts`, which is a deployment
+ * concern rather than this file's — and on the live Sudan run the needs
+ * section issued three calls in one step. Budgeting for one would put the
+ * pacer back where it was: confident, low, and wrong in the direction that
+ * ends in a 429.
+ */
+const RESULTS_PER_STEP = 2;
+
+/**
+ * What a tool-calling loop of `steps` steps costs, beyond its prompt.
+ *
+ * The term that matters is the accumulation, and getting it wrong is what put a
+ * live Sudan brief over Groq's ceiling despite the pacer. Every tool result
+ * rides along in every *subsequent* request of the same loop, so three steps do
+ * not cost three results — they cost one, then two, then three, i.e. six. The
+ * first implementation reserved a flat per-call figure, under-estimated a
+ * three-step gather by about a factor of three, and let enough calls through in
+ * one minute for the endpoint to refuse one.
+ */
+export function estimateToolLoopTokens(
+  toolCount: number,
+  steps: number,
+  outputPerStep = 250,
+): number {
+  const schemas = toolCount * TOOL_SCHEMA_TOKENS * steps;
+  const accumulated = ((steps * (steps + 1)) / 2) * TOOL_RESULT_TOKENS * RESULTS_PER_STEP;
+  return schemas + accumulated + steps * outputPerStep;
+}
+
 export function tokensPerMinute(): number {
   const parsed = Number.parseInt(process.env.LLM_TOKENS_PER_MINUTE ?? '', 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_TOKENS_PER_MINUTE;

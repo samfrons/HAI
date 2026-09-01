@@ -40,6 +40,29 @@ describe('extractClaims', () => {
     expect(extractClaims('This section sets out the operating context for the response.')).toEqual([]);
   });
 
+  /*
+   * From the first live Sudan brief. A rendered citation contains
+   * "> 2. Water supply", and splitting on that full stop ended the claim inside
+   * its own source label — so `annotate` then inserted the unverified mark into
+   * the middle of the citation, destroying the provenance a reader needs in
+   * order to check the flag.
+   */
+  it('does not split a sentence inside its own citation', () => {
+    const claims = extractClaims(
+      '- Sphere standard 2.1 limits users to 250 people per tap (sphere · Promotion > 2. Water supply > standard 2.1 (4th edition, 2018), p106).',
+    );
+
+    expect(claims).toHaveLength(1);
+    expect(claims[0]).toContain('p106');
+  });
+
+  it('still splits ordinary sentences', () => {
+    const claims = extractClaims(
+      'The appeal requires USD 2,866,228,593. Funding received is USD 1,172,022,676 to date.',
+    );
+    expect(claims).toHaveLength(2);
+  });
+
   it('does not run away on a long section', () => {
     const line = '- 1,000,000 people were reached in the period (source).\n';
     expect(extractClaims(line.repeat(30)).length).toBeLessThanOrEqual(6);

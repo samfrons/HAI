@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { TokenPacer, estimateTokens, isRateLimitError } from './pacer';
+import {
+  TokenPacer,
+  estimateToolLoopTokens,
+  estimateTokens,
+  isRateLimitError,
+} from './pacer';
 
 describe('TokenPacer', () => {
   it('lets a run through until the minute is spent', () => {
@@ -61,5 +66,45 @@ describe('isRateLimitError', () => {
   it('does not retry a request that was simply wrong', () => {
     expect(isRateLimitError(new Error('property reasoning_content is unsupported'))).toBe(false);
     expect(isRateLimitError({ statusCode: 400 })).toBe(false);
+  });
+});
+
+describe('estimateToolLoopTokens', () => {
+  /*
+   * The arithmetic that a live Sudan brief proved was missing. Three steps do
+   * not cost three tool results: results accumulate, so step two re-sends step
+   * one's and step three re-sends both. Reserving a flat per-call figure
+   * under-estimated a gather by roughly a factor of three and let enough
+   * requests through in one minute for Groq to refuse one.
+   */
+  it('charges for tool results being re-sent on every later step', () => {
+    const oneStep = estimateToolLoopTokens(2, 1, 0);
+    const threeSteps = estimateToolLoopTokens(2, 3, 0);
+
+    // 1 result vs 1+2+3 = 6, plus schemas re-sent each step.
+    expect(threeSteps).toBeGreaterThan(oneStep * 3);
+  });
+
+  it('charges for every tool in the subset, not just the one called', () => {
+    expect(estimateToolLoopTokens(4, 2, 0)).toBeGreaterThan(estimateToolLoopTokens(1, 2, 0));
+  });
+
+  /*
+   * The constraint that set `GATHER_STEP_CAP` in the engine. A gather has to
+   * leave room in the same minute for the draft and verify calls that follow
+   * it, or every section waits out a full window and a six-section brief takes
+   * ten minutes. At three steps this came to 6,630 of the 8,000 available —
+   * which is what sent it back to two.
+   */
+  it('leaves room in the minute for the draft and verify that follow a gather', () => {
+    const gather = estimateToolLoopTokens(3, 2);
+    expect(gather).toBeLessThan(6_000);
+
+    // Draft and verify are prompt-plus-output calls of roughly this size.
+    expect(gather + 2 * 1_000).toBeLessThan(8_000);
+  });
+
+  it('shows why a third step does not fit', () => {
+    expect(estimateToolLoopTokens(3, 3)).toBeGreaterThan(6_000);
   });
 });

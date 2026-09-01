@@ -25,8 +25,27 @@ import type { TraceEvent } from './types';
 export const UNVERIFIED_MARK = '**[unverified]**';
 export const INVENTED_CITATION_MARK = '**[citation not in evidence]**';
 
-/** `[e12]` — the citation form the draft prompt asks for. */
-const CITATION_PATTERN = /\[(e\d+)\]/g;
+/**
+ * `[e12]`, and also `[e12, e13]`.
+ *
+ * The prompt asks for one id per bracket and the model mostly complies, but a
+ * sentence resting on two passages comes back as `[e58, e59]` often enough to
+ * matter — and a pattern that only matched the single form left those ids
+ * sitting raw in the finished document, which is the exact failure the
+ * invented-citation path exists to make impossible. Seen on the first live
+ * Sudan brief.
+ */
+const CITATION_PATTERN = /\[(e\d+(?:\s*,\s*e\d+)*)\]/g;
+
+/**
+ * Two or more identical adjacent citations, collapsed to one.
+ *
+ * A model citing every clause of a three-clause sentence to the same source
+ * emits the same label three times in a row, which on the funding section
+ * produced a paragraph ending in eight consecutive parentheticals. The
+ * provenance is unchanged; only the noise goes.
+ */
+const REPEATED_CITATION = /(\([^()]+\))\1+/g;
 
 export interface RenderedSection {
   markdown: string;
@@ -48,12 +67,23 @@ export function renderSection(raw: string, evidence: EvidenceItem[]): RenderedSe
   const labels = new Map(evidence.map((item) => [item.id, item.label]));
   let invented = 0;
 
-  const body = stripLeadingHeading(raw.trim()).replace(CITATION_PATTERN, (match, id: string) => {
-    const label = labels.get(id);
-    if (label) return `(${label})`;
-    invented += 1;
-    return INVENTED_CITATION_MARK;
-  });
+  const body = stripLeadingHeading(raw.trim())
+    .replace(CITATION_PATTERN, (match, group: string) => {
+      const resolved: string[] = [];
+      for (const id of group.split(',').map((part) => part.trim())) {
+        const label = labels.get(id);
+        if (label) {
+          // De-duplicated within one bracket as well as across adjacent ones:
+          // `[e4, e4]` is one source, not two.
+          if (!resolved.includes(label)) resolved.push(label);
+        } else {
+          invented += 1;
+        }
+      }
+      if (resolved.length === 0) return INVENTED_CITATION_MARK;
+      return `(${resolved.join('; ')})`;
+    })
+    .replace(REPEATED_CITATION, '$1');
 
   return { markdown: body, invented };
 }
