@@ -33,8 +33,11 @@ function detail(part: Part): string | undefined {
 /**
  * What each tool says while it is running. Phrased as the work being done, so
  * the reader knows the answer is being grounded rather than composed.
+ *
+ * `elapsedLabel` is passed only for the turn's currently-live tool call (see
+ * `chat.tsx`) — a finished call, or one from an earlier turn, never shows it.
  */
-export function ToolActivity({ part }: { part: Part }) {
+export function ToolActivity({ part, elapsedLabel }: { part: Part; elapsedLabel?: string | null }) {
   const { t } = useLocale();
   const tool = toolName(part.type);
   if (!tool) return null;
@@ -65,6 +68,7 @@ export function ToolActivity({ part }: { part: Part }) {
         {context ? <span className="text-subtle/70"> · {context}</span> : null}
         {isDone ? null : <span className="hai-pulse">…</span>}
       </span>
+      {!isDone && elapsedLabel ? <span className="hai-data text-subtle/70">{elapsedLabel}</span> : null}
     </div>
   );
 }

@@ -54,25 +54,43 @@ export function getChatModel(): LanguageModel {
 /**
  * Extra request-body parameters for the configured endpoint, or undefined.
  *
- * This exists for one specific and badly-behaved failure. A reasoning model
- * returns its chain of thought as `reasoning_content`; the AI SDK keeps that on
- * the assistant message and sends it back on the next step of a tool loop; and
- * Groq then rejects its own field with "property 'reasoning_content' is
- * unsupported". The result is the worst possible shape of bug for HAI: step one
- * calls search_standards and succeeds, step two — the step that would have
- * turned the retrieved passages into a cited answer — dies, so the user gets a
- * tool spinner and no answer at all.
+ * LLM_REASONING_FORMAT exists for one specific and badly-behaved failure. A
+ * reasoning model returns its chain of thought as `reasoning_content`; the AI
+ * SDK keeps that on the assistant message and sends it back on the next step
+ * of a tool loop; and Groq then rejects its own field with "property
+ * 'reasoning_content' is unsupported". The result is the worst possible shape
+ * of bug for HAI: step one calls search_standards and succeeds, step two — the
+ * step that would have turned the retrieved passages into a cited answer —
+ * dies, so the user gets a tool spinner and no answer at all.
  *
  * Setting LLM_REASONING_FORMAT=hidden makes the endpoint omit the field
- * entirely, so there is nothing to echo back. It is not defaulted on, because
- * the parameter is Groq's and other OpenAI-compatible endpoints reject unknown
- * body fields outright — the deployment that needs it sets it. See docs/DEPLOY.md.
+ * entirely, so there is nothing to echo back.
+ *
+ * LLM_REASONING_EFFORT is the other half of Groq's reasoning controls, for
+ * models (the qwen3.x family) that spend output tokens on hidden
+ * chain-of-thought before answering. Setting it to `none` skips that
+ * reasoning pass. Measured against the deployed default, `qwen/qwen3.8-27b`:
+ * identical completion-token counts with and without it on both a tool-call
+ * step and a direct answer, i.e. this model was not spending reasoning tokens
+ * either way. Wired through anyway, off by default, so switching to a
+ * heavier-reasoning model later is one environment variable rather than a
+ * code change — see docs/DEPLOY.md.
+ *
+ * Neither is defaulted on: both parameters are Groq's, and other
+ * OpenAI-compatible endpoints reject unknown body fields outright — the
+ * deployment that needs one sets it.
  */
 export function getProviderOptions(): Record<string, Record<string, string>> | undefined {
   const reasoningFormat = process.env.LLM_REASONING_FORMAT?.trim();
-  if (!reasoningFormat) return undefined;
+  const reasoningEffort = process.env.LLM_REASONING_EFFORT?.trim();
+  if (!reasoningFormat && !reasoningEffort) return undefined;
 
-  return { [PROVIDER_OPTIONS_KEY]: { reasoning_format: reasoningFormat } };
+  return {
+    [PROVIDER_OPTIONS_KEY]: {
+      ...(reasoningFormat ? { reasoning_format: reasoningFormat } : {}),
+      ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
+    },
+  };
 }
 
 /**

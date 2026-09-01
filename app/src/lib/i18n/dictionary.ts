@@ -74,6 +74,15 @@ export interface Dictionary {
     done: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', string>;
     failed: string;
   };
+  /** The pending state shown between submit and the first visible token — see `PendingStatus`. */
+  pending: {
+    /** Shown from submit until the model's first visible action (a tool call or text). */
+    contacting: string;
+    /** Shown once retrieval has finished but no answer text has started yet. */
+    writing: string;
+    /** A subtle elapsed-time suffix, shown only once a wait passes ~3s. */
+    elapsed: (seconds: number) => string;
+  };
   contentEnglishNote: string;
   playbooksPage: {
     title: string;
@@ -203,6 +212,11 @@ const en: Dictionary = {
       humanitarian_data: 'Retrieved country indicators',
     },
     failed: 'Live source unavailable',
+  },
+  pending: {
+    contacting: 'Contacting model…',
+    writing: 'Writing answer…',
+    elapsed: (seconds) => `${seconds}s`,
   },
   contentEnglishNote: 'This content is available in English only.',
   playbooksPage: {
@@ -355,6 +369,11 @@ const fr: Dictionary = {
     },
     failed: 'Source en direct indisponible',
   },
+  pending: {
+    contacting: 'Connexion au modèle…',
+    writing: 'Rédaction de la réponse…',
+    elapsed: (seconds) => `${seconds} s`,
+  },
   contentEnglishNote: "Ce contenu n'est disponible qu'en anglais.",
   playbooksPage: {
     title: 'Fiches pratiques',
@@ -500,6 +519,11 @@ const ar: Dictionary = {
       humanitarian_data: 'تم استرجاع مؤشرات البلد',
     },
     failed: 'المصدر الحي غير متاح',
+  },
+  pending: {
+    contacting: 'جارٍ الاتصال بالنموذج…',
+    writing: 'جارٍ كتابة الإجابة…',
+    elapsed: (seconds) => `${seconds} ث`,
   },
   contentEnglishNote: 'هذا المحتوى متاح باللغة الإنجليزية فقط.',
   playbooksPage: {
@@ -650,6 +674,11 @@ const es: Dictionary = {
       humanitarian_data: 'Indicadores del país recuperados',
     },
     failed: 'Fuente en vivo no disponible',
+  },
+  pending: {
+    contacting: 'Contactando con el modelo…',
+    writing: 'Redactando la respuesta…',
+    elapsed: (seconds) => `${seconds} s`,
   },
   contentEnglishNote: 'Este contenido solo está disponible en inglés.',
   playbooksPage: {

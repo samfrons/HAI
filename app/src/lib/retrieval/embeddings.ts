@@ -61,6 +61,28 @@ export function getEmbeddingsProvider(): EmbeddingsProvider {
   return process.env.EMBEDDINGS_PROVIDER === 'hf' ? 'hf' : 'ollama';
 }
 
+// --- Query cache ---------------------------------------------------------
+//
+// A tiny per-instance cache, keyed by provider and normalized query text. Not
+// a correctness feature — retrieval works fine without it — but on a warm
+// Vercel instance it turns a repeated or near-identical question (a user
+// refining their wording, an eval probe run twice) into a lookup instead of
+// another network round trip. Sized and timed short on purpose: this exists
+// to avoid redundant calls within roughly one conversation's lifetime, not to
+// serve stale vectors across a deploy or a long session.
+const CACHE_TTL_MS = 5 * 60_000;
+const CACHE_MAX_ENTRIES = 50;
+const queryCache = new Map<string, { expiresAt: number; vector: number[] }>();
+
+function cacheKey(provider: EmbeddingsProvider, text: string): string {
+  return `${provider}::${text.trim().toLowerCase()}`;
+}
+
+/** Test seam — mirrors `resetDailyCapClient` in daily-cap.ts. */
+export function resetEmbeddingCache(): void {
+  queryCache.clear();
+}
+
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -140,17 +162,57 @@ async function fetchHuggingFaceEmbedding(text: string): Promise<number[] | null>
  * degraded search beats a failed request.
  */
 export async function embedQuery(text: string): Promise<number[] | null> {
-  const fetchEmbedding =
-    getEmbeddingsProvider() === 'hf' ? fetchHuggingFaceEmbedding : fetchOllamaEmbedding;
+  const provider = getEmbeddingsProvider();
+  const key = cacheKey(provider, text);
+  const cached = queryCache.get(key);
+  if (cached && cached.expiresAt > Date.now()) return cached.vector;
+
+  const fetchEmbedding = provider === 'hf' ? fetchHuggingFaceEmbedding : fetchOllamaEmbedding;
 
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const vector = await fetchEmbedding(text);
-      if (vector) return vector;
+      if (vector) {
+        if (queryCache.size >= CACHE_MAX_ENTRIES) {
+          const oldestKey = queryCache.keys().next().value;
+          if (oldestKey !== undefined) queryCache.delete(oldestKey);
+        }
+        queryCache.set(key, { expiresAt: Date.now() + CACHE_TTL_MS, vector });
+        return vector;
+      }
     } catch {
       // fall through to retry/give-up below
     }
     if (attempt === 0) await delay(RETRY_DELAY_MS);
   }
   return null;
+}
+
+/**
+ * Fire-and-forget ping to the HF Inference endpoint, meant to be started as
+ * early as possible in a request's lifecycle — before the model has even
+ * decided whether it needs a search — so the underlying model is already
+ * loaded by the time a tool call actually asks `embedQuery` for a vector a
+ * few hundred milliseconds later.
+ *
+ * Worth doing because HF Inference unloads an idle model: measured cold vs
+ * warm against `mixedbread-ai/mxbai-embed-large-v1` on 2026-08-31, a cold call
+ * took 5.7s and a warm one 0.6–1.5s. A no-op on the ollama path and when no
+ * token is configured. Never throws, and its result is discarded — the real
+ * `embedQuery` call still runs (with its own retry) regardless of whether
+ * this warmup lands before, after, or not at all.
+ */
+export function warmEmbeddingsEndpoint(): void {
+  if (getEmbeddingsProvider() !== 'hf') return;
+  const token = process.env.HF_TOKEN;
+  if (!token) return;
+
+  fetch(HF_ENDPOINT, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` },
+    body: JSON.stringify({ inputs: 'warm' }),
+    signal: AbortSignal.timeout(HF_TIMEOUT_MS),
+  }).catch(() => {
+    // Best-effort only.
+  });
 }

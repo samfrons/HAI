@@ -12,6 +12,8 @@ import { claimDailyRequest, dailyCapMessage } from '@/lib/limits/daily-cap';
 import { getChatModel, getProviderOptions } from '@/lib/llm/provider';
 import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
+import { warmEmbeddingsEndpoint } from '@/lib/retrieval/embeddings';
+import { warmSupabaseConnection } from '@/lib/retrieval/search';
 import {
   buildInterceptionMessage,
   buildSafetyNotice,
@@ -172,6 +174,15 @@ function interceptionResponse(findings: PiiFinding[]): Response {
 }
 
 export async function POST(request: Request) {
+  // Fire-and-forget, started before anything else: the model has not decided
+  // whether it needs search_standards yet, but if it does, that decision is
+  // still a Groq round trip away. Warming the embedding endpoint and the
+  // Supabase connection now means both are already hot by the time the tool
+  // actually runs — see the module docs on embedQuery/warmSupabaseConnection
+  // for the cold-start numbers (measured: ~5.7s cold vs ~0.6–1.5s warm on HF).
+  warmEmbeddingsEndpoint();
+  warmSupabaseConnection();
+
   if (isRateLimited(clientKey(request))) {
     return Response.json(
       {
@@ -242,8 +253,12 @@ export async function POST(request: Request) {
     temperature: 0,
     // Multi-step: the model searches the standards, reads what came back, and
     // then answers — each of those is a step, and a grounded answer that
-    // consults several sources needs several.
-    stopWhen: stepCountIs(6),
+    // consults several sources needs several. Measured eval transcripts never
+    // exceed two tool calls in a turn (three steps); four leaves headroom
+    // above that without letting a stuck loop re-send the full system prompt
+    // and tool schemas six times against Groq's free-tier tokens-per-minute
+    // budget — see docs/DEPLOY.md on why that budget is tight.
+    stopWhen: stepCountIs(4),
   });
 
   return result.toUIMessageStreamResponse({

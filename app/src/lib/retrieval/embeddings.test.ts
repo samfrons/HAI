@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { embedQuery, getEmbeddingsProvider } from './embeddings';
+import { embedQuery, getEmbeddingsProvider, resetEmbeddingCache } from './embeddings';
 
 const DIMENSIONS = 1024;
 const QUERY_PREFIX = 'Represent this sentence for searching relevant passages: ';
@@ -28,6 +28,10 @@ beforeEach(() => {
   vi.useFakeTimers();
   fetchMock = vi.fn();
   vi.stubGlobal('fetch', fetchMock);
+  // Several tests below reuse the query text 'q' across providers and
+  // outcomes; without a clear cache a later test could read a hit cached by
+  // an earlier one instead of exercising its own mock.
+  resetEmbeddingCache();
 });
 
 afterEach(() => {
@@ -169,5 +173,41 @@ describe('embedQuery failure handling', () => {
     fetchMock.mockResolvedValue(jsonResponse({ embeddings: [corrupt] }));
 
     expect(await runWithTimers(embedQuery('q'))).toBeNull();
+  });
+});
+
+describe('embedQuery cache', () => {
+  beforeEach(() => {
+    vi.stubEnv('EMBEDDINGS_PROVIDER', 'ollama');
+  });
+
+  it('serves a repeated query without a second network call', async () => {
+    fetchMock.mockResolvedValue(jsonResponse({ embeddings: [vector()] }));
+
+    await runWithTimers(embedQuery('minimum litres of water'));
+    await runWithTimers(embedQuery('  Minimum Litres Of Water  '));
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not share a cache entry across providers', async () => {
+    fetchMock.mockResolvedValue(jsonResponse({ embeddings: [vector()] }));
+    await runWithTimers(embedQuery('shared text'));
+
+    vi.stubEnv('EMBEDDINGS_PROVIDER', 'hf');
+    vi.stubEnv('HF_TOKEN', 'hf_test_token');
+    fetchMock.mockResolvedValue(jsonResponse(vector()));
+    await runWithTimers(embedQuery('shared text'));
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not cache a failed lookup', async () => {
+    fetchMock.mockRejectedValueOnce(new Error('ECONNREFUSED'));
+    fetchMock.mockRejectedValueOnce(new Error('ECONNREFUSED'));
+    expect(await runWithTimers(embedQuery('retry me'))).toBeNull();
+
+    fetchMock.mockResolvedValue(jsonResponse({ embeddings: [vector()] }));
+    expect(await runWithTimers(embedQuery('retry me'))).toHaveLength(DIMENSIONS);
   });
 });

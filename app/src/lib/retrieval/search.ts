@@ -108,6 +108,29 @@ function getClient(): SupabaseClient | null {
   return cachedClient;
 }
 
+/**
+ * Fire-and-forget ping against the same Supabase project the real search
+ * hits, meant to be started at the very top of a request — before the model
+ * has decided whether it needs to search at all — so the TCP/TLS handshake
+ * and PostgREST connection warm-up happen off the critical path. A plain
+ * `select` rather than the RPC itself: it needs no embedding and no
+ * match-count work, just a live connection by the time the real RPC call
+ * lands a step or two later. Never throws; its result is discarded.
+ */
+export function warmSupabaseConnection(): void {
+  const client = getClient();
+  if (!client) return;
+
+  client
+    .from('standards_chunks')
+    .select('id', { head: true, count: 'exact' })
+    .limit(1)
+    .then(
+      () => {},
+      () => {},
+    );
+}
+
 // --- Row mapping -----------------------------------------------------------
 
 interface HybridSearchRow {

@@ -15,10 +15,47 @@ import { IconCoach, IconMark } from './icons';
 import { LocaleSwitcher } from './locale-switcher';
 import { Markdown } from './markdown';
 import { NavLinks } from './nav-links';
+import { PendingStatus } from './pending-status';
 import { SafetyNotice } from './safety-notice';
 import { SourcePanel } from './source-panel';
 import { collectRetrievalNotice, collectSources, type Source } from './sources';
 import { ToolActivity } from './tool-activity';
+
+/** Seconds must pass before the elapsed counter appears — see PendingStatus. */
+const ELAPSED_THRESHOLD_S = 3;
+
+type MessagePart = HaiUIMessage['parts'][number];
+
+function isToolPart(part: MessagePart): boolean {
+  return part.type.startsWith('tool-');
+}
+
+function isToolPartDone(part: MessagePart): boolean {
+  const state = (part as { state?: string }).state;
+  return state === 'output-available' || state === 'output-error';
+}
+
+/**
+ * What the still-forming assistant turn is doing right now, derived from real
+ * stream state rather than a timer — 'contacting' before anything has
+ * happened yet, 'writing' once retrieval has finished but no answer text has
+ * arrived, and `null` whenever a running tool (rendered by `ToolActivity`) or
+ * actual answer text is already the visible feedback.
+ */
+function pendingPhase(
+  status: string,
+  lastMessage: HaiUIMessage | undefined,
+): 'contacting' | 'writing' | null {
+  if (status === 'submitted') return 'contacting';
+  if (status !== 'streaming') return null;
+  if (!lastMessage || lastMessage.role !== 'assistant') return null;
+
+  const parts = lastMessage.parts;
+  if (parts.length === 0) return 'contacting';
+  if (parts.some((part) => isToolPart(part) && !isToolPartDone(part))) return null;
+  if (parts.some((part) => part.type === 'text' && part.text.length > 0)) return null;
+  return 'writing';
+}
 
 export function Chat({ hosted = false }: { hosted?: boolean }) {
   const router = useRouter();
@@ -38,6 +75,30 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
   });
 
   const busy = status === 'submitted' || status === 'streaming';
+
+  // Runs for the whole busy span, not per-phase, so a turn that moves from
+  // "contacting" to a tool call to "writing" carries one continuous count —
+  // the wait is one wait to the person reading it, however many phases the
+  // stream actually goes through.
+  const [elapsedSeconds, setElapsedSeconds] = useState<number | null>(null);
+  useEffect(() => {
+    // Nothing to tear down when the turn finishes: `elapsedLabel` below is
+    // gated on `busy` too, so a stale count from the last turn simply never
+    // renders until the next one overwrites it from a fresh start time.
+    if (!busy) return;
+    const startedAt = Date.now();
+    const tick = () => {
+      const seconds = Math.floor((Date.now() - startedAt) / 1000);
+      setElapsedSeconds(seconds >= ELAPSED_THRESHOLD_S ? seconds : null);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [busy]);
+
+  const lastMessage = messages[messages.length - 1];
+  const phase = pendingPhase(status, lastMessage);
+  const elapsedLabel = busy && elapsedSeconds !== null ? t.pending.elapsed(elapsedSeconds) : null;
 
   useEffect(() => {
     scrollAnchor.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -99,9 +160,25 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
             <EmptyState onSelect={send} />
           ) : (
             <div className="space-y-7 py-7">
-              {messages.map((message) => (
-                <MessageBlock key={message.id} message={message} onSelectSource={setActiveSource} />
-              ))}
+              {messages.map((message, index) => {
+                const isLast = index === messages.length - 1;
+                return (
+                  <MessageBlock
+                    key={message.id}
+                    message={message}
+                    onSelectSource={setActiveSource}
+                    isLast={isLast}
+                    pendingPhase={isLast ? phase : null}
+                    elapsedLabel={elapsedLabel}
+                  />
+                );
+              })}
+              {/* The turn hasn't produced an assistant message yet at all — status
+                  'submitted', or 'start' has fired but no parts exist yet. Once the
+                  assistant message appears, MessageBlock above takes over. */}
+              {phase && lastMessage?.role !== 'assistant' ? (
+                <PendingStatus text={t.pending[phase]} elapsedLabel={elapsedLabel} />
+              ) : null}
             </div>
           )}
 
@@ -132,10 +209,19 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
 function MessageBlock({
   message,
   onSelectSource,
+  isLast,
+  pendingPhase,
+  elapsedLabel,
 }: {
   message: HaiUIMessage;
   onSelectSource: (source: Source) => void;
+  isLast: boolean;
+  /** Meaningful only when `isLast` — see `pendingPhase()` in the parent. */
+  pendingPhase: 'contacting' | 'writing' | null;
+  elapsedLabel: string | null;
 }) {
+  const { t } = useLocale();
+
   if (message.role === 'user') {
     const text = message.parts
       .filter((part) => part.type === 'text')
@@ -153,6 +239,7 @@ function MessageBlock({
 
   const sources = collectSources(message);
   const notice = collectRetrievalNotice(message);
+  const lastPartIndex = message.parts.length - 1;
 
   return (
     <div className="space-y-2.5">
@@ -168,10 +255,20 @@ function MessageBlock({
           return <SafetyNotice key={index} notice={part.data} />;
         }
         if (part.type.startsWith('tool-')) {
-          return <ToolActivity key={index} part={part} />;
+          // Only the turn's currently-running call — the last part of the
+          // last message, still in flight — carries the elapsed counter. A
+          // finished call, or one from an earlier turn, never shows one. Note
+          // this is independent of `pendingPhase`, which is null precisely
+          // while a tool is running (see `pendingPhase()` in the parent).
+          const isLive = isLast && index === lastPartIndex && !isToolPartDone(part);
+          return <ToolActivity key={index} part={part} elapsedLabel={isLive ? elapsedLabel : null} />;
         }
         return null;
       })}
+
+      {pendingPhase === 'writing' ? (
+        <PendingStatus text={t.pending.writing} elapsedLabel={elapsedLabel} />
+      ) : null}
 
       <Citations sources={sources} notice={notice} onSelect={onSelectSource} />
     </div>

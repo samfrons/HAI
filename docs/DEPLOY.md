@@ -137,6 +137,7 @@ Set each for **Preview** and **Production**
 | `LLM_MODEL` | `qwen/qwen3.8-27b` | must support tool calling — see below |
 | `LLM_API_KEY` | `gsk_...` | https://console.groq.com/keys |
 | `LLM_REASONING_FORMAT` | `hidden` | **required with `openai/gpt-oss-120b`** — see below |
+| `LLM_REASONING_EFFORT` | `none` | skips a reasoning model's hidden chain-of-thought pass; see below |
 | `EMBEDDINGS_PROVIDER` | `hf` | switches query embedding off Ollama |
 | `HF_TOKEN` | `hf_...` | token with the "Inference Providers" permission |
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://REF.supabase.co` | |
@@ -205,6 +206,45 @@ specifically to catch it, and fails loudly with this variable unset.
 Setting it to `hidden` makes the endpoint omit the field, so there is nothing to
 echo back. It is deliberately not defaulted on in code: the parameter is Groq's,
 and other OpenAI-compatible endpoints reject unknown body fields outright.
+
+`LLM_REASONING_EFFORT=none` is the other half of Groq's reasoning controls, for
+models that spend output tokens on hidden chain-of-thought before answering.
+Measured against the deployed default, `qwen/qwen3.8-27b`, on 2026-08-31: it
+made no measurable difference — identical completion-token counts with and
+without it, on both a tool-call step and a direct answer. This model was not
+spending reasoning tokens either way. The variable is wired through and left
+unset for exactly that reason; it exists so a future switch to a
+heavier-reasoning model is one environment variable, not a code change.
+
+### Region: keep the function next to Supabase and Groq, not the US-East default
+
+Vercel Functions default to `iad1` (Washington, D.C.) for every new project.
+`hai-demo`'s Supabase project is `eu-central-1` (Frankfurt) and Groq answered
+`x-groq-region: fra` (also Frankfurt) — so the default put the function on the
+wrong side of the Atlantic from both services it calls on every request
+(the daily-cap RPC, the standards-search RPC, and two Groq calls per turn).
+`app/vercel.json` pins `"regions": ["fra1"]` to close that gap; Hobby plans get
+one function region, which is enough here since both dependencies are already
+co-located. Confirm after any redeploy with the `x-vercel-id` response header
+(`fra1::…`, not `iad1::…`).
+
+### Groq's free-tier token budget is the real ceiling, not request count
+
+The published free-tier numbers (30 req/min, 1,000 req/day) undersell the
+actual constraint: **8,000 tokens/minute**, visible on any response as
+`x-ratelimit-limit-tokens`. HAI's system prompt plus its three tool schemas run
+to roughly 1,900 tokens, resent in full on every step of the tool-calling loop
+— so a single grounded turn (tool-call step + final-answer step) costs
+3,000–4,500 tokens, and back-to-back demo traffic exhausts the per-minute
+budget in two or three turns. Once that happens Groq does not reject the
+request; it queues it, and the user sees tens of seconds of silence with no
+error — measured directly during testing: 18–30s stalls appeared the moment
+several chat turns landed inside the same 60s window, after single isolated
+requests had shown sub-second model latency. `stopWhen: stepCountIs(4)` (down
+from 6) bounds how many times a stuck turn can re-send that ~1,900-token
+prompt; trimming the prompt itself would buy more headroom but was left alone
+here to avoid touching the grounding and safety rules under time pressure —
+worth revisiting if demo traffic grows.
 
 ---
 
