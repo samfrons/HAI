@@ -61,7 +61,9 @@ describe('harvest', () => {
       'hazards_context',
       {
         scope: 'country',
-        gdacsAlerts: [{ event_type: 'Flood', alert_level: 'orange', title: 'Flood in Sudan' }],
+        gdacsAlerts: [
+          { source: 'GDACS', eventType: 'Flood', alertLevel: 'orange', title: 'Flood in Sudan' },
+        ],
         countryContext: [],
         errors: ['worldbank: HTTP 503', 'hpc: no plan published for 2026'],
       },
@@ -72,9 +74,99 @@ describe('harvest', () => {
       { source: 'hazards_context · worldbank', message: 'HTTP 503' },
       { source: 'hazards_context · hpc', message: 'no plan published for 2026' },
     ]);
-    // The failures must not become citable facts.
+    // The failures must not become citable facts; the alert that did arrive must.
     expect(result.items).toHaveLength(1);
-    expect(result.items[0].label).toBe('Flood in Sudan · orange');
+    expect(result.items[0].text).toContain('Flood in Sudan');
+    expect(result.items.some((item) => item.text.includes('HTTP 503'))).toBe(false);
+  });
+
+  /*
+   * The real shapes from `tools/live-sources/*`, which map their upstream feeds
+   * into camelCase TypeScript interfaces rather than the snake_case the
+   * HDX-backed tools return. Before the qualifier list covered both, every GDACS
+   * alert in a brief labelled as the bare word "GDACS", so three different
+   * floods cited identically and the reader could not tell them apart.
+   */
+  it('labels a GDACS alert by its hazard, not just its publisher', () => {
+    const result = harvest(
+      'hazards_context',
+      {
+        scope: 'country',
+        gdacsAlerts: [
+          {
+            source: 'GDACS',
+            eventType: 'Flood',
+            alertLevel: 'orange',
+            title: 'Flood in Sudan',
+            country: 'Sudan',
+            fromDate: '2026-08-20',
+          },
+        ],
+        errors: [],
+      },
+      counter(),
+    );
+
+    expect(result.items[0].label).toBe('GDACS · Flood');
+    expect(result.items[0].text).toContain('orange');
+  });
+
+  it('labels an OCHA response plan by its name', () => {
+    const result = harvest(
+      'hazards_context',
+      {
+        scope: 'global',
+        responsePlans: [
+          { source: 'OCHA HPC', id: 1234, name: 'Sudan Humanitarian Response Plan 2026', code: 'HSDN26' },
+        ],
+        errors: [],
+      },
+      counter(),
+    );
+
+    expect(result.items[0].label).toBe('OCHA HPC · Sudan Humanitarian Response Plan 2026');
+    // The name is spent on the label, so it is not repeated inside the body.
+    expect(result.items[0].text).not.toContain('Sudan Humanitarian Response Plan 2026');
+  });
+
+  it('labels a World Bank indicator by its reference year', () => {
+    const result = harvest(
+      'hazards_context',
+      {
+        scope: 'country',
+        countryContext: [
+          { source: 'World Bank', indicator: 'SP.POP.TOTL', name: 'Population, total', country: 'Sudan', year: '2025', value: 51662147 },
+        ],
+        errors: [],
+      },
+      counter(),
+    );
+
+    expect(result.items[0].label).toBe('World Bank · 2025');
+    expect(result.items[0].text).toContain('51662147');
+  });
+
+  /*
+   * Seen on the live Sudan brief: `hazards_context` was asked for `hpc` at
+   * country scope, where that source does not apply, and returned an envelope
+   * with no data and no errors. The single-record fallback turned it into a
+   * citable item reading "scope: country; generatedAt: …" — a fact about the
+   * request, handed to a model under instructions to cite what it is given.
+   */
+  it('does not turn an empty result envelope into evidence', () => {
+    const result = harvest(
+      'hazards_context',
+      {
+        scope: 'country',
+        countryIso3: 'SDN',
+        generatedAt: '2026-09-01T13:50:00.000Z',
+        errors: [],
+      },
+      counter(),
+    );
+
+    expect(result.items).toEqual([]);
+    expect(result.errors).toEqual([]);
   });
 
   it('treats an unavailable dataset as a source error with no evidence', () => {

@@ -193,6 +193,25 @@ export function IconDocument(props: IconProps) {
   );
 }
 
+/**
+ * Live hazard alerts — concentric waves off an epicentre.
+ *
+ * Deliberately not the warning triangle: `IconWarning` means "something went
+ * wrong here" throughout the app, and a hazard feed returning three flood
+ * alerts is the tool working, not failing.
+ */
+export function IconHazard(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <path d="M7.8 7.8a6 6 0 0 0 0 8.4" />
+      <path d="M16.2 7.8a6 6 0 0 1 0 8.4" />
+      <path d="M4.6 4.6a10.5 10.5 0 0 0 0 14.8" />
+      <path d="M19.4 4.6a10.5 10.5 0 0 1 0 14.8" />
+    </Svg>
+  );
+}
+
 /** Advisory / caution. */
 export function IconWarning(props: IconProps) {
   return (
@@ -233,11 +252,21 @@ export const PLAYBOOK_ICONS: Record<string, IconComponent> = {
   'field-logistics': IconLogisticsRole,
 };
 
-/** Chat tool name → the icon shown while it runs and once it resolves. */
-export const TOOL_ICONS: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', IconComponent> = {
+/**
+ * Chat tool name → the icon shown while it runs and once it resolves.
+ *
+ * Keyed by the registry names in `lib/tools/index.ts`. A tool registered
+ * without an entry here still renders — `toolIcon` below falls back — but it
+ * renders as a generic live-data glyph, so add it when you add the tool.
+ */
+export const TOOL_ICONS: Record<
+  'search_standards' | 'crisis_updates' | 'humanitarian_data' | 'hazards_context',
+  IconComponent
+> = {
   search_standards: IconSearch,
   crisis_updates: IconLiveData,
   humanitarian_data: IconLiveData,
+  hazards_context: IconHazard,
 };
 
 /** A verified claim — the check the self-check step draws. */

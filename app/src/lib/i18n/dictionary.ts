@@ -7,6 +7,19 @@ import type { Locale } from './locales';
  * `content/guides`, which stays English — see `contentEnglishNote` for the
  * note shown next to it in non-English locales.
  */
+/**
+ * Tools with their own activity strings, keyed by the registry names in
+ * `lib/tools/index.ts`. Widening this makes the compiler list every locale that
+ * still needs the new tool's two lines, which is the point — a missing
+ * translation should fail the build, not render an English string inside an
+ * Arabic answer.
+ */
+export type KnownToolName =
+  | 'search_standards'
+  | 'crisis_updates'
+  | 'humanitarian_data'
+  | 'hazards_context';
+
 export interface Suggestion {
   title: string;
   prompt: string;
@@ -71,8 +84,8 @@ export interface Dictionary {
     verifyText: string;
   };
   toolActivity: {
-    running: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', string>;
-    done: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', string>;
+    running: Record<KnownToolName, string>;
+    done: Record<KnownToolName, string>;
     failed: string;
   };
   /** The pending state shown between submit and the first visible token — see `PendingStatus`. */
@@ -256,11 +269,13 @@ const en: Dictionary = {
       search_standards: 'Searching humanitarian standards',
       crisis_updates: 'Fetching situation reports',
       humanitarian_data: 'Retrieving country indicators',
+      hazards_context: 'Checking hazard alerts and country context',
     },
     done: {
       search_standards: 'Searched humanitarian standards',
       crisis_updates: 'Fetched situation reports',
       humanitarian_data: 'Retrieved country indicators',
+      hazards_context: 'Checked hazard alerts and country context',
     },
     failed: 'Live source unavailable',
   },
@@ -463,11 +478,13 @@ const fr: Dictionary = {
       search_standards: 'Recherche dans les normes humanitaires',
       crisis_updates: 'Récupération des rapports de situation',
       humanitarian_data: 'Récupération des indicateurs du pays',
+      hazards_context: 'Consultation des alertes et du contexte pays',
     },
     done: {
       search_standards: 'Normes humanitaires consultées',
       crisis_updates: 'Rapports de situation récupérés',
       humanitarian_data: 'Indicateurs du pays récupérés',
+      hazards_context: 'Alertes et contexte pays consultés',
     },
     failed: 'Source en direct indisponible',
   },
@@ -667,11 +684,13 @@ const ar: Dictionary = {
       search_standards: 'جارٍ البحث في المعايير الإنسانية',
       crisis_updates: 'جارٍ جلب تقارير الحالة',
       humanitarian_data: 'جارٍ استرجاع مؤشرات البلد',
+      hazards_context: 'جارٍ فحص تنبيهات الأخطار وسياق البلد',
     },
     done: {
       search_standards: 'تم البحث في المعايير الإنسانية',
       crisis_updates: 'تم جلب تقارير الحالة',
       humanitarian_data: 'تم استرجاع مؤشرات البلد',
+      hazards_context: 'تم فحص تنبيهات الأخطار وسياق البلد',
     },
     failed: 'المصدر الحي غير متاح',
   },
@@ -874,11 +893,13 @@ const es: Dictionary = {
       search_standards: 'Buscando en las normas humanitarias',
       crisis_updates: 'Obteniendo informes de situación',
       humanitarian_data: 'Recuperando indicadores del país',
+      hazards_context: 'Consultando alertas de amenazas y contexto del país',
     },
     done: {
       search_standards: 'Normas humanitarias consultadas',
       crisis_updates: 'Informes de situación obtenidos',
       humanitarian_data: 'Indicadores del país recuperados',
+      hazards_context: 'Alertas de amenazas y contexto del país consultados',
     },
     failed: 'Fuente en vivo no disponible',
   },

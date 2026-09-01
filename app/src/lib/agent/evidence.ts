@@ -63,15 +63,37 @@ const LABEL_FIELDS = [
   'organisation',
 ] as const;
 
-/** Fields that qualify a label — a section reference, a period, a date. */
+/**
+ * Fields that qualify a label — a section reference, a period, a date, or the
+ * particular thing a record is about.
+ *
+ * Both cases of each name, because the tools do not agree and should not have
+ * to. The HDX-backed tools return snake_case straight off the wire
+ * (`reference_period`); the live-source connectors in `tools/live-sources/*`
+ * map into camelCase TypeScript interfaces (`alertLevel`, `eventType`). Without
+ * the camelCase forms every GDACS alert and USGS event labels as the bare
+ * source name, so a brief citing three different floods cites all of them as
+ * "GDACS" and the reader cannot tell which.
+ */
 const QUALIFIER_FIELDS = [
   'section',
   'reference_period',
   'period',
   'date',
   'year',
+  // Hazard type before severity: it is the discriminator a reader needs to tell
+  // two GDACS records apart ("GDACS · Flood" against "GDACS · Tropical
+  // Cyclone"), while the severity is a property of the event and travels in the
+  // record body anyway.
+  'event_type',
+  'eventType',
   'alert_level',
+  'alertLevel',
+  'place',
   'page',
+  // Last resort: a plan or indicator name, for records whose only other
+  // labelling field is the publisher (OCHA HPC's response plans).
+  'name',
 ] as const;
 
 /**
@@ -112,8 +134,9 @@ function extractFailures(tool: string, value: Record<string, unknown>): SourceEr
             : { source: tool, message: clip(entry, 260) },
         );
       } else if (isRecord(entry)) {
-        const source = stringField(entry, LABEL_FIELDS) ?? tool;
-        const message = stringField(entry, ['message', 'error', 'detail', 'reason']) ?? 'failed';
+        const source = stringField(entry, LABEL_FIELDS)?.value ?? tool;
+        const message =
+          stringField(entry, ['message', 'error', 'detail', 'reason'])?.value ?? 'failed';
         found.push({ source: `${tool} · ${source}`, message: clip(message, 260) });
       }
     }
@@ -134,11 +157,24 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function stringField(record: Record<string, unknown>, keys: readonly string[]): string | undefined {
+/**
+ * The first of `keys` this record actually carries a usable value for, with the
+ * key it came from.
+ *
+ * Returning the key matters: the caller excludes it from the record's body so
+ * the label is not repeated inside it. An earlier version guessed by re-scanning
+ * for the first key merely `!== undefined`, which picks a different field
+ * whenever an earlier one is present but null — common in the live-source
+ * shapes, where `title` and `country` are `string | null`.
+ */
+function stringField(
+  record: Record<string, unknown>,
+  keys: readonly string[],
+): { key: string; value: string } | undefined {
   for (const key of keys) {
     const value = record[key];
-    if (typeof value === 'string' && value.trim()) return value.trim();
-    if (typeof value === 'number') return String(value);
+    if (typeof value === 'string' && value.trim()) return { key, value: value.trim() };
+    if (typeof value === 'number') return { key, value: String(value) };
   }
   return undefined;
 }
@@ -165,16 +201,17 @@ function bodyOf(record: Record<string, unknown>, usedKeys: Set<string>): string 
  */
 function labelOf(record: Record<string, unknown>, tool: string, used: Set<string>): string {
   const base = stringField(record, LABEL_FIELDS);
-  if (base) {
-    for (const key of LABEL_FIELDS) if (record[key] !== undefined) { used.add(key); break; }
-  }
+  if (base) used.add(base.key);
+
   const qualifier = stringField(record, QUALIFIER_FIELDS);
-  if (qualifier) {
-    for (const key of QUALIFIER_FIELDS) if (record[key] !== undefined) { used.add(key); break; }
+  // A field can appear in both lists (`name`), in which case it has already
+  // been spent on the head and must not be repeated as its own qualifier.
+  if (qualifier && qualifier.key !== base?.key) {
+    used.add(qualifier.key);
+    return `${base?.value ?? tool} · ${qualifier.value}`;
   }
 
-  const head = base ?? tool;
-  return qualifier ? `${head} · ${qualifier}` : head;
+  return base?.value ?? tool;
 }
 
 /** The main body text of a record, if it has one. */
@@ -187,6 +224,32 @@ function textOf(record: Record<string, unknown>, used: Set<string>): string | un
     }
   }
   return undefined;
+}
+
+/**
+ * Fields every tool result carries to describe the request rather than the
+ * answer. A record made only of these is an empty envelope.
+ */
+const ENVELOPE_FIELDS = new Set([
+  'scope',
+  'generatedAt',
+  'generated_at',
+  'query',
+  'source',
+  'dataset',
+  'type',
+  'country',
+  'country_iso3',
+  'countryIso3',
+  'available',
+  'errors',
+]);
+
+function hasSubstance(record: Record<string, unknown>): boolean {
+  return Object.entries(record).some(
+    ([key, value]) =>
+      !ENVELOPE_FIELDS.has(key) && value !== null && value !== undefined && value !== '',
+  );
 }
 
 export interface Harvest {
@@ -240,8 +303,13 @@ export function harvest(tool: string, output: unknown, nextId: () => string): Ha
   }
 
   // No arrays and no failure: a single-record result. Keep it as one item so a
-  // tool that returns a flat object is not silently dropped.
-  if (items.length === 0 && errors.length === 0) {
+  // tool that returns a flat object is not silently dropped — but only if the
+  // object says something. A result that carries nothing except the envelope it
+  // came in is not evidence, and on the live Sudan brief one became a citable
+  // item reading "scope: country; generatedAt: 2026-09-01T…". That is a fact
+  // about the request, offered to a model under instructions to cite what it is
+  // given.
+  if (items.length === 0 && errors.length === 0 && hasSubstance(output)) {
     const used = new Set<string>();
     const label = labelOf(output, tool, used);
     const body = textOf(output, used);
