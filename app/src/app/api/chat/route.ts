@@ -12,6 +12,7 @@ import {
 
 import { claimDailyRequest, dailyCapMessage } from '@/lib/limits/daily-cap';
 import { getChatModel, getModelBudget, getProviderOptions } from '@/lib/llm/provider';
+import { humaniseUpstreamError } from '@/lib/llm/rate-limit';
 import { COACH_SYSTEM_PROMPT } from '@/lib/prompts/coach';
 import { SYSTEM_PROMPT } from '@/lib/prompts/system';
 import { warmEmbeddingsEndpoint } from '@/lib/retrieval/embeddings';
@@ -51,7 +52,15 @@ export type HaiDataParts = {
    * not part of the answer, and it must not be replayed in the history of a
    * conversation whose answer arrived fine thirty seconds later.
    */
-  queued: { retryAfterMs: number };
+  queued: {
+    retryAfterMs: number;
+    /**
+     * Which ceiling. A per-minute queue clears itself while the reader waits; a
+     * per-day one does not, and a countdown implying otherwise would be a lie
+     * with a number attached.
+     */
+    scope: 'tokens-per-minute' | 'tokens-per-day';
+  };
 };
 
 /** Shared with the client so message parts are typed against the real tools. */
@@ -162,7 +171,10 @@ async function watchTokenQueue(
     if (daily || blockedMs > 0) {
       writer.write({
         type: 'data-queued',
-        data: { retryAfterMs: daily?.untilMs ?? blockedMs },
+        data: {
+          retryAfterMs: daily?.untilMs ?? blockedMs,
+          scope: daily ? 'tokens-per-day' : 'tokens-per-minute',
+        },
         transient: true,
       });
       return;
@@ -324,8 +336,23 @@ export async function POST(request: Request) {
     stopWhen: stepCountIs(4),
   });
 
+  /*
+   * Upstream messages are written for whoever pays the endpoint's bill, not for
+   * whoever is asking about water quantity in Sudan. Left alone, a rate-limited
+   * turn put this in front of the user verbatim, billing link included:
+   *
+   *   Rate limit reached for model `qwen/qwen3.8-27b` in organization
+   *   `org_01kk…` service tier `on_demand` on tokens per day (TPD): Limit
+   *   200000, Used 199889 … Need more tokens? Upgrade to Dev Tier today at
+   *   https://console.groq.com/settings/billing
+   *
+   * The engine already sanitised this on the deliverables side; chat did not,
+   * so both now go through the same function.
+   */
   const onError = (error: unknown) =>
-    error instanceof Error ? error.message : 'The assistant hit an unexpected error.';
+    error instanceof Error
+      ? humaniseUpstreamError(error.message)
+      : 'The assistant hit an unexpected error.';
 
   const stream = createUIMessageStream<HaiUIMessage>({
     onError,

@@ -353,9 +353,16 @@ describe('degraded runs', () => {
     const caveats = ofType(events, 'draft-section').find((event) => event.sectionId === 'sources');
     expect(caveats?.markdown).not.toContain('console.groq.com');
     expect(caveats?.markdown).not.toContain('Upgrade to Dev Tier');
-    expect(caveats?.markdown).toContain("per-minute token budget was exhausted");
-    // The operative fact survives: when it is worth retrying.
-    expect(caveats?.markdown).toContain('3m48');
+    expect(caveats?.markdown).toContain('token budget was exhausted');
+    // The operative fact survives: when it is worth retrying. Rendered in
+    // seconds rather than echoing the endpoint's own "3m48.96s", because the
+    // rest of that sentence is the part being thrown away.
+    expect(caveats?.markdown).toContain('229s');
+    // And it does not claim to know *which* ceiling. This fixture's message
+    // names neither TPM nor TPD, and the free tier has both — the old wording
+    // asserted "per-minute" for a refusal that never said so, which is exactly
+    // the guess that hid a per-day exhaustion in production for twelve minutes.
+    expect(caveats?.markdown).not.toContain('per-minute');
   });
 });
 

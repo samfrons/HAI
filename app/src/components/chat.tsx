@@ -87,12 +87,12 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
   // token budget and this turn is waiting behind that refusal. Transient means
   // it never lands in `message.parts`, so it is held here for the life of the
   // turn and cleared by the next send.
-  const [queued, setQueued] = useState(false);
+  const [queued, setQueued] = useState<'tokens-per-minute' | 'tokens-per-day' | null>(null);
 
   const { messages, sendMessage, status, stop, error } = useChat<HaiUIMessage>({
     transport: new DefaultChatTransport({ api: '/api/chat' }),
     onData: (part) => {
-      if (part.type === 'data-queued') setQueued(true);
+      if (part.type === 'data-queued') setQueued(part.data.scope);
     },
   });
 
@@ -127,9 +127,13 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
   // phase words have outlived their accuracy; otherwise the phase is right.
   const pendingText = !phase
     ? null
-    : queued
-      ? t.pending.queued
-      : elapsedSeconds !== null && elapsedSeconds >= DEAD_AIR_THRESHOLD_S
+    : queued === 'tokens-per-day'
+      ? // Not a queue. Nothing is going to arrive by waiting, and a line saying
+        // "queued" would have the reader wait for it anyway.
+        t.deliverables.budgetDailyExhausted
+      : queued
+        ? t.pending.queued
+        : elapsedSeconds !== null && elapsedSeconds >= DEAD_AIR_THRESHOLD_S
         ? t.pending.stillWorking
         : t.pending[phase];
 
@@ -148,7 +152,7 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
       const trimmed = text.trim();
       if (!trimmed) return;
       setInput('');
-      setQueued(false);
+      setQueued(null);
       void sendMessage({ text: trimmed }, { body: { mode: coachMode ? 'coach' : 'default' } });
     },
     [sendMessage, coachMode],

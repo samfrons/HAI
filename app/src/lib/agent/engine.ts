@@ -48,6 +48,7 @@ import {
 } from 'ai';
 
 import { getDeliverablesBudget, getDeliverablesModel, getProviderOptions } from '@/lib/llm/provider';
+import { humaniseUpstreamError } from '@/lib/llm/rate-limit';
 import { haiTools } from '@/lib/tools';
 
 import {
@@ -63,7 +64,6 @@ import {
   estimateToolLoopTokens,
   estimateTokens,
   isDailyLimit,
-  isRateLimitError,
   sleep,
   withRateLimitRetry,
 } from './pacer';
@@ -952,13 +952,8 @@ function errorMessage(error: unknown): string {
   const raw =
     error instanceof Error ? error.message : typeof error === 'string' ? error : 'unknown error';
 
-  if (isRateLimitError(error)) {
-    const retry = /try again in ([\d.]+\s*[a-z]+\d*\.?\d*s?)/i.exec(raw);
-    return retry
-      ? `the endpoint's per-minute token budget was exhausted (retry after ${retry[1]})`
-      : "the endpoint's per-minute token budget was exhausted";
-  }
-
-  // Strip any URL: an upstream link in a generated document reads as a source.
-  return raw.replace(/https?:\/\/\S+/g, '').replace(/\s{2,}/g, ' ').trim() || 'unknown error';
+  // Shared with the chat route, which had the same problem and no such guard:
+  // it names which ceiling was hit and strips the vendor's link. See
+  // `humaniseUpstreamError`.
+  return humaniseUpstreamError(raw);
 }

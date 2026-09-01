@@ -39,7 +39,7 @@
  */
 
 import { getModelBudget } from '@/lib/llm/provider';
-import { parseRateLimitError, type TokenBudget } from '@/lib/llm/rate-limit';
+import { RATE_LIMITED, parseRateLimitError, type TokenBudget } from '@/lib/llm/rate-limit';
 
 /**
  * Characters per token. Deliberately pessimistic: the real ratio for English
@@ -227,7 +227,7 @@ export function isRateLimitError(error: unknown): boolean {
     if (status === 429) return true;
   }
   const message = error instanceof Error ? error.message : String(error ?? '');
-  return /429|rate.?limit|too many requests|tokens per min/i.test(message);
+  return RATE_LIMITED.test(message);
 }
 
 /**

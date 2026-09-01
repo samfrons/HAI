@@ -82,6 +82,13 @@ export interface BudgetSnapshot {
  */
 export type LimitScope = 'tokens-per-minute' | 'tokens-per-day' | 'requests' | 'unknown';
 
+/**
+ * Whether a message is the endpoint saying "too fast" rather than "wrong".
+ * Matched on text because an OpenAI-compatible provider surfaces upstream 429s
+ * as errors whose useful detail is only in the message.
+ */
+export const RATE_LIMITED = /429|rate.?limit|too many requests|tokens per (min|day)/i;
+
 export interface RateLimitFacts {
   scope: LimitScope;
   /** The ceiling, as the endpoint stated it. */
@@ -138,6 +145,54 @@ export function parseRateLimitError(message: string): RateLimitFacts {
     requested: number('Requested'),
     retryAfterMs: retry ? parseDuration(retry[1]) : undefined,
   };
+}
+
+/**
+ * An upstream error as a user of this product should see it.
+ *
+ * Two things have to be removed and one has to be added. Groq's rate-limit
+ * prose ends "Need more tokens? Upgrade to Dev Tier today at
+ * https://console.groq.com/settings/billing", and that sentence has already
+ * been rendered verbatim into a humanitarian situation brief's caveats once —
+ * a vendor upsell inside a document about a caseload of millions. It also names
+ * the organisation id, the model, and the service tier, none of which is the
+ * reader's business or use. What the reader needs instead is which of the two
+ * ceilings was hit, because one of them clears in a minute and the other does
+ * not clear today.
+ *
+ * Applied at every boundary where an upstream message can reach a person: the
+ * chat route's error text and the engine's caveats both go through here.
+ */
+export function humaniseUpstreamError(raw: string): string {
+  const facts = parseRateLimitError(raw);
+
+  if (facts.scope === 'tokens-per-day') {
+    return 'the free daily token budget for this model is used up; it resets on a rolling 24-hour window rather than immediately';
+  }
+  if (facts.scope === 'tokens-per-minute') {
+    return facts.requested !== undefined && facts.limit !== undefined && facts.requested > facts.limit
+      ? 'a single request asked for more tokens than the endpoint allows in one minute'
+      : "the endpoint's per-minute token budget was exhausted";
+  }
+  if (facts.scope === 'requests') {
+    return "the endpoint's request-per-minute limit was reached";
+  }
+
+  // A rate limit whose wording names no ceiling we recognise. Still must not be
+  // passed through: the upsell sentence sits at the end of every one of these,
+  // and stripping the URL alone leaves "Need more tokens? Upgrade to Dev Tier
+  // today at" dangling in a humanitarian brief's caveats — which is how a test
+  // caught this branch being missed.
+  if (RATE_LIMITED.test(raw)) {
+    const retry = facts.retryAfterMs;
+    return retry !== undefined
+      ? `the endpoint's token budget was exhausted (retry after ${Math.ceil(retry / 1_000)}s)`
+      : "the endpoint's token budget was exhausted";
+  }
+
+  // Anything else: keep the message, lose any URL. A link in an error a user
+  // reads is an invitation to somewhere we did not send them.
+  return raw.replace(/https?:\/\/\S+/g, '').replace(/\s{2,}/g, ' ').trim() || 'unknown error';
 }
 
 /**
