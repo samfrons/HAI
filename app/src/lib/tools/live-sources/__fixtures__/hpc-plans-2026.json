@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 1498,
+      "planVersion": {
+        "name": "Cameroon Humanitarian Needs and Response Plan 2026",
+        "code": "HCMR26",
+        "startDate": "2026-01-01",
+        "endDate": "2026-12-31"
+      }
+    },
+    {
+      "id": 1499,
+      "planVersion": {
+        "name": "Burkina Faso Besoins Humanitaires et Plan de R\u00e9ponse 2026",
+        "code": "HBFA26",
+        "startDate": "2026-01-01",
+        "endDate": "2026-12-31"
+      }
+    },
+    {
+      "id": 1500,
+      "planVersion": {
+        "name": "Colombia Necesidades Humanitarias y Plan de Respuesta 2026",
+        "code": "HCOL26",
+        "startDate": "2026-01-01",
+        "endDate": "2026-12-31"
+      }
+    }
+  ],
+  "status": "ok"
+}
