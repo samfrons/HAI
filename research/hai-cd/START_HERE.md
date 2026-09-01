@@ -14,7 +14,7 @@ Welcome to your Humanitarian Expert LLM Proof of Concept!
 **🔧 [README.md](README.md)** - Complete technical documentation (20 min read)
 
 ### Ready to enhance your dataset?
-**📊 [src/hazard_processor.py](src/hazard_processor.py)** - Add your Excel data
+**📊 [hazard_processor.py](hazard_processor.py)** - Add your Excel data
 
 ### Want to understand costs?
 **💰 See PROJECT_SUMMARY.md** - Budget breakdown section

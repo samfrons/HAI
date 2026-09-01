@@ -5,7 +5,7 @@ variables. Nothing in this document changes how the local build behaves.
 
 | | **Local mode** (default) | **Hosted mode** (public demo) |
 |---|---|---|
-| Chat model | Ollama, `qwen2.5:14b` | Groq free tier, `openai/gpt-oss-120b` |
+| Chat model | Ollama, `qwen2.5:14b` | Groq free tier, `qwen/qwen3.8-27b` |
 | Query embeddings | Ollama, `mxbai-embed-large` | Hugging Face Inference, `mxbai-embed-large-v1` |
 | Corpus database | local Supabase (`supabase start`) | Supabase cloud, free tier |
 | Data leaving the machine | none | prompts go to Groq and Hugging Face |

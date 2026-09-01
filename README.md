@@ -33,13 +33,13 @@ facts memorized into model weights.
 
 ```mermaid
 flowchart LR
-    UI["Next.js UI\n(chat, playbooks, guides)"] --> API["/api/chat\nAI SDK v7"]
-    API --> Safety["Safety layer\nPII interception"]
-    Safety --> LLM["Local Ollama\nqwen2.5:14b\n(swappable via env)"]
-    LLM --> T1["search_standards\nSupabase pgvector\nhybrid search"]
-    LLM --> T2["crisis_updates\nIFRC GO / ReliefWeb"]
-    LLM --> T3["humanitarian_data\nHDX HAPI"]
-    LLM --> I18n["i18n: EN / FR / AR / ES\n(RTL for Arabic)"]
+    UI["Next.js UI<br/>(chat, playbooks, guides)<br/>i18n: EN / FR / AR / ES"] --> API["/api/chat<br/>AI SDK v7"]
+    API --> Safety["Safety layer<br/>PII interception"]
+    Safety --> LLM["Local Ollama<br/>qwen2.5:14b<br/>(swappable via env)"]
+    LLM --> T1["search_standards<br/>Supabase pgvector<br/>hybrid search"]
+    LLM --> T2["crisis_updates<br/>IFRC GO / ReliefWeb"]
+    LLM --> T3["humanitarian_data<br/>HDX HAPI"]
+    LLM --> T4["hazards_context<br/>USGS / GDACS<br/>World Bank / OCHA HPC"]
 ```
 
 - **UI**: Next.js app (`app/`) — chat, six role playbooks, three guides, and
@@ -65,6 +65,11 @@ flowchart LR
   - `humanitarian_data` — structured country indicators from **HDX HAPI**
     (population, food security, funding, humanitarian needs). No key
     required.
+  - `hazards_context` — live hazard and context signals aggregated from four
+    keyless sources: **USGS** (earthquakes), **GDACS** (multi-hazard alerts),
+    **World Bank** (country indicators) and **OCHA HPC** (response plans and
+    funding). Each source degrades its own section rather than failing the
+    whole answer.
 - **i18n**: UI chrome in English, French, Arabic, Spanish, with RTL layout
   for Arabic. The model answers in whatever language the user writes in,
   independent of the UI locale.
