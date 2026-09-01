@@ -57,10 +57,14 @@ const DEFAULT_OUTPUT_TOKENS = 500;
  * HAI's tool descriptions are long on purpose — they carry the grounding policy
  * ("Mandatory before stating any caseload…") that keeps the model calling them.
  * That prose is not free: it is re-sent with every step of a tool loop, for
- * every tool in the subset, and measured against the deployed set it runs to
- * roughly this per tool.
+ * every tool in the subset.
+ *
+ * Measured rather than guessed, by sending the system prompt with and without
+ * the registry and reading `prompt_tokens` back: the four deployed schemas add
+ * 1,483 tokens over the prompt alone, so roughly 370 each — `hazards_context`,
+ * the largest, is 335 on its own. The previous 320 was a little under.
  */
-const TOOL_SCHEMA_TOKENS = 320;
+const TOOL_SCHEMA_TOKENS = 370;
 
 /** What one tool result adds to the context it is returned into. */
 const TOOL_RESULT_TOKENS = 500;

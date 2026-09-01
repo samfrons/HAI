@@ -269,19 +269,31 @@ on its own exceeds the 8,000 TPM ceiling, so it was refused no matter how much
 real headroom existed (`on tokens per minute (TPM): Limit 8000, Requested
 16395`). Every model call in HAI now states an explicit output ceiling.
 
-HAI's system prompt plus its three tool schemas run
-to roughly 1,900 tokens, resent in full on every step of the tool-calling loop
-— so a single grounded turn (tool-call step + final-answer step) costs
-3,000–4,500 tokens, and back-to-back demo traffic exhausts the per-minute
-budget in two or three turns. Once that happens Groq does not reject the
-request; it queues it, and the user sees tens of seconds of silence with no
-error — measured directly during testing: 18–30s stalls appeared the moment
-several chat turns landed inside the same 60s window, after single isolated
-requests had shown sub-second model latency. `stopWhen: stepCountIs(4)` (down
-from 6) bounds how many times a stuck turn can re-send that ~1,900-token
-prompt; trimming the prompt itself would buy more headroom but was left alone
-here to avoid touching the grounding and safety rules under time pressure —
-worth revisiting if demo traffic grows.
+HAI's chat prefix — the system prompt plus every tool schema — is **2,866
+tokens**, measured by sending it with a one-token question and reading
+`prompt_tokens` back. That breaks down as 1,383 tokens of system prompt and
+roughly 370 per tool schema, and it is worth stating precisely because an
+earlier estimate here ("three tool schemas, roughly 1,900 tokens") was wrong in
+both halves: the route passes the whole `haiTools` registry, so **four** schemas
+go out on every request, and the true figure is about 50% higher than the guess.
+
+The prefix is re-sent in full on every step of the tool-calling loop, so a
+single grounded turn — one tool-call step plus one final-answer step — spends
+close to 6,000 tokens before any tool result or answer text is counted. That is
+most of an 8,000-token minute in one turn, and `stopWhen: stepCountIs(4)` puts
+the worst case for a stuck turn at over 11,000, i.e. past the ceiling on its
+own. Back-to-back demo traffic therefore exhausts the per-minute budget in one
+or two turns rather than the two or three previously estimated. When it does,
+the endpoint queues rather than rejecting, and the user saw tens of seconds of
+silence with no error — measured during testing at 18–30s, against sub-second
+latency for isolated requests. The chat route now surfaces that state honestly
+instead of going quiet (see the pacing notes above).
+
+Trimming the prefix is the largest single lever left on chat's token cost, and
+it has not been pulled: the system prompt carries the grounding and safety
+rules, and shortening those to save tokens is a change to what the product
+promises, not a performance tweak. Worth revisiting deliberately if demo
+traffic grows.
 
 ### `/deliverables` paces itself against a measured budget, not a guessed one
 
