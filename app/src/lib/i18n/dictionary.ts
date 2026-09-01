@@ -17,6 +17,7 @@ export interface Dictionary {
   tagline: string;
   nav: {
     chat: string;
+    deliverables: string;
     playbooks: string;
     guides: string;
     about: string;
@@ -83,6 +84,55 @@ export interface Dictionary {
     /** A subtle elapsed-time suffix, shown only once a wait passes ~3s. */
     elapsed: (seconds: number) => string;
   };
+  /**
+   * The deliverables surface: the template picker, the run view, and the trace
+   * panel. `steps`, `verdicts`, and `templates` are keyed by values the engine
+   * emits (`StepKind`, `Verdict`, workflow id) rather than by display strings,
+   * so a locale cannot drift out of sync with the events it is labelling.
+   *
+   * The template names duplicate the English ones in `lib/agent/workflows/*` on
+   * purpose: those are the document's own title, which stays in the language the
+   * document is written in, while these are interface chrome and follow the
+   * interface locale.
+   */
+  deliverables: {
+    title: string;
+    description: string;
+    templateHeading: string;
+    templates: Record<
+      'situation-brief' | 'donor-report-section',
+      { name: string; description: string }
+    >;
+    subjectLabelCountry: string;
+    subjectLabelTopic: string;
+    subjectPlaceholderCountry: string;
+    subjectPlaceholderTopic: string;
+    generate: string;
+    generating: string;
+    stop: string;
+    reset: string;
+    documentHeading: string;
+    documentEmpty: string;
+    copy: string;
+    copied: string;
+    download: string;
+    /** Shown above a document whose run was cut short. */
+    partialNotice: string;
+    /** Shown above a document carrying unverified claims. */
+    flaggedNotice: (count: number) => string;
+    traceHeading: string;
+    traceExplainer: string;
+    traceEmpty: string;
+    planHeading: string;
+    steps: Record<'plan' | 'gather' | 'draft' | 'verify', string>;
+    verdicts: Record<'supported' | 'unsupported' | 'unverifiable', string>;
+    done: string;
+    doneWithFlags: (count: number) => string;
+    hasFlags: string;
+    /** The chat's per-message disclosure, which reuses the trace rendering. */
+    showWorking: string;
+    hideWorking: string;
+  };
   contentEnglishNote: string;
   playbooksPage: {
     title: string;
@@ -127,6 +177,7 @@ const en: Dictionary = {
   tagline: 'Humanitarian operations assistant',
   nav: {
     chat: 'Chat',
+    deliverables: 'Deliverables',
     playbooks: 'Playbooks',
     guides: 'Guides',
     about: 'About',
@@ -218,6 +269,56 @@ const en: Dictionary = {
     writing: 'Writing answer…',
     elapsed: (seconds) => `${seconds}s`,
   },
+  deliverables: {
+    title: 'Deliverables',
+    description:
+      'Generate a situation brief or a donor report section, grounded in retrieved sources — with every step of the working shown beside it.',
+    templateHeading: 'Choose a template',
+    templates: {
+      'situation-brief': {
+        name: 'Situation brief',
+        description:
+          'Hazards, needs and figures, funding, and the standards that apply — for one country.',
+      },
+      'donor-report-section': {
+        name: 'Donor report section',
+        description:
+          'Context, needs and gaps, and the ask. The achievements narrative stays a template for your own monitoring data.',
+      },
+    },
+    subjectLabelCountry: 'Country',
+    subjectLabelTopic: 'Programme or topic',
+    subjectPlaceholderCountry: 'e.g. Sudan',
+    subjectPlaceholderTopic: 'e.g. WASH programme, northern Nigeria',
+    generate: 'Generate',
+    generating: 'Generating',
+    stop: 'Stop',
+    reset: 'Start over',
+    documentHeading: 'Document',
+    documentEmpty: 'The document assembles here, section by section.',
+    copy: 'Copy',
+    copied: 'Copied',
+    download: 'Download .md',
+    partialNotice:
+      'This run did not finish. What is below is only what was completed — treat it as partial.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? '1 claim could not be matched to retrieved evidence and is marked in place. Verify it before using this document.'
+        : `${count} claims could not be matched to retrieved evidence and are marked in place. Verify them before using this document.`,
+    traceHeading: 'Working',
+    traceExplainer:
+      'Every source consulted and every claim checked, in the order it happened. Nothing in the document comes from anywhere else.',
+    traceEmpty: 'Waiting for the first step.',
+    planHeading: 'Plan',
+    steps: { plan: 'Plan', gather: 'Gather', draft: 'Draft', verify: 'Check' },
+    verdicts: { supported: 'Supported', unsupported: 'Unsupported', unverifiable: 'Unverified' },
+    done: 'Run complete',
+    doneWithFlags: (count) =>
+      count === 1 ? 'Run complete — 1 claim flagged' : `Run complete — ${count} claims flagged`,
+    hasFlags: 'Contains flagged claims',
+    showWorking: 'Show working',
+    hideWorking: 'Hide working',
+  },
   contentEnglishNote: 'This content is available in English only.',
   playbooksPage: {
     title: 'Playbooks',
@@ -276,6 +377,7 @@ const fr: Dictionary = {
   tagline: 'Assistant pour les opérations humanitaires',
   nav: {
     chat: 'Discussion',
+    deliverables: 'Livrables',
     playbooks: 'Fiches pratiques',
     guides: 'Guides',
     about: 'À propos',
@@ -374,6 +476,58 @@ const fr: Dictionary = {
     writing: 'Rédaction de la réponse…',
     elapsed: (seconds) => `${seconds} s`,
   },
+  deliverables: {
+    title: 'Livrables',
+    description:
+      "Générez une note de situation ou une section de rapport bailleur, fondée sur des sources récupérées — avec le détail du travail affiché à côté.",
+    templateHeading: 'Choisissez un modèle',
+    templates: {
+      'situation-brief': {
+        name: 'Note de situation',
+        description:
+          'Aléas, besoins et chiffres, financement et normes applicables — pour un pays.',
+      },
+      'donor-report-section': {
+        name: 'Section de rapport bailleur',
+        description:
+          "Contexte, besoins et écarts, et la demande. Le récit des réalisations reste un gabarit à remplir avec vos propres données de suivi.",
+      },
+    },
+    subjectLabelCountry: 'Pays',
+    subjectLabelTopic: 'Programme ou thème',
+    subjectPlaceholderCountry: 'ex. Soudan',
+    subjectPlaceholderTopic: 'ex. programme EAH, nord du Nigéria',
+    generate: 'Générer',
+    generating: 'Génération',
+    stop: 'Arrêter',
+    reset: 'Recommencer',
+    documentHeading: 'Document',
+    documentEmpty: "Le document s'assemble ici, section par section.",
+    copy: 'Copier',
+    copied: 'Copié',
+    download: 'Télécharger .md',
+    partialNotice:
+      "Cette exécution ne s'est pas terminée. Ce qui suit est seulement ce qui a été achevé — considérez-le comme partiel.",
+    flaggedNotice: (count) =>
+      count === 1
+        ? "1 affirmation n'a pas pu être rattachée aux sources récupérées et est signalée dans le texte. Vérifiez-la avant d'utiliser ce document."
+        : `${count} affirmations n'ont pas pu être rattachées aux sources récupérées et sont signalées dans le texte. Vérifiez-les avant d'utiliser ce document.`,
+    traceHeading: 'Déroulé',
+    traceExplainer:
+      "Chaque source consultée et chaque affirmation vérifiée, dans l'ordre où cela s'est produit. Rien dans le document ne vient d'ailleurs.",
+    traceEmpty: 'En attente de la première étape.',
+    planHeading: 'Plan',
+    steps: { plan: 'Plan', gather: 'Collecte', draft: 'Rédaction', verify: 'Vérification' },
+    verdicts: { supported: 'Étayé', unsupported: 'Non étayé', unverifiable: 'Non vérifié' },
+    done: 'Exécution terminée',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'Exécution terminée — 1 affirmation signalée'
+        : `Exécution terminée — ${count} affirmations signalées`,
+    hasFlags: 'Contient des affirmations signalées',
+    showWorking: 'Afficher le déroulé',
+    hideWorking: 'Masquer le déroulé',
+  },
   contentEnglishNote: "Ce contenu n'est disponible qu'en anglais.",
   playbooksPage: {
     title: 'Fiches pratiques',
@@ -433,6 +587,7 @@ const ar: Dictionary = {
   tagline: 'مساعد العمليات الإنسانية',
   nav: {
     chat: 'المحادثة',
+    deliverables: 'المخرجات',
     playbooks: 'الأدلة التطبيقية',
     guides: 'الإرشادات',
     about: 'حول',
@@ -525,6 +680,57 @@ const ar: Dictionary = {
     writing: 'جارٍ كتابة الإجابة…',
     elapsed: (seconds) => `${seconds} ث`,
   },
+  deliverables: {
+    title: 'المخرجات',
+    description:
+      'أنشئ موجزاً عن الوضع أو قسماً من تقرير للمانحين، مستنداً إلى مصادر مسترجَعة — مع عرض كل خطوة من خطوات العمل بجانبه.',
+    templateHeading: 'اختر قالباً',
+    templates: {
+      'situation-brief': {
+        name: 'موجز الوضع',
+        description: 'الأخطار والاحتياجات والأرقام والتمويل والمعايير المنطبقة — لبلد واحد.',
+      },
+      'donor-report-section': {
+        name: 'قسم تقرير المانحين',
+        description:
+          'السياق والاحتياجات والفجوات والطلب. يبقى سرد الإنجازات قالباً تملؤه ببيانات الرصد الخاصة بك.',
+      },
+    },
+    subjectLabelCountry: 'البلد',
+    subjectLabelTopic: 'البرنامج أو الموضوع',
+    subjectPlaceholderCountry: 'مثال: السودان',
+    subjectPlaceholderTopic: 'مثال: برنامج المياه والإصحاح، شمال نيجيريا',
+    generate: 'إنشاء',
+    generating: 'جارٍ الإنشاء',
+    stop: 'إيقاف',
+    reset: 'البدء من جديد',
+    documentHeading: 'المستند',
+    documentEmpty: 'يُجمَّع المستند هنا، قسماً بعد قسم.',
+    copy: 'نسخ',
+    copied: 'تم النسخ',
+    download: 'تنزيل ملف md.',
+    partialNotice:
+      'لم تكتمل هذه العملية. ما يظهر أدناه هو ما أُنجز فقط — تعامل معه على أنه جزئي.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? 'تعذّر ربط ادعاء واحد بالأدلة المسترجَعة، وقد جرى تعليمه في موضعه. تحقّق منه قبل استخدام هذا المستند.'
+        : `تعذّر ربط ${count} ادعاءات بالأدلة المسترجَعة، وقد جرى تعليمها في مواضعها. تحقّق منها قبل استخدام هذا المستند.`,
+    traceHeading: 'سير العمل',
+    traceExplainer:
+      'كل مصدر جرت استشارته وكل ادعاء جرى التحقق منه، بالترتيب الذي حدث به. لا شيء في المستند يأتي من مكان آخر.',
+    traceEmpty: 'في انتظار الخطوة الأولى.',
+    planHeading: 'الخطة',
+    steps: { plan: 'التخطيط', gather: 'الجمع', draft: 'الصياغة', verify: 'التحقق' },
+    verdicts: { supported: 'مدعوم', unsupported: 'غير مدعوم', unverifiable: 'غير مُتحقَّق منه' },
+    done: 'اكتملت العملية',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'اكتملت العملية — ادعاء واحد مُعلَّم'
+        : `اكتملت العملية — ${count} ادعاءات مُعلَّمة`,
+    hasFlags: 'يحتوي على ادعاءات مُعلَّمة',
+    showWorking: 'إظهار سير العمل',
+    hideWorking: 'إخفاء سير العمل',
+  },
   contentEnglishNote: 'هذا المحتوى متاح باللغة الإنجليزية فقط.',
   playbooksPage: {
     title: 'الأدلة التطبيقية',
@@ -583,6 +789,7 @@ const es: Dictionary = {
   tagline: 'Asistente de operaciones humanitarias',
   nav: {
     chat: 'Chat',
+    deliverables: 'Entregables',
     playbooks: 'Manuales prácticos',
     guides: 'Guías',
     about: 'Acerca de',
@@ -679,6 +886,62 @@ const es: Dictionary = {
     contacting: 'Contactando con el modelo…',
     writing: 'Redactando la respuesta…',
     elapsed: (seconds) => `${seconds} s`,
+  },
+  deliverables: {
+    title: 'Entregables',
+    description:
+      'Genera una nota de situación o una sección de informe para donantes, fundamentada en fuentes recuperadas — con cada paso del trabajo a la vista.',
+    templateHeading: 'Elige una plantilla',
+    templates: {
+      'situation-brief': {
+        name: 'Nota de situación',
+        description:
+          'Amenazas, necesidades y cifras, financiación y las normas aplicables — para un país.',
+      },
+      'donor-report-section': {
+        name: 'Sección de informe para donantes',
+        description:
+          'Contexto, necesidades y brechas, y la petición. El relato de logros queda como plantilla para tus propios datos de seguimiento.',
+      },
+    },
+    subjectLabelCountry: 'País',
+    subjectLabelTopic: 'Programa o tema',
+    subjectPlaceholderCountry: 'p. ej. Sudán',
+    subjectPlaceholderTopic: 'p. ej. programa de agua y saneamiento, norte de Nigeria',
+    generate: 'Generar',
+    generating: 'Generando',
+    stop: 'Detener',
+    reset: 'Empezar de nuevo',
+    documentHeading: 'Documento',
+    documentEmpty: 'El documento se va montando aquí, sección a sección.',
+    copy: 'Copiar',
+    copied: 'Copiado',
+    download: 'Descargar .md',
+    partialNotice:
+      'Esta ejecución no terminó. Lo que aparece debajo es solo lo que se completó — trátalo como parcial.',
+    flaggedNotice: (count) =>
+      count === 1
+        ? '1 afirmación no pudo vincularse a las fuentes recuperadas y está señalada en el texto. Verifícala antes de usar este documento.'
+        : `${count} afirmaciones no pudieron vincularse a las fuentes recuperadas y están señaladas en el texto. Verifícalas antes de usar este documento.`,
+    traceHeading: 'Proceso',
+    traceExplainer:
+      'Cada fuente consultada y cada afirmación verificada, en el orden en que ocurrió. Nada del documento procede de otro sitio.',
+    traceEmpty: 'Esperando el primer paso.',
+    planHeading: 'Plan',
+    steps: { plan: 'Plan', gather: 'Recopilación', draft: 'Redacción', verify: 'Verificación' },
+    verdicts: {
+      supported: 'Respaldado',
+      unsupported: 'Sin respaldo',
+      unverifiable: 'Sin verificar',
+    },
+    done: 'Ejecución completada',
+    doneWithFlags: (count) =>
+      count === 1
+        ? 'Ejecución completada — 1 afirmación señalada'
+        : `Ejecución completada — ${count} afirmaciones señaladas`,
+    hasFlags: 'Contiene afirmaciones señaladas',
+    showWorking: 'Mostrar el proceso',
+    hideWorking: 'Ocultar el proceso',
   },
   contentEnglishNote: 'Este contenido solo está disponible en inglés.',
   playbooksPage: {

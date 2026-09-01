@@ -10,6 +10,7 @@
  */
 
 import type { EvidenceItem, SourceError } from './evidence';
+import type { TraceEvent } from './types';
 
 /**
  * How an unverified claim is marked, and why it is marked in the markdown
@@ -178,4 +179,109 @@ export function documentFilename(title: string, generatedAt = new Date()): strin
     .slice(0, 60);
   const date = generatedAt.toISOString().slice(0, 10);
   return `${slug || 'hai-deliverable'}-${date}.md`;
+}
+
+/* ------------------------------------------------------------------ *
+ * Deriving the document from the trace
+ * ------------------------------------------------------------------ */
+
+export interface RunState {
+  title: string;
+  sections: DocumentSection[];
+  flagged: number;
+  finished: boolean;
+  failed: string | null;
+}
+
+/**
+ * Fold the event stream into the document.
+ *
+ * Everything on screen comes from here, which is deliberate: the document is a
+ * projection of the trace rather than a parallel stream. A section cannot
+ * appear that the trace does not explain, and the `.md` export is built from
+ * these same bodies — so what someone pastes into a report is byte-for-byte
+ * what they read on the page, flags included.
+ *
+ * `draft-delta` fills a section in as it is written; `draft-section` replaces it
+ * with the rendered version once citations have been resolved; and
+ * `section-verified` replaces it again with the annotated one. Later events win,
+ * which is what makes the flags appear in place rather than as an afterthought.
+ */
+export function foldRun(events: TraceEvent[], fallbackTitle: string): RunState {
+  const order: string[] = [];
+  const headings = new Map<string, string>();
+  const bodies = new Map<string, string>();
+  const settled = new Set<string>();
+
+  let title = fallbackTitle;
+  let flagged = 0;
+  let finished = false;
+  let failed: string | null = null;
+
+  for (const event of events) {
+    switch (event.type) {
+      case 'plan-created':
+        title = `${fallbackTitle} — ${event.subject}`;
+        for (const section of event.sections) {
+          if (!headings.has(section.id)) order.push(section.id);
+          headings.set(section.id, section.heading);
+        }
+        break;
+
+      case 'draft-delta':
+        // Ignored once the section has been published whole: a late delta from
+        // a section already replaced by its verified version would append
+        // duplicate prose under the flags.
+        if (settled.has(event.sectionId)) break;
+        // Registered here as well as on `plan-created`, so prose is never
+        // dropped for want of a plan. A run whose plan step failed still
+        // streams sections, and silently discarding them would be the worst
+        // possible response to a degraded run.
+        if (!headings.has(event.sectionId)) {
+          order.push(event.sectionId);
+          headings.set(event.sectionId, event.sectionId);
+        }
+        bodies.set(event.sectionId, (bodies.get(event.sectionId) ?? '') + event.delta);
+        break;
+
+      case 'draft-section':
+        bodies.set(event.sectionId, event.markdown);
+        settled.add(event.sectionId);
+        if (!headings.has(event.sectionId)) {
+          order.push(event.sectionId);
+          headings.set(event.sectionId, event.heading);
+        }
+        break;
+
+      case 'section-verified':
+        bodies.set(event.sectionId, event.markdown);
+        settled.add(event.sectionId);
+        break;
+
+      case 'workflow-done':
+        flagged = event.flagged;
+        finished = true;
+        break;
+
+      case 'workflow-error':
+        failed = event.message;
+        finished = true;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  return {
+    title,
+    sections: order.map((id) => ({
+      id,
+      heading: headings.get(id) ?? id,
+      markdown: bodies.get(id) ?? '',
+    })),
+    flagged,
+    finished,
+    failed,
+  };
 }

@@ -239,3 +239,67 @@ export const TOOL_ICONS: Record<'search_standards' | 'crisis_updates' | 'humanit
   crisis_updates: IconLiveData,
   humanitarian_data: IconLiveData,
 };
+
+/** A verified claim — the check the self-check step draws. */
+export function IconCheck(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <polyline points="4,12.6 9.5,18 20,6.6" />
+    </Svg>
+  );
+}
+
+/** A claim the evidence did not support. Flown, not ticked. */
+export function IconFlag(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <line x1="6" y1="3" x2="6" y2="21" />
+      <path d="M6 4.5h13l-3 4.5 3 4.5H6z" />
+    </Svg>
+  );
+}
+
+/** Copy to clipboard — two sheets, offset. */
+export function IconCopy(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3.5" y="3.5" width="12" height="12" />
+      <polyline points="8.5,20.5 20.5,20.5 20.5,8.5" />
+    </Svg>
+  );
+}
+
+/** Download — out of the document, onto the disk. */
+export function IconDownload(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <line x1="12" y1="3" x2="12" y2="15" />
+      <polyline points="6.5,9.5 12,15 17.5,9.5" />
+      <polyline points="4,18.5 4,21 20,21 20,18.5" />
+    </Svg>
+  );
+}
+
+/** Deliverables — a document assembled from separate blocks. */
+export function IconDeliverable(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3" y="3" width="7" height="7" />
+      <rect x="14" y="3" width="7" height="7" />
+      <rect x="3" y="14" width="18" height="7" />
+    </Svg>
+  );
+}
+
+/**
+ * The icon for a tool by name, for surfaces that render whatever the registry
+ * happens to hold rather than a fixed set — the trace panel, which must not
+ * break when a tool is added to `lib/tools/index.ts` before anyone gets round
+ * to drawing a glyph for it.
+ */
+export function toolIcon(name: string): IconComponent {
+  return (
+    (TOOL_ICONS as Record<string, IconComponent | undefined>)[name] ??
+    (name.includes('standard') ? IconSearch : IconLiveData)
+  );
+}
