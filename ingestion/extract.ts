@@ -358,7 +358,68 @@ function dehyphenate(lines: RawLine[], lexicon: Map<string, number>): JoinResult
   return { lines: out, explicit, inferred };
 }
 
+/**
+ * Markdown text sources (HTML-derived "about"/documentation pages, saved by hand
+ * since the pages that produced them render client-side or sit behind a WAF).
+ * No PDF-specific problems apply -- no columns, no dropped hyphens, no running
+ * heads -- so this path skips straight to classified lines: a `#`-prefixed line
+ * is a heading (depth becomes a descending synthetic size so chunk.ts's
+ * size-ordered HeadingStack nests them correctly), everything else is body.
+ */
+async function extractMarkdownDoc(doc: CorpusDoc): Promise<ExtractedDoc> {
+  const raw = await readFile(resolve(CORPUS_DIR, doc.file), 'utf8');
+  const lines: Line[] = [];
+
+  for (const rawLine of raw.split(/\r?\n/)) {
+    const text = cleanText(rawLine).trim();
+    if (!text) continue;
+
+    const heading = /^(#{1,6})\s+(.*)$/.exec(text);
+    if (heading) {
+      lines.push({
+        pdfPage: 1,
+        page: 1,
+        column: 0,
+        text: heading[2].replace(/\s+/g, ' ').trim(),
+        size: 20 - heading[1].length,
+        kind: 'heading',
+      });
+      continue;
+    }
+
+    lines.push({
+      pdfPage: 1,
+      page: 1,
+      column: 0,
+      text: text.replace(/\s+/g, ' ').trim(),
+      size: 10,
+      kind: 'body',
+    });
+  }
+
+  const stats: ExtractStats = {
+    pdfPages: 1,
+    lines: lines.length,
+    headings: lines.filter((l) => l.kind === 'heading').length,
+    bodyLines: lines.filter((l) => l.kind === 'body').length,
+    minorLines: 0,
+    characters: lines.reduce((n, l) => n + l.text.length, 0),
+    emptyPages: 0,
+    maxColumnsOnAPage: 1,
+    dehyphenatedExplicit: 0,
+    dehyphenatedInferred: 0,
+    bodyFontSize: 10,
+    usesPrintedPageLabels: false,
+  };
+
+  return { doc, lines, stats };
+}
+
 export async function extractDoc(doc: CorpusDoc): Promise<ExtractedDoc> {
+  if (doc.file.endsWith('.md') || doc.file.endsWith('.txt')) {
+    return extractMarkdownDoc(doc);
+  }
+
   const bytes = new Uint8Array(await readFile(resolve(CORPUS_DIR, doc.file)));
   const pdf = await getDocumentProxy(bytes);
   const labels: (string | null)[] | null = await pdf.getPageLabels().catch(() => null);

@@ -45,7 +45,21 @@ FILES=(
   "IASC-Data-Responsibility-2023.pdf|662e73bbcf6cac6225cfdec464a477a2961af65edd80e27a64e53fb25d1ad781|https://emergency.unhcr.org/sites/default/files/2023-11/IASC%20Operational%20Guidance%20on%20Data%20Responsibility%20in%20Humanitarian%20Action%2C%202023.pdf"
   "IASC-Protection-Policy-2016.pdf|2a36792d65db64ebc6de82063da51c8177ff24007eb88b22ffbbd208ce456a68|https://emergency.unhcr.org/sites/default/files/2024-01/4.%20IASC%20Policy%20on%20Protection%20in%20Humanitarian%20Action%2C%202016.pdf"
   "IASC-Disability-Inclusion-2019.pdf|bb93dc370a688ca5c81c030674391687c6cf69fcc2a71253ed7301fb84ec3767|https://s3.eu-west-1.amazonaws.com/cccmcluster.org/public/2019-11/iasc_guidelines_on_the_inclusion_of_persons_with_disabilities_in_humanitarian_action_2019.pdf"
+  # --- Phase C1 additions (2026-09-01) ---
+  "FEWS-NET-Scenario-Development-2018.pdf|56ac6a5c9cc524ea6525e29254c18e9a439fc07c1b310715a89d899ba7bebb4d|https://fews.net/sites/default/files/documents/reports/Guidance_Document_Scenario_Development_2018.pdf"
+  "FEWS-NET-Matrix-Analysis-2021.pdf|6402cfa832da12f06559d7aa72c20f3d65d06c8f16626b37d23091541be55afd|https://fews.net/sites/default/files/documents/reports/fews-net-matrix-guidance-document.pdf"
+  "WHO-Health-Cluster-Guide-2020.pdf|24caec3d2f2bede3f78ae72d0f3ab64297076d466af5eb091d62797fdd55baa4|https://www.infocop.es/pdf/HealthGuide.pdf"
+  "WFP-SCOPE-Brief-2019.pdf|25ae475517a0508723ecef641cfd6c8f1c4f80a000ed9536bd9c100371354cff|https://executiveboard.wfp.org/document_download/WFP-0000001575"
 )
+
+# The three data-ecosystem sources below (HDX-docs-2026.md, KoboToolbox-docs-2026.md,
+# FEWS-NET-about-2026.md) are NOT fetched by this script: they are hand-compiled
+# descriptive summaries of official documentation/about pages that render
+# client-side (HDX, Kobo) or sit behind the same UNHCR-family WAF as other
+# blocked hosts in this project (see CANDIDATES.md), so no automated re-download
+# is possible. They are committed directly to ingestion/corpus/ rather than
+# gitignored like the PDFs above -- see SOURCES.md for the pages each summarises
+# and the access date.
 
 sha256_of() {
   if command -v shasum >/dev/null 2>&1; then
