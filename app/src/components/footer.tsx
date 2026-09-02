@@ -74,9 +74,21 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border-subtle">
-        <p className="mx-auto w-full max-w-5xl px-5 py-4 text-xs text-subtle">
-          {t.footer.runsOnOpenModels}
-        </p>
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-xs text-subtle">
+          <p>{t.footer.runsOnOpenModels}</p>
+          {/* Left untranslated: a name and a domain read the same in every locale. */}
+          <p>
+            © 2026 Sam Frons ·{' '}
+            <a
+              href="https://samfrons.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              samfrons.xyz
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
