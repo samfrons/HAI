@@ -1,0 +1,2090 @@
+{
+  "scenarioId": "fews_net_knowledge_001",
+  "turns": [
+    {
+      "probe": "What is FEWS NET and why was it created?",
+      "text": "FEWS NET (Famine Early Warning Systems Network) is an initiative designed to provide timely, accurate, and relevant food security information and analysis on countries at risk of饥荒。它由美国国际开发署（USAID）资助，并与多个合作伙伴合作，包括美国国家海洋和大气管理局（NOAA）、美国地质调查局（USGS）、美国农业部（USDA）等。\n\nFEWS NET 创建的目的是为了改善对粮食不安全状况的理解和响应能力，特别是在非洲、亚洲和拉丁美洲的高风险地区。通过早期预警系统，FEWS NET 力求在饥荒发生之前识别并应对潜在的食物短缺问题，从而减少人类苦难和经济损失。\n\n如果您需要更多关于 FEWS NET 的具体信息或其运作方式，请告诉我，我可以进一步查询相关信息。\nFEWS NET (Famine Early Warning Systems Network) was created in response to the 1984 famines in East and West Africa, with the aim of providing early warning and integrated analysis on factors contributing to food insecurity. The initiative aims to inform decision-makers and contribute to emergency response planning by delivering timely, accurate, evidence-based information and analysis.\n\nFEWS NET operates through partnerships to monitor and report food security conditions in dozens of countries around the world. Its primary objectives include:\n\n1. **Early Warning and Analysis**: Providing forward-looking analysis on factors that contribute to acute food insecurity.\n2. **Decision Support**: Informing international, national, and local decision-making processes with timely and accurate information.\n3. **Technical Assistance**: Supporting partners in conducting early warning analysis and forecasting, as well as providing technical assistance for partner-led initiatives.\n\nFor more detailed information about FEWS NET, you can visit their official website at [www.fews.net](http://www.fews.net).\n\nThis initiative is crucial for improving understanding of food insecurity conditions and enhancing the ability to respond effectively before crises escalate into full-blown famines.",
+      "toolCalls": [
+        {
+          "toolCallId": "call_521iiwjn",
+          "toolName": "search_standards",
+          "input": {
+            "query": "FEWS NET purpose and creation",
+            "source": "all"
+          },
+          "output": {
+            "query": "FEWS NET purpose and creation",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "7b120be3-91c6-523d-8e6a-2b0fdf920111",
+                "source": "fews_net_scenario",
+                "section": "About FEWS NET (FEWS NET Guidance Document: Scenario Development for Food Security Early Warning (January 2018), p2)",
+                "text": "Created in response to the 1984 famines in East and West Africa, FEWS NET provides early warning and integrated, forward-looking analysis of the many factors that contribute to food insecurity. FEWS NET aims to inform decision makers and contribute to their emergency response planning; support partners in conducting early warning analysis and forecasting; and provide technical assistance to partner-led initiatives. To learn more about the FEWS NET project, please visit www.fews.net.",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "c31b2008-d537-505d-993f-603c80d0eaae",
+                "source": "data_ecosystem_fews_net",
+                "section": "About FEWS NET > What FEWS NET is (About FEWS NET — organisation and methodology overview, p1)",
+                "text": "FEWS NET (the Famine Early Warning Systems Network) is a leading provider of early warning and analysis on acute food insecurity around the world. It operates through partnerships to monitor and report food security conditions in dozens of countries, delivering timely, accurate, evidence-based information and analysis intended to inform international, national and local decision-making.",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "f5c010a4-3fdc-59d3-8d91-ef9ff60dc943",
+                "source": "fews_net_matrix",
+                "section": "Matrix Analysis > food insecurityMay 2021 > About FEWS NET (FEWS NET Guidance Document: Matrix Analysis — Integrated Analysis of Survey-Based Indicators for Classification of Acute Food Insecurity (May 2021), p2)",
+                "text": "Created in response to the 1984 famines in East and West Africa, FEWS NET provides early warning and integrated, forward-looking analysis of the many factors that contribute to food insecurity. FEWS NET aims to inform decision makers and contribute to their emergency response planning; support partners in conducting early warning analysis and forecasting; and provide technical assistance to partner-led initiatives. To learn more about the FEWS NET project, please visit www.fews.net.",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        }
+      ],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 183482,
+      "events": [
+        {
+          "type": "start",
+          "messageId": "dyNuISGLI9QBTSyg"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "F"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "amine"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Network"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " initiative"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " designed"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " relevant"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " countries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " at"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " risk"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "饥"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "荒"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "。"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "它"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "由"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "美国"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "国际"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "开发"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "署"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "（"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "USA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "ID"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "）"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "资助"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，并"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "与"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "多个"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "合作伙伴"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "合作"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "包括"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "美国"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "国家"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "海洋"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "和"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "大气"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "管理局"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "（"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "NO"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "AA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "）、"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "美国"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "地质"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "调查"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "局"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "（"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "US"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "GS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "）、"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "美国"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "农业"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "部"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "（"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "US"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "DA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "）"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "等"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "。\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " 创建"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "的"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "目的是"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "为了"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "改善"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "对"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "粮食"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "不"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "安全"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "状况"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "的理解"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "和"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "响应"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "能力"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "特别是在"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "非洲"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "、"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "亚洲"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "和"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "拉丁"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "美洲"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "的"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "高"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "风险"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "地区"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "。"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "通过"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "早期"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "预警"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "系统"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " 力"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "求"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "在"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "饥"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "荒"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "发生"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "之前"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "识别"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "并"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "应对"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "潜在"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "的食物"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "短缺"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "问题"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "从而"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "减少"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "人类"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "苦难"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "和"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "经济损失"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "。\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "如果您"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "需要"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "更多"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "关于"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " 的"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "具体"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "信息"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "或"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "其"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "运作"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "方式"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，请"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "告诉我"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "，"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "我可以"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "进一步"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "查询"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "相关信息"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "。\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_521iiwjn",
+          "toolName": "search_standards"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_521iiwjn",
+          "inputTextDelta": "{\"query\":\"FEWS NET purpose and creation\",\"source\":\"all\"}"
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_521iiwjn",
+          "toolName": "search_standards",
+          "input": {
+            "query": "FEWS NET purpose and creation",
+            "source": "all"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_521iiwjn",
+          "output": {
+            "query": "FEWS NET purpose and creation",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "7b120be3-91c6-523d-8e6a-2b0fdf920111",
+                "source": "fews_net_scenario",
+                "section": "About FEWS NET (FEWS NET Guidance Document: Scenario Development for Food Security Early Warning (January 2018), p2)",
+                "text": "Created in response to the 1984 famines in East and West Africa, FEWS NET provides early warning and integrated, forward-looking analysis of the many factors that contribute to food insecurity. FEWS NET aims to inform decision makers and contribute to their emergency response planning; support partners in conducting early warning analysis and forecasting; and provide technical assistance to partner-led initiatives. To learn more about the FEWS NET project, please visit www.fews.net.",
+                "score": 0.0163934426229508
+              },
+              {
+                "id": "c31b2008-d537-505d-993f-603c80d0eaae",
+                "source": "data_ecosystem_fews_net",
+                "section": "About FEWS NET > What FEWS NET is (About FEWS NET — organisation and methodology overview, p1)",
+                "text": "FEWS NET (the Famine Early Warning Systems Network) is a leading provider of early warning and analysis on acute food insecurity around the world. It operates through partnerships to monitor and report food security conditions in dozens of countries, delivering timely, accurate, evidence-based information and analysis intended to inform international, national and local decision-making.",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "f5c010a4-3fdc-59d3-8d91-ef9ff60dc943",
+                "source": "fews_net_matrix",
+                "section": "Matrix Analysis > food insecurityMay 2021 > About FEWS NET (FEWS NET Guidance Document: Matrix Analysis — Integrated Analysis of Survey-Based Indicators for Classification of Acute Food Insecurity (May 2021), p2)",
+                "text": "Created in response to the 1984 famines in East and West Africa, FEWS NET provides early warning and integrated, forward-looking analysis of the many factors that contribute to food insecurity. FEWS NET aims to inform decision makers and contribute to their emergency response planning; support partners in conducting early warning analysis and forecasting; and provide technical assistance to partner-led initiatives. To learn more about the FEWS NET project, please visit www.fews.net.",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "F"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "amine"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Systems"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Network"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " was"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " created"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "9"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "8"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "4"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " fam"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "ines"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " East"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " West"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Africa"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " aim"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " providing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " integrated"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " factors"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " contributing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " initiative"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " aims"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " inform"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " decision"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-makers"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " contribute"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " emergency"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " planning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " delivering"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " evidence"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-based"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " operates"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " through"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " partnerships"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " monitor"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " security"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " conditions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " dozens"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " countries"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " around"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " world"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Its"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " primary"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " objectives"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " include"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ":\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "1"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "Early"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Providing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " forward"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-looking"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " factors"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " contribute"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " acute"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "Decision"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Support"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Inform"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "ing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " international"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " national"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " local"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " decision"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-making"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " processes"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " timely"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " **"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "Technical"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "**:"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " Supporting"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " partners"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " conducting"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " early"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " warning"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " forecasting"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " well"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " providing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " technical"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " assistance"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " partner"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-led"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " initiatives"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "For"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " more"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " detailed"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " about"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " FE"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "WS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " NET"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " visit"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " website"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " at"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " ["
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "www"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".f"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "ews"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".net"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "]("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "http"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "://"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "www"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".f"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "ews"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ".net"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": ").\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "This"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " initiative"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " crucial"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " improving"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " understanding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " food"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " insecurity"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " conditions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " enhancing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " ability"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " respond"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " effectively"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " before"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " crises"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " escalate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " full"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "-bl"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "own"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": " fam"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "ines"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-vSlZcDLhaRcg4KZW5JrmK9zt"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T18:19:59.581Z",
+  "finishedAt": "2026-09-01T18:23:03.063Z",
+  "durationMs": 183482,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}
