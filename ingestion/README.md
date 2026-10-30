@@ -77,16 +77,40 @@ change to the chunker cannot leave stale citations behind.
 
 ## Current state of the loaded corpus
 
-Full run on 2026-08-25 against the local stack: **1,631 chunks, every one
-embedded**, no truncated inputs.
+Full run on 2026-08-25 against the local stack: 1,631 chunks. Phase C1
+(2026-09-01) added seven sources — three PDFs closing the FEWS NET/IPC and
+health-cluster eval gaps, and four `.md` sources (a new extractor path, see
+below) describing the humanitarian data ecosystem (HDX, KoboToolbox, WFP
+SCOPE, FEWS NET as an organisation). **Total: 2,742 chunks, every one
+embedded**, no truncated inputs after the retry-with-shrinking-budget fix in
+`embed.ts` (see below).
 
 | Source | Chunks | Pages |
 |---|---:|---|
 | `sphere` | 930 | 3–434 |
+| `who_health_cluster` | 872 | 1–456 |
 | `iasc_disability` | 476 | 3–109 |
+| `fews_net_scenario` | 139 | 1–50 |
 | `iasc_data_responsibility` | 108 | 3–44 |
 | `iasc_protection` | 100 | 2–40 |
+| `fews_net_matrix` | 79 | 1–28 |
+| `data_ecosystem_wfp_scope` | 8 | 1–2 |
 | `chs` | 17 | 1–6 |
+| `data_ecosystem_fews_net` | 6 | 1 |
+| `data_ecosystem_hdx` | 4 | 1 |
+| `data_ecosystem_kobo` | 3 | 1 |
+
+`filter_source` accepts the `fews_net` and `data_ecosystem` family prefixes on
+top of the existing `iasc` family, with no change needed to
+`search_standards_hybrid` — the family match is a generic `LIKE` on the
+`prefix_%` shape, so any new key that follows the convention groups for free.
+
+Two candidates from `corpus/CANDIDATES.md` were researched but not ingested:
+UNHCR PRIMES documentation (every `unhcr.org` URL, including
+`web.archive.org` mirrors, returned HTTP 403/503) and ACLED's about/methodology
+page (ACLED's EULA prohibits reproducing "Analysis" in terms broad enough to
+cover their own descriptive text; treated the same as the existing hold on the
+ACLED Codebook). See `corpus/SOURCES.md` for full per-source license notes.
 
 Embedding the whole corpus takes about 6 minutes on this machine.
 
@@ -130,6 +154,13 @@ Heading detection uses type size measured **per page**, not per document: the
 IASC protection policy sets its annexes larger than its main text, and a
 document-wide modal size classified every line of those annexes as a heading.
 
+A `.md` file (any `CorpusDoc.file` ending `.md` or `.txt`) skips the PDF path
+entirely: a `#`-prefixed line is a heading (depth becomes a descending
+synthetic size so `chunk.ts`'s size-ordered heading stack nests them
+correctly), everything else is body. Added for the Phase C1 data-ecosystem
+sources, which are hand-compiled from official documentation/about pages
+rather than downloaded PDFs — see `corpus/SOURCES.md`.
+
 **`chunk.ts`** — section-aware. A heading flushes the current chunk, so no chunk
 spans two sections and every `section_path` is exact. ~800-token target with 15%
 overlap; a tail too small to stand alone is appended to the previous chunk rather
@@ -150,6 +181,12 @@ embedded **together** — contextual retrieval works by embedding the context wi
 the chunk, not by storing it alongside. Queries carry the model's asymmetric
 retrieval prefix (`embedQuery`); omitting it measurably degrades recall, so
 callers must use that function rather than embedding a raw query string.
+The 512-token window is enforced by truncating to a ~3.4-chars/token budget,
+which is optimistic for symbol-dense text — the FEWS NET matrix guidance's
+SPSS/Excel formula annex still overflowed Ollama's context window at a chunk
+well under that char budget. A batch rejected for exceeding the context length
+now retries with the char budget halved, rather than repeating the same input
+until the attempt count runs out.
 
 **`load.ts`** — upserts through the service role, which bypasses RLS.
 

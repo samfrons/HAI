@@ -103,6 +103,20 @@ h1, h2, h3, .hai-heading {
   text-transform: uppercase;
 }
 
+/* Arabic is a cursive script: its letters join, so `letter-spacing` inserts
+   its gap *inside* words rather than tracking them out, and the eyebrow reads
+   as broken instead of wide-set. That matters most in the header nav, which is
+   set entirely in eyebrows. Blink quietly suppresses the spacing across
+   cursive joins, so this is invisible in Chrome — WebKit and Gecko do apply
+   it, which is where the disjointed rendering and the extra label width (and
+   with it the pressure on a 390px RTL header) actually show up. Uppercasing is
+   a no-op for Arabic; it is cleared alongside so the rule reads as one
+   statement: no Latin small-caps treatment under `lang="ar"`. */
+:lang(ar) .hai-eyebrow {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 /* Tabular data voice — citations' source · section · page, tool detail
    strings, counts. Set in the mono face so numbers align and read as data. */
 .hai-data {

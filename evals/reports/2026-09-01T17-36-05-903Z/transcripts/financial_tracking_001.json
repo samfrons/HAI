@@ -1,0 +1,1894 @@
+{
+  "scenarioId": "financial_tracking_001",
+  "turns": [
+    {
+      "probe": "How much humanitarian funding is tracked globally each year?",
+      "text": "To provide the most accurate figure for global humanitarian funding, I need to call `humanitarian_data` with a scope that covers all countries. However, since this dataset does not offer a worldwide total, we must rely on OCHA's published reports or other official sources.\n\nLet me check the latest available summary from OCHA.\nThe humanitarian_data tool does not provide a global total for tracked funding. To get an accurate figure, we need to refer to OCHA's published reports such as the Global Humanitarian Overview.\n\nAccording to the latest Global Humanitarian Overview report (reference period: 2023), the total amount of humanitarian funding tracked globally is reported there. Since I cannot verify this number through HDX HAPI, please consult the official OCHA document for the most up-to-date and verified figure.\nAccording to the World Health Organization's (WHO) Global Health Cluster Guide, the Financial Tracking Service (FTS) is a global online platform established by OCHA to record all reported humanitarian aid contributions. This service collects and continuously updates data from contributors wishing to report their humanitarian aid contributions and recipients wishing to report humanitarian aid received.\n\nThe FTS plays a specific role in monitoring the funding progress of humanitarian response plans and appeals, providing information that is crucial for understanding the financial status of health clusters and other sectors involved in humanitarian responses. For the most accurate and up-to-date figures on global humanitarian funding, you should consult OCHA's Financial Tracking Service (FTS) or refer to the latest Global Humanitarian Overview report published by OCHA.\n\nSince I cannot verify a specific figure through HDX HAPI for a worldwide total, please consult these official sources for the most recent data.",
+      "toolCalls": [
+        {
+          "toolCallId": "call_5d6grjun",
+          "toolName": "humanitarian_data",
+          "input": {
+            "country_iso3": null,
+            "dataset": "funding"
+          },
+          "output": {
+            "dataset": "funding",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        },
+        {
+          "toolCallId": "call_n3zix2no",
+          "toolName": "search_standards",
+          "input": {
+            "query": "global humanitarian funding tracking",
+            "source": "all"
+          },
+          "output": {
+            "query": "global humanitarian funding tracking",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "bf2ab093-492c-5b41-8b5d-71aabaf61df9",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p418)",
+                "text": "determining funding gapsService are regularly used by government and institutional donors, humanitarian coordinators The financial requirements of the health cluster will be outlined in the humanitarian response plan. The financial status of the cluster (that is, committed and allocated funding against requirements outlined in the humanitarian response plan) can be monitored using the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) Financial Tracking Service (Box 13.1). � Box• recipients wishing to report humanitarian aid that has been received (recipient agencies and13.1 Financial Tracking Service The Financial Tracking Service is a global online platform established by OCHA to record all reported humanitarian aid contributions. It collects and continuously updates data from:\n• contributors wishing to report their humanitarian aid contributions (including […passage truncated]",
+                "score": 0.0327868852459016
+              },
+              {
+                "id": "7d094e29-0d52-58f1-9037-65f65a8d6e02",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p418-419)",
+                "text": "a search facility that permits searches by donor, sector, country and recipient agency. The Financial Tracking Service has a specific role in monitoring the funding progress of humanitarian responseSource: OCHA Financial Tracking Service (4). plans and appeals. The data and information collected and curated by the Financial Tracking and humanitarian country teams, operational agencies and host country governments, media, researchers, academics and think tanks. It is the responsibility of the health cluster coordinator to monitor the health cluster funding status on an ongoing basis; to have a clear picture of the overall financial status of the health cluster as a collective; and to have an understanding of the financial status of each of the health cluster partners. Then, the health cluster coordinator will be able to lobby donors to allocate additional resources where C 1 2 3 there […passage truncated]",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "61449223-abe3-54f7-9de6-7ab3f941ae99",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p419)",
+                "text": "It is the responsibility of all health cluster partners to report all financial contributions against the humanitarian response plan on the Financial Tracking Service. Failure of a health cluster partner to keep the Financial Tracking Service updated on the financial status of programmes against the humanitarian response plan may impact future pooled funding allocations.",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        }
+      ],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 191623,
+      "events": [
+        {
+          "type": "start",
+          "messageId": "tGbCccI232Ie1r3r"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " most"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " call"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " `"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "human"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "_data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "`"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " with"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " scope"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " covers"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " all"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " countries"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " However"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " since"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " this"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " dataset"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " does"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " not"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " offer"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " worldwide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " total"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " we"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " must"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " rely"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " published"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " sources"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "Let"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " me"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " check"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " latest"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " available"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " summary"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_5d6grjun",
+          "toolName": "humanitarian_data"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_5d6grjun",
+          "inputTextDelta": "{\"country_iso3\":null,\"dataset\":\"funding\"}"
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_5d6grjun",
+          "toolName": "humanitarian_data",
+          "input": {
+            "country_iso3": null,
+            "dataset": "funding"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_5d6grjun",
+          "output": {
+            "dataset": "funding",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "_data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " does"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " not"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " total"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " tracked"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " To"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " get"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " an"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " we"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " refer"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " published"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " reports"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "According"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " latest"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " period"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": ":"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " "
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "0"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "2"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "3"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "),"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " total"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " amount"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " tracked"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " globally"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " reported"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " there"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " Since"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " cannot"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " verify"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " this"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " number"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " through"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " H"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "API"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " please"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " consult"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " document"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " most"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "-to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": "-date"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " verified"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC",
+          "delta": ".\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_n3zix2no",
+          "toolName": "search_standards"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_n3zix2no",
+          "inputTextDelta": "{\"source\":\"all\",\"query\":\"global humanitarian funding tracking\"}"
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-CzW0X5RspI4qJJfU6uUkHTuC"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_n3zix2no",
+          "toolName": "search_standards",
+          "input": {
+            "query": "global humanitarian funding tracking",
+            "source": "all"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_n3zix2no",
+          "output": {
+            "query": "global humanitarian funding tracking",
+            "source": "all",
+            "chunks": [
+              {
+                "id": "bf2ab093-492c-5b41-8b5d-71aabaf61df9",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p418)",
+                "text": "determining funding gapsService are regularly used by government and institutional donors, humanitarian coordinators The financial requirements of the health cluster will be outlined in the humanitarian response plan. The financial status of the cluster (that is, committed and allocated funding against requirements outlined in the humanitarian response plan) can be monitored using the United Nations Office for the Coordination of Humanitarian Affairs (OCHA) Financial Tracking Service (Box 13.1). � Box• recipients wishing to report humanitarian aid that has been received (recipient agencies and13.1 Financial Tracking Service The Financial Tracking Service is a global online platform established by OCHA to record all reported humanitarian aid contributions. It collects and continuously updates data from:\n• contributors wishing to report their humanitarian aid contributions (including […passage truncated]",
+                "score": 0.0327868852459016
+              },
+              {
+                "id": "7d094e29-0d52-58f1-9037-65f65a8d6e02",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p418-419)",
+                "text": "a search facility that permits searches by donor, sector, country and recipient agency. The Financial Tracking Service has a specific role in monitoring the funding progress of humanitarian responseSource: OCHA Financial Tracking Service (4). plans and appeals. The data and information collected and curated by the Financial Tracking and humanitarian country teams, operational agencies and host country governments, media, researchers, academics and think tanks. It is the responsibility of the health cluster coordinator to monitor the health cluster funding status on an ongoing basis; to have a clear picture of the overall financial status of the health cluster as a collective; and to have an understanding of the financial status of each of the health cluster partners. Then, the health cluster coordinator will be able to lobby donors to allocate additional resources where C 1 2 3 there […passage truncated]",
+                "score": 0.0161290322580645
+              },
+              {
+                "id": "61449223-abe3-54f7-9de6-7ab3f941ae99",
+                "source": "who_health_cluster",
+                "section": "13. Resource mobilization > fig. 13.1 > 13.5 Monitoring health cluster funding status and (Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020), p419)",
+                "text": "It is the responsibility of all health cluster partners to report all financial contributions against the humanitarian response plan on the Financial Tracking Service. Failure of a health cluster partner to keep the Financial Tracking Service updated on the financial status of programmes against the humanitarian response plan may impact future pooled funding allocations.",
+                "score": 0.0158730158730159
+              }
+            ]
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "According"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " World"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Health"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Organization"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "WHO"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Health"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Cluster"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Guide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Financial"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Tracking"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Service"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "FT"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " online"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " platform"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " established"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " record"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " all"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " reported"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " contributions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " This"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " service"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " collects"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " continuously"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " updates"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " contributors"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " wishing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " their"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " contributions"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " recipients"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " wishing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " aid"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " received"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " F"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "TS"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " plays"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " role"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " monitoring"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " progress"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " response"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " plans"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " appeals"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " providing"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " crucial"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " understanding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " financial"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " status"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " of"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " health"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " clusters"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " other"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " sectors"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " involved"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " responses"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " For"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " most"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " up"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "-to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "-date"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " figures"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " on"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " should"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " consult"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Financial"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Tracking"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Service"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " ("
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "FT"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "S"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ")"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " refer"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " latest"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " published"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "Since"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " cannot"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " verify"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " through"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " HD"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "X"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " H"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "API"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " worldwide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " total"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " please"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " consult"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " these"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " official"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " sources"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " most"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " recent"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-cekJfXIxwOaiqani2iEjLYsc"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T18:29:21.289Z",
+  "finishedAt": "2026-09-01T18:32:32.912Z",
+  "durationMs": 191623,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}

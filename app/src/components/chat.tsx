@@ -17,12 +17,25 @@ import { Markdown } from './markdown';
 import { NavLinks } from './nav-links';
 import { PendingStatus } from './pending-status';
 import { SafetyNotice } from './safety-notice';
+import { ShowWorking } from './show-working';
 import { SourcePanel } from './source-panel';
 import { collectRetrievalNotice, collectSources, type Source } from './sources';
 import { ToolActivity } from './tool-activity';
 
 /** Seconds must pass before the elapsed counter appears — see PendingStatus. */
 const ELAPSED_THRESHOLD_S = 3;
+
+/**
+ * Seconds of silence after which the pending line stops claiming a phase.
+ *
+ * "Contacting model…" is a fair description of the first few seconds and an
+ * increasingly poor one after eight, when the honest thing left to say is that
+ * the turn is alive and nothing has arrived yet. Set against the free tier's
+ * behaviour rather than picked round: a queued turn on Groq's free budget waits
+ * tens of seconds, and the eight-second mark is where a normal answer has
+ * already started and a queued one plainly has not.
+ */
+const DEAD_AIR_THRESHOLD_S = 8;
 
 type MessagePart = HaiUIMessage['parts'][number];
 
@@ -70,8 +83,17 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
   const [coachMode, setCoachMode] = useState(false);
   const scrollAnchor = useRef<HTMLDivElement>(null);
 
+  // Set by the route's transient `queued` part: the endpoint has refused on its
+  // token budget and this turn is waiting behind that refusal. Transient means
+  // it never lands in `message.parts`, so it is held here for the life of the
+  // turn and cleared by the next send.
+  const [queued, setQueued] = useState<'tokens-per-minute' | 'tokens-per-day' | null>(null);
+
   const { messages, sendMessage, status, stop, error } = useChat<HaiUIMessage>({
     transport: new DefaultChatTransport({ api: '/api/chat' }),
+    onData: (part) => {
+      if (part.type === 'data-queued') setQueued(part.data.scope);
+    },
   });
 
   const busy = status === 'submitted' || status === 'streaming';
@@ -100,6 +122,21 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
   const phase = pendingPhase(status, lastMessage);
   const elapsedLabel = busy && elapsedSeconds !== null ? t.pending.elapsed(elapsedSeconds) : null;
 
+  // What the pending line says, in order of how much it knows. A queue is a
+  // specific fact and outranks everything; past eight seconds of silence the
+  // phase words have outlived their accuracy; otherwise the phase is right.
+  const pendingText = !phase
+    ? null
+    : queued === 'tokens-per-day'
+      ? // Not a queue. Nothing is going to arrive by waiting, and a line saying
+        // "queued" would have the reader wait for it anyway.
+        t.deliverables.budgetDailyExhausted
+      : queued
+        ? t.pending.queued
+        : elapsedSeconds !== null && elapsedSeconds >= DEAD_AIR_THRESHOLD_S
+        ? t.pending.stillWorking
+        : t.pending[phase];
+
   useEffect(() => {
     scrollAnchor.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages, status]);
@@ -115,6 +152,7 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
       const trimmed = text.trim();
       if (!trimmed) return;
       setInput('');
+      setQueued(null);
       void sendMessage({ text: trimmed }, { body: { mode: coachMode ? 'coach' : 'default' } });
     },
     [sendMessage, coachMode],
@@ -169,6 +207,7 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
                     onSelectSource={setActiveSource}
                     isLast={isLast}
                     pendingPhase={isLast ? phase : null}
+                    pendingText={isLast ? pendingText : null}
                     elapsedLabel={elapsedLabel}
                   />
                 );
@@ -176,8 +215,8 @@ export function Chat({ hosted = false }: { hosted?: boolean }) {
               {/* The turn hasn't produced an assistant message yet at all — status
                   'submitted', or 'start' has fired but no parts exist yet. Once the
                   assistant message appears, MessageBlock above takes over. */}
-              {phase && lastMessage?.role !== 'assistant' ? (
-                <PendingStatus text={t.pending[phase]} elapsedLabel={elapsedLabel} />
+              {pendingText && lastMessage?.role !== 'assistant' ? (
+                <PendingStatus text={pendingText} elapsedLabel={elapsedLabel} />
               ) : null}
             </div>
           )}
@@ -211,6 +250,7 @@ function MessageBlock({
   onSelectSource,
   isLast,
   pendingPhase,
+  pendingText,
   elapsedLabel,
 }: {
   message: HaiUIMessage;
@@ -218,10 +258,10 @@ function MessageBlock({
   isLast: boolean;
   /** Meaningful only when `isLast` — see `pendingPhase()` in the parent. */
   pendingPhase: 'contacting' | 'writing' | null;
+  /** The line to show for that phase, already resolved by the parent. */
+  pendingText: string | null;
   elapsedLabel: string | null;
 }) {
-  const { t } = useLocale();
-
   if (message.role === 'user') {
     const text = message.parts
       .filter((part) => part.type === 'text')
@@ -266,11 +306,15 @@ function MessageBlock({
         return null;
       })}
 
-      {pendingPhase === 'writing' ? (
-        <PendingStatus text={t.pending.writing} elapsedLabel={elapsedLabel} />
+      {pendingPhase === 'writing' && pendingText ? (
+        <PendingStatus text={pendingText} elapsedLabel={elapsedLabel} />
       ) : null}
 
       <Citations sources={sources} notice={notice} onSelect={onSelectSource} />
+
+      {/* Only once the turn has settled: a disclosure that appears mid-stream
+          invites a click onto a list that is still growing underneath it. */}
+      {isLast && pendingPhase !== null ? null : <ShowWorking message={message} />}
     </div>
   );
 }

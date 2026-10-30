@@ -193,6 +193,25 @@ export function IconDocument(props: IconProps) {
   );
 }
 
+/**
+ * Live hazard alerts — concentric waves off an epicentre.
+ *
+ * Deliberately not the warning triangle: `IconWarning` means "something went
+ * wrong here" throughout the app, and a hazard feed returning three flood
+ * alerts is the tool working, not failing.
+ */
+export function IconHazard(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <path d="M7.8 7.8a6 6 0 0 0 0 8.4" />
+      <path d="M16.2 7.8a6 6 0 0 1 0 8.4" />
+      <path d="M4.6 4.6a10.5 10.5 0 0 0 0 14.8" />
+      <path d="M19.4 4.6a10.5 10.5 0 0 1 0 14.8" />
+    </Svg>
+  );
+}
+
 /** Advisory / caution. */
 export function IconWarning(props: IconProps) {
   return (
@@ -233,9 +252,83 @@ export const PLAYBOOK_ICONS: Record<string, IconComponent> = {
   'field-logistics': IconLogisticsRole,
 };
 
-/** Chat tool name → the icon shown while it runs and once it resolves. */
-export const TOOL_ICONS: Record<'search_standards' | 'crisis_updates' | 'humanitarian_data', IconComponent> = {
+/**
+ * Chat tool name → the icon shown while it runs and once it resolves.
+ *
+ * Keyed by the registry names in `lib/tools/index.ts`. A tool registered
+ * without an entry here still renders — `toolIcon` below falls back — but it
+ * renders as a generic live-data glyph, so add it when you add the tool.
+ */
+export const TOOL_ICONS: Record<
+  'search_standards' | 'crisis_updates' | 'humanitarian_data' | 'hazards_context',
+  IconComponent
+> = {
   search_standards: IconSearch,
   crisis_updates: IconLiveData,
   humanitarian_data: IconLiveData,
+  hazards_context: IconHazard,
 };
+
+/** A verified claim — the check the self-check step draws. */
+export function IconCheck(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <polyline points="4,12.6 9.5,18 20,6.6" />
+    </Svg>
+  );
+}
+
+/** A claim the evidence did not support. Flown, not ticked. */
+export function IconFlag(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <line x1="6" y1="3" x2="6" y2="21" />
+      <path d="M6 4.5h13l-3 4.5 3 4.5H6z" />
+    </Svg>
+  );
+}
+
+/** Copy to clipboard — two sheets, offset. */
+export function IconCopy(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3.5" y="3.5" width="12" height="12" />
+      <polyline points="8.5,20.5 20.5,20.5 20.5,8.5" />
+    </Svg>
+  );
+}
+
+/** Download — out of the document, onto the disk. */
+export function IconDownload(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <line x1="12" y1="3" x2="12" y2="15" />
+      <polyline points="6.5,9.5 12,15 17.5,9.5" />
+      <polyline points="4,18.5 4,21 20,21 20,18.5" />
+    </Svg>
+  );
+}
+
+/** Deliverables — a document assembled from separate blocks. */
+export function IconDeliverable(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3" y="3" width="7" height="7" />
+      <rect x="14" y="3" width="7" height="7" />
+      <rect x="3" y="14" width="18" height="7" />
+    </Svg>
+  );
+}
+
+/**
+ * The icon for a tool by name, for surfaces that render whatever the registry
+ * happens to hold rather than a fixed set — the trace panel, which must not
+ * break when a tool is added to `lib/tools/index.ts` before anyone gets round
+ * to drawing a glyph for it.
+ */
+export function toolIcon(name: string): IconComponent {
+  return (
+    (TOOL_ICONS as Record<string, IconComponent | undefined>)[name] ??
+    (name.includes('standard') ? IconSearch : IconLiveData)
+  );
+}

@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 5.6,
+        "place": "82 km SE of Maba, Indonesia",
+        "time": 1788250940813,
+        "updated": 1788258723458,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tdav",
+        "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000tdav.geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": 6.228,
+        "alert": "green",
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 482,
+        "net": "us",
+        "code": "7000tdav",
+        "ids": ",us7000tdav,",
+        "sources": ",us,",
+        "types": ",ground-failure,losspager,origin,phase-data,shakemap,",
+        "nst": 63,
+        "dmin": 7.573,
+        "rms": 1.29,
+        "gap": 69,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 5.6 - 82 km SE of Maba, Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.8054,
+          0.1685,
+          10
+        ]
+      },
+      "id": "us7000tdav"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 4.5,
+        "place": "90 km SSW of Nikolski, Alaska",
+        "time": 1788248738175,
+        "updated": 1788250119040,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tdal",
+        "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000tdal.geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": 2.575,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 312,
+        "net": "us",
+        "code": "7000tdal",
+        "ids": ",us7000tdal,aka2026rhkvwa,",
+        "sources": ",us,ak,",
+        "types": ",origin,phase-data,shakemap,",
+        "nst": 82,
+        "dmin": 0.848,
+        "rms": 1.23,
+        "gap": 179,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.5 - 90 km SSW of Nikolski, Alaska"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -169.2588,
+          52.1624,
+          37.559
+        ]
+      },
+      "id": "us7000tdal"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 5.3,
+        "place": "89 km SSW of Nikolski, Alaska",
+        "time": 1788245076948,
+        "updated": 1788248227844,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tdab",
+        "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000tdab.geojson",
+        "felt": 3,
+        "cdi": 5.2,
+        "mmi": 3.097,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 434,
+        "net": "us",
+        "code": "7000tdab",
+        "ids": ",attkoaq9,aka2026rhiuzf,us7000tdab,",
+        "sources": ",at,ak,us,",
+        "types": ",dyfi,moment-tensor,origin,phase-data,shakemap,",
+        "nst": 129,
+        "dmin": 0.599,
+        "rms": 0.84,
+        "gap": 104,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 5.3 - 89 km SSW of Nikolski, Alaska"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -169.4456,
+          52.2132,
+          26.001
+        ]
+      },
+      "id": "us7000tdab"
+    }
+  ]
+}

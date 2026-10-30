@@ -99,12 +99,25 @@ export type HumanitarianDataResult = DataResult | UnavailableResult;
  * A named reason plus an instruction is the difference between a dead end and a
  * usable one.
  */
+/**
+ * `detail` is the operator-readable cause; `guidance` is what the model should
+ * do about it. Keeping them apart matters because they have different readers:
+ * `evidence.ts` puts `detail` in the trace and the document's caveats, where a
+ * humanitarian analyst reads it, while `guidance` is instruction prose that
+ * would be nonsense there.
+ *
+ * Without a `detail` the trace fell back to the bare `reason`, so every one of
+ * these surfaced as the single word "upstream_error" — which is what made a
+ * live failure of this source, visible only from the deployed environment,
+ * almost impossible to diagnose from the trace it produced.
+ */
 function unavailable(
   dataset: Dataset,
   reason: UnavailableReason,
   guidance: string,
+  detail?: string,
 ): UnavailableResult {
-  return { dataset, available: false, reason, figures: [], guidance };
+  return { dataset, available: false, reason, figures: [], guidance, ...(detail ? { detail } : {}) };
 }
 
 const NO_SUBSTITUTE =
@@ -601,12 +614,12 @@ export async function fetchHumanitarianData(
     const result = await HANDLERS[dataset](iso3);
     return result ?? (await explainEmpty(dataset, iso3));
   } catch (error) {
+    const cause = error instanceof Error ? error.message : 'unknown error';
     return unavailable(
       dataset,
       'upstream_error',
-      `Could not reach HDX HAPI: ${
-        error instanceof Error ? error.message : 'unknown error'
-      }. Try crisis_updates for narrative situation reports instead. ${NO_SUBSTITUTE}`,
+      `Could not reach HDX HAPI: ${cause}. Try crisis_updates for narrative situation reports instead. ${NO_SUBSTITUTE}`,
+      `HDX HAPI (${dataset}) could not be reached: ${cause}`,
     );
   }
 }

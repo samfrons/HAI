@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T17:47:46.747Z",
+  "updatedAt": "2026-09-01T16:20:29.017Z",
   "documents": {
     "sphere": {
       "source": "sphere",
@@ -195,6 +195,286 @@
       "contextModel": "qwen2.5:14b",
       "notes": [
         "contextualize skipped: SKIP_CONTEXTUALIZE is set"
+      ]
+    },
+    "fews_net_scenario": {
+      "source": "fews_net_scenario",
+      "file": "FEWS-NET-Scenario-Development-2018.pdf",
+      "fileSha256": "56ac6a5c9cc524ea6525e29254c18e9a439fc07c1b310715a89d899ba7bebb4d",
+      "docTitle": "FEWS NET Guidance Document: Scenario Development for Food Security Early Warning (January 2018)",
+      "ingestedAt": "2026-09-01T16:19:01.775Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 50,
+        "lines": 2099,
+        "headings": 121,
+        "bodyLines": 1853,
+        "minorLines": 125,
+        "characters": 144211,
+        "emptyPages": 1,
+        "maxColumnsOnAPage": 3,
+        "dehyphenatedExplicit": 8,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 139,
+        "totalTokens": 40235,
+        "medianTokens": 354,
+        "minTokens": 19,
+        "maxTokens": 410,
+        "withSectionPath": 138
+      },
+      "contextualized": 0,
+      "embedded": 139,
+      "loaded": 139,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "fews_net_matrix": {
+      "source": "fews_net_matrix",
+      "file": "FEWS-NET-Matrix-Analysis-2021.pdf",
+      "fileSha256": "6402cfa832da12f06559d7aa72c20f3d65d06c8f16626b37d23091541be55afd",
+      "docTitle": "FEWS NET Guidance Document: Matrix Analysis — Integrated Analysis of Survey-Based Indicators for Classification of Acute Food Insecurity (May 2021)",
+      "ingestedAt": "2026-09-01T16:19:01.872Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 28,
+        "lines": 1216,
+        "headings": 46,
+        "bodyLines": 1086,
+        "minorLines": 84,
+        "characters": 82205,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 2,
+        "dehyphenatedExplicit": 0,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 79,
+        "totalTokens": 22585,
+        "medianTokens": 355,
+        "minTokens": 27,
+        "maxTokens": 379,
+        "withSectionPath": 79
+      },
+      "contextualized": 0,
+      "embedded": 79,
+      "loaded": 79,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "who_health_cluster": {
+      "source": "who_health_cluster",
+      "file": "WHO-Health-Cluster-Guide-2020.pdf",
+      "fileSha256": "24caec3d2f2bede3f78ae72d0f3ab64297076d466af5eb091d62797fdd55baa4",
+      "docTitle": "Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020)",
+      "ingestedAt": "2026-09-01T16:19:02.992Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 456,
+        "lines": 18793,
+        "headings": 1298,
+        "bodyLines": 12932,
+        "minorLines": 4563,
+        "characters": 956485,
+        "emptyPages": 11,
+        "maxColumnsOnAPage": 5,
+        "dehyphenatedExplicit": 133,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": true
+      },
+      "chunk": {
+        "chunks": 872,
+        "totalTokens": 228719,
+        "medianTokens": 316,
+        "minTokens": 40,
+        "maxTokens": 507,
+        "withSectionPath": 872
+      },
+      "contextualized": 0,
+      "embedded": 872,
+      "loaded": 872,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "data_ecosystem_hdx": {
+      "source": "data_ecosystem_hdx",
+      "file": "HDX-docs-2026.md",
+      "fileSha256": "8805f2514f821bb3f4d4bbe368c3ac48a78de8a0714a9f4b247f797d133e2b0c",
+      "docTitle": "The Humanitarian Data Exchange (HDX) — platform and API overview",
+      "ingestedAt": "2026-09-01T16:19:02.993Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 1,
+        "lines": 14,
+        "headings": 4,
+        "bodyLines": 10,
+        "minorLines": 0,
+        "characters": 3376,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 1,
+        "dehyphenatedExplicit": 0,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 4,
+        "totalTokens": 1012,
+        "medianTokens": 288,
+        "minTokens": 131,
+        "maxTokens": 363,
+        "withSectionPath": 4
+      },
+      "contextualized": 0,
+      "embedded": 4,
+      "loaded": 4,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "data_ecosystem_kobo": {
+      "source": "data_ecosystem_kobo",
+      "file": "KoboToolbox-docs-2026.md",
+      "fileSha256": "2e3ebdd96333d7e3dcc7deaa1244882739ff16b67350cc6347893d8fd7f69ac0",
+      "docTitle": "KoboToolbox — data collection platform overview",
+      "ingestedAt": "2026-09-01T16:19:02.994Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 1,
+        "lines": 17,
+        "headings": 4,
+        "bodyLines": 13,
+        "minorLines": 0,
+        "characters": 2057,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 1,
+        "dehyphenatedExplicit": 0,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 3,
+        "totalTokens": 498,
+        "medianTokens": 184,
+        "minTokens": 100,
+        "maxTokens": 214,
+        "withSectionPath": 3
+      },
+      "contextualized": 0,
+      "embedded": 3,
+      "loaded": 3,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "data_ecosystem_fews_net": {
+      "source": "data_ecosystem_fews_net",
+      "file": "FEWS-NET-about-2026.md",
+      "fileSha256": "ecc3576b5275885c34be86afba286f94187a2a21e7f163b17020d5ac8899b62f",
+      "docTitle": "About FEWS NET — organisation and methodology overview",
+      "ingestedAt": "2026-09-01T16:19:02.994Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 1,
+        "lines": 16,
+        "headings": 5,
+        "bodyLines": 11,
+        "minorLines": 0,
+        "characters": 3988,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 1,
+        "dehyphenatedExplicit": 0,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 10,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 6,
+        "totalTokens": 1294,
+        "medianTokens": 225,
+        "minTokens": 98,
+        "maxTokens": 314,
+        "withSectionPath": 6
+      },
+      "contextualized": 0,
+      "embedded": 6,
+      "loaded": 6,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
+      ]
+    },
+    "data_ecosystem_wfp_scope": {
+      "source": "data_ecosystem_wfp_scope",
+      "file": "WFP-SCOPE-Brief-2019.pdf",
+      "fileSha256": "25ae475517a0508723ecef641cfd6c8f1c4f80a000ed9536bd9c100371354cff",
+      "docTitle": "WFP SCOPE Brief (September 2019)",
+      "ingestedAt": "2026-09-01T16:19:03.014Z",
+      "stageReached": "load",
+      "extract": {
+        "pdfPages": 2,
+        "lines": 124,
+        "headings": 11,
+        "bodyLines": 110,
+        "minorLines": 3,
+        "characters": 6144,
+        "emptyPages": 0,
+        "maxColumnsOnAPage": 2,
+        "dehyphenatedExplicit": 0,
+        "dehyphenatedInferred": 0,
+        "bodyFontSize": 9,
+        "usesPrintedPageLabels": false
+      },
+      "chunk": {
+        "chunks": 8,
+        "totalTokens": 1585,
+        "medianTokens": 219,
+        "minTokens": 12,
+        "maxTokens": 357,
+        "withSectionPath": 8
+      },
+      "contextualized": 0,
+      "embedded": 8,
+      "loaded": 8,
+      "deletedStale": 0,
+      "embeddingModel": "mxbai-embed-large",
+      "contextModel": "qwen2.5:14b",
+      "notes": [
+        "contextualize skipped: SKIP_CONTEXTUALIZE is set",
+        "10 input(s) were truncated to fit the mxbai-embed-large context window"
       ]
     }
   }

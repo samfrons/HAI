@@ -32,13 +32,13 @@ export function truncatedInputCount(): number {
   return truncatedInputs;
 }
 
-function fitToWindow(text: string): string {
-  if (text.length <= MAX_INPUT_CHARS) return text;
+function fitToWindow(text: string, maxChars: number = MAX_INPUT_CHARS): string {
+  if (text.length <= maxChars) return text;
   truncatedInputs++;
   // Cut at a word boundary so the tail of the vector is not a partial token.
-  const cut = text.slice(0, MAX_INPUT_CHARS);
+  const cut = text.slice(0, maxChars);
   const lastSpace = cut.lastIndexOf(' ');
-  return lastSpace > MAX_INPUT_CHARS * 0.8 ? cut.slice(0, lastSpace) : cut;
+  return lastSpace > maxChars * 0.8 ? cut.slice(0, lastSpace) : cut;
 }
 
 /**
@@ -87,6 +87,14 @@ export async function ollamaHasModel(model: string): Promise<boolean> {
 }
 
 async function embedBatch(texts: string[]): Promise<number[][]> {
+  // The 3.4 chars/token estimate behind MAX_INPUT_CHARS assumes English prose;
+  // it undercounts tokens for symbol-dense text (the SPSS/Excel formula annex
+  // in the FEWS NET matrix guidance tokenizes far denser than prose, so a
+  // chunk well under the char budget still overflowed the model's 512-token
+  // window). Each retry after a context-length rejection halves the char
+  // budget rather than repeating the same doomed input.
+  let maxChars = MAX_INPUT_CHARS;
+
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       const response = await fetch(`${env.ollamaBaseUrl}/api/embed`, {
@@ -94,13 +102,14 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
           model: env.embeddingModel,
-          input: texts.map(fitToWindow),
+          input: texts.map((t) => fitToWindow(t, maxChars)),
         }),
         signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       });
 
       if (!response.ok) {
         const body = await response.text().catch(() => '');
+        if (/context length/i.test(body)) maxChars = Math.floor(maxChars / 2);
         throw new Error(`HTTP ${response.status} ${body.slice(0, 300)}`);
       }
 

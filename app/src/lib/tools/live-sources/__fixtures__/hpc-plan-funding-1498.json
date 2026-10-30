@@ -1,0 +1,499 @@
+{
+  "status": "ok",
+  "data": {
+    "incoming": {
+      "flowCount": 143,
+      "fundingTotal": 85505871,
+      "pledgeTotal": 0
+    },
+    "flows": [
+      {
+        "id": "246861",
+        "amountUSD": 279672,
+        "budgetYear": null,
+        "childFlowIds": null,
+        "contributionType": "financial",
+        "createdAt": "2022-02-16T16:32:20.350Z",
+        "date": "2022-02-10T00:00:00Z",
+        "decisionDate": null,
+        "description": "Protection. Multiyear 2022/2025. 2025 portion total amount CHF    52,360 (7F-10898.01)",
+        "grandBargainEarmarkingType": [
+          "earmarked"
+        ],
+        "exchangeRate": 0.926,
+        "firstReportedDate": "2022-02-10T00:00:00Z",
+        "flowType": "Standard",
+        "keywords": [
+          "Multiyear"
+        ],
+        "newMoney": true,
+        "originalAmount": 258976,
+        "originalCurrency": "CHF",
+        "method": "Traditional aid",
+        "parentFlowId": 246857,
+        "status": "commitment",
+        "updatedAt": "2026-03-02T08:14:57.414Z",
+        "versionId": 1,
+        "sourceObjects": [
+          {
+            "type": "Organization",
+            "id": "2924",
+            "name": "Switzerland, Government of",
+            "behavior": "single",
+            "organizationTypes": [
+              "Governments"
+            ],
+            "organizationSubTypes": [
+              "National Governments"
+            ],
+            "organizationLevels": [
+              "National and Sub-National State Actors"
+            ]
+          },
+          {
+            "type": "Location",
+            "id": "217",
+            "name": "Switzerland",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "43",
+            "name": "2022",
+            "behavior": "single"
+          }
+        ],
+        "destinationObjects": [
+          {
+            "type": "Plan",
+            "id": "1498",
+            "name": "Cameroon Humanitarian Needs and Response Plan 2026",
+            "behavior": "single"
+          },
+          {
+            "type": "Organization",
+            "id": "5298",
+            "name": "Danish Refugee Council",
+            "behavior": "single",
+            "organizationTypes": [
+              "NGOs"
+            ],
+            "organizationSubTypes": [
+              "International NGOs"
+            ],
+            "organizationLevels": [
+              "International Actors"
+            ]
+          },
+          {
+            "type": "Cluster",
+            "id": "8859",
+            "name": "Protection",
+            "behavior": "single"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "10",
+            "name": "Protection",
+            "behavior": "single"
+          },
+          {
+            "type": "Location",
+            "id": "39",
+            "name": "Cameroon",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "47",
+            "name": "2026",
+            "behavior": "single"
+          }
+        ],
+        "boundary": "incoming",
+        "onBoundary": "single",
+        "reportDetails": [
+          {
+            "sourceType": "Primary",
+            "organization": "Switzerland, Government of",
+            "reportChannel": "Email",
+            "date": "2022-02-10T00:00:00.000Z"
+          }
+        ],
+        "refCode": "7F-10898.01"
+      },
+      {
+        "id": "294537",
+        "amountUSD": 229456,
+        "fullParkedAmountUSD": 229456,
+        "budgetYear": "2026",
+        "childFlowIds": null,
+        "contributionType": "financial",
+        "createdAt": "2023-11-23T02:25:38.708Z",
+        "date": "2023-11-17T00:00:00Z",
+        "decisionDate": "2023-11-17T00:00:00Z",
+        "description": "Emergency aid and improvement of humanitarian response capacity in countries affected by crises and displacement in sub-Saharan Africa",
+        "grandBargainEarmarkingType": [
+          "softly earmarked"
+        ],
+        "exchangeRate": 0.937,
+        "firstReportedDate": "2023-11-22T00:00:00Z",
+        "flowType": "Parked",
+        "keywords": [
+          "Multiyear"
+        ],
+        "newMoney": true,
+        "originalAmount": 215000,
+        "originalCurrency": "EUR",
+        "method": "Traditional aid",
+        "parentFlowId": 294528,
+        "status": "commitment",
+        "updatedAt": "2026-03-02T08:39:28.565Z",
+        "versionId": 1,
+        "sourceObjects": [
+          {
+            "type": "Organization",
+            "id": "4306",
+            "name": "Germany, Government of",
+            "behavior": "single",
+            "organizationTypes": [
+              "Governments"
+            ],
+            "organizationSubTypes": [
+              "National Governments"
+            ],
+            "organizationLevels": [
+              "National and Sub-National State Actors"
+            ]
+          },
+          {
+            "type": "Location",
+            "id": "83",
+            "name": "Germany",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "44",
+            "name": "2023",
+            "behavior": "single"
+          }
+        ],
+        "destinationObjects": [
+          {
+            "type": "Plan",
+            "id": "1498",
+            "name": "Cameroon Humanitarian Needs and Response Plan 2026",
+            "behavior": "single"
+          },
+          {
+            "type": "Organization",
+            "id": "173",
+            "name": "Malteser International Order of Malta World Relief",
+            "behavior": "single",
+            "organizationTypes": [
+              "NGOs"
+            ],
+            "organizationSubTypes": [
+              "International NGOs"
+            ],
+            "organizationLevels": [
+              "International Actors"
+            ]
+          },
+          {
+            "type": "Cluster",
+            "id": "8856",
+            "name": "Food Security",
+            "behavior": "shared"
+          },
+          {
+            "type": "Cluster",
+            "id": "8857",
+            "name": "Health",
+            "behavior": "shared"
+          },
+          {
+            "type": "Cluster",
+            "id": "8861",
+            "name": "Water, Sanitation and Hygiene",
+            "behavior": "shared"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "6",
+            "name": "Food Security",
+            "behavior": "shared"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "7",
+            "name": "Health",
+            "behavior": "shared"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "11",
+            "name": "Water Sanitation Hygiene",
+            "behavior": "shared"
+          },
+          {
+            "type": "Location",
+            "id": "39",
+            "name": "Cameroon",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "47",
+            "name": "2026",
+            "behavior": "single"
+          }
+        ],
+        "boundary": "incoming",
+        "onBoundary": "single",
+        "reportDetails": [
+          {
+            "sourceType": "Primary",
+            "organization": "Germany, Government of",
+            "reportChannel": "From EDRIS",
+            "date": "2023-11-22T00:00:00.000Z"
+          }
+        ],
+        "refCode": "AA-S09-48-AFR/REG/MALTESER/202"
+      },
+      {
+        "id": "294711",
+        "amountUSD": 42026,
+        "budgetYear": null,
+        "childFlowIds": null,
+        "contributionType": "financial",
+        "createdAt": "2023-11-23T13:13:11.943Z",
+        "date": "2023-11-23T00:00:00Z",
+        "decisionDate": null,
+        "description": "7F-10492.02\tCameroon\tM\u00e9decins du Monde\tCMR, MdM, Protection O-NO, 2023-25",
+        "grandBargainEarmarkingType": [
+          "earmarked"
+        ],
+        "exchangeRate": 0.928,
+        "firstReportedDate": "2023-11-23T00:00:00Z",
+        "flowType": "Standard",
+        "keywords": null,
+        "newMoney": true,
+        "originalAmount": 39000,
+        "originalCurrency": "CHF",
+        "method": "Traditional aid",
+        "parentFlowId": null,
+        "status": "paid",
+        "updatedAt": "2026-03-02T08:39:40.490Z",
+        "versionId": 1,
+        "sourceObjects": [
+          {
+            "type": "Organization",
+            "id": "2924",
+            "name": "Switzerland, Government of",
+            "behavior": "single",
+            "organizationTypes": [
+              "Governments"
+            ],
+            "organizationSubTypes": [
+              "National Governments"
+            ],
+            "organizationLevels": [
+              "National and Sub-National State Actors"
+            ]
+          },
+          {
+            "type": "Location",
+            "id": "217",
+            "name": "Switzerland",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "44",
+            "name": "2023",
+            "behavior": "single"
+          }
+        ],
+        "destinationObjects": [
+          {
+            "type": "Plan",
+            "id": "1498",
+            "name": "Cameroon Humanitarian Needs and Response Plan 2026",
+            "behavior": "single"
+          },
+          {
+            "type": "Organization",
+            "id": "3777",
+            "name": "M\u00e9decins du Monde",
+            "behavior": "single",
+            "organizationTypes": [
+              "NGOs"
+            ],
+            "organizationSubTypes": [
+              "International NGOs"
+            ],
+            "organizationLevels": [
+              "International Actors"
+            ]
+          },
+          {
+            "type": "Cluster",
+            "id": "8859",
+            "name": "Protection",
+            "behavior": "single"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "13",
+            "name": "Protection - Gender-Based Violence",
+            "behavior": "single"
+          },
+          {
+            "type": "Location",
+            "id": "39",
+            "name": "Cameroon",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "47",
+            "name": "2026",
+            "behavior": "single"
+          }
+        ],
+        "boundary": "incoming",
+        "onBoundary": "single",
+        "reportDetails": [
+          {
+            "sourceType": "Primary",
+            "organization": "Switzerland, Government of",
+            "reportChannel": "Email",
+            "date": "2023-11-23T00:00:00.000Z"
+          }
+        ],
+        "refCode": "7F-10492.02"
+      },
+      {
+        "id": "294738",
+        "amountUSD": 130000,
+        "budgetYear": null,
+        "childFlowIds": null,
+        "contributionType": "financial",
+        "createdAt": "2023-11-23T14:18:03.772Z",
+        "date": "2023-11-23T00:00:00Z",
+        "decisionDate": null,
+        "description": "7F-11192.01\tCameroon Protection in the SW 23-25",
+        "grandBargainEarmarkingType": [
+          "earmarked"
+        ],
+        "exchangeRate": 0.926,
+        "firstReportedDate": "2023-11-23T00:00:00Z",
+        "flowType": "Standard",
+        "keywords": null,
+        "newMoney": true,
+        "originalAmount": 123500,
+        "originalCurrency": "CHF",
+        "method": "Traditional aid",
+        "parentFlowId": null,
+        "status": "commitment",
+        "updatedAt": "2026-03-02T08:14:31.422Z",
+        "versionId": 1,
+        "sourceObjects": [
+          {
+            "type": "Organization",
+            "id": "2924",
+            "name": "Switzerland, Government of",
+            "behavior": "single",
+            "organizationTypes": [
+              "Governments"
+            ],
+            "organizationSubTypes": [
+              "National Governments"
+            ],
+            "organizationLevels": [
+              "National and Sub-National State Actors"
+            ]
+          },
+          {
+            "type": "Location",
+            "id": "217",
+            "name": "Switzerland",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "43",
+            "name": "2022",
+            "behavior": "single"
+          }
+        ],
+        "destinationObjects": [
+          {
+            "type": "Plan",
+            "id": "1498",
+            "name": "Cameroon Humanitarian Needs and Response Plan 2026",
+            "behavior": "single"
+          },
+          {
+            "type": "Organization",
+            "id": "5298",
+            "name": "Danish Refugee Council",
+            "behavior": "single",
+            "organizationTypes": [
+              "NGOs"
+            ],
+            "organizationSubTypes": [
+              "International NGOs"
+            ],
+            "organizationLevels": [
+              "International Actors"
+            ]
+          },
+          {
+            "type": "Cluster",
+            "id": "8859",
+            "name": "Protection",
+            "behavior": "single"
+          },
+          {
+            "type": "GlobalCluster",
+            "id": "10",
+            "name": "Protection",
+            "behavior": "single"
+          },
+          {
+            "type": "Location",
+            "id": "39",
+            "name": "Cameroon",
+            "behavior": "single"
+          },
+          {
+            "type": "UsageYear",
+            "id": "47",
+            "name": "2026",
+            "behavior": "single"
+          }
+        ],
+        "boundary": "incoming",
+        "onBoundary": "single",
+        "reportDetails": [
+          {
+            "sourceType": "Primary",
+            "organization": "Switzerland, Government of",
+            "reportChannel": "Email",
+            "date": "2023-11-23T00:00:00.000Z"
+          },
+          {
+            "sourceType": "Primary",
+            "organization": "Danish Refugee Council",
+            "reportChannel": "Email",
+            "date": "2024-05-31T00:00:00.000Z"
+          }
+        ],
+        "refCode": "7F-11192.01"
+      }
+    ]
+  }
+}

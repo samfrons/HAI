@@ -1,3 +1,6 @@
+> **ARCHIVED — the 100% pass rate below is invalid.** The judge was the same
+> model being graded. See [`WARNING_INVALID_AUDIT.md`](WARNING_INVALID_AUDIT.md).
+
 # HAI (Humanitarian AI) - Executive Summary
 
 ## What We Built

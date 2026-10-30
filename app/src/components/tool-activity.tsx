@@ -6,7 +6,19 @@ import { IconWarning, TOOL_ICONS } from './icons';
 
 type Part = HaiUIMessage['parts'][number];
 
-const KNOWN_TOOLS = ['search_standards', 'crisis_updates', 'humanitarian_data'] as const;
+/**
+ * Tools this row knows how to describe, keyed by their registry names in
+ * `lib/tools/index.ts`. A tool missing from here renders nothing at all — the
+ * user watches a silent gap while it runs — so adding a tool to the registry
+ * means adding it here, to `TOOL_ICONS`, and to `toolActivity` in the
+ * dictionary.
+ */
+const KNOWN_TOOLS = [
+  'search_standards',
+  'crisis_updates',
+  'humanitarian_data',
+  'hazards_context',
+] as const;
 type KnownTool = (typeof KNOWN_TOOLS)[number];
 
 function toolName(partType: string): KnownTool | undefined {
@@ -21,6 +33,21 @@ function detail(part: Part): string | undefined {
   if (typeof input.query === 'string' && input.query) {
     const country = typeof input.country === 'string' ? input.country : undefined;
     return country ? `${country} — ${input.query}` : input.query;
+  }
+  // hazards_context, checked before the bare `country_iso3` branch below
+  // because it carries that field too — matching on it first would describe a
+  // country hazard sweep as "SDN" and drop the part that matters.
+  //
+  // Which feeds were asked for is worth showing here in a way it is not for the
+  // other tools: this is the one call that fans out across four upstream
+  // sources, so "GDACS had nothing" and "we never asked GDACS" look identical
+  // without it.
+  if (input.scope === 'global' || input.scope === 'country') {
+    const sources = Array.isArray(input.sources)
+      ? input.sources.filter((entry): entry is string => typeof entry === 'string')
+      : [];
+    const scope = input.scope === 'global' ? 'global' : String(input.country_iso3 ?? 'country');
+    return sources.length > 0 ? `${scope} — ${sources.join(', ')}` : scope;
   }
   if (typeof input.country_iso3 === 'string') {
     const dataset =

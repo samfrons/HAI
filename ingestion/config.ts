@@ -12,7 +12,14 @@ export type SourceKey =
   | 'chs'
   | 'iasc_data_responsibility'
   | 'iasc_protection'
-  | 'iasc_disability';
+  | 'iasc_disability'
+  | 'fews_net_scenario'
+  | 'fews_net_matrix'
+  | 'who_health_cluster'
+  | 'data_ecosystem_hdx'
+  | 'data_ecosystem_kobo'
+  | 'data_ecosystem_fews_net'
+  | 'data_ecosystem_wfp_scope';
 
 export interface CorpusDoc {
   source: SourceKey;
@@ -61,6 +68,55 @@ export const CORPUS: CorpusDoc[] = [
     docTitle: 'IASC Guidelines on the Inclusion of Persons with Disabilities in Humanitarian Action (2019)',
     blurb:
       'These IASC guidelines set out how humanitarian actors should include persons with disabilities across the programme cycle, with must-do actions organised by the four programming approaches and by sector (protection, WASH, health, shelter, education, food security, camp coordination and camp management, livelihoods).',
+  },
+  {
+    source: 'fews_net_scenario',
+    file: 'FEWS-NET-Scenario-Development-2018.pdf',
+    docTitle: 'FEWS NET Guidance Document: Scenario Development for Food Security Early Warning (January 2018)',
+    blurb:
+      'This FEWS NET guidance document sets out the eight-step scenario-development method FEWS NET analysts use to project food security outcomes: establishing a baseline, developing assumptions about the future, and analysing how those assumptions will affect the food and income sources of poor households through the outlook period.',
+  },
+  {
+    source: 'fews_net_matrix',
+    file: 'FEWS-NET-Matrix-Analysis-2021.pdf',
+    docTitle: 'FEWS NET Guidance Document: Matrix Analysis — Integrated Analysis of Survey-Based Indicators for Classification of Acute Food Insecurity (May 2021)',
+    blurb:
+      'This FEWS NET guidance document explains the matrix method for converging household survey indicators (food consumption score, reduced coping strategies index, household hunger scale) into an IPC-compatible classification of acute food insecurity.',
+  },
+  {
+    source: 'who_health_cluster',
+    file: 'WHO-Health-Cluster-Guide-2020.pdf',
+    docTitle: 'Health Cluster Guide: A Practical Handbook (WHO / Global Health Cluster, 2020)',
+    blurb:
+      'This WHO/Global Health Cluster handbook covers health-cluster coordination in humanitarian emergencies: cluster activation, the Humanitarian Country Team structure, needs assessment, health-sector strategy, cash-based interventions, information management, accountability to affected populations, and protection from sexual exploitation and abuse.',
+  },
+  {
+    source: 'data_ecosystem_hdx',
+    file: 'HDX-docs-2026.md',
+    docTitle: 'The Humanitarian Data Exchange (HDX) — platform and API overview',
+    blurb:
+      'A descriptive overview of the Humanitarian Data Exchange (HDX), the OCHA-run open data-sharing platform for humanitarian data: what it hosts, how licensing and terms of use work for published datasets, and the HDX Humanitarian API (HAPI) that serves standardised indicators drawn from HDX datasets.',
+  },
+  {
+    source: 'data_ecosystem_kobo',
+    file: 'KoboToolbox-docs-2026.md',
+    docTitle: 'KoboToolbox — data collection platform overview',
+    blurb:
+      'A descriptive overview of KoboToolbox, the data collection and management platform widely used in humanitarian and development field surveys: its documentation structure, from form design through data collection and analysis, and what is and is not confirmed about its licensing.',
+  },
+  {
+    source: 'data_ecosystem_fews_net',
+    file: 'FEWS-NET-about-2026.md',
+    docTitle: 'About FEWS NET — organisation and methodology overview',
+    blurb:
+      "A descriptive overview of FEWS NET (the Famine Early Warning Systems Network) as an organisation: its USAID origin and oversight, its partnership model, and a summary of its scenario-development methodology, complementing the two full FEWS NET guidance documents already in this corpus.",
+  },
+  {
+    source: 'data_ecosystem_wfp_scope',
+    file: 'WFP-SCOPE-Brief-2019.pdf',
+    docTitle: 'WFP SCOPE Brief (September 2019)',
+    blurb:
+      "This WFP brief describes SCOPE, WFP's beneficiary information and transfer management platform: beneficiary registration and biometric data, transfer management across WFP's cash, voucher and in-kind modalities, identity verification and deduplication, and the SCOPECARD family of delivery mechanisms.",
   },
 ];
 

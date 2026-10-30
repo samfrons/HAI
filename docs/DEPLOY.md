@@ -5,7 +5,7 @@ variables. Nothing in this document changes how the local build behaves.
 
 | | **Local mode** (default) | **Hosted mode** (public demo) |
 |---|---|---|
-| Chat model | Ollama, `qwen2.5:14b` | Groq free tier, `openai/gpt-oss-120b` |
+| Chat model | Ollama, `qwen2.5:14b` | Groq free tier, `qwen/qwen3.8-27b` |
 | Query embeddings | Ollama, `mxbai-embed-large` | Hugging Face Inference, `mxbai-embed-large-v1` |
 | Corpus database | local Supabase (`supabase start`) | Supabase cloud, free tier |
 | Data leaving the machine | none | prompts go to Groq and Hugging Face |
@@ -143,7 +143,11 @@ Set each for **Preview** and **Production**
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://REF.supabase.co` | |
 | `SUPABASE_ANON_KEY` | the anon key | RLS grants SELECT only; no service role here |
 | `MAX_DAILY_REQUESTS` | `500` | shared daily ceiling; default if unset |
-| `RATE_LIMIT_RPM` | `20` | per-IP pacing; default if unset |
+| `RATE_LIMIT_RPM` | `20` | per-IP chat pacing; default if unset |
+| `LLM_DELIVERABLES_MODEL` | `openai/gpt-oss-120b` | gives `/deliverables` its own daily token budget, separate from chat's — see below |
+| `LLM_DELIVERABLES_BASE_URL` | — | optional; only if deliverables should use a different provider entirely |
+| `LLM_DELIVERABLES_API_KEY` | — | optional; the key for that other provider |
+| `LLM_TOKENS_PER_MINUTE` | — | **no longer needed on Groq or any endpoint that reports its own limits.** Leave unset unless the endpoint enforces a ceiling it does not publish in headers — see below |
 
 `OLLAMA_BASE_URL`, `EMBEDDING_MODEL`, and `PII_SCREEN_MODEL` are local-mode only
 and should be left unset in Vercel.
@@ -231,20 +235,148 @@ co-located. Confirm after any redeploy with the `x-vercel-id` response header
 ### Groq's free-tier token budget is the real ceiling, not request count
 
 The published free-tier numbers (30 req/min, 1,000 req/day) undersell the
-actual constraint: **8,000 tokens/minute**, visible on any response as
-`x-ratelimit-limit-tokens`. HAI's system prompt plus its three tool schemas run
-to roughly 1,900 tokens, resent in full on every step of the tool-calling loop
-— so a single grounded turn (tool-call step + final-answer step) costs
-3,000–4,500 tokens, and back-to-back demo traffic exhausts the per-minute
-budget in two or three turns. Once that happens Groq does not reject the
-request; it queues it, and the user sees tens of seconds of silence with no
-error — measured directly during testing: 18–30s stalls appeared the moment
-several chat turns landed inside the same 60s window, after single isolated
-requests had shown sub-second model latency. `stopWhen: stepCountIs(4)` (down
-from 6) bounds how many times a stuck turn can re-send that ~1,900-token
-prompt; trimming the prompt itself would buy more headroom but was left alone
-here to avoid touching the grounding and safety rules under time pressure —
-worth revisiting if demo traffic grows.
+actual constraint. There are two token ceilings, and only one of them is
+visible:
+
+- **8,000 tokens per minute** (TPM), reported on every response as
+  `x-ratelimit-limit-tokens` alongside `x-ratelimit-remaining-tokens` and
+  `x-ratelimit-reset-tokens`.
+- **200,000 tokens per day** (TPD), reported *nowhere* — not in any header, not
+  in any documented field. The only place the number appears is the prose of a
+  429 body:
+
+  > Rate limit reached for model `qwen/qwen3.8-27b` … on tokens per day (TPD):
+  > Limit 200000, Used 199754, Requested 2679. Please try again in 17m31.056s.
+
+Both buckets are **per model**. Measured against the deployed key,
+`qwen/qwen3.8-27b` and `openai/gpt-oss-120b` each reported their own
+independent 8,000 TPM and decremented separately.
+
+The distinction matters because the two failures look identical from outside
+and need opposite responses. A per-minute refusal is a pause — wait a few
+seconds and the same request succeeds. A per-day refusal is a wall — waiting
+out its `retry-after` buys one more call and then another seventeen minutes.
+The live failure QA reported was the second kind: the endpoint refused every
+request while its own headers still read a healthy
+`x-ratelimit-remaining-tokens: 8000`, and `retry-after` climbed past seventeen
+minutes because each rejected attempt still counted against the window.
+
+One more trap, worth knowing before it costs an afternoon: the endpoint admits
+a request against **prompt + reserved completion tokens**, not against what the
+call actually ends up spending. A call that left `maxOutputTokens` unset had the
+model's own maximum reserved — 16,384 or 65,536 depending on the model — which
+on its own exceeds the 8,000 TPM ceiling, so it was refused no matter how much
+real headroom existed (`on tokens per minute (TPM): Limit 8000, Requested
+16395`). Every model call in HAI now states an explicit output ceiling.
+
+HAI's chat prefix — the system prompt plus every tool schema — is **2,866
+tokens**, measured by sending it with a one-token question and reading
+`prompt_tokens` back. That breaks down as 1,383 tokens of system prompt and
+roughly 370 per tool schema, and it is worth stating precisely because an
+earlier estimate here ("three tool schemas, roughly 1,900 tokens") was wrong in
+both halves: the route passes the whole `haiTools` registry, so **four** schemas
+go out on every request, and the true figure is about 50% higher than the guess.
+
+The prefix is re-sent in full on every step of the tool-calling loop, so a
+single grounded turn — one tool-call step plus one final-answer step — spends
+close to 6,000 tokens before any tool result or answer text is counted. That is
+most of an 8,000-token minute in one turn, and `stopWhen: stepCountIs(4)` puts
+the worst case for a stuck turn at over 11,000, i.e. past the ceiling on its
+own. Back-to-back demo traffic therefore exhausts the per-minute budget in one
+or two turns rather than the two or three previously estimated. When it does,
+the endpoint queues rather than rejecting, and the user saw tens of seconds of
+silence with no error — measured during testing at 18–30s, against sub-second
+latency for isolated requests. The chat route now surfaces that state honestly
+instead of going quiet (see the pacing notes above).
+
+Trimming the prefix is the largest single lever left on chat's token cost, and
+it has not been pulled: the system prompt carries the grounding and safety
+rules, and shortening those to save tokens is a change to what the product
+promises, not a performance tweak. Worth revisiting deliberately if demo
+traffic grows.
+
+### `/deliverables` paces itself against a measured budget, not a guessed one
+
+This is the one route where the free-tier ceilings above change what the product
+can do, rather than just making it slower. A situation brief is six sections and
+about nineteen model calls with no human in the loop, costing roughly 25,000
+tokens in total — three brief-lengths of the per-minute bucket, and an eighth of
+the per-day one.
+
+The engine used to pace itself against a *guessed* per-minute spend: estimate
+each call's cost from its prompt length, subtract, wait when the running total
+approached `LLM_TOKENS_PER_MINUTE`. That estimate cannot see the tool schemas
+and tool results the SDK adds on the way out, nor the completion tokens, nor
+anything else sharing the same bucket — an eval in another terminal, a chat
+request that arrived mid-draft, the SDK's own retries. It ran under, and the
+route walked into exactly the refusal it was built to avoid.
+
+The budget is now read off the wire instead. `lib/llm/rate-limit.ts` wraps the
+provider's `fetch` and parses `x-ratelimit-*` on every response, so the
+per-minute figure is the endpoint's own; 429 bodies are parsed too, which is the
+only way to learn the per-day ceiling. Three things follow from that:
+
+- **Pacing switches itself on when an endpoint reports a ceiling, and stays off
+  when none is reported.** A local Ollama endpoint is therefore never paced, and
+  no URL check is involved in deciding that. A paid tier is paced correctly at
+  its real limit with no configuration at all.
+- **A per-day exhaustion stops the run** with an honest message, rather than
+  retrying into a wall for seventeen minutes at a time.
+- **The wait is visible.** The trace panel shows the pacing countdown live
+  ("Waiting for the token budget · resumes in Ns"), translated in en/fr/ar/es,
+  so a paused run reads as a paused run and not as a hung one.
+
+Measured end to end against the Groq free tier with
+`LLM_DELIVERABLES_MODEL=openai/gpt-oss-120b`: a complete six-section Sudan
+situation brief in **141.7 seconds, 19 model calls, all six sections populated,
+zero 429s**. About 105 of those 142 seconds are deliberate pacing waits — the
+route is mostly waiting, on purpose, and that is the correct behaviour on an
+8k/min bucket.
+
+Because of that duration, `maxDuration` in
+`app/src/app/api/deliverables/route.ts` is **300** — Vercel's ceiling with Fluid
+compute — rather than the 60 a Hobby function allows. The engine stops itself 15
+seconds before that deadline, so a run that will not finish ends as a truncated
+document with a caveat rather than a killed stream. The route streams
+incrementally either way, so finished sections are already on the reader's
+screen and the page labels a partial document partial.
+
+### Give deliverables its own model
+
+`LLM_DELIVERABLES_MODEL` is optional and defaults to `LLM_MODEL`, but the hosted
+demo sets it to `openai/gpt-oss-120b` for a reason that is easy to miss: the TPM
+*and* TPD buckets are per model. A brief costs roughly 25,000 tokens, so sharing
+one 200,000-token daily bucket with chat means a busy chat afternoon quietly
+consumes the ability to produce a document at all. Pointing deliverables at a
+second model gives the two features independent daily budgets on the same key
+and the same account.
+
+`LLM_DELIVERABLES_BASE_URL` and `LLM_DELIVERABLES_API_KEY` extend that one step
+further: the deliverables endpoint can be a different provider entirely, not
+just a second model on the same one. Both are optional and fall back to their
+`LLM_*` equivalents.
+
+Be honest about the size of the budget this buys. 200,000 tokens a day per model
+is roughly **eight briefs per day, per model**, on the free tier. That is enough
+for a demo and nothing more; a deployment expecting real traffic needs a paid
+tier or a provider with higher daily limits.
+
+### What `LLM_TOKENS_PER_MINUTE` means now
+
+It is no longer needed for an ordinary hosted deployment. Its meaning has
+narrowed: it asserts a ceiling for an endpoint that *enforces* one but does not
+*report* it in headers. Against Groq, or any endpoint that publishes
+`x-ratelimit-*`, the measured number wins and the variable is redundant — leave
+it unset. Against a local Ollama, there is no ceiling to assert and it should
+stay unset as well.
+
+Local `next dev` and `next start` ignore `maxDuration` entirely, so that
+constraint does not apply to the local demo either.
+
+The per-IP limit on this route is **3 runs per 10 minutes**, not
+`RATE_LIMIT_RPM`. One run is nineteen model calls and several live API round
+trips; twenty a minute would not be a limit. It is a separate counter in
+`lib/limits/burst.ts` and is not configurable by environment variable.
 
 ---
 
@@ -252,10 +384,14 @@ worth revisiting if demo traffic grows.
 
 | | Limit | What happens when it runs out |
 |---|---|---|
-| Groq, `gpt-oss-120b` | 30 req/min, 1,000 req/day, 8k tokens/min | requests fail; no overage billing |
+| Groq, per model | 30 req/min, 1,000 req/day, 8k tokens/min, 200k tokens/day | requests fail; no overage billing |
 | Hugging Face Inference | ~$0.10/month credit on a free account | embedding calls fail |
 | Supabase free | 500 MB database, pauses after inactivity | project pauses; unpause in dashboard |
-| Vercel Hobby | 60s function limit, no commercial use | build rejected above 60s |
+| Vercel Hobby | 60s function limit, no commercial use | build rejected above 60s; `/deliverables` asks for 300s and needs Fluid compute |
+
+Both Groq token ceilings are counted per model, which is why
+`LLM_DELIVERABLES_MODEL` exists. 200k tokens/day is about eight situation briefs
+per model per day — a demo budget, not a production one.
 
 The corpus is ~45 MB indexed, comfortably inside Supabase's 500 MB.
 

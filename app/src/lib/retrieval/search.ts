@@ -49,10 +49,11 @@ export interface SearchStandardsOptions {
 export interface SearchStandardsResult {
   chunks: StandardsChunk[];
   /**
-   * Set when the result set is empty or degraded for a reason the model needs
-   * to tell the user about (corpus not ingested, retrieval backend down).
-   * Absent on a normal successful search, including one that legitimately
-   * found no match.
+   * Set whenever the result set is empty, for any reason the model needs to
+   * tell the user about: corpus not ingested, retrieval backend down, or a
+   * search that ran fine and matched nothing. Absent only when chunks came
+   * back — an empty `chunks` with no notice would read to the model as
+   * permission to answer from memory.
    */
   notice?: string;
 }

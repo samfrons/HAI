@@ -16,6 +16,7 @@ export function NavLinks() {
 
   const links = [
     { href: '/', label: t.nav.chat },
+    { href: '/deliverables', label: t.nav.deliverables },
     { href: '/playbooks', label: t.nav.playbooks },
     { href: '/guides', label: t.nav.guides },
     { href: '/about', label: t.nav.about },

@@ -1,0 +1,734 @@
+{
+  "scenarioId": "financial_tracking_001",
+  "turns": [
+    {
+      "probe": "How much humanitarian funding is tracked globally each year?",
+      "text": "To provide the most accurate figure for global humanitarian funding, I need to check the latest data from a reliable source. Let me fetch this information now.\nThe humanitarian_data tool does not provide global figures; it is organized by country. To get a figure for global humanitarian funding, you would need to refer to a published source such as OCHA's Global Humanitarian Overview. Please note that I cannot verify this number using the available tools.\n\nIf you have access to the latest Global Humanitarian Overview or another authoritative report, please provide the specific figure and its reference period so I can assist further in incorporating it into your document or analysis.",
+      "toolCalls": [
+        {
+          "toolCallId": "call_m0nhx7l6",
+          "toolName": "humanitarian_data",
+          "input": {
+            "country_iso3": null,
+            "dataset": "funding"
+          },
+          "output": {
+            "dataset": "funding",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        }
+      ],
+      "safetyNotices": [],
+      "errors": [],
+      "httpStatus": 200,
+      "durationMs": 27208,
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "txt-0"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "To"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " most"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " accurate"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " check"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " latest"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " data"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " from"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " reliable"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " source"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " Let"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " me"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " fetch"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " this"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " information"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": " now"
+        },
+        {
+          "type": "text-delta",
+          "id": "txt-0",
+          "delta": ".\n"
+        },
+        {
+          "type": "tool-input-start",
+          "toolCallId": "call_m0nhx7l6",
+          "toolName": "humanitarian_data"
+        },
+        {
+          "type": "tool-input-delta",
+          "toolCallId": "call_m0nhx7l6",
+          "inputTextDelta": "{\"dataset\":\"funding\",\"country_iso3\":null}"
+        },
+        {
+          "type": "text-end",
+          "id": "txt-0"
+        },
+        {
+          "type": "tool-input-available",
+          "toolCallId": "call_m0nhx7l6",
+          "toolName": "humanitarian_data",
+          "input": {
+            "country_iso3": null,
+            "dataset": "funding"
+          }
+        },
+        {
+          "type": "tool-output-available",
+          "toolCallId": "call_m0nhx7l6",
+          "output": {
+            "dataset": "funding",
+            "available": false,
+            "reason": "no_country_given",
+            "figures": [],
+            "guidance": "HDX HAPI is organised by country and publishes no regional or global aggregate, so this tool cannot answer a worldwide question. Ask the user which country they mean, or answer from a named published source (for example OCHA's Global Humanitarian Overview for global needs and funding totals) while stating that it is the source and that this tool could not verify it."
+          }
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "start-step"
+        },
+        {
+          "type": "text-start",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "The"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "_data"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " tool"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " does"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " not"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " figures"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": ";"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " is"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " organized"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " by"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " country"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " To"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " get"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " for"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " humanitarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " funding"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " would"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " need"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " refer"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " a"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " published"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " source"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " such"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " as"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " O"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "CHA"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "'s"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "."
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Please"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " note"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " that"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " cannot"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " verify"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " this"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " number"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " using"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " available"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " tools"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": ".\n\n"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "If"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " you"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " have"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " access"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " to"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " latest"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Global"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Human"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "itarian"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " Overview"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " another"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " authoritative"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " report"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": ","
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " please"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " provide"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " the"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " specific"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " figure"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " and"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " its"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " reference"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " period"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " so"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " I"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " can"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " assist"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " further"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " in"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " incorporating"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " it"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " into"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " your"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " document"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " or"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": " analysis"
+        },
+        {
+          "type": "text-delta",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ",
+          "delta": "."
+        },
+        {
+          "type": "text-end",
+          "id": "aitxt-70QgtzJhqk9knm6ZxKe1oYCQ"
+        },
+        {
+          "type": "finish-step"
+        },
+        {
+          "type": "finish",
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-09-01T13:58:15.789Z",
+  "finishedAt": "2026-09-01T13:58:42.997Z",
+  "durationMs": 27208,
+  "interceptionOccurred": false,
+  "interceptionIsAppropriate": false,
+  "failed": false,
+  "errors": []
+}

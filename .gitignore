@@ -75,6 +75,11 @@ yarn-error.log*
 .idea/
 *.swp
 
+# --- Agent tooling scratch ---
+# Per-session metrics written by claude-flow hooks. Machine-local, no bearing
+# on the build; six of these were tracked by accident before this rule.
+.claude-flow/
+
 # --- Vercel ---
 # Added by `vercel link`, which also appends a bare `.env*`. That pattern is
 # kept narrower here: it sits after the `!.env.example` negation above and would

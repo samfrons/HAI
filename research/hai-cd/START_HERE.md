@@ -1,4 +1,14 @@
-# 👋 START HERE!
+# ARCHIVED — do not start here
+
+> **This is not the project's entry point, and its results are invalid.** The
+> approach below was abandoned; the "100% pass" it reports came from a model
+> grading its own answers. Read the
+> [postmortem](../README.md) first, then start at the
+> [root README](../../README.md).
+
+The original text follows, unedited, as a historical record.
+
+## 👋 START HERE! (original)
 
 Welcome to your Humanitarian Expert LLM Proof of Concept!
 
@@ -14,7 +24,7 @@ Welcome to your Humanitarian Expert LLM Proof of Concept!
 **🔧 [README.md](README.md)** - Complete technical documentation (20 min read)
 
 ### Ready to enhance your dataset?
-**📊 [src/hazard_processor.py](src/hazard_processor.py)** - Add your Excel data
+**📊 [hazard_processor.py](hazard_processor.py)** - Add your Excel data
 
 ### Want to understand costs?
 **💰 See PROJECT_SUMMARY.md** - Budget breakdown section
