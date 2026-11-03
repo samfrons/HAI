@@ -38,7 +38,7 @@ logger = logging.getLogger(__name__)
 # Judge model used when an Anthropic API key is available. Chosen so the judge is a
 # different model family from the local Ollama target - a judge that is the model under
 # test produces self-evaluation, not evaluation.
-DEFAULT_JUDGE_MODEL = "claude-opus-5"
+DEFAULT_JUDGE_MODEL = "claude-haiku-4-5-20251001"
 
 # The documented pass rule: average of the five dimension scores >= this threshold,
 # AND no critical issues recorded by the judge.
@@ -435,14 +435,30 @@ Provide accurate, helpful responses based on verified humanitarian knowledge.
 
         return "\n".join(sections)
 
+    def _get_independent_judge_model(self) -> Optional[str]:
+        """Find a local Ollama model that is NOT the target, for independent judging."""
+        preferred = ['qwen3:8b', 'gemma3:12b', 'gemma3:4b', 'mistral:7b', 'llama3.1:8b', 'phi4:14b']
+        try:
+            available = [m.get('name', m.get('model', '')) for m in ollama.list().get('models', [])]
+        except Exception:
+            return None
+        for candidate in preferred:
+            for avail in available:
+                if candidate in avail and avail != self.target_model:
+                    return avail
+        for avail in available:
+            if avail != self.target_model:
+                return avail
+        return None
+
     def _judge_generate(self, prompt: str) -> Dict[str, str]:
         """
         Run the judge prompt through the judge model.
 
-        Prefers the Anthropic API with ``self.judge_model``. Falls back to the local
-        Ollama target model only when no Anthropic key is configured - in which case the
-        judge is the model under test, and that is logged loudly and recorded in the
-        result so the report cannot be read as independent evaluation.
+        Priority order:
+        1. Anthropic API (Claude Haiku) — independent, different model family
+        2. Local Ollama model different from self.target_model — independent
+        3. Local Ollama target model — NOT independent, flagged loudly
         """
         if self.anthropic_client:
             response = self.anthropic_client.messages.create(
@@ -460,16 +476,34 @@ Provide accurate, helpful responses based on verified humanitarian knowledge.
                 'model': self.judge_model,
             }
 
+        independent_model = self._get_independent_judge_model()
+        if independent_model:
+            logger.info(
+                "No ANTHROPIC_API_KEY; using independent local model '%s' as judge "
+                "(target is '%s').",
+                independent_model, self.target_model,
+            )
+            response = ollama.generate(
+                model=independent_model,
+                prompt=prompt,
+                options={'temperature': 0.2}
+            )
+            return {
+                'text': response['response'],
+                'backend': 'ollama_independent',
+                'model': independent_model,
+            }
+
         logger.warning(
             "Judge is running on the Ollama target model '%s' because ANTHROPIC_API_KEY "
-            "is not set. This is SELF-EVALUATION, not independent judging - do not "
-            "report these scores as an independent audit.",
+            "is not set and no other local model is available. This is SELF-EVALUATION, "
+            "not independent judging - do not report these scores as an independent audit.",
             self.target_model,
         )
         response = ollama.generate(
             model=self.target_model,
             prompt=prompt,
-            options={'temperature': 0.2}  # Low temperature for consistent evaluation
+            options={'temperature': 0.2}
         )
         return {
             'text': response['response'],
@@ -667,14 +701,19 @@ Provide accurate, helpful responses based on verified humanitarian knowledge.
                 failed += 1
 
         # Generate audit report
-        judge_backend = 'anthropic' if self.anthropic_client else 'ollama_not_independent'
+        if self.anthropic_client:
+            judge_backend = 'anthropic'
+        elif self._get_independent_judge_model():
+            judge_backend = 'ollama_independent'
+        else:
+            judge_backend = 'ollama_not_independent'
         audit_report = {
             'timestamp': datetime.now().isoformat(),
             'target_model': self.target_model,
             'auditor_model': self.auditor_model if self.openrouter_client else self.target_model,
             'judge_model': self.judge_model if self.anthropic_client else self.target_model,
             'judge_backend': judge_backend,
-            'judge_is_independent': judge_backend == 'anthropic',
+            'judge_is_independent': judge_backend in ('anthropic', 'ollama_independent'),
             'pass_rule': f'average >= {PASS_THRESHOLD:.0f} AND no critical issues (enforced in code)',
             'total_scenarios': len(scenarios_to_test),
             'passed': passed,

@@ -2,130 +2,426 @@
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "How should humanitarian responders address natural disaster situations?"
+        "content": "What is the IPC food security classification system?"
       },
       {
         "role": "assistant",
-        "content": "- expand to 3 different crisis types (conflict, displacement, natural disaster)"
+        "content": "The Integrated Food Security Phase Classification (IPC) is a 5-phase scale for classifying food insecurity severity:\n\n**Phase 1 \u2014 Minimal**: Households can meet essential food and non-food needs\n**Phase 2 \u2014 Stressed**: Minimally adequate food but cannot afford essential non-food expenditures\n**Phase 3 \u2014 Crisis**: Food consumption gaps; meeting minimum needs through asset depletion or crisis strategies\n**Phase 4 \u2014 Emergency**: Large food consumption gaps; very high acute malnutrition; excess mortality\n**Phase 5 \u2014 Famine**: At least 20% of households face extreme food gaps; GAM >30%; death rate >2/10,000/day\n\nThe IPC is used by WFP, FAO, and governments to trigger response and allocate resources. As of 2023, 345 million people globally are food insecure.\n\nSource: IPC Global Support Unit; OCHA Global Humanitarian Overview 2023"
       }
     ],
-    "category": "crisis_response",
-    "source": "CLEAR_docs"
+    "category": "food_security"
   },
   {
     "messages": [
       {
         "role": "system",
-        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
       },
       {
         "role": "user",
-        "content": "How do you assess shelter needs after a natural disaster?"
+        "content": "What is the MISP for reproductive health?"
       },
       {
         "role": "assistant",
-        "content": "Shelter assessment should cover: 1) Number and demographics of affected households, 2) Extent of damage (destroyed, severely damaged, moderately damaged), 3) Climate and environmental conditions, 4) Cultural preferences and local building practices, 5) Available local materials and skills, 6) Land availability and tenure issues, 7) Security and protection concerns, 8) Access to services (water, sanitation, health), and 9) Planned return or relocation intentions."
+        "content": "The **Minimum Initial Service Package (MISP)** for reproductive health must be implemented within the first 48 hours of every humanitarian crisis. Priority activities:\n\n1. **Identify a lead agency** for reproductive health coordination\n2. **Prevent and manage sexual violence**: Clinical care for survivors, referral pathways, safe spaces\n3. **Prevent excess maternal/neonatal mortality**: Emergency obstetric care, clean delivery kits, referral for complications\n4. **Prevent HIV transmission**: Standard precautions, safe blood supply, free condoms\n5. **Plan for comprehensive services**: Contraception, STI treatment, comprehensive abortion care\n\nOver 60% of maternal deaths occur in humanitarian settings, making MISP implementation critical. The MISP is a standard, not an option \u2014 it must be implemented from day one.\n\nSource: IAWG on Reproductive Health in Crises; Sphere Handbook 2018"
       }
     ],
-    "category": "shelter"
+    "category": "health"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What is GDPR compliance in humanitarian context?"
+        "content": "What are the core humanitarian principles?"
       },
       {
         "role": "assistant",
-        "content": "Right to be forgotten, data portability\n- **HIPAA compliance**: Healthcare data protection\n- **SOC 2**: Security, availability, confidentiality\n- **ISO 27001**: Information security management\n\nThis security architecture ensures that the AI survey system meets the highest standards for protecting sensitive humanitarian data while enabling secure collaboration between organizations."
+        "content": "The four core humanitarian principles guide all humanitarian action:\n\n1. **Humanity**: The purpose of humanitarian action is to protect life and health and ensure respect for the human being. Human suffering must be addressed wherever it is found.\n\n2. **Neutrality**: Humanitarian actors must not take sides in hostilities or engage in controversies of a political, racial, religious, or ideological nature.\n\n3. **Impartiality**: Humanitarian action must be carried out on the basis of need alone, giving priority to the most urgent cases of distress and making no distinctions on the basis of nationality, race, gender, religious belief, class, or political opinions.\n\n4. **Independence**: Humanitarian action must be autonomous from the political, economic, military, or other objectives that any actor may hold with regard to areas where humanitarian action is being implemented.\n\nThese principles are enshrined in UN General Assembly Resolutions 46/182 (1991) and 58/114 (2004).\n\nSource: OCHA; UN General Assembly Resolutions"
       }
     ],
-    "category": "terminology",
-    "source": "CLEAR_docs"
+    "category": "protection"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What is Duplicates in humanitarian context?"
+        "content": "What is RUTF and how is it used in treating malnutrition?"
       },
       {
         "role": "assistant",
-        "content": "confirmedDuplicates."
+        "content": "**RUTF (Ready-to-Use Therapeutic Food)** is an energy-dense, micronutrient-enriched paste \u2014 typically peanut-based \u2014 used for treating severe acute malnutrition (SAM) in children. Key characteristics:\n\n- Does not require water or cooking\n- Long shelf life (up to 2 years unopened)\n- Administered through Outpatient Therapeutic Programmes (OTP)\n- Dosage based on child's weight\n- Treats 80%+ of SAM cases without hospitalization\n\nThe Community-based Management of Acute Malnutrition (CMAM) protocol uses RUTF in OTP for uncomplicated SAM cases (MUAC below 115mm or weight-for-height below -3 z-scores without medical complications). Target outcomes: >75% cure rate, <15% default rate, <10% mortality in inpatient care.\n\nSource: Sphere Handbook 2018; WHO/UNICEF CMAM Guidelines"
       }
     ],
-    "category": "terminology",
-    "source": "CLEAR_docs"
+    "category": "food_security"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on users?"
+        "content": "What is the Minimum Expenditure Basket (MEB)?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 1.5 M+ users."
+        "content": "The **Minimum Expenditure Basket (MEB)** is the minimum set of essential goods and services a household needs per month. It is used to calculate cash transfer amounts:\n\n**Components typically include**:\n- Food (based on local diet and 2,100 kcal/person/day)\n- Rent/shelter\n- Transport\n- Health expenses\n- Education\n- Communication (phone credit)\n- Hygiene items\n- Water (if purchased)\n- Cooking fuel/energy\n\n**Calculation process**:\n1. Identify essential items per sector\n2. Price each item in local markets\n3. Calculate total per household size\n4. Update monthly based on market monitoring\n\nThe MEB methodology (from the Cash Learning Partnership / CaLP) is used by WFP, UNHCR, and NGOs implementing multipurpose cash assistance.\n\nSource: CaLP; WFP Cash-Based Transfer Guidelines"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
+    "category": "food_security"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What is Cache in humanitarian context?"
+        "content": "What is accountability to affected populations (AAP)?"
       },
       {
         "role": "assistant",
-        "content": "Map<string, AIModel>;\n  private questionTemplateCache: QuestionTemplate[];\n  private contextEmbeddings: EmbeddingCache;\n\n  async generateQuestionsParallel(\n    outcomes: NrcOutcome[],\n    context: CrisisContext,\n    customization: SurveyCustomization\n  ): Promise<Question[]> {\n\n    // Pre-compute context embeddings\n    const contextEmbedding = await this."
+        "content": "**Accountability to Affected Populations (AAP)** means humanitarian organizations commit to using power responsibly by:\n\n1. **Taking account of** affected people's views, needs, and preferences\n2. **Giving account to** affected populations about decisions and actions\n3. **Being held to account** through accessible complaint and feedback mechanisms\n\n**Core Humanitarian Standard (CHS) Commitments 4 and 5** specifically address AAP:\n- Commitment 4: Humanitarian response is based on communication, participation, and feedback\n- Commitment 5: Complaints are welcomed and addressed\n\n**Practical implementation**:\n- Multiple feedback channels (hotlines, suggestion boxes, community meetings)\n- Anonymous options for sensitive complaints (PSEA, fraud)\n- Information provided in accessible formats and local languages\n- Feedback systematically analyzed and acted upon\n- Affected populations participate in needs assessment and program design\n\nAAP is not a sector but a cross-cutting commitment that applies to every humanitarian program.\n\nSource: CHS Alliance; IASC Commitments on AAP"
       }
     ],
-    "category": "terminology",
-    "source": "CLEAR_docs"
+    "category": "ethics"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on users?"
+        "content": "How many aid workers have been killed in humanitarian operations?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 17 M+ users."
+        "content": "Over **4,000 aid workers** have been attacked between 2003-2023, according to the Aid Worker Security Database.\n\n**Key statistics**:\n- 2023 was the deadliest year on record with **280+ aid workers killed**\n- 33 countries reported attacks on aid workers\n- National staff face far higher risk than international staff\n- Deliberate targeting of health facilities and workers has increased\n\n**Highest-risk contexts**:\n- Active conflict zones (Syria, Yemen, South Sudan, Sudan)\n- Areas with non-state armed group presence\n- Locations where humanitarian space is shrinking\n\n**Protective measures**:\n- Security risk management (SRM) is mandatory for all humanitarian organizations\n- Acceptance, protection, and deterrence strategies\n- Humanitarian notification systems in conflict zones\n- Duty of care obligations for employers\n\nAttacks on humanitarian workers violate International Humanitarian Law and are potential war crimes.\n\nSource: Aid Worker Security Database; Humanitarian Outcomes"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
+    "category": "general"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on beneficiaries?"
+        "content": "What ethical considerations apply to AI in humanitarian settings?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 50 M+ beneficiaries."
+        "content": "Using AI in humanitarian contexts raises specific ethical considerations:\n\n1. **Do No Harm**: AI predictions (e.g., displacement forecasting) must not be used for targeting or surveillance\n2. **Data protection**: Training data may contain beneficiary information; PII must be protected\n3. **Bias**: AI trained on incomplete humanitarian data may underrepresent marginalized groups\n4. **Transparency**: Decisions affecting aid distribution must be explainable\n5. **Human oversight**: AI should inform, not replace, human decision-making in life-affecting situations\n6. **Consent**: Affected populations should understand how their data is used\n7. **Accountability**: Clear responsibility when AI-informed decisions cause harm\n\n**OCHA's position**: AI should support humanitarian workers, not replace their judgment. Technology must be subordinate to humanitarian principles (humanity, neutrality, impartiality, independence).\n\nThe IASC framework emphasizes that innovation in humanitarian settings must prioritize the safety and dignity of affected populations.\n\nSource: OCHA Centre for Humanitarian Data; IASC"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
+    "category": "ethics"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on people needed humanitarian assistance in?"
+        "content": "How should refugee registration be conducted?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 339 million people needed humanitarian assistance in."
+        "content": "Refugee registration follows UNHCR's PRIMES (Population Registration and Identity Management EcoSystem) process:\n\n1. **Reception**: Establish reception center at border/entry point\n2. **Level 1 registration**: Headcount, demographics, basic data\n3. **Specific needs screening**: Medical, protection, family separation\n4. **Emergency assistance**: Food, water, shelter, medical care\n5. **Individual registration**: Full biometric data in proGres v4\n6. **Documentation**: Issue refugee certificate or attestation\n7. **Referral**: Unaccompanied minors, GBV survivors, persons with disabilities\n8. **Refugee Status Determination (RSD)**: If individual process required\n\n**Key principles**:\n- Registration from day one (delays create protection gaps)\n- Confidentiality of personal data\n- Data protection per UNHCR Data Protection Policy\n- Include SADD (Sex and Age Disaggregated Data)\n- Accessible to persons with disabilities\n\nSource: UNHCR Registration Guidance; UNHCR Data Protection Policy"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
+    "category": "displacement"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is protection mainstreaming in humanitarian response?"
+      },
+      {
+        "role": "assistant",
+        "content": "Protection mainstreaming means integrating protection principles across **all humanitarian sectors**, not just protection-specific activities. The four key elements:\n\n1. **Prioritize safety and dignity**: Avoid exposing people to further harm through humanitarian action\n2. **Meaningful access**: Ensure all groups (women, men, boys, girls, elderly, persons with disabilities) can access services equally\n3. **Accountability**: Establish feedback and complaint mechanisms; ensure participation in decision-making\n4. **Participation and empowerment**: Support affected people's own efforts to stay safe and recover\n\nPractical examples:\n- WASH: Lighting at latrines; separate facilities for men/women; safe locations for water collection\n- Shelter: Lockable doors; privacy; safe distance between structures\n- Food: Safe distribution points; prevention of exploitation\n- All sectors: Sex and age disaggregated data (SADD); referral pathways for GBV\n\nSource: Global Protection Cluster; IASC Protection Policy"
+      }
+    ],
+    "category": "protection"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How does humanitarian funding work?"
+      },
+      {
+        "role": "assistant",
+        "content": "Humanitarian funding flows through several channels:\n\n**Pooled funds**:\n- **CERF** (Central Emergency Response Fund): Up to $500M annually, managed by OCHA. Rapid Response grants within 72 hours; Underfunded Emergencies grants annually.\n- **Country-Based Pooled Funds (CBPFs)**: Managed locally by Humanitarian Coordinators for context-specific allocation.\n\n**Bilateral**: Direct donor-to-implementing-agency funding, often through HRP appeals.\n\n**Flash Appeals**: Rapid fundraising within days of sudden-onset emergency, covering 3-6 months.\n\n**Key statistics**:\n- Only ~35% of humanitarian appeals are typically funded\n- $55.3 billion requested in 2023 (OCHA)\n- 68 cents of every dollar goes to food; protection and education are chronically underfunded\n\nThe Financial Tracking Service (FTS) tracks all humanitarian funding flows globally.\n\nSource: OCHA FTS; Development Initiatives Global Humanitarian Assistance Report"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What editions of the Sphere Handbook exist and what's current?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Sphere Handbook** has had four editions:\n\n- **1st edition (2000)**: Established the original humanitarian charter and minimum standards\n- **2nd edition (2004)**: Revised based on lessons from the Indian Ocean tsunami and other responses\n- **3rd edition (2011)**: Updated with new evidence, especially on cash programming and urban response\n- **4th edition (2018)**: Current edition. Major updates to protection, inclusion, and resilience.\n\nThe **2018 edition** covers four core sectors:\n1. **WASH** (Water, Sanitation, and Hygiene)\n2. **Food Security and Nutrition**\n3. **Shelter and Settlement**\n4. **Health**\n\nEach standard includes:\n- Key actions\n- Key indicators with guidance notes\n- Minimum quantitative benchmarks (15L water/day, 3.5m\u00b2 shelter, 2,100 kcal/day)\n\nSphere Standards are voluntary but widely accepted as the de facto minimum for humanitarian response quality.\n\nSource: Sphere Association; Sphere Handbook 2018"
+      }
+    ],
+    "category": "standards"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "When should cash transfers be used instead of food distribution?"
+      },
+      {
+        "role": "assistant",
+        "content": "Cash transfers are preferred over in-kind food distribution when markets are functioning. Key criteria for deciding:\n\n1. **Market availability**: Essential goods available in sufficient quantity\n2. **Market access**: Affected populations can physically and safely reach markets\n3. **Price stability**: Prices are stable or predictably trending\n4. **Vendor capacity**: Vendors can scale up supply\n5. **Financial services**: Transfer mechanisms (mobile money, banks) are functional\n6. **Protection risks**: Cash does not create risks of theft, diversion, or exploitation\n\nCash programming preserves dignity and choice, supports local markets, and reduces logistics costs by 25-30%. The transfer value is based on the Minimum Expenditure Basket (MEB) \u2014 the cost of essential goods and services a household needs monthly.\n\nSource: CaLP Guidelines; Sphere Handbook 2018"
+      }
+    ],
+    "category": "food_security"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What happened during the 2022 Pakistan floods?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **2022 Pakistan monsoon floods** were catastrophic, submerging one-third of the country:\n\n**Impact**:\n- 33 million people affected\n- 1,739 deaths\n- 7.9 million people displaced\n- 2 million homes destroyed\n- $30 billion in damages and economic losses\n\n**Response**:\n- Government-led response with international support\n- WFP reached 7.5 million people with food assistance\n- Cash-based interventions scaled rapidly\n- Health response addressed waterborne disease outbreaks\n\n**Key lessons**:\n1. **Climate change is amplifying disaster severity** beyond historical patterns\n2. **Loss and damage funding mechanisms urgently needed** (catalyzed the COP27 Loss and Damage Fund)\n3. **Early warning systems saved lives** where they existed\n4. **Recovery requires years and development-scale funding**, not just emergency response\n5. **Pre-positioned stocks and contingency plans** enabled faster response\n\nThe floods were linked to climate change \u2014 Pakistan contributes less than 1% of global emissions but faces some of the worst climate impacts.\n\nSource: OCHA; Government of Pakistan PDNA; NDMA"
+      }
+    ],
+    "category": "case_studies"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How should cholera outbreaks be managed in displacement settings?"
+      },
+      {
+        "role": "assistant",
+        "content": "Cholera outbreak management in humanitarian settings follows WHO/Sphere protocols:\n\n1. **Case management**: Oral Rehydration Therapy (ORT) for mild/moderate cases; IV fluids for severe dehydration\n2. **Cholera Treatment Centres (CTCs)**: Establish within affected area; target case fatality rate below 1%\n3. **WASH intensification**: Water chlorination, point-of-use treatment, latrine disinfection\n4. **Oral Cholera Vaccine (OCV)**: 2-dose campaign for at-risk populations\n5. **Surveillance**: Active case finding, rapid diagnostic tests, laboratory confirmation\n6. **Risk communication**: Community engagement on handwashing, safe water, food hygiene\n7. **Dead body management**: Safe and dignified burial with chlorine solution\n\nKey indicator: Case fatality rate must be kept **below 1%** with adequate treatment. Outbreak is declared over after two incubation periods (10 days) without new cases.\n\nSource: WHO Cholera Guidelines; Sphere Handbook 2018"
+      }
+    ],
+    "category": "health"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the humanitarian-development-peace nexus?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **humanitarian-development-peace nexus** (or 'triple nexus') connects three types of intervention:\n\n1. **Humanitarian action**: Life-saving assistance and protection during and after crises\n2. **Development cooperation**: Long-term programs addressing structural causes of vulnerability\n3. **Peace-building**: Efforts to prevent, mitigate, and resolve conflict\n\n**Why it matters**:\n- Average refugee displacement lasts 20+ years \u2014 emergency funding alone cannot sustain this\n- Many crises are protracted, requiring both relief and development\n- Humanitarian action without addressing root causes is a permanent emergency\n\n**Practical approaches**:\n- Joint needs assessments (humanitarian + development)\n- Multi-year programming bridging relief and development\n- New Way of Working (NWOW) for collective outcomes\n- Development programs in displacement contexts (education, livelihoods)\n\n**Challenge**: Different funding streams, mandates, and planning cycles make coordination difficult. Humanitarian principles (especially neutrality) can conflict with development and peace objectives.\n\nSource: IASC; OECD DAC; UN Secretary-General's Agenda for Humanity"
+      }
+    ],
+    "category": "general"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What defines a famine according to the IPC?"
+      },
+      {
+        "role": "assistant",
+        "content": "Under the IPC classification, **Phase 5 (Famine)** is declared when all three of the following conditions are met simultaneously in a given area:\n\n1. **At least 20% of households** face an extreme lack of food\n2. **Global Acute Malnutrition (GAM) rate exceeds 30%** among children under 5\n3. **Crude death rate exceeds 2 per 10,000 population per day**\n\nFamine is the most severe classification and triggers the highest level of humanitarian mobilization. Recent famine declarations include Somalia (2011, 2022) and South Sudan (2017). Importantly, people die of famine-related causes before a formal declaration \u2014 early action at IPC Phase 3-4 is critical to prevent progression.\n\nSource: IPC Technical Manual; Sphere Handbook 2018"
+      }
+    ],
+    "category": "food_security"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the minimum water supply per person per day in emergencies?"
+      },
+      {
+        "role": "assistant",
+        "content": "According to the Sphere Handbook 2018, WASH Standard 1, the minimum water supply is **15 litres per person per day** for drinking, cooking, and personal hygiene. During the initial survival phase, a minimum of 7.5 litres per person per day may be acceptable. Water points should be within 500 metres of shelters, with queuing time no more than 30 minutes, and a maximum of 250 people per water point.\n\nSource: Sphere Handbook 2018, WASH Standard 1: Water Supply"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the role of the Humanitarian Coordinator?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Humanitarian Coordinator (HC)** is the senior-most humanitarian official in a country with a humanitarian crisis:\n\n**Responsibilities**:\n- Lead the Humanitarian Country Team (HCT)\n- Oversee the Humanitarian Programme Cycle (needs assessment \u2192 response plan \u2192 monitoring)\n- Ensure coherence and coordination among humanitarian actors\n- Advocate for humanitarian access and protection of civilians\n- Manage country-based pooled funds (CBPFs)\n- Report to the Emergency Relief Coordinator (ERC)\n\n**Appointment**: Designated by the Emergency Relief Coordinator (USG/ERC) from among UN Resident Coordinators or appointed specifically for large-scale emergencies.\n\n**Key principle**: The HC does not have authority over humanitarian organizations but coordinates through persuasion, facilitation, and the convening power of the role. Cluster lead agencies report to the HC on coordination matters.\n\nSource: IASC; OCHA"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the difference between GAM, SAM, and MAM?"
+      },
+      {
+        "role": "assistant",
+        "content": "Three levels of acute malnutrition:\n\n**GAM (Global Acute Malnutrition)**: Combined prevalence of moderate and severe acute malnutrition in children 6-59 months.\n- Emergency threshold: **15% or above**\n- Serious: 10-14%\n- Acceptable: below 5%\n\n**SAM (Severe Acute Malnutrition)**: Most dangerous form.\n- Weight-for-height below **-3 z-scores**, OR\n- MUAC below **115mm**, OR\n- Bilateral pitting oedema\n- Treated in OTP (outpatient) or stabilization centres (complicated cases)\n\n**MAM (Moderate Acute Malnutrition)**:\n- Weight-for-height between **-3 and -2 z-scores**, OR\n- MUAC **115-124mm**\n- Treated through supplementary feeding programmes\n\nGlobally, 45.7 million children under 5 suffer acute malnutrition, of which 13.6 million are severely wasted.\n\nSource: Sphere Handbook 2018; WHO/UNICEF Joint Malnutrition Estimates"
+      }
+    ],
+    "category": "food_security"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is UNDAC and how does it deploy?"
+      },
+      {
+        "role": "assistant",
+        "content": "**UNDAC (United Nations Disaster Assessment and Coordination)** is a rapidly deployable team of emergency management specialists:\n\n**Deployment**:\n- Deploys within **12-48 hours** of a sudden-onset disaster\n- Upon request of the affected government or UN Resident Coordinator\n- Team of 4-12 specialists from a roster of 250+ trained members\n- Managed by OCHA Emergency Response Section\n\n**Functions**:\n1. Rapid needs assessment\n2. Coordination support for incoming international assistance\n3. Information management (establish OSOCC \u2014 On-Site Operations Coordination Centre)\n4. Liaison between government, UN, and international responders\n5. Support for USAR coordination (with INSARAG)\n\n**Key features**:\n- Fully self-sufficient for first 5 days (equipment, communications)\n- Trained volunteers from government emergency management agencies\n- Standardized methodology for rapid assessment\n\nSource: OCHA; INSARAG"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the Core Humanitarian Standard?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Core Humanitarian Standard on Quality and Accountability (CHS)** establishes **9 commitments** for effective humanitarian response:\n\n1. **Appropriate and relevant**: Response based on assessment, adapted to context\n2. **Effective and timely**: Response meets objectives on time\n3. **Strengthening local capacities**: Does not undermine existing capacity\n4. **Based on communication, participation, and feedback**: Two-way dialogue with affected populations\n5. **Complaints are welcomed and addressed**: Accessible, safe complaint mechanisms\n6. **Coordinated and complementary**: Part of a coherent system\n7. **Continuously learning and improving**: Uses evidence, lessons learned\n8. **Competent and well-managed staff**: Adequate skills and support\n9. **Resources managed responsibly**: Transparent, for intended purpose\n\nCHS was launched in 2014 by the CHS Alliance, Sphere, and HAP International. Organizations can seek independent verification or certification against the CHS.\n\nSource: CHS Alliance"
+      }
+    ],
+    "category": "standards"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the 'do no harm' principle?"
+      },
+      {
+        "role": "assistant",
+        "content": "**Do No Harm** is a fundamental humanitarian principle requiring that aid delivery does not inadvertently cause or exacerbate harm. Key considerations:\n\n1. **Conflict sensitivity**: Understand how aid interacts with conflict dynamics. Resource distribution can fuel tensions between groups or reinforce power imbalances.\n2. **Market impact**: Large food distributions can collapse local markets, harming farmers and traders.\n3. **Protection risks**: Registration processes may expose vulnerable groups; distribution points may create exploitation risks.\n4. **Environmental damage**: Camp construction can cause deforestation and water table depletion.\n5. **Cultural disruption**: Programs may inadvertently undermine traditional coping mechanisms or social structures.\n\n**Application**:\n- Conduct conflict analysis before programming\n- Monitor for unintended consequences\n- Adjust programming when harm is identified\n- Include affected communities in program design\n\nDo No Harm analysis should be part of every program proposal and monitoring framework.\n\nSource: CDA Collaborative Learning Projects; Sphere Handbook 2018"
+      }
+    ],
+    "category": "protection"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How should excreta disposal be managed for infants?"
+      },
+      {
+        "role": "assistant",
+        "content": "Infant faeces are particularly dangerous as a disease vector and require specific management:\n- Potties or nappies/diapers should be provided for young children\n- Infant faeces must be disposed of in latrines (not left in the open)\n- Caregivers need handwashing facilities and education about risks\n- Children's latrines or adapted facilities may be needed for older children\n- Community health workers should include infant hygiene in messaging\n\nThe Sphere Handbook notes that infant faeces are often not perceived as dangerous but carry high pathogen loads. Hygiene promotion must specifically address this.\n\nSource: Sphere Handbook 2018, WASH Standard 3"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What data does IFRC GO provide?"
+      },
+      {
+        "role": "assistant",
+        "content": "**IFRC GO** is the digital platform of the International Federation of Red Cross and Red Crescent Societies for disaster risk management:\n\n**Data provided**:\n- **Emergency Appeals**: Funding requests for major disasters\n- **Field Reports**: Real-time updates from Red Cross/Red Crescent operations\n- **DREF Operations**: Disaster Relief Emergency Fund allocations\n- **Surge deployments**: ERU (Emergency Response Unit) and FACT (Field Assessment and Coordination Team) tracking\n- **Country risk profiles**: Preparedness and response capacity\n\n**Key features**:\n- No registration or API key required\n- Available at https://go.ifrc.org\n- Covers 192 National Societies worldwide\n- Real-time alerting for new disasters\n\nIFRC GO is used as a fallback data source when ReliefWeb API access is not configured, since it requires no registration or API approval.\n\nSource: IFRC"
+      }
+    ],
+    "category": "platforms"
   }
 ]

@@ -2,44 +2,33 @@
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on humanitarian funding annually?"
+        "content": "What are the data responsibility guidelines in humanitarian action?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 20 B+ humanitarian funding annually."
+        "content": "The **IASC Operational Guidance on Data Responsibility in Humanitarian Action** establishes principles for managing humanitarian data:\n\n1. **Data minimization**: Collect only what is needed for the stated purpose\n2. **Purpose limitation**: Use data only for the purpose it was collected\n3. **Data security**: Protect against unauthorized access, especially beneficiary data\n4. **Informed consent**: Affected populations understand how their data will be used\n5. **Data sharing**: Share responsibly with safeguards; anonymize when possible\n6. **Data retention**: Delete when no longer needed\n\n**Key risks in humanitarian settings**:\n- Beneficiary registration data could be used for targeting by parties to conflict\n- Biometric data (used in registration) creates permanent identification risks\n- Location data could endanger displaced populations\n- Over-collection creates risks without operational benefit\n\nThe principle of 'data minimization' applies even when data could be useful \u2014 the risk of harm from data exposure must be weighed against operational benefits.\n\nSource: IASC Operational Guidance on Data Responsibility; OCHA Centre for Humanitarian Data"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
-  },
-  {
-    "messages": [
-      {
-        "role": "user",
-        "content": "What is Principle of least privilege in humanitarian context?"
-      },
-      {
-        "role": "assistant",
-        "content": "Users and services have minimal required access\n- **Assume breach**: Design for containment and detection of security incidents\n- **End-to-end encryption**: Data protected in transit and at rest\n\n### 2."
-      }
-    ],
-    "category": "terminology",
-    "source": "CLEAR_docs"
+    "category": "ethics"
   },
   {
     "messages": [
       {
         "role": "system",
-        "content": "You are a humanitarian expert AI assistant specialized in crisis response, humanitarian standards, and emergency operations. You provide accurate, actionable guidance based on established frameworks like Sphere Standards, Core Humanitarian Standard, and protection principles. You prioritize the safety and dignity of affected populations."
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
       },
       {
         "role": "user",
-        "content": "What are the key indicators of food insecurity in crisis situations?"
+        "content": "How do you screen children for acute malnutrition?"
       },
       {
         "role": "assistant",
-        "content": "Key indicators include: 1) Acute malnutrition rates (wasting) especially in children under 5, 2) Crude mortality rate exceeding 1 death per 10,000 people per day, 3) Access to food (availability, physical access, economic access), 4) Food consumption patterns and dietary diversity, 5) Livelihood coping strategies (selling assets, reducing meals), and 6) Hazards and vulnerabilities (conflict, displacement, market disruption)."
+        "content": "Rapid nutrition screening in emergencies uses **Mid-Upper Arm Circumference (MUAC)** measurement for children aged 6-59 months:\n\n- **MUAC below 115mm** \u2192 Severe Acute Malnutrition (SAM) \u2014 refer to OTP or stabilization centre\n- **MUAC 115-124mm** \u2192 Moderate Acute Malnutrition (MAM) \u2014 refer to supplementary feeding\n- **MUAC 125mm and above** \u2192 Acceptable nutritional status\n- **Bilateral pitting oedema** (regardless of MUAC) \u2192 SAM \u2014 urgent referral\n\nMUAC is preferred for community screening because it requires minimal training and equipment. For surveillance, SMART nutrition surveys using weight-for-height z-scores provide population-level prevalence data. Emergency threshold: Global Acute Malnutrition (GAM) of 15% or above requires urgent intervention.\n\nSource: Sphere Handbook 2018; WHO/UNICEF"
       }
     ],
     "category": "food_security"
@@ -47,29 +36,392 @@
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What are the statistics on data submissions?"
+        "content": "How does climate change affect humanitarian needs?"
       },
       {
         "role": "assistant",
-        "content": "Approximately 100 M+ data submissions."
+        "content": "Climate change is a **threat multiplier** for humanitarian crises:\n\n**Direct impacts**:\n- Climate-related disasters displaced **32.6 million people in 2022** (3x more than conflict)\n- Floods are the leading cause of weather-related displacement\n- Drought frequency and severity increasing, especially in the Sahel and Horn of Africa\n- Extreme heat events causing health emergencies\n\n**Indirect impacts**:\n- Food insecurity: Crop failures, livestock deaths, fishery depletion\n- Water scarcity: Reduced freshwater availability\n- Health: Expanding disease vectors (malaria, dengue)\n- Conflict: Competition over shrinking resources\n\n**Humanitarian implications**:\n- More frequent and intense disasters\n- Protracted displacement from slow-onset events (sea level rise, desertification)\n- Disproportionate impact on countries least responsible for emissions\n- Pakistan 2022 floods: contributing <1% of global emissions but facing catastrophic impacts\n\nThe Sendai Framework and Paris Agreement must be implemented together.\n\nSource: IDMC; IPCC; OCHA"
       }
     ],
-    "category": "statistics",
-    "source": "CLEAR_docs"
+    "category": "general"
   },
   {
     "messages": [
       {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
         "role": "user",
-        "content": "What is Value in humanitarian context?"
+        "content": "What organizations lead humanitarian response globally?"
       },
       {
         "role": "assistant",
-        "content": "currentRate,\n        threshold: this."
+        "content": "Humanitarian response is led by several types of organizations:\n\n**United Nations agencies**:\n- **OCHA**: Coordination, funding (CERF), information management\n- **UNHCR**: Refugees and displacement\n- **UNICEF**: Children, WASH, nutrition, education\n- **WFP**: Food assistance, logistics\n- **WHO**: Health\n- **IOM**: Migration, displacement tracking\n- **FAO**: Food security, agriculture\n- **UNDP**: Recovery, governance\n\n**Red Cross/Red Crescent Movement**:\n- **ICRC**: Conflict zones, IHL, detainee protection\n- **IFRC**: Disaster response, 192 National Societies\n\n**Major INGOs**:\n- MSF (Doctors Without Borders): Medical\n- Save the Children: Children's education and protection\n- Oxfam: WASH, food security, livelihoods\n- IRC (International Rescue Committee): Multi-sector\n- World Vision: Children, development\n- Norwegian Refugee Council: Displacement, legal aid\n\n**Donors**: US (USAID/BHA), EU (DG ECHO), UK (FCDO), Germany, Japan, Nordic countries\n\nSource: OCHA; IASC"
       }
     ],
-    "category": "terminology",
-    "source": "CLEAR_docs"
+    "category": "general"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the Humanitarian Data Exchange (HDX)?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Humanitarian Data Exchange (HDX)** is an open data platform managed by OCHA's Centre for Humanitarian Data. Key facts:\n\n- Hosts **20,000+ datasets** from 250+ organizations across 260+ locations\n- Free and open access \u2014 no registration required for most datasets\n- Key data types: population statistics, food security, displacement, health indicators, geospatial data\n- Available at https://data.humdata.org\n\n**HDX HAPI** (Humanitarian API) provides structured programmatic access to key country-level indicators including population, food security, funding, and humanitarian needs.\n\nHDX also provides:\n- Data quality assurance tools\n- Standardized data formats (HXL \u2014 Humanitarian Exchange Language)\n- Quick Charts for rapid data visualization\n- Automated data pipelines ('scrapers') that keep datasets current\n\nSource: OCHA Centre for Humanitarian Data"
+      }
+    ],
+    "category": "platforms"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the difference between Level 1, 2, and 3 emergencies?"
+      },
+      {
+        "role": "assistant",
+        "content": "The IASC Emergency Response Activation system has three levels:\n\n**Level 1 (Country-level)**: The country team can manage with existing capacity. Regional bureau provides oversight and limited support. Example: localized flooding affecting one province.\n\n**Level 2 (Regional)**: Significant crisis requiring augmented response. Regional surge deployment of staff and resources. Additional coordination structures activated. Example: large earthquake affecting multiple regions.\n\n**Level 3 (System-wide)**: Major sudden-onset or rapidly deteriorating crisis. The Emergency Relief Coordinator activates system-wide protocols. Maximum surge, senior leadership deployment, CERF rapid response allocation. All IASC agencies mobilize. Example: Syria, Yemen, Ukraine.\n\nLevel 3 is the highest activation, declared by the Emergency Relief Coordinator (ERC) based on scale, urgency, complexity, and capacity. Currently active L3 declarations include several protracted crises.\n\nSource: IASC Humanitarian System-Wide Scale-Up Protocols"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the Grand Bargain?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Grand Bargain** is an agreement between major humanitarian donors and organizations to improve efficiency and effectiveness of humanitarian action. Launched at the World Humanitarian Summit in 2016.\n\n**Key commitments**:\n1. **More cash programming**: Default to cash when appropriate\n2. **Localization**: 25% of funding to local/national organizations\n3. **Reduced earmarking**: More flexible, unearmarked funding\n4. **Harmonized reporting**: Reduce duplicative reporting requirements\n5. **Participation revolution**: Include affected populations in decisions\n6. **Needs assessments**: Coordinated, joint assessments\n7. **Multi-year planning and funding**: Move beyond annual cycles\n8. **Transparency**: Publish data to IATI standards\n\n**Grand Bargain 2.0** (2021) streamlined the framework and added emphasis on quality funding and localization.\n\n**Progress**: Mixed. Cash programming has expanded significantly; localization funding target remains unmet (3-4% vs. 25% target).\n\nSource: Grand Bargain Annual Reports; IASC"
+      }
+    ],
+    "category": "general"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the Age, Gender, and Diversity approach?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **Age, Gender, and Diversity (AGD)** approach ensures humanitarian programs address the specific needs of all population groups:\n\n**Age**: Different age groups have different needs \u2014 infants, children, adolescents, adults, elderly\n**Gender**: Men, women, boys, and girls experience crises differently\n**Diversity**: Disability, ethnicity, religion, sexual orientation, and other factors affect vulnerability and access\n\n**Practical application**:\n1. **SADD (Sex and Age Disaggregated Data)**: All data collected broken down by sex and age\n2. **Participatory assessments**: Consult all groups separately to understand specific needs\n3. **Targeted programming**: Design for specific groups (e.g., safe spaces for adolescent girls, accessible facilities for persons with disabilities)\n4. **Monitoring**: Track access and outcomes by group\n\n**Key fact**: 15% of the global population has a disability. The Washington Group Short Set of questions is the standard tool for identifying persons with disabilities in humanitarian settings.\n\nSource: UNHCR AGD Policy; IASC"
+      }
+    ],
+    "category": "protection"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What are the water storage requirements per household?"
+      },
+      {
+        "role": "assistant",
+        "content": "According to the Sphere Handbook 2018, each household should have a **minimum of 2 water collection/storage vessels** of 10-20 litres capacity each. This ensures families can collect and safely store sufficient water. Additional requirements include: covered containers to prevent contamination, narrow openings to prevent hand contact with stored water, and vessels that can be easily cleaned.\n\nSource: Sphere Handbook 2018, WASH Standard 1"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How many people per toilet is the Sphere standard?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Sphere Handbook 2018, WASH Standard 3, specifies a **maximum of 20 people per toilet** in emergency settings. Key requirements include:\n- Separate facilities for men and women\n- Maximum 50 metres from dwellings\n- Toilets must be lockable from inside\n- Handwashing station with soap or ash at each toilet block\n- Well-lit or provision of torches for night use\n\nSource: Sphere Handbook 2018, WASH Standard 3: Excreta Management"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What are the water quality standards for emergency response?"
+      },
+      {
+        "role": "assistant",
+        "content": "According to the Sphere Handbook 2018, WASH Standard 2, water must be palatable and safe for drinking and cooking. Key indicators:\n- **0 faecal coliforms per 100ml** at point of delivery\n- Residual chlorine **0.2-0.5 mg/L** at delivery point (turbidity below 5 NTU)\n- Higher chlorine (0.5-1.0 mg/L) when turbidity is higher or disease risk is elevated\n- Turbidity below **5 NTU** at point of delivery\n- No negative health effects from chemical or radiological contamination\n\nSource: Sphere Handbook 2018, WASH Standard 2: Water Quality"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What does PSEA mean and why is it important?"
+      },
+      {
+        "role": "assistant",
+        "content": "**PSEA \u2014 Protection from Sexual Exploitation and Abuse** \u2014 establishes standards and mechanisms to prevent and respond to sexual exploitation and abuse **by humanitarian workers and peacekeepers**.\n\n**Core standards**:\n- Zero-tolerance policy applies to all UN and partner staff\n- Sexual activity with beneficiaries is prohibited (inherent power imbalance)\n- Exchange of money, food, or services for sex is prohibited\n- All personnel must report suspected SEA\n- Organizations must have investigation and response mechanisms\n\n**Implementation**:\n1. Code of conduct signed by all staff\n2. Safe reporting channels (including anonymous/community-based)\n3. Victim assistance protocols independent of investigation outcome\n4. Background checks for all staff\n5. Training integrated into induction for all personnel\n\nPSEA is not the same as GBV response \u2014 GBV addresses violence by anyone; PSEA specifically addresses abuse of power by aid workers.\n\nSource: UN Secretary-General's Bulletin ST/SGB/2003/13; IASC PSEA Guidelines"
+      }
+    ],
+    "category": "protection"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What support should host communities receive?"
+      },
+      {
+        "role": "assistant",
+        "content": "Host communities bear significant impacts from large-scale displacement and should receive support to prevent social tensions:\n\n1. **Infrastructure**: Upgrade shared services (schools, health facilities, water systems) that serve both hosts and displaced\n2. **Economic support**: Livelihood programs open to both communities; market analysis to address price inflation\n3. **Social cohesion**: Joint activities, shared community spaces, conflict mediation\n4. **Environmental**: Address resource pressure (deforestation, water depletion) caused by population increase\n5. **Governance**: Support local authorities managing increased service demands\n\n**Rationale**: 78% of refugees are hosted in low- and middle-income countries. Host communities often share scarce resources. Without support, tensions rise and protection risks increase for displaced populations.\n\nThe Grand Bargain and World Humanitarian Summit (2016) emphasized the humanitarian-development nexus, recognizing that displacement responses must benefit host communities.\n\nSource: UNHCR Refugee Response Plans; Grand Bargain commitments"
+      }
+    ],
+    "category": "displacement"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How should emergency water trucking be transitioned to sustainable supply?"
+      },
+      {
+        "role": "assistant",
+        "content": "Water trucking is an emergency measure that should be transitioned to sustainable water sources as quickly as possible. The process involves:\n1. Assess existing water sources and infrastructure damage\n2. Establish minimum 15L/person/day (7.5L in survival phase)\n3. Position water points within 500m, max 250 people per point\n4. Test water quality (0 faecal coliforms per 100ml)\n5. Ensure residual chlorine 0.2-0.5 mg/L\n6. Monitor queue times (max 30 minutes) and adjust\n7. Begin rehabilitation of boreholes, gravity-fed systems, or piped networks\n8. Transition from trucking to sustainable sources\n\nWater trucking costs $5-15 per cubic metre compared to $0.50-2 for piped systems, making transition cost-effective as well as sustainable.\n\nSource: Sphere Handbook 2018; WASH Cluster Emergency Guidelines"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What are durable solutions for refugees?"
+      },
+      {
+        "role": "assistant",
+        "content": "There are three internationally recognized **durable solutions** for refugees:\n\n1. **Voluntary Repatriation**: Return to country of origin when conditions allow. Must be voluntary and in safety and dignity. UNHCR monitors conditions and facilitates return.\n\n2. **Local Integration**: Settlement in the country of asylum. Includes legal status, economic self-reliance, and social connections. Requires host country policy support.\n\n3. **Resettlement**: Transfer to a third country that agrees to admit the refugee and grant permanent residence. Only about 1% of refugees are resettled annually.\n\nRefugees have the right to choose among available options. The principle of **non-refoulement** (no forced return to danger) applies at all times \u2014 it is the cornerstone of refugee protection under the 1951 Refugee Convention.\n\n**Reality**: Most refugees remain in protracted displacement (78% in situations lasting 5+ years). Comprehensive Solutions strategies increasingly recognize that durable solutions require development approaches, not just humanitarian ones.\n\nSource: UNHCR; 1951 Refugee Convention"
+      }
+    ],
+    "category": "displacement"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is localization in humanitarian response?"
+      },
+      {
+        "role": "assistant",
+        "content": "**Localization** is the agenda to shift humanitarian leadership and resources to local and national actors:\n\n**Grand Bargain commitment (2016)**: 25% of humanitarian funding to go directly to local organizations by 2020. This target has **not yet been met** \u2014 local organizations receive approximately 3-4% of direct funding.\n\n**Key elements**:\n1. **Funding**: Direct funding to local/national NGOs (LNGOs)\n2. **Leadership**: Local actors in coordination and decision-making roles\n3. **Capacity**: Strengthening (not replacing) local organizational capacity\n4. **Partnership**: Equitable partnerships rather than subcontracting\n\n**Arguments for localization**:\n- Local organizations have community trust and cultural knowledge\n- Sustained presence before, during, and after crises\n- More cost-effective than international operations\n- Faster response from existing local presence\n\n**Challenges**:\n- International organizations face institutional incentives to maintain control\n- Compliance requirements designed for large INGOs exclude smaller local organizations\n- 'Localization' sometimes means shifting risk without resources\n\nSource: Grand Bargain; Charter for Change; NEAR Network"
+      }
+    ],
+    "category": "general"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How should personally identifiable information (PII) be handled in humanitarian settings?"
+      },
+      {
+        "role": "assistant",
+        "content": "Handling PII in humanitarian settings requires balancing operational needs with data protection:\n\n**Types of PII in humanitarian contexts**:\n- Names, dates of birth, ID numbers\n- Biometric data (fingerprints, iris scans)\n- Location data (GPS coordinates, camp/block numbers)\n- Health and nutrition status\n- Case/registration numbers\n- Phone numbers and email addresses\n\n**Protection measures**:\n1. **Encryption** of stored and transmitted data\n2. **Access controls** limiting who can view PII\n3. **Anonymization/pseudonymization** for analysis and reporting\n4. **Data sharing agreements** with formal protocols\n5. **Incident response plans** for data breaches\n6. **Staff training** on data protection\n\n**Key principle**: In conflict settings, PII exposure can lead to targeting, persecution, or denial of services. The risk is highest for biometric data, which cannot be changed if compromised. Humanitarian organizations have a duty of care regarding the data they collect.\n\nSource: IASC Operational Guidance on Data Responsibility; UNHCR Data Protection Policy"
+      }
+    ],
+    "category": "ethics"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is anticipatory action in humanitarian response?"
+      },
+      {
+        "role": "assistant",
+        "content": "**Anticipatory action** (also called forecast-based action) is triggering humanitarian assistance **before** a predicted crisis materializes, rather than waiting for impact.\n\n**How it works**:\n1. Pre-agreed triggers linked to weather forecasts or risk indicators\n2. Pre-positioned funding released automatically when triggers are reached\n3. Pre-planned activities implemented in the forecast window\n\n**Examples**:\n- Cash distribution before predicted flooding (Bangladesh)\n- Livestock feed and water trucking before drought declaration (East Africa)\n- Evacuation support before cyclone landfall (Mozambique)\n\n**Evidence**: The Horn of Africa drought 2022-2023 showed that anticipatory action and early response helped prevent the worst famine outcomes despite five consecutive failed rainy seasons. Early action is estimated to be 3-4x more cost-effective than post-disaster response.\n\n**Mechanisms**: CERF anticipatory action framework, IFRC Forecast-based Financing, WFP anticipatory cash transfers.\n\nSource: OCHA CERF; IFRC; WFP"
+      }
+    ],
+    "category": "drr"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is blanket supplementary feeding and when is it activated?"
+      },
+      {
+        "role": "assistant",
+        "content": "**Blanket Supplementary Feeding Programme (BSFP)** provides supplementary food rations to all members of a vulnerable group (typically all children 6-59 months and pregnant/lactating women) regardless of individual nutritional status. It is activated when:\n\n- GAM rate exceeds 15% with aggravating factors (food insecurity, disease outbreak, displacement)\n- GAM rate exceeds 10% with significant aggravating factors\n- During acute food crisis (IPC Phase 3+) affecting young children\n\nBSFP is distinct from Targeted Supplementary Feeding (TSFP), which treats individual MAM cases (MUAC 115-124mm). BSFP aims to prevent deterioration in the entire at-risk group.\n\nSource: Sphere Handbook 2018; Global Nutrition Cluster Guidelines"
+      }
+    ],
+    "category": "food_security"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How should camp site selection be done?"
+      },
+      {
+        "role": "assistant",
+        "content": "Camp site selection follows Sphere standards and UNHCR guidelines:\n\n1. **Safety**: Minimum distance from conflict, flood plains, landslide-prone areas, and industrial hazards\n2. **Drainage**: Well-drained ground, avoiding waterlogged or low-lying areas\n3. **Water availability**: Adequate water source to provide 15L/person/day\n4. **Accessibility**: Road access for supply trucks and emergency vehicles\n5. **Size**: 45m\u00b2/person including infrastructure (30m\u00b2 in emergency phase)\n6. **Environmental impact**: Avoid deforestation; assess environmental carrying capacity\n7. **Host community**: Consider proximity and relationship with existing communities\n8. **Services**: Proximity to health facilities, markets, and education\n9. **Land tenure**: Secure agreement with landowner/authorities\n10. **Topography**: Gentle slope (2-4%) for natural drainage\n\nSource: Sphere Handbook 2018; UNHCR Camp Planning Standards"
+      }
+    ],
+    "category": "shelter"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the humanitarian cluster system?"
+      },
+      {
+        "role": "assistant",
+        "content": "The **cluster system** is the humanitarian coordination mechanism established by the IASC Humanitarian Reform of 2005. It organizes response into **11 thematic clusters**, each led by a designated UN agency:\n\n1. **WASH** \u2014 UNICEF\n2. **Health** \u2014 WHO\n3. **Nutrition** \u2014 UNICEF\n4. **Food Security** \u2014 WFP & FAO\n5. **Shelter/NFI** \u2014 UNHCR (conflict) / IFRC (disaster)\n6. **Protection** \u2014 UNHCR\n7. **Education** \u2014 UNICEF & Save the Children\n8. **Camp Coordination/Management** \u2014 UNHCR (conflict) / IOM (disaster)\n9. **Early Recovery** \u2014 UNDP\n10. **Emergency Telecommunications** \u2014 WFP\n11. **Logistics** \u2014 WFP\n\nEach cluster coordinates needs assessments, identifies gaps, develops strategy, and ensures standards are met. Cross-cutting themes (gender, protection, disability inclusion) apply to all clusters.\n\nSource: IASC; OCHA"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is a 4W matrix and how is it used?"
+      },
+      {
+        "role": "assistant",
+        "content": "A **4W (Who, What, Where, When) matrix** is a basic coordination tool that maps humanitarian activities:\n\n- **Who**: Which organization is implementing\n- **What**: Which sector/activity (e.g., water point rehabilitation, food distribution)\n- **Where**: Location (using P-codes for standardization)\n- **When**: Timeframe (planned start/end dates)\n\n**Purpose**:\n- Identify gaps in coverage (areas/sectors with no response)\n- Detect overlaps and duplication\n- Inform resource allocation decisions\n- Support accountability and reporting\n\n4W matrices are maintained at cluster level and consolidated by OCHA. They are the **minimum viable coordination tool** \u2014 without operational mapping, clusters cannot function effectively. Data should use standardized formats (P-codes for locations, SADD for population data).\n\nSource: OCHA Information Management Guidelines"
+      }
+    ],
+    "category": "coordination"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the difference between refugees and IDPs?"
+      },
+      {
+        "role": "assistant",
+        "content": "**Refugees** and **Internally Displaced Persons (IDPs)** are both forcibly displaced, but differ in critical ways:\n\n**Refugees**:\n- Have crossed an international border\n- Protected under the 1951 Refugee Convention and its 1967 Protocol\n- UNHCR has legal mandate for their protection\n- Cannot be returned to danger (non-refoulement)\n- Entitled to refugee status determination (RSD)\n\n**IDPs**:\n- Remain within their own country's borders\n- No specific international convention (protected by Guiding Principles on Internal Displacement)\n- Remain under the jurisdiction of their own government\n- Government has primary responsibility for protection and assistance\n- No formal status or documentation\n\nAs of 2023: 62.5 million IDPs vs. 36.4 million refugees globally. IDPs often have fewer protections because their own government may be the source of displacement.\n\nSource: UNHCR; IDMC; UN Guiding Principles on Internal Displacement"
+      }
+    ],
+    "category": "displacement"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "How much soap should be distributed per person in emergencies?"
+      },
+      {
+        "role": "assistant",
+        "content": "According to the Sphere Handbook 2018, WASH Standard 4, the minimum hygiene provision includes **250 grams of soap per person per month**. Additionally, each household should receive two water collection containers (10-20 litres each), and sufficient menstrual hygiene materials must be provided for women and girls.\n\nSource: Sphere Handbook 2018, WASH Standard 4: Hygiene Promotion"
+      }
+    ],
+    "category": "wash"
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are HAI, a humanitarian AI assistant. You provide accurate, sourced information about humanitarian standards, crisis response, and aid coordination. Always cite your sources and follow humanitarian principles."
+      },
+      {
+        "role": "user",
+        "content": "What is the minimum living space per person in emergency shelters?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Sphere Handbook 2018 specifies a minimum of **3.5 square metres of covered living space per person** in warm climates. Additional standards:\n- **45 square metres per person** in planned camp settings (including infrastructure, roads, firebreaks)\n- **30 square metres per person** is acceptable in the emergency phase\n- Protection from climate (wind, rain, sun, cold)\n- Privacy and dignity maintained\n- Culturally appropriate design\n- Fire safety: minimum 2 metres between structures; 30-metre firebreaks every 300 metres\n\nIn cold climates, more space may be required for heating efficiency. The covered space excludes cooking areas.\n\nSource: Sphere Handbook 2018, Shelter and Settlement Standards"
+      }
+    ],
+    "category": "shelter"
   }
 ]
